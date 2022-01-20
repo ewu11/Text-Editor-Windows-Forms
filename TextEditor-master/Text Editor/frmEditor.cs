@@ -15,16 +15,27 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Text_Editor
 {
     public partial class frmEditor : Form
     {
+        [DllImport("user32.dll")]
+        public static extern int GetAsyncKeyState(System.Windows.Forms.Keys vKey);
+
         List<string> colorList = new List<string>();    // holds the System.Drawing.Color names
         string filenamee;    // file opened inside of RTB
         const int MIDDLE = 382;    // middle sum of RGB - max is 765
         int sumRGB;    // sum of the selected colors RGB
         int pos, line, column;    // for detecting line and column numbers
+
+        //for context menu uses
+        //ctrl key is down
+        bool ctrlIsDown = false; //false by default
+
+        //rmb key is down
+        bool rmbIsDown = false; //false by default
 
         public frmEditor()
         {
@@ -785,11 +796,36 @@ namespace Text_Editor
             }
         }
 
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //GetAsyncKeyState(Keys.LButton);
+
+            // determine key down
+            switch (e.KeyCode)
+            {
+                case Keys.ControlKey:
+                    ctrlIsDown = true;
+                    break;
+            }
+
+            if((ctrlIsDown == true) && (rmbIsDown == true))
+            {
+                string message = "Yahoo!";
+                string title = "Title";
+                MessageBox.Show(message, title);
+            }
+        }
+
         //****************************************************************************************************************************************
         // richTextBox1_KeyUp - Determines which key was released and gets the line and column numbers of the current cursor position in the RTB *
         //**************************************************************************************************************************************** 
         private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
         {
+            //after everything done, change back to default
+            //for context menu use
+            ctrlIsDown = false;
+            rmbIsDown = false;
+
             // determine key released
             switch (e.KeyCode)
             {
@@ -825,10 +861,13 @@ namespace Text_Editor
         //****************************************************************************************************************************
         private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            int pos = richTextBox1.SelectionStart;    // get starting point
-            int line = richTextBox1.GetLineFromCharIndex(pos);    // get line number
-            int column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-            lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
+            // determine key down
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    rmbIsDown = true;
+                    break;
+            }            
         }
         
     }
