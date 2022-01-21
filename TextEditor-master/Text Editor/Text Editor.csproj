@@ -60,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="contextMenu.resx">
+      <DependentUpon>contextMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditor.resx">
       <DependentUpon>frmEditor.cs</DependentUpon>
     </EmbeddedResource>

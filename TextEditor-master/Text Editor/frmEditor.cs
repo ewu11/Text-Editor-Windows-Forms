@@ -798,21 +798,29 @@ namespace Text_Editor
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            //GetAsyncKeyState(Keys.LButton);
+            
+        }
 
-            // determine key down
-            switch (e.KeyCode)
+        private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
             {
-                case Keys.ControlKey:
-                    ctrlIsDown = true;
+                case MouseButtons.Right:
+                    //rmbIsDown = true;
+                    contextMenu CMO = new contextMenu();
+
+                    //getting mouse position
+                    this.Cursor = new Cursor(Cursor.Current.Handle);
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+                    //set form to open next to mouse position
+                    StartPosition = FormStartPosition.Manual;
+                    CMO.Location = Cursor.Position;
+
+                    //display the context menu
+                    CMO.Show();
+
                     break;
-            }
-
-            if((ctrlIsDown == true) && (rmbIsDown == true))
-            {
-                string message = "Yahoo!";
-                string title = "Title";
-                MessageBox.Show(message, title);
             }
         }
 
@@ -823,8 +831,8 @@ namespace Text_Editor
         {
             //after everything done, change back to default
             //for context menu use
-            ctrlIsDown = false;
-            rmbIsDown = false;
+            /*ctrlIsDown = false;
+            rmbIsDown = false;*/
 
             // determine key released
             switch (e.KeyCode)
@@ -861,14 +869,8 @@ namespace Text_Editor
         //****************************************************************************************************************************
         private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            // determine key down
-            switch (e.Button)
-            {
-                case MouseButtons.Right:
-                    rmbIsDown = true;
-                    break;
-            }            
+
         }
-        
+
     }
 }

@@ -41,8 +41,8 @@ namespace Text_Editor
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -54,13 +54,14 @@ namespace Text_Editor
             this.tableLayoutPanel1.Controls.Add(this.selectAllBtn, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.clearAllBtn, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.cutBtn, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 10);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(304, 381);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(304, 305);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // copyBtn
@@ -71,9 +72,10 @@ namespace Text_Editor
             this.copyBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight;
             this.copyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.copyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.copyBtn.Location = new System.Drawing.Point(155, 48);
+            this.copyBtn.Location = new System.Drawing.Point(155, 21);
+            this.copyBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.copyBtn.Name = "copyBtn";
-            this.copyBtn.Size = new System.Drawing.Size(146, 29);
+            this.copyBtn.Size = new System.Drawing.Size(146, 58);
             this.copyBtn.TabIndex = 1;
             this.copyBtn.Text = "Copy";
             this.copyBtn.UseVisualStyleBackColor = false;
@@ -86,9 +88,10 @@ namespace Text_Editor
             this.pasteBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight;
             this.pasteBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.pasteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pasteBtn.Location = new System.Drawing.Point(3, 174);
+            this.pasteBtn.Location = new System.Drawing.Point(3, 122);
+            this.pasteBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pasteBtn.Name = "pasteBtn";
-            this.pasteBtn.Size = new System.Drawing.Size(146, 29);
+            this.pasteBtn.Size = new System.Drawing.Size(146, 58);
             this.pasteBtn.TabIndex = 2;
             this.pasteBtn.Text = "Paste";
             this.pasteBtn.UseVisualStyleBackColor = false;
@@ -101,9 +104,10 @@ namespace Text_Editor
             this.DeleteBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight;
             this.DeleteBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteBtn.Location = new System.Drawing.Point(155, 174);
+            this.DeleteBtn.Location = new System.Drawing.Point(155, 122);
+            this.DeleteBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(146, 29);
+            this.DeleteBtn.Size = new System.Drawing.Size(146, 58);
             this.DeleteBtn.TabIndex = 3;
             this.DeleteBtn.Text = "Delete";
             this.DeleteBtn.UseVisualStyleBackColor = false;
@@ -116,9 +120,10 @@ namespace Text_Editor
             this.selectAllBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight;
             this.selectAllBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.selectAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.selectAllBtn.Location = new System.Drawing.Point(3, 302);
+            this.selectAllBtn.Location = new System.Drawing.Point(3, 224);
+            this.selectAllBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.selectAllBtn.Name = "selectAllBtn";
-            this.selectAllBtn.Size = new System.Drawing.Size(146, 29);
+            this.selectAllBtn.Size = new System.Drawing.Size(146, 58);
             this.selectAllBtn.TabIndex = 4;
             this.selectAllBtn.Text = "Select All";
             this.selectAllBtn.UseVisualStyleBackColor = false;
@@ -131,9 +136,10 @@ namespace Text_Editor
             this.clearAllBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight;
             this.clearAllBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.clearAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clearAllBtn.Location = new System.Drawing.Point(155, 302);
+            this.clearAllBtn.Location = new System.Drawing.Point(155, 224);
+            this.clearAllBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clearAllBtn.Name = "clearAllBtn";
-            this.clearAllBtn.Size = new System.Drawing.Size(146, 29);
+            this.clearAllBtn.Size = new System.Drawing.Size(146, 58);
             this.clearAllBtn.TabIndex = 5;
             this.clearAllBtn.Text = "Clear All";
             this.clearAllBtn.UseVisualStyleBackColor = false;
@@ -146,25 +152,27 @@ namespace Text_Editor
             this.cutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlLight;
             this.cutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.cutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cutBtn.Location = new System.Drawing.Point(3, 48);
+            this.cutBtn.Location = new System.Drawing.Point(3, 21);
+            this.cutBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cutBtn.Name = "cutBtn";
-            this.cutBtn.Size = new System.Drawing.Size(146, 29);
+            this.cutBtn.Size = new System.Drawing.Size(146, 58);
             this.cutBtn.TabIndex = 0;
             this.cutBtn.Text = "Cut";
             this.cutBtn.UseVisualStyleBackColor = false;
             // 
-            // contextMenuWindow
+            // contextMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(328, 405);
+            this.ClientSize = new System.Drawing.Size(324, 321);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "contextMenuWindow";
+            this.Name = "contextMenu";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
