@@ -21,8 +21,8 @@ namespace Text_Editor
 {
     public partial class frmEditor : Form
     {
-        [DllImport("user32.dll")]
-        public static extern int GetAsyncKeyState(System.Windows.Forms.Keys vKey);
+        //[DllImport("user32.dll")]
+        //public static extern int GetAsyncKeyState(System.Windows.Forms.Keys vKey);
 
         List<string> colorList = new List<string>();    // holds the System.Drawing.Color names
         string filenamee;    // file opened inside of RTB
@@ -30,12 +30,15 @@ namespace Text_Editor
         int sumRGB;    // sum of the selected colors RGB
         int pos, line, column;    // for detecting line and column numbers
 
+        //bool ctrlIsDown;
+        theContextMenu CMO = new theContextMenu();
+        
         //for context menu uses
         //ctrl key is down
-        bool ctrlIsDown = false; //false by default
+        //bool ctrlIsDown = false; //false by default
 
         //rmb key is down
-        bool rmbIsDown = false; //false by default
+        //bool rmbIsDown = false; //false by default
 
         public frmEditor()
         {
@@ -44,6 +47,10 @@ namespace Text_Editor
 
         private void frmEditor_Load(object sender, EventArgs e)
         {
+            /*CMO = new contextMenu();
+            CMO.ctrlKeyIsDownMethod = false;
+            ctrlIsDown = CMO.ctrlKeyIsDownMethod;*/
+
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
             richTextBox1.WordWrap = false;    // disable word wrap on start
@@ -798,7 +805,16 @@ namespace Text_Editor
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            switch (e.KeyCode)
+            {
+                case Keys.ControlKey:
+                    //this.richTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseDown);
+                    CMO.ctrlKeyIsDownSetter = true;
+                    break;
+                default:
+                    CMO.ctrlKeyIsDownSetter = false;
+                    break;
+            }
         }
 
         private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
@@ -806,20 +822,8 @@ namespace Text_Editor
             switch (e.Button)
             {
                 case MouseButtons.Right:
-                    //rmbIsDown = true;
-                    contextMenu CMO = new contextMenu();
-
-                    //getting mouse position
-                    this.Cursor = new Cursor(Cursor.Current.Handle);
-                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
-
-                    //set form to open next to mouse position
-                    StartPosition = FormStartPosition.Manual;
-                    CMO.Location = Cursor.Position;
-
-                    //display the context menu
-                    CMO.Show();
-
+                    CMO.ctrlKeyIsDownSetter = false; //reset the setting that can be used again
+                    MessageBox.Show("Upped!");
                     break;
             }
         }
@@ -869,8 +873,26 @@ namespace Text_Editor
         //****************************************************************************************************************************
         private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    if(CMO.ctrlKeyIsDownSetter == true)
+                    {
+                        CMO = new theContextMenu(); //to recreate object once closed/ deleted
 
+                        //getting mouse position
+                        this.Cursor = new Cursor(Cursor.Current.Handle);
+                        Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+                        //set form to open next to mouse position
+                        StartPosition = FormStartPosition.Manual;
+                        CMO.Location = Cursor.Position;
+
+                        //display the context menu
+                        CMO.Show();                  
+                    }
+                    break;
+            }
         }
-
     }
 }

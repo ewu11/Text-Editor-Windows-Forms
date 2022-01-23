@@ -10,19 +10,22 @@ using System.Windows.Forms;
 
 namespace Text_Editor
 {
-    public partial class contextMenu : Form
+    public partial class theContextMenu : Form
     {
-        //global static variable
-        public static bool isOpen = false; //context menu is closed by default
-
-        public contextMenu()
+        public theContextMenu()
         {
             InitializeComponent();
         }
 
-        private void contextMenuWindow_Deactivate(object sender, EventArgs e)
+        public bool ctrlKeyIsDownSetter
         {
-            //close the context menu window when lose focus
+            get { return ctrlKeyIsDown; }   // get method
+            set { ctrlKeyIsDown = value; }  // set method
+        }
+
+        private void theContextMenu_Deactivate(object sender, EventArgs e)
+        {
+            ctrlKeyIsDown = false;
             this.Close();
         }
     }
