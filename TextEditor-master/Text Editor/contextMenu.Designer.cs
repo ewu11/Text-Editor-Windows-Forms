@@ -111,6 +111,7 @@
             this.DeleteBtn.TabIndex = 3;
             this.DeleteBtn.Text = "Delete";
             this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // selectAllBtn
             // 
@@ -127,6 +128,7 @@
             this.selectAllBtn.TabIndex = 4;
             this.selectAllBtn.Text = "Select All";
             this.selectAllBtn.UseVisualStyleBackColor = false;
+            this.selectAllBtn.Click += new System.EventHandler(this.selectAllBtn_Click);
             // 
             // clearAllBtn
             // 
@@ -143,6 +145,7 @@
             this.clearAllBtn.TabIndex = 5;
             this.clearAllBtn.Text = "Clear All";
             this.clearAllBtn.UseVisualStyleBackColor = false;
+            this.clearAllBtn.Click += new System.EventHandler(this.clearAllBtn_Click);
             // 
             // cutBtn
             // 
@@ -159,15 +162,15 @@
             this.cutBtn.TabIndex = 0;
             this.cutBtn.Text = "Cut";
             this.cutBtn.UseVisualStyleBackColor = false;
+            this.cutBtn.Click += new System.EventHandler(this.cutBtn_Click);
             // 
             // ContextMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(281, 219);
+            this.ClientSize = new System.Drawing.Size(277, 215);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -181,6 +184,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.TopMost = true;
             this.Deactivate += new System.EventHandler(this.theContextMenu_Deactivate);
+            this.Load += new System.EventHandler(this.ContextMenu_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

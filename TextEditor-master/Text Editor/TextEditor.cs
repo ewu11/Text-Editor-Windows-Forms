@@ -31,7 +31,7 @@ namespace Text_Editor
         int pos, line, column;    // for detecting line and column numbers
 
         //bool ctrlIsDown;
-        ContextMenu CMO = new ContextMenu();
+        ContextMenu contextMenuObj = new ContextMenu();
 
         //for context menu uses
         //ctrl key is down
@@ -529,7 +529,6 @@ namespace Text_Editor
 
         private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
             richTextBox1.Copy();     // copy text
         }
 
@@ -815,23 +814,17 @@ namespace Text_Editor
             {
                 case Keys.ControlKey:
                     //this.richTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseDown);
-                    CMO.ctrlKeyIsDownSetter = true;
+                    contextMenuObj.ctrlKeyIsDownSetter = true;
                     break;
                 default:
-                    CMO.ctrlKeyIsDownSetter = false;
+                    contextMenuObj.ctrlKeyIsDownSetter = false;
                     break;
             }
         }
 
         private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            /*switch (e.Button)
-            {
-                case MouseButtons.Right:
-                    CMO.ctrlKeyIsDownSetter = false; //reset the setting that can be used again
-                    MessageBox.Show("Upped!");
-                    break;
-            }*/
+
         }
 
         //****************************************************************************************************************************************
@@ -877,43 +870,6 @@ namespace Text_Editor
         //****************************************************************************************************************************
         // richTextBox1_MouseDown - Gets the line and column numbers of the cursor position in the RTB when the mouse clicks an area *
         //****************************************************************************************************************************
-        private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            switch (e.Button)
-            {
-                case MouseButtons.Right:
-                    /*if(CMO.ctrlKeyIsDownSetter == true)
-                    {
-                        CMO = new theContextMenu(); //to recreate object once closed/ deleted
-
-                        //getting mouse position
-                        this.Cursor = new Cursor(Cursor.Current.Handle);
-                        Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
-
-                        //set form to open next to mouse position
-                        StartPosition = FormStartPosition.Manual;
-                        CMO.Location = Cursor.Position;
-
-                        //display the context menu
-                        CMO.Show();                  
-                    }*/
-
-                    CMO = new ContextMenu(); //to recreate object once closed/ deleted
-
-                    //getting mouse position
-                    this.Cursor = new Cursor(Cursor.Current.Handle);
-                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
-
-                    //set form to open next to mouse position
-                    CMO.StartPosition = FormStartPosition.Manual;
-                    CMO.Location = Cursor.Position;
-
-                    //display the context menu
-                    //CMO.ShowDialog();
-                    CMO.Show();
-                    //CMO.Visible = true;
-                    break;
-            }
-        }
+        
     }
 }

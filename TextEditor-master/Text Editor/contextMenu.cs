@@ -14,7 +14,11 @@ namespace Text_Editor
     public partial class ContextMenu : Form
     {
         //global variable
-        //TextEditor theRichTextBoxObj;
+        TextEditor textEditorObj; //text editor object instantiation
+
+        //msg uses
+        string theMsg = "Hello World!";
+        string theTle = "Message";
 
         public ContextMenu()
         {
@@ -25,6 +29,10 @@ namespace Text_Editor
         {
             get { return ctrlKeyIsDown; }   // get method
             set { ctrlKeyIsDown = value; }  // set method
+        }
+        private void ContextMenu_Load(object sender, EventArgs e)
+        {
+            textEditorObj = new TextEditor(); //text editor object instantiation
         }
 
         private void theContextMenu_Deactivate(object sender, EventArgs e)
@@ -38,12 +46,11 @@ namespace Text_Editor
             /*string theMessage = "Hello World!";
             string theTitle = "MessageBox";
             MessageBox.Show(this, theMessage, theTitle);*/
-            /*theRichTextBoxObj = new TextEditor();
-            RichTextBox myTextBox = theRichTextBoxObj.RichTextBoxSetterGetter;
-            myTextBox.Copy();*/
-            string theMsg = "Hello World!";
-            string theTle = "Message";
-            MessageBox.Show(theMsg, theTle, MessageBoxButtons.OKCancel);
+            textEditorObj.RichTextBoxSetterGetter.Copy();
+
+            
+            //MessageBox.Show(textEditorObj.richTextBox1, theMsg, theTle, MessageBoxButtons.OKCancel);
+            this.Close();
         }
 
         private void pasteBtn_Click(object sender, EventArgs e)
@@ -51,6 +58,36 @@ namespace Text_Editor
             /*theRichTextBoxObj = new TextEditor();
             RichTextBox myTextBox = theRichTextBoxObj.RichTextBoxSetterGetter;
             myTextBox.Paste();*/
+            textEditorObj.RichTextBoxSetterGetter.Paste();
+            this.Close();
+        }
+
+        private void cutBtn_Click(object sender, EventArgs e)
+        {
+            textEditorObj.RichTextBoxSetterGetter.Cut();
+            this.Close();
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            // delete selected text
+            textEditorObj.RichTextBoxSetterGetter.SelectedText = "";
+            textEditorObj.RichTextBoxSetterGetter.Focus();
+            this.Close();
+        }
+
+        private void selectAllBtn_Click(object sender, EventArgs e)
+        {
+            textEditorObj.RichTextBoxSetterGetter.SelectAll();
+            this.Close();
+        }
+
+        private void clearAllBtn_Click(object sender, EventArgs e)
+        {
+            // clear the rich text box
+            textEditorObj.RichTextBoxSetterGetter.Clear();
+            textEditorObj.RichTextBoxSetterGetter.Focus();
+            this.Close();
         }
     }
 }
