@@ -42,6 +42,7 @@ namespace Text_Editor
 
         public  frmEditor()
         {
+
             InitializeComponent();
         }
 
@@ -909,7 +910,11 @@ namespace Text_Editor
                     CMO.Location = Cursor.Position;
 
                     //display the context menu
-                    CMO.Show();
+                    //CMO.Show();
+
+                
+                    
+
                     break;
             }
         }

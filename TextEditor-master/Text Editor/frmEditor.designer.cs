@@ -765,10 +765,10 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lineColumnStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 733);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 731);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1136, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1136, 24);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
