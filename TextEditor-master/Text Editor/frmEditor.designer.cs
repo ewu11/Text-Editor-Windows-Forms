@@ -113,7 +113,6 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.ContextMenuStrip = this.richContextStrip;
             this.richTextBox1.Location = new System.Drawing.Point(16, 80);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";

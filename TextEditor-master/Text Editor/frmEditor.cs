@@ -32,7 +32,7 @@ namespace Text_Editor
 
         //bool ctrlIsDown;
         theContextMenu CMO = new theContextMenu();
-        
+
         //for context menu uses
         //ctrl key is down
         //bool ctrlIsDown = false; //false by default
@@ -40,9 +40,15 @@ namespace Text_Editor
         //rmb key is down
         //bool rmbIsDown = false; //false by default
 
-        public frmEditor()
+        public  frmEditor()
         {
             InitializeComponent();
+        }
+
+        public RichTextBox RichTextBoxSetterGetter
+        {
+            get { return richTextBox1; }   // get method
+            set { richTextBox1 = value; }  // set method
         }
 
         private void frmEditor_Load(object sender, EventArgs e)
@@ -819,13 +825,13 @@ namespace Text_Editor
 
         private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            switch (e.Button)
+            /*switch (e.Button)
             {
                 case MouseButtons.Right:
                     CMO.ctrlKeyIsDownSetter = false; //reset the setting that can be used again
                     MessageBox.Show("Upped!");
                     break;
-            }
+            }*/
         }
 
         //****************************************************************************************************************************************
@@ -876,7 +882,7 @@ namespace Text_Editor
             switch (e.Button)
             {
                 case MouseButtons.Right:
-                    if(CMO.ctrlKeyIsDownSetter == true)
+                    /*if(CMO.ctrlKeyIsDownSetter == true)
                     {
                         CMO = new theContextMenu(); //to recreate object once closed/ deleted
 
@@ -890,7 +896,20 @@ namespace Text_Editor
 
                         //display the context menu
                         CMO.Show();                  
-                    }
+                    }*/
+
+                    CMO = new theContextMenu(); //to recreate object once closed/ deleted
+
+                    //getting mouse position
+                    this.Cursor = new Cursor(Cursor.Current.Handle);
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+                    //set form to open next to mouse position
+                    StartPosition = FormStartPosition.Manual;
+                    CMO.Location = Cursor.Position;
+
+                    //display the context menu
+                    CMO.Show();
                     break;
             }
         }

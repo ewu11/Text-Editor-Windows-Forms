@@ -77,6 +77,7 @@
             this.copyBtn.TabIndex = 1;
             this.copyBtn.Text = "Copy";
             this.copyBtn.UseVisualStyleBackColor = false;
+            this.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
             // 
             // pasteBtn
             // 
@@ -93,6 +94,7 @@
             this.pasteBtn.TabIndex = 2;
             this.pasteBtn.Text = "Paste";
             this.pasteBtn.UseVisualStyleBackColor = false;
+            this.pasteBtn.Click += new System.EventHandler(this.pasteBtn_Click);
             // 
             // DeleteBtn
             // 
@@ -163,7 +165,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(308, 304);
+            this.ClientSize = new System.Drawing.Size(300, 296);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
