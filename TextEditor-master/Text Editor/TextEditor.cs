@@ -808,6 +808,45 @@ namespace Text_Editor
             }
         }
 
+        private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    /*if(CMO.ctrlKeyIsDownSetter == true)
+                    {
+                        CMO = new theContextMenu(); //to recreate object once closed/ deleted
+
+                        //getting mouse position
+                        this.Cursor = new Cursor(Cursor.Current.Handle);
+                        Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+                        //set form to open next to mouse position
+                        StartPosition = FormStartPosition.Manual;
+                        CMO.Location = Cursor.Position;
+
+                        //display the context menu
+                        CMO.Show();                  
+                    }*/
+
+                    contextMenuObj = new ContextMenu(); //to recreate object once closed/ deleted
+
+                    //getting mouse position
+                    this.Cursor = new Cursor(Cursor.Current.Handle);
+                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+                    //set form to open next to mouse position
+                    contextMenuObj.StartPosition = FormStartPosition.Manual;
+                    contextMenuObj.Location = Cursor.Position;
+
+                    //display the context menu
+                    //CMO.ShowDialog();
+                    contextMenuObj.Show();
+                    //CMO.Visible = true;
+                    break;
+            }
+        }
+
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -822,10 +861,6 @@ namespace Text_Editor
             }
         }
 
-        private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
-        {
-
-        }
 
         //****************************************************************************************************************************************
         // richTextBox1_KeyUp - Determines which key was released and gets the line and column numbers of the current cursor position in the RTB *
