@@ -1,5 +1,5 @@
 ﻿namespace Text_Editor { 
-    partial class theContextMenu
+    partial class ContextMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -160,22 +160,27 @@
             this.cutBtn.Text = "Cut";
             this.cutBtn.UseVisualStyleBackColor = false;
             // 
-            // theContextMenu
+            // ContextMenu
             // 
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuPopup;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(300, 296);
+            this.CausesValidation = false;
+            this.ClientSize = new System.Drawing.Size(292, 288);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "theContextMenu";
+            this.Name = "ContextMenu";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.TopMost = true;
             this.Deactivate += new System.EventHandler(this.theContextMenu_Deactivate);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

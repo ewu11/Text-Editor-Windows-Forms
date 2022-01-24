@@ -31,7 +31,7 @@ namespace Text_Editor
         int pos, line, column;    // for detecting line and column numbers
 
         //bool ctrlIsDown;
-        theContextMenu CMO = new theContextMenu();
+        ContextMenu CMO = new ContextMenu();
 
         //for context menu uses
         //ctrl key is down
@@ -898,18 +898,20 @@ namespace Text_Editor
                         CMO.Show();                  
                     }*/
 
-                    CMO = new theContextMenu(); //to recreate object once closed/ deleted
+                    CMO = new ContextMenu(); //to recreate object once closed/ deleted
 
                     //getting mouse position
                     this.Cursor = new Cursor(Cursor.Current.Handle);
                     Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
 
                     //set form to open next to mouse position
-                    StartPosition = FormStartPosition.Manual;
+                    CMO.StartPosition = FormStartPosition.Manual;
                     CMO.Location = Cursor.Position;
 
                     //display the context menu
+                    //CMO.ShowDialog();
                     CMO.Show();
+                    //CMO.Visible = true;
                     break;
             }
         }

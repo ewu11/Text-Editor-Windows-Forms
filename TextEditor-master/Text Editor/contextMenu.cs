@@ -11,12 +11,12 @@ using System.Windows;
 
 namespace Text_Editor
 {
-    public partial class theContextMenu : Form
+    public partial class ContextMenu : Form
     {
         //global variable
-        TextEditor theRichTextBoxObj;
+        //TextEditor theRichTextBoxObj;
 
-        public theContextMenu()
+        public ContextMenu()
         {
             InitializeComponent();
         }
@@ -38,17 +38,19 @@ namespace Text_Editor
             /*string theMessage = "Hello World!";
             string theTitle = "MessageBox";
             MessageBox.Show(this, theMessage, theTitle);*/
-            theRichTextBoxObj = new TextEditor();
+            /*theRichTextBoxObj = new TextEditor();
             RichTextBox myTextBox = theRichTextBoxObj.RichTextBoxSetterGetter;
-            myTextBox.Copy();
-
+            myTextBox.Copy();*/
+            string theMsg = "Hello World!";
+            string theTle = "Message";
+            MessageBox.Show(theMsg, theTle, MessageBoxButtons.OKCancel);
         }
 
         private void pasteBtn_Click(object sender, EventArgs e)
         {
-            theRichTextBoxObj = new TextEditor();
+            /*theRichTextBoxObj = new TextEditor();
             RichTextBox myTextBox = theRichTextBoxObj.RichTextBoxSetterGetter;
-            myTextBox.Paste();
+            myTextBox.Paste();*/
         }
     }
 }
