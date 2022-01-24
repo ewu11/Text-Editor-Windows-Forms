@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 
 namespace Text_Editor
 {
-    public partial class frmEditor : Form
+    public partial class TextEditor : Form
     {
         //[DllImport("user32.dll")]
         //public static extern int GetAsyncKeyState(System.Windows.Forms.Keys vKey);
@@ -40,7 +40,7 @@ namespace Text_Editor
         //rmb key is down
         //bool rmbIsDown = false; //false by default
 
-        public  frmEditor()
+        public  TextEditor()
         {
             InitializeComponent();
         }

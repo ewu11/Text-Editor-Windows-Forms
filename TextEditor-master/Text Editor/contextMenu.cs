@@ -14,7 +14,7 @@ namespace Text_Editor
     public partial class theContextMenu : Form
     {
         //global variable
-        frmEditor theRichTextBoxObj;
+        TextEditor theRichTextBoxObj;
 
         public theContextMenu()
         {
@@ -38,7 +38,7 @@ namespace Text_Editor
             /*string theMessage = "Hello World!";
             string theTitle = "MessageBox";
             MessageBox.Show(this, theMessage, theTitle);*/
-            theRichTextBoxObj = new frmEditor();
+            theRichTextBoxObj = new TextEditor();
             RichTextBox myTextBox = theRichTextBoxObj.RichTextBoxSetterGetter;
             myTextBox.Copy();
 
@@ -46,7 +46,7 @@ namespace Text_Editor
 
         private void pasteBtn_Click(object sender, EventArgs e)
         {
-            theRichTextBoxObj = new frmEditor();
+            theRichTextBoxObj = new TextEditor();
             RichTextBox myTextBox = theRichTextBoxObj.RichTextBoxSetterGetter;
             myTextBox.Paste();
         }
