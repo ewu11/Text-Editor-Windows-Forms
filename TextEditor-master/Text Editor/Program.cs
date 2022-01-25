@@ -14,9 +14,14 @@ namespace Text_Editor
         [STAThread]
         static void Main()
         {
+            Application.SetCompatibleTextRenderingDefault(false); //here because of error report
+
+            //main program object file
+            //used by other classes if needed
+            TextEditor mainProgramObj = new TextEditor();
+
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TextEditor());
+            Application.Run(mainProgramObj);
         }
     }
 }

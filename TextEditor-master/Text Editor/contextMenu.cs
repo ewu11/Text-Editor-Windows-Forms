@@ -30,6 +30,7 @@ namespace Text_Editor
             get { return ctrlKeyIsDown; }   // get method
             set { ctrlKeyIsDown = value; }  // set method
         }
+
         private void ContextMenu_Load(object sender, EventArgs e)
         {
             textEditorObj = new TextEditor(); //text editor object instantiation
@@ -46,9 +47,12 @@ namespace Text_Editor
             /*string theMessage = "Hello World!";
             string theTitle = "MessageBox";
             MessageBox.Show(this, theMessage, theTitle);*/
-            textEditorObj.RichTextBoxSetterGetter.Copy();
+            //textEditorObj.RichTextBoxSetterGetter.Copy();
 
-            
+            textEditorObj.copyToolStripMenuItem1_Click(sender, e);
+            //copyToolStripMenuItem1_Click(sender, )
+
+
             //MessageBox.Show(textEditorObj.richTextBox1, theMsg, theTle, MessageBoxButtons.OKCancel);
             this.Close();
         }
@@ -58,7 +62,12 @@ namespace Text_Editor
             /*theRichTextBoxObj = new TextEditor();
             RichTextBox myTextBox = theRichTextBoxObj.RichTextBoxSetterGetter;
             myTextBox.Paste();*/
-            textEditorObj.RichTextBoxSetterGetter.Paste();
+            //textEditorObj.RichTextBoxSetterGetter.Paste();
+
+            //textEditorObj.pasteToolStripMenuItem1_Click(sender, e);
+            textEditorObj.Text += " Appended text";
+
+
             this.Close();
         }
 

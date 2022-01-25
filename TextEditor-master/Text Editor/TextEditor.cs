@@ -33,6 +33,8 @@ namespace Text_Editor
         //bool ctrlIsDown;
         ContextMenu contextMenuObj = new ContextMenu();
 
+        public TextEditor mainObj; //to be used by other classes for access
+
         //for context menu uses
         //ctrl key is down
         //bool ctrlIsDown = false; //false by default
@@ -40,9 +42,15 @@ namespace Text_Editor
         //rmb key is down
         //bool rmbIsDown = false; //false by default
 
-        public  TextEditor()
+        public TextEditor()
         {
             InitializeComponent();
+        }
+
+        public TextEditor TextEditorObjSetterGetter
+        {
+            get { return mainObj; }
+            set { mainObj = value; }
         }
 
         public RichTextBox RichTextBoxSetterGetter
@@ -527,12 +535,12 @@ namespace Text_Editor
             richTextBox1.Cut();     // cut text
         }
 
-        private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void copyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             richTextBox1.Copy();     // copy text
         }
 
-        private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
         {           
             richTextBox1.Paste();    // paste text
         }
@@ -841,10 +849,15 @@ namespace Text_Editor
 
                     //display the context menu
                     //CMO.ShowDialog();
-                    contextMenuObj.Show();
+                    contextMenuObj.Show(this);
                     //CMO.Visible = true;
                     break;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text += " Appended text";
         }
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
