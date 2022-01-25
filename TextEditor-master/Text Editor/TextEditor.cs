@@ -46,6 +46,7 @@ namespace Text_Editor
             contextMenuObj.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             contextMenuObj.clearAllBtn.Click += new System.EventHandler(this.clearAllBtn_Click);
             contextMenuObj.Deactivate += new System.EventHandler(this.ContextMenu_Deactivate);
+            contextMenuObj.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContextMenu_FormClosing);
 
         }
 
@@ -86,7 +87,13 @@ namespace Text_Editor
         private void ContextMenu_Deactivate(object sender, EventArgs e)
         {
             //only then close the context menu
-            contextMenuObj.Close();
+            //contextMenuObj.Close();
+        }
+        private void ContextMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            contextMenuObj.Hide();
+            contextMenuObj.Parent = null;
+            e.Cancel = true;
         }
         //---------------------------until here---------------------------
 
