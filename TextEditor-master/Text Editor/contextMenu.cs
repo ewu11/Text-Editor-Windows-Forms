@@ -49,12 +49,12 @@ namespace Text_Editor
             MessageBox.Show(this, theMessage, theTitle);*/
             //textEditorObj.RichTextBoxSetterGetter.Copy();
 
-            textEditorObj.copyToolStripMenuItem1_Click(sender, e);
+            //textEditorObj.copyToolStripMenuItem1_Click(sender, e);
             //copyToolStripMenuItem1_Click(sender, )
 
-
-            //MessageBox.Show(textEditorObj.richTextBox1, theMsg, theTle, MessageBoxButtons.OKCancel);
-            this.Close();
+            MessageBox.Show(TextEditor.testingObject, theMsg, theTle);
+            //this.Close();
+            //textEditorObj.ShowDialog();
         }
 
         private void pasteBtn_Click(object sender, EventArgs e)
@@ -65,8 +65,8 @@ namespace Text_Editor
             //textEditorObj.RichTextBoxSetterGetter.Paste();
 
             //textEditorObj.pasteToolStripMenuItem1_Click(sender, e);
-            textEditorObj.Text += " Appended text";
-
+            //TextEditor.testingObject.RichTextBoxSetterGetter.Text += " Appended text";
+            TextEditor.testingObject.RichTextBoxSetterGetter.AppendText("chicken yes!");
 
             this.Close();
         }

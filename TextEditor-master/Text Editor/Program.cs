@@ -19,7 +19,6 @@ namespace Text_Editor
             //main program object file
             //used by other classes if needed
             TextEditor mainProgramObj = new TextEditor();
-
             Application.EnableVisualStyles();
             Application.Run(mainProgramObj);
         }

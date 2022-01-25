@@ -31,9 +31,12 @@ namespace Text_Editor
         int pos, line, column;    // for detecting line and column numbers
 
         //bool ctrlIsDown;
-        ContextMenu contextMenuObj = new ContextMenu();
+        //ContextMenu contextMenuObj = new ContextMenu();
+        ContextMenu contextMenuObj = null;
 
         public TextEditor mainObj; //to be used by other classes for access
+
+        public static TextEditor testingObject;
 
         //for context menu uses
         //ctrl key is down
@@ -44,6 +47,7 @@ namespace Text_Editor
 
         public TextEditor()
         {
+            testingObject = this;
             InitializeComponent();
         }
 
@@ -64,6 +68,7 @@ namespace Text_Editor
             /*CMO = new contextMenu();
             CMO.ctrlKeyIsDownMethod = false;
             ctrlIsDown = CMO.ctrlKeyIsDownMethod;*/
+            contextMenuObj = new ContextMenu();
 
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
