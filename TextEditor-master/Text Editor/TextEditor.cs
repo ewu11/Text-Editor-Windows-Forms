@@ -21,50 +21,77 @@ namespace Text_Editor
 {
     public partial class TextEditor : Form
     {
-        //[DllImport("user32.dll")]
-        //public static extern int GetAsyncKeyState(System.Windows.Forms.Keys vKey);
-
         List<string> colorList = new List<string>();    // holds the System.Drawing.Color names
         string filenamee;    // file opened inside of RTB
         const int MIDDLE = 382;    // middle sum of RGB - max is 765
         int sumRGB;    // sum of the selected colors RGB
         int pos, line, column;    // for detecting line and column numbers
 
-        //bool ctrlIsDown;
-        ContextMenu contextMenuObj = new ContextMenu();
-
-        public TextEditor mainObj; //to be used by other classes for access
-
-        //for context menu uses
-        //ctrl key is down
-        //bool ctrlIsDown = false; //false by default
-
-        //rmb key is down
-        //bool rmbIsDown = false; //false by default
+        //context menu variable
+        ContextMenu contextMenuObj;
 
         public TextEditor()
         {
+            //for main program
             InitializeComponent();
+
+            //for context menu
+            contextMenuObj = new ContextMenu();
+
+            //event listeners for buttons in context menu
+            contextMenuObj.cutBtn.Click += new System.EventHandler(this.cutBtn_Click);
+            contextMenuObj.pasteBtn.Click += new System.EventHandler(this.pasteBtn_Click);
+            contextMenuObj.selectAllBtn.Click += new System.EventHandler(this.selectAllBtn_Click);
+            contextMenuObj.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
+            contextMenuObj.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            contextMenuObj.clearAllBtn.Click += new System.EventHandler(this.clearAllBtn_Click);
+            contextMenuObj.Deactivate += new System.EventHandler(this.ContextMenu_Deactivate);
+
         }
 
-        public TextEditor TextEditorObjSetterGetter
+        //event handlers for buttons in context menu
+        //---------------------------from here---------------------------
+        private void cutBtn_Click(object sender, EventArgs e)
         {
-            get { return mainObj; }
-            set { mainObj = value; }
+            richTextBox1.Cut();
         }
 
-        public RichTextBox RichTextBoxSetterGetter
+        private void pasteBtn_Click(object sender, EventArgs e)
         {
-            get { return richTextBox1; }   // get method
-            set { richTextBox1 = value; }  // set method
+            richTextBox1.Paste();
         }
+
+        private void selectAllBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectAll();
+        }
+
+        private void copyBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Copy();
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectedText = "";
+            richTextBox1.Focus();
+        }
+
+        private void clearAllBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+            richTextBox1.Focus();
+        }
+
+        private void ContextMenu_Deactivate(object sender, EventArgs e)
+        {
+            //only then close the context menu
+            contextMenuObj.Close();
+        }
+        //---------------------------until here---------------------------
 
         private void frmEditor_Load(object sender, EventArgs e)
         {
-            /*CMO = new contextMenu();
-            CMO.ctrlKeyIsDownMethod = false;
-            ctrlIsDown = CMO.ctrlKeyIsDownMethod;*/
-
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
             richTextBox1.WordWrap = false;    // disable word wrap on start
@@ -818,60 +845,21 @@ namespace Text_Editor
 
         private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            switch (e.Button)
+            if(e.Button == MouseButtons.Right)
             {
-                case MouseButtons.Right:
-                    /*if(CMO.ctrlKeyIsDownSetter == true)
-                    {
-                        CMO = new theContextMenu(); //to recreate object once closed/ deleted
-
-                        //getting mouse position
-                        this.Cursor = new Cursor(Cursor.Current.Handle);
-                        Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
-
-                        //set form to open next to mouse position
-                        StartPosition = FormStartPosition.Manual;
-                        CMO.Location = Cursor.Position;
-
-                        //display the context menu
-                        CMO.Show();                  
-                    }*/
-
-                    contextMenuObj = new ContextMenu(); //to recreate object once closed/ deleted
-
-                    //getting mouse position
-                    this.Cursor = new Cursor(Cursor.Current.Handle);
-                    Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
-
-                    //set form to open next to mouse position
-                    contextMenuObj.StartPosition = FormStartPosition.Manual;
-                    contextMenuObj.Location = Cursor.Position;
-
-                    //display the context menu
-                    //CMO.ShowDialog();
-                    contextMenuObj.Show(this);
-                    //CMO.Visible = true;
-                    break;
+                contextMenuObj.Location = Cursor.Position;
+                contextMenuObj.Show(this);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text += " Appended text";
+            richTextBox1.Text += " Hello World!";
         }
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
-            {
-                case Keys.ControlKey:
-                    //this.richTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseDown);
-                    contextMenuObj.ctrlKeyIsDownSetter = true;
-                    break;
-                default:
-                    contextMenuObj.ctrlKeyIsDownSetter = false;
-                    break;
-            }
+            
         }
 
 

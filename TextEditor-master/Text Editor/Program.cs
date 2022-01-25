@@ -16,8 +16,7 @@ namespace Text_Editor
         {
             Application.SetCompatibleTextRenderingDefault(false); //here because of error report
 
-            //main program object file
-            //used by other classes if needed
+            //main program object
             TextEditor mainProgramObj = new TextEditor();
 
             Application.EnableVisualStyles();
