@@ -46,54 +46,64 @@ namespace Text_Editor
             contextMenuObj.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             contextMenuObj.clearAllBtn.Click += new System.EventHandler(this.clearAllBtn_Click);
             contextMenuObj.Deactivate += new System.EventHandler(this.ContextMenu_Deactivate);
-            contextMenuObj.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContextMenu_FormClosing);
 
         }
 
         //event handlers for buttons in context menu
         //---------------------------from here---------------------------
+        private void ContextMenu_Deactivate(object sender, EventArgs e)
+        {
+            contextMenuObj.Visible = false;
+        }
+
         private void cutBtn_Click(object sender, EventArgs e)
         {
             richTextBox1.Cut();
+            //contextMenuObj.Close();
+            Console.WriteLine("Cut button pressed!");
+            contextMenuObj.Visible = false;
         }
 
         private void pasteBtn_Click(object sender, EventArgs e)
         {
             richTextBox1.Paste();
+            //contextMenuObj.Close();
+            Console.WriteLine("Paste button pressed!");
+            contextMenuObj.Visible = false;
         }
 
         private void selectAllBtn_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectAll();
+            //contextMenuObj.Close();
+            Console.WriteLine("Select all button pressed!");
+            contextMenuObj.Visible = false;
         }
 
         private void copyBtn_Click(object sender, EventArgs e)
         {
             richTextBox1.Copy();
+            //contextMenuObj.Close();
+            Console.WriteLine("Copy button pressed!");
+            contextMenuObj.Visible = false;
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectedText = "";
             richTextBox1.Focus();
+            //contextMenuObj.Close();
+            Console.WriteLine("Delete button pressed!");
+            contextMenuObj.Visible = false;
         }
 
         private void clearAllBtn_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
             richTextBox1.Focus();
-        }
-
-        private void ContextMenu_Deactivate(object sender, EventArgs e)
-        {
-            //only then close the context menu
+            Console.WriteLine("Clear all button pressed!");
             //contextMenuObj.Close();
-        }
-        private void ContextMenu_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            contextMenuObj.Hide();
-            contextMenuObj.Parent = null;
-            e.Cancel = true;
+            contextMenuObj.Visible = false;
         }
         //---------------------------until here---------------------------
 
@@ -854,14 +864,23 @@ namespace Text_Editor
         {
             if(e.Button == MouseButtons.Right)
             {
+                //if context menu is still visible
+                if (contextMenuObj.Visible == true)
+                {
+                    contextMenuObj.Visible = false; //so that can open at new location
+                }
+
+                //display the context menu on the TextEditor program
+                Console.WriteLine("Context menu opens!");
                 contextMenuObj.Location = Cursor.Position;
-                contextMenuObj.Show(this);
+                contextMenuObj.Visible = true;
+                //contextMenuObj.Show(this);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void TextEditor_Activated(object sender, EventArgs e)
         {
-            richTextBox1.Text += " Hello World!";
+            contextMenuObj.Visible = false;
         }
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)

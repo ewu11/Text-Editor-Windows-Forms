@@ -764,17 +764,17 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lineColumnStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 731);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 733);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1136, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(1136, 22);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // lineColumnStatusLabel
             // 
             this.lineColumnStatusLabel.Name = "lineColumnStatusLabel";
-            this.lineColumnStatusLabel.Size = new System.Drawing.Size(1077, 18);
+            this.lineColumnStatusLabel.Size = new System.Drawing.Size(1116, 16);
             this.lineColumnStatusLabel.Spring = true;
             this.lineColumnStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -795,6 +795,7 @@
             this.Name = "TextEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rich Text Editor";
+            this.Activated += new System.EventHandler(this.TextEditor_Activated);
             this.Load += new System.EventHandler(this.frmEditor_Load);
             this.richContextStrip.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
