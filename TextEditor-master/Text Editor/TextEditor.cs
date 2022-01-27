@@ -30,6 +30,10 @@ namespace Text_Editor
         //context menu variable
         ContextMenu contextMenuObj;
 
+        //for text uses
+        //int selectionLength;
+        //int startingIndex;
+
         public TextEditor()
         {
             //for main program
@@ -46,18 +50,21 @@ namespace Text_Editor
             contextMenuObj.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             contextMenuObj.clearAllBtn.Click += new System.EventHandler(this.clearAllBtn_Click);
             contextMenuObj.Deactivate += new System.EventHandler(this.ContextMenu_Deactivate);
+            contextMenuObj.Activated += new System.EventHandler(this.ContextMenu_Activated);
 
         }
 
         //event handlers for buttons in context menu
         //---------------------------from here---------------------------
-        private void ContextMenu_Deactivate(object sender, EventArgs e)
+        private void revertTextColour()
         {
-            contextMenuObj.Visible = false;
+            richTextBox1.SelectionColor = System.Drawing.SystemColors.WindowText;
+            richTextBox1.SelectionBackColor = System.Drawing.SystemColors.Window;
         }
 
         private void cutBtn_Click(object sender, EventArgs e)
         {
+            revertTextColour();
             richTextBox1.Cut();
             //contextMenuObj.Close();
             Console.WriteLine("Cut button pressed!");
@@ -66,6 +73,7 @@ namespace Text_Editor
 
         private void pasteBtn_Click(object sender, EventArgs e)
         {
+            revertTextColour();
             richTextBox1.Paste();
             //contextMenuObj.Close();
             Console.WriteLine("Paste button pressed!");
@@ -74,6 +82,7 @@ namespace Text_Editor
 
         private void selectAllBtn_Click(object sender, EventArgs e)
         {
+            revertTextColour();
             richTextBox1.SelectAll();
             //contextMenuObj.Close();
             Console.WriteLine("Select all button pressed!");
@@ -82,6 +91,7 @@ namespace Text_Editor
 
         private void copyBtn_Click(object sender, EventArgs e)
         {
+            revertTextColour();
             richTextBox1.Copy();
             //contextMenuObj.Close();
             Console.WriteLine("Copy button pressed!");
@@ -90,6 +100,7 @@ namespace Text_Editor
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
+            revertTextColour();
             richTextBox1.SelectedText = "";
             richTextBox1.Focus();
             //contextMenuObj.Close();
@@ -99,10 +110,45 @@ namespace Text_Editor
 
         private void clearAllBtn_Click(object sender, EventArgs e)
         {
+            revertTextColour();
             richTextBox1.Clear();
             richTextBox1.Focus();
             Console.WriteLine("Clear all button pressed!");
             //contextMenuObj.Close();
+            contextMenuObj.Visible = false;
+        }
+        private void ContextMenu_Activated(object sender, EventArgs e)
+        {
+            int selectionLength = richTextBox1.SelectionLength;
+            int startingIndex = richTextBox1.SelectionStart;
+
+            //get the selected text
+            richTextBox1.GetFirstCharIndexFromLine(startingIndex);
+            richTextBox1.Select(startingIndex, selectionLength);
+
+            //Set the selected text fore and background color
+            richTextBox1.SelectionColor = System.Drawing.SystemColors.HighlightText;
+            richTextBox1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+
+            //richTextBox1.DeselectAll();
+        }
+
+        private void ContextMenu_Deactivate(object sender, EventArgs e)
+        {
+            //revert text colour after closing context menu
+            /*selectionLength = richTextBox1.SelectionLength;
+            startingIndex = richTextBox1.SelectionStart;
+
+            //get the selected text
+            richTextBox1.GetFirstCharIndexFromLine(startingIndex);
+            richTextBox1.Select(startingIndex, selectionLength);*/
+
+            /*richTextBox1.SelectionColor = System.Drawing.SystemColors.WindowText;
+            richTextBox1.SelectionBackColor = System.Drawing.SystemColors.Window;*/
+
+            //revertTextColour();
+
+            //close the context menu
             contextMenuObj.Visible = false;
         }
         //---------------------------until here---------------------------
@@ -872,6 +918,7 @@ namespace Text_Editor
 
                 //display the context menu on the TextEditor program
                 Console.WriteLine("Context menu opens!");
+
                 contextMenuObj.Location = Cursor.Position;
                 contextMenuObj.Visible = true;
                 //contextMenuObj.Show(this);
@@ -880,17 +927,66 @@ namespace Text_Editor
 
         private void TextEditor_Activated(object sender, EventArgs e)
         {
+            /*//revert text colour after closing context menu
+            selectionLength = richTextBox1.SelectionLength;
+            startingIndex = richTextBox1.SelectionStart;
+
+            //get the selected text
+            richTextBox1.GetFirstCharIndexFromLine(startingIndex);
+            richTextBox1.Select(startingIndex, selectionLength);
+
+            richTextBox1.SelectionColor = System.Drawing.SystemColors.WindowText;
+            richTextBox1.SelectionBackColor = System.Drawing.SystemColors.Window;*/
+
+            //revertTextColour();
+
+            //hide the context menu
             contextMenuObj.Visible = false;
         }
 
         private void TextEditor_Deactivate(object sender, EventArgs e)
         {
-            //this.ActiveControl = richTextBox1;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WriteTextToRichTextBox();
         }
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             
+        }
+
+        private void WriteTextToRichTextBox()
+        {
+            // Clear all text from the RichTextBox;
+            richTextBox1.Clear();
+            // Set the font for the opening text to a larger Arial font;
+            richTextBox1.SelectionFont = new Font("Arial", 16);
+            // Assign the introduction text to the RichTextBox control.
+            richTextBox1.SelectedText = "The following is a list of bulleted items:" + "\n";
+            // Set the Font for the first item to a smaller size Arial font.
+            richTextBox1.SelectionFont = new Font("Arial", 12);
+            // Specify that the following items are to be added to a bulleted list.
+            richTextBox1.SelectionBullet = true;
+            // Set the color of the item text.
+            richTextBox1.SelectionColor = Color.Red;
+            // Assign the text to the bulleted item.
+            richTextBox1.SelectedText = "Apples" + "\n";
+            // Apply same font since font settings do not carry to next line.
+            richTextBox1.SelectionFont = new Font("Arial", 12);
+            richTextBox1.SelectionColor = Color.Orange;
+            richTextBox1.SelectedText = "Oranges" + "\n";
+            richTextBox1.SelectionFont = new Font("Arial", 12);
+            richTextBox1.SelectionColor = Color.Purple;
+            richTextBox1.SelectedText = "Grapes" + "\n";
+            // End the bulleted list.
+            richTextBox1.SelectionBullet = false;
+            // Specify the font size and string for text displayed below bulleted list.
+            richTextBox1.SelectionFont = new Font("Arial", 16);
+            richTextBox1.SelectedText = "Bulleted Text Complete!";
         }
 
 
