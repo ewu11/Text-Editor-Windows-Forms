@@ -796,6 +796,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rich Text Editor";
             this.Activated += new System.EventHandler(this.TextEditor_Activated);
+            this.Deactivate += new System.EventHandler(this.TextEditor_Deactivate);
             this.Load += new System.EventHandler(this.frmEditor_Load);
             this.richContextStrip.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);

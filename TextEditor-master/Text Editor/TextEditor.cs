@@ -883,6 +883,11 @@ namespace Text_Editor
             contextMenuObj.Visible = false;
         }
 
+        private void TextEditor_Deactivate(object sender, EventArgs e)
+        {
+            //this.ActiveControl = richTextBox1;
+        }
+
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             
