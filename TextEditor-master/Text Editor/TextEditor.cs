@@ -29,6 +29,8 @@ namespace Text_Editor
 
         //context menu variable
         ContextMenu contextMenuObj;
+        bool ctrlIsDown;
+        bool rmbIsUp;
 
         public TextEditor()
         {
@@ -51,8 +53,7 @@ namespace Text_Editor
         }
 
         //event handlers for buttons in context menu
-        //---------------------------from here---------------------------
-
+        //-------------------------context menu event listeners---------------------------
         private void cutBtn_Click(object sender, EventArgs e)
         {
             richTextBox1.Cut();
@@ -110,7 +111,38 @@ namespace Text_Editor
                 contextMenuObj.Visible = false;
             }
         }
-        //---------------------------until here---------------------------
+        //---------------------------end of event listeners---------------------------
+
+        //-------------------my methods-------------------
+        private void displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlFlag, bool rmbFlag)
+        {
+            if(ctrlFlag == true) //if ctrl key is down
+            {
+                if(rmbFlag == true) //if rmb is up
+                {
+                    //display context menu
+                    Console.WriteLine("Context menu opens via COMBINATION!");
+
+                    theContextMenu.Location = Cursor.Position;
+                    theContextMenu.Visible = true;
+                }
+                else
+                {
+                    Console.WriteLine("RMB button is FALSE!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("CTRL key is FALSE!");
+            }
+
+            //finally, revert to default value
+            //!!IF NOT WORKING, TRY AT "CONTEXTMENU IS DEACTIVATED"
+            this.ctrlIsDown = false;
+            this.rmbIsUp = false;
+        }
+
+        //-------------------end of methods-------------------
 
         private void frmEditor_Load(object sender, EventArgs e)
         {
@@ -875,11 +907,30 @@ namespace Text_Editor
                     contextMenuObj.Visible = false; //so that can open at new location
                 }
 
-                //display the context menu on the TextEditor program
+                rmbIsUp = true;
+
+                //display custom context menu
+                if((ctrlIsDown == true) && (rmbIsUp == true))
+                {
+                    displayCustomContextMenu(contextMenuObj, ctrlIsDown, rmbIsUp);
+                }
+                else
+                {
+                    return;
+                }
+                /*//display the context menu on the TextEditor program
                 Console.WriteLine("Context menu opens!");
 
                 contextMenuObj.Location = Cursor.Position;
-                contextMenuObj.Visible = true;
+                contextMenuObj.Visible = true;*/
+            }
+        }
+
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.ControlKey)
+            {
+                ctrlIsDown = true;
             }
         }
 
