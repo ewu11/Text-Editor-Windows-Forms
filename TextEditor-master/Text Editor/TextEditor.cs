@@ -110,11 +110,15 @@ namespace Text_Editor
                 //close the context menu
                 contextMenuObj.Visible = false;
             }
+
+            //revert button combination settings
+            this.ctrlIsDown = false;
+            this.rmbIsUp = false;
         }
         //---------------------------end of event listeners---------------------------
 
         //-------------------my methods-------------------
-        private void displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlFlag, bool rmbFlag)
+        private bool displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlFlag, bool rmbFlag)
         {
             if(ctrlFlag == true) //if ctrl key is down
             {
@@ -125,21 +129,25 @@ namespace Text_Editor
 
                     theContextMenu.Location = Cursor.Position;
                     theContextMenu.Visible = true;
+
+                    return true; //indicates that the custom context menu is opened
                 }
                 else
                 {
                     Console.WriteLine("RMB button is FALSE!");
+                    return false;
                 }
             }
             else
             {
                 Console.WriteLine("CTRL key is FALSE!");
+                return false;
             }
 
             //finally, revert to default value
             //!!IF NOT WORKING, TRY AT "CONTEXTMENU IS DEACTIVATED"
-            this.ctrlIsDown = false;
-            this.rmbIsUp = false;
+            //this.ctrlIsDown = false;
+            //this.rmbIsUp = false;
         }
 
         //-------------------end of methods-------------------
@@ -899,7 +907,12 @@ namespace Text_Editor
 
         private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
+            bool customContextMenuIsOpen = false; //by default
+
+            //set default CM closed so that won't open concurrently
+            richContextStrip.Visible = false;
+
+            if (e.Button == MouseButtons.Right)
             {
                 //if context menu is still visible
                 if (contextMenuObj.Visible == true)
@@ -910,14 +923,15 @@ namespace Text_Editor
                 rmbIsUp = true;
 
                 //display custom context menu
-                if((ctrlIsDown == true) && (rmbIsUp == true))
+                customContextMenuIsOpen = displayCustomContextMenu(contextMenuObj, ctrlIsDown, rmbIsUp);
+
+                //disable the default context menu from opening
+                //if custom context menu opens
+                if (!customContextMenuIsOpen)
                 {
-                    displayCustomContextMenu(contextMenuObj, ctrlIsDown, rmbIsUp);
+                    richContextStrip.Visible = true;
                 }
-                else
-                {
-                    return;
-                }
+
                 /*//display the context menu on the TextEditor program
                 Console.WriteLine("Context menu opens!");
 
@@ -928,7 +942,18 @@ namespace Text_Editor
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
+            //this is here to detect whether CTRL is pressed
             if(e.KeyCode == Keys.ControlKey)
+            {
+                ctrlIsDown = true;
+            }
+        }
+
+        private void richContextStrip_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            //this is here so that custom context menu can gain ctrl input faster
+            //avoid delay
+            if (e.KeyCode == Keys.ControlKey)
             {
                 ctrlIsDown = true;
             }
