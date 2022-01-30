@@ -150,6 +150,11 @@ namespace Text_Editor
             //this.rmbIsUp = false;
         }
 
+        protected override bool ShowWithoutActivation
+        {
+            get { return true; }
+        }
+
         //-------------------end of methods-------------------
 
         private void frmEditor_Load(object sender, EventArgs e)
@@ -924,12 +929,15 @@ namespace Text_Editor
 
                 //display custom context menu
                 customContextMenuIsOpen = displayCustomContextMenu(contextMenuObj, ctrlIsDown, rmbIsUp);
+                toolStripStatusLabel1.Text = "Custom context menu opened!";
+
 
                 //disable the default context menu from opening
                 //if custom context menu opens
                 if (!customContextMenuIsOpen)
                 {
                     richContextStrip.Visible = true;
+                    toolStripStatusLabel1.Text = "Default context menu opened!";
                 }
 
                 /*//display the context menu on the TextEditor program
@@ -946,7 +954,14 @@ namespace Text_Editor
             if(e.KeyCode == Keys.ControlKey)
             {
                 ctrlIsDown = true;
+                toolStripStatusLabel1.Text = "Ctrl button pressed..";
             }
+        }
+
+        private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            //try not to show default context menu
+            richContextStrip.Visible = false;
         }
 
         private void richContextStrip_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -966,41 +981,6 @@ namespace Text_Editor
                 //hide the context menu
                 contextMenuObj.Visible = false;
             }            
-        }
-
-        //****************************************************************************************************************************************
-        // richTextBox1_KeyUp - Determines which key was released and gets the line and column numbers of the current cursor position in the RTB *
-        //**************************************************************************************************************************************** 
-        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
-        {
-            // determine key released
-            switch (e.KeyCode)
-            {
-                case Keys.Down:
-                    pos = richTextBox1.SelectionStart;    // get starting point
-                    line = richTextBox1.GetLineFromCharIndex(pos);    // get line number
-                    column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-                    lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-                    break;
-                case Keys.Right:
-                    pos = richTextBox1.SelectionStart; // get starting point
-                    line = richTextBox1.GetLineFromCharIndex(pos); // get line number
-                    column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-                    lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-                    break;
-                case Keys.Up:
-                    pos = richTextBox1.SelectionStart; // get starting point
-                    line = richTextBox1.GetLineFromCharIndex(pos); // get line number
-                    column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-                    lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-                    break;
-                case Keys.Left:
-                    pos = richTextBox1.SelectionStart; // get starting point
-                    line = richTextBox1.GetLineFromCharIndex(pos); // get line number
-                    column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-                    lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-                    break;                
-            }
         }
 
         //****************************************************************************************************************************
