@@ -45,15 +45,89 @@ namespace Text_Editor
             contextMenuObj.pasteBtn.Click += new System.EventHandler(this.pasteBtn_Click);
             contextMenuObj.selectAllBtn.Click += new System.EventHandler(this.selectAllBtn_Click);
             contextMenuObj.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
-            contextMenuObj.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            contextMenuObj.deleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             contextMenuObj.clearAllBtn.Click += new System.EventHandler(this.clearAllBtn_Click);
             contextMenuObj.Deactivate += new System.EventHandler(this.ContextMenu_Deactivate);
             contextMenuObj.Activated += new System.EventHandler(this.ContextMenu_Activated);
 
+            //to change mouse color on hover
+            contextMenuObj.cutBtn.MouseLeave += new System.EventHandler(this.cutBtn_MouseLeave); //cut
+            contextMenuObj.cutBtn.MouseEnter += new System.EventHandler(this.cutBtn_MouseEnter);
+            contextMenuObj.copyBtn.MouseLeave += new System.EventHandler(this.copyBtn_MouseLeave); //copy
+            contextMenuObj.copyBtn.MouseEnter += new System.EventHandler(this.copyBtn_MouseEnter);
+            contextMenuObj.pasteBtn.MouseLeave += new System.EventHandler(this.pasteBtn_MouseLeave); //paste
+            contextMenuObj.pasteBtn.MouseEnter += new System.EventHandler(this.pasteBtn_MouseEnter);
+            contextMenuObj.deleteBtn.MouseLeave += new System.EventHandler(this.deleteBtn_MouseLeave); //delete
+            contextMenuObj.deleteBtn.MouseEnter += new System.EventHandler(this.deleteBtn_MouseEnter);
+            contextMenuObj.selectAllBtn.MouseLeave += new System.EventHandler(this.selectAllBtn_MouseLeave); //select all
+            contextMenuObj.selectAllBtn.MouseEnter += new System.EventHandler(this.selectAllBtn_MouseEnter);
+            contextMenuObj.clearAllBtn.MouseLeave += new System.EventHandler(this.clearAllBtn_MouseLeave); //clear all
+            contextMenuObj.clearAllBtn.MouseEnter += new System.EventHandler(this.clearAllBtn_MouseEnter);
         }
 
         //event handlers for buttons in context menu
         //-------------------------context menu event listeners---------------------------
+        //----mouse hover: change font color----
+        private void cutBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.cutBtn.ForeColor = Color.White;
+        }
+        private void cutBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.cutBtn.ForeColor = Color.Black;
+        }
+
+        private void copyBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.copyBtn.ForeColor = Color.White;
+        }
+
+        private void copyBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.copyBtn.ForeColor = Color.Black;
+        }
+
+        private void pasteBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.pasteBtn.ForeColor = Color.White;
+        }
+
+        private void pasteBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.pasteBtn.ForeColor = Color.Black;
+        }
+
+        private void deleteBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.deleteBtn.ForeColor = Color.White;
+        }
+
+        private void deleteBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.deleteBtn.ForeColor = Color.Black;
+        }
+
+        private void selectAllBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.selectAllBtn.ForeColor = Color.White;
+        }
+
+        private void selectAllBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.selectAllBtn.ForeColor = Color.Black;
+        }
+
+        private void clearAllBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.clearAllBtn.ForeColor = Color.White;
+        }
+
+        private void clearAllBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.clearAllBtn.ForeColor = Color.Black;
+        }
+        //----mouse hover: change font color until here----
+
         private void cutBtn_Click(object sender, EventArgs e)
         {
             richTextBox1.Cut();

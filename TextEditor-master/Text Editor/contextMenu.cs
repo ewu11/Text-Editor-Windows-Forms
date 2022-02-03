@@ -17,5 +17,9 @@ namespace Text_Editor
         {
             InitializeComponent();
         }
+
+        
+
+        
     }
 }
