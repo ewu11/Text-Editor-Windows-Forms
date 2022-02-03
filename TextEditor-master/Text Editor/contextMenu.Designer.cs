@@ -58,7 +58,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(198, 159);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(244, 157);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // copyBtn
@@ -72,10 +72,10 @@
             this.copyBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.copyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.copyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.copyBtn.Location = new System.Drawing.Point(102, 3);
+            this.copyBtn.Location = new System.Drawing.Point(122, 0);
             this.copyBtn.Margin = new System.Windows.Forms.Padding(0);
             this.copyBtn.Name = "copyBtn";
-            this.copyBtn.Size = new System.Drawing.Size(91, 44);
+            this.copyBtn.Size = new System.Drawing.Size(122, 52);
             this.copyBtn.TabIndex = 1;
             this.copyBtn.Text = "Copy";
             this.copyBtn.UseVisualStyleBackColor = false;
@@ -91,10 +91,10 @@
             this.pasteBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.pasteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pasteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pasteBtn.Location = new System.Drawing.Point(4, 54);
+            this.pasteBtn.Location = new System.Drawing.Point(0, 52);
             this.pasteBtn.Margin = new System.Windows.Forms.Padding(0);
             this.pasteBtn.Name = "pasteBtn";
-            this.pasteBtn.Size = new System.Drawing.Size(90, 44);
+            this.pasteBtn.Size = new System.Drawing.Size(122, 52);
             this.pasteBtn.TabIndex = 2;
             this.pasteBtn.Text = "Paste";
             this.pasteBtn.UseVisualStyleBackColor = false;
@@ -110,10 +110,10 @@
             this.deleteBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteBtn.Location = new System.Drawing.Point(102, 54);
+            this.deleteBtn.Location = new System.Drawing.Point(122, 52);
             this.deleteBtn.Margin = new System.Windows.Forms.Padding(0);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(91, 44);
+            this.deleteBtn.Size = new System.Drawing.Size(122, 52);
             this.deleteBtn.TabIndex = 3;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = false;
@@ -129,10 +129,10 @@
             this.selectAllBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.selectAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.selectAllBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectAllBtn.Location = new System.Drawing.Point(4, 105);
+            this.selectAllBtn.Location = new System.Drawing.Point(0, 104);
             this.selectAllBtn.Margin = new System.Windows.Forms.Padding(0);
             this.selectAllBtn.Name = "selectAllBtn";
-            this.selectAllBtn.Size = new System.Drawing.Size(90, 46);
+            this.selectAllBtn.Size = new System.Drawing.Size(122, 53);
             this.selectAllBtn.TabIndex = 4;
             this.selectAllBtn.Text = "Select All";
             this.selectAllBtn.UseVisualStyleBackColor = false;
@@ -148,10 +148,10 @@
             this.clearAllBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.clearAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearAllBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearAllBtn.Location = new System.Drawing.Point(102, 105);
+            this.clearAllBtn.Location = new System.Drawing.Point(122, 104);
             this.clearAllBtn.Margin = new System.Windows.Forms.Padding(0);
             this.clearAllBtn.Name = "clearAllBtn";
-            this.clearAllBtn.Size = new System.Drawing.Size(91, 46);
+            this.clearAllBtn.Size = new System.Drawing.Size(122, 53);
             this.clearAllBtn.TabIndex = 5;
             this.clearAllBtn.Text = "Clear All";
             this.clearAllBtn.UseVisualStyleBackColor = false;
@@ -167,10 +167,10 @@
             this.cutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.cutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cutBtn.Location = new System.Drawing.Point(4, 3);
+            this.cutBtn.Location = new System.Drawing.Point(0, 0);
             this.cutBtn.Margin = new System.Windows.Forms.Padding(0);
             this.cutBtn.Name = "cutBtn";
-            this.cutBtn.Size = new System.Drawing.Size(90, 44);
+            this.cutBtn.Size = new System.Drawing.Size(122, 52);
             this.cutBtn.TabIndex = 0;
             this.cutBtn.Text = "Cut";
             this.cutBtn.UseVisualStyleBackColor = false;
@@ -182,7 +182,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(198, 159);
+            this.ClientSize = new System.Drawing.Size(244, 157);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
