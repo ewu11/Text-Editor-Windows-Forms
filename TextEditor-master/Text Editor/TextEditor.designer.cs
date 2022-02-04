@@ -104,8 +104,8 @@
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lineColumnStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lineColumnStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.richContextStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -125,11 +125,13 @@
             this.richTextBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragEnter);
             this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
             this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
+            this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyUp);
             this.richTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseDown);
             this.richTextBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseUp);
             // 
             // richContextStrip
             // 
+            this.richContextStrip.DropShadowEnabled = false;
             this.richContextStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.richContextStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cutToolStripMenuItem,
@@ -139,7 +141,7 @@
             this.selectAllToolStripMenuItem,
             this.clearToolStripMenuItem});
             this.richContextStrip.Name = "richContextStrip";
-            this.richContextStrip.Size = new System.Drawing.Size(213, 184);
+            this.richContextStrip.Size = new System.Drawing.Size(219, 212);
             this.richContextStrip.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.richContextStrip_PreviewKeyDown);
             // 
             // cutToolStripMenuItem
@@ -147,7 +149,7 @@
             this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(212, 30);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(218, 30);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
             // 
@@ -775,18 +777,18 @@
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // lineColumnStatusLabel
-            // 
-            this.lineColumnStatusLabel.Name = "lineColumnStatusLabel";
-            this.lineColumnStatusLabel.Size = new System.Drawing.Size(926, 20);
-            this.lineColumnStatusLabel.Spring = true;
-            this.lineColumnStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(18, 20);
             this.toolStripStatusLabel1.Text = "...";
+            // 
+            // lineColumnStatusLabel
+            // 
+            this.lineColumnStatusLabel.Name = "lineColumnStatusLabel";
+            this.lineColumnStatusLabel.Size = new System.Drawing.Size(1098, 20);
+            this.lineColumnStatusLabel.Spring = true;
+            this.lineColumnStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TextEditor
             // 

@@ -185,6 +185,8 @@ namespace Text_Editor
                 contextMenuObj.Visible = false;
             }
 
+            toolStripStatusLabel1.Text = "...";
+
             //revert button combination settings
             this.ctrlIsDown = false;
             this.rmbIsUp = false;
@@ -1028,7 +1030,7 @@ namespace Text_Editor
             if(e.KeyCode == Keys.ControlKey)
             {
                 ctrlIsDown = true;
-                toolStripStatusLabel1.Text = "Ctrl button pressed..";
+                toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
             }
         }
 
@@ -1036,6 +1038,12 @@ namespace Text_Editor
         {
             //try not to show default context menu
             richContextStrip.Visible = false;
+        }
+
+        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //if nothing is pressed, set status bar to nothing
+            toolStripStatusLabel1.Text = "...";
         }
 
         private void richContextStrip_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
