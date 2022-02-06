@@ -211,14 +211,12 @@ namespace Text_Editor
         //-------------------my methods-------------------
         private bool displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlFlag, bool rmbFlag, int xCoor, int yCoor)
         {
+            //this.Cursor = new Cursor(Cursor.Current.Handle);
+
             //get coordinate at middle of custom context menu
-            //int midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
-            //int midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
-            Point setMidPoint = theContextMenu.PointToClient(new Point(((theContextMenu.Left + theContextMenu.Right) / 2), ((theContextMenu.Top + theContextMenu.Bottom) / 2)));
-            Point getMidPoint = theContextMenu.PointToScreen(setMidPoint);
-
+            int midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
+            int midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
             
-
             if (ctrlFlag == true) //if ctrl key is down
             {
                 if(rmbFlag == true) //if rmb is up
@@ -229,7 +227,8 @@ namespace Text_Editor
                     //set mouse location to middle of context menu
                     //Cursor.Position = theContextMenu.PointToScreen(new Point(midXCoor, midYCoor));
                     //Cursor.Position = theContextMenu.PointToClient(new Point(theContextMenu.Width/2, theContextMenu.Height/2));
-                    Cursor.Position = getMidPoint;
+                    //Cursor.Position = getMidPoint;
+                    Cursor.Position = new Point(Cursor.Position.X + midXCoor, Cursor.Position.Y + midYCoor);
 
                     //theContextMenu.Location = Cursor.Position;
                     theContextMenu.Location = new Point(xCoor, yCoor);
