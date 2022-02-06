@@ -25,7 +25,13 @@ namespace Text_Editor
         string filenamee;    // file opened inside of RTB
         const int MIDDLE = 382;    // middle sum of RGB - max is 765
         int sumRGB;    // sum of the selected colors RGB
-        int pos, line, column;    // for detecting line and column numbers
+        //int pos, line, column;    // for detecting line and column numbers
+
+        //for screen dimension uses
+        int xCoor, yCoor; //for the invocation location
+        Screen theScreen; //to store screen info
+        Rectangle contextMenuRect; //store context menu rectangle
+        Rectangle screenDimension; //store screen dimension
 
         //context menu variable
         ContextMenu contextMenuObj;
@@ -39,6 +45,15 @@ namespace Text_Editor
 
             //for context menu
             contextMenuObj = new ContextMenu();
+
+            //----for screen size uses----
+            //theScreen = Screen.FromControl(contextMenuObj);
+            theScreen = Screen.FromControl(this);
+            //get screen size
+            screenDimension = theScreen.WorkingArea;
+            //get info of context menu dimension
+            contextMenuRect = new Rectangle(contextMenuObj.Left, contextMenuObj.Top, contextMenuObj.Width, contextMenuObj.Height);
+            //----until here screen size uses----
 
             //event listeners for buttons in context menu
             contextMenuObj.cutBtn.Click += new System.EventHandler(this.cutBtn_Click);
@@ -194,16 +209,30 @@ namespace Text_Editor
         //---------------------------end of event listeners---------------------------
 
         //-------------------my methods-------------------
-        private bool displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlFlag, bool rmbFlag)
+        private bool displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlFlag, bool rmbFlag, int xCoor, int yCoor)
         {
-            if(ctrlFlag == true) //if ctrl key is down
+            //get coordinate at middle of custom context menu
+            //int midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
+            //int midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
+            Point setMidPoint = theContextMenu.PointToClient(new Point(((theContextMenu.Left + theContextMenu.Right) / 2), ((theContextMenu.Top + theContextMenu.Bottom) / 2)));
+            Point getMidPoint = theContextMenu.PointToScreen(setMidPoint);
+
+            
+
+            if (ctrlFlag == true) //if ctrl key is down
             {
                 if(rmbFlag == true) //if rmb is up
                 {
                     //display context menu
                     Console.WriteLine("Context menu opens via COMBINATION!");
 
-                    theContextMenu.Location = Cursor.Position;
+                    //set mouse location to middle of context menu
+                    //Cursor.Position = theContextMenu.PointToScreen(new Point(midXCoor, midYCoor));
+                    //Cursor.Position = theContextMenu.PointToClient(new Point(theContextMenu.Width/2, theContextMenu.Height/2));
+                    Cursor.Position = getMidPoint;
+
+                    //theContextMenu.Location = Cursor.Position;
+                    theContextMenu.Location = new Point(xCoor, yCoor);
                     theContextMenu.Visible = true;
 
                     return true; //indicates that the custom context menu is opened
@@ -224,11 +253,6 @@ namespace Text_Editor
             //!!IF NOT WORKING, TRY AT "CONTEXTMENU IS DEACTIVATED"
             //this.ctrlIsDown = false;
             //this.rmbIsUp = false;
-        }
-
-        protected override bool ShowWithoutActivation
-        {
-            get { return true; }
         }
 
         //-------------------end of methods-------------------
@@ -988,10 +1012,10 @@ namespace Text_Editor
 
         private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            bool customContextMenuIsOpen = false; //by default
-
             //set default CM closed so that won't open concurrently
             richContextStrip.Visible = false;
+
+            bool customContextMenuIsOpen = false; //by default
 
             if (e.Button == MouseButtons.Right)
             {
@@ -1001,10 +1025,25 @@ namespace Text_Editor
                     contextMenuObj.Visible = false; //so that can open at new location
                 }
 
+                //get mouse coordinate
+                xCoor = Cursor.Position.X;
+                yCoor = Cursor.Position.Y;
+
+                /*//logic for exceeding screen goes here
+                //if cm is opened more than screen width
+                if (contextMenuRect.Right > screenDimension.Width)
+                {
+                    xCoor = screenDimension.Width - contextMenuObj.Width;
+                }
+                else
+                {
+                    Console.WriteLine("Nope..doesnt work");
+                }*/
+
                 rmbIsUp = true;
 
                 //display custom context menu
-                customContextMenuIsOpen = displayCustomContextMenu(contextMenuObj, ctrlIsDown, rmbIsUp);
+                customContextMenuIsOpen = displayCustomContextMenu(contextMenuObj, ctrlIsDown, rmbIsUp, xCoor, yCoor);
                 toolStripStatusLabel1.Text = "Custom context menu opened!";
 
 
