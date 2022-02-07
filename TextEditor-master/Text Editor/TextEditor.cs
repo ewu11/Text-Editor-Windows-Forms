@@ -209,6 +209,59 @@ namespace Text_Editor
         //---------------------------end of event listeners---------------------------
 
         //-------------------my methods-------------------
+        //----combine key and mouse events----
+        [DllImport("user32.dll")]
+        static extern ushort GetKeyState(int vKey);
+        //public static bool IsKeyPushedDown(System.Windows.Forms.Keys vKey)
+        public static bool IsKeyPushedDown(int vKey)//System.Windows.Forms.Keys vKey)
+        {
+            //return 0 != (GetAsyncKeyState((int)vKey) & 0x8000);
+            if((GetKeyState((int)vKey) & 0x8000) != 0) //if is down
+            {
+                //if control key is down
+                if(vKey == (int)Keys.ControlKey)
+                {
+                    Console.WriteLine("Control key is down!");
+                }
+                return true;
+            }
+            else if((GetKeyState((int)vKey) & 0x8000) == 0) //if is up
+            {
+                if (vKey == (int)MouseButtons.Right)
+                {
+                    Console.WriteLine("Mouse button is clicked!");
+                }
+                return true;
+            }
+            else //if is not down
+            {
+                return false;
+            }
+        }
+
+        /*[DllImport("user32.dll")]
+        static extern ushort GetAsyncKeyState(int vKey);
+        //public static bool IsKeyPushedDown(System.Windows.Forms.Keys vKey)
+        public static bool IsMouseButtonDown(System.Windows.Forms.MouseButtons vButton)
+        {
+
+            //return 0 != (GetAsyncKeyState((int)vKey) & 0x8000);
+            if ((GetAsyncKeyState((int)vButton) & 0x8000) != 0) //if is down
+            {
+                //if control key is down
+                if (vButton == MouseButtons.Right)
+                {
+                    Console.WriteLine("Right mouse button is clicked!");
+                }
+                return true;
+            }
+            else //if is not down
+            {
+                return false;
+            }
+        }*/
+        //----keyboard and mouse combine until here----
+
         //prevent context menu opening beyond screen area
         private int isBeyondScreen(ContextMenu theContextMenu)
         {
@@ -263,7 +316,7 @@ namespace Text_Editor
                     switch(exceedFlag)
                     {
                         case 1: //if exceed right boundary
-                            newXCoor = (Cursor.Position.X) - (screenDimension.Width-contextMenuObj.Width); //move context menu to the left
+                            newXCoor = (Cursor.Position.X) - (screenDimension.Width - contextMenuObj.Width); //move context menu to the left
                             newYCoor = Cursor.Position.Y; //no need changes
                             //after exceedFlag, set where context menu position is
                             theContextMenu.Location = new Point(newXCoor, newYCoor);
@@ -1134,10 +1187,16 @@ namespace Text_Editor
                 ctrlIsDown = true;
                 toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
             }
+
+            IsKeyPushedDown((int)Keys.ControlKey);
         }
 
         private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            if(e.Button == MouseButtons.Right)
+                //IsMouseButtonDown(MouseButtons.Right);
+                IsKeyPushedDown((int)MouseButtons.Right);
+
             //try not to show default context menu
             richContextStrip.Visible = false;
         }
