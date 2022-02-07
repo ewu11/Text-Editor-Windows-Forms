@@ -30,7 +30,7 @@ namespace Text_Editor
         //for screen dimension uses
         int xCoor, yCoor; //for the invocation location
         Screen theScreen; //to store screen info
-        Rectangle contextMenuRect; //store context menu rectangle
+        //Rectangle contextMenuRect; //store context menu rectangle
         Rectangle screenDimension; //store screen dimension
 
         //context menu variable
@@ -52,7 +52,7 @@ namespace Text_Editor
             //get screen size
             screenDimension = theScreen.WorkingArea;
             //get info of context menu dimension
-            contextMenuRect = new Rectangle(contextMenuObj.Left, contextMenuObj.Top, contextMenuObj.Width, contextMenuObj.Height);
+            //contextMenuRect = new Rectangle(contextMenuObj.Left, contextMenuObj.Top, contextMenuObj.Width, contextMenuObj.Height);
             //----until here screen size uses----
 
             //event listeners for buttons in context menu
@@ -1179,6 +1179,9 @@ namespace Text_Editor
                 //rmbIsUp = true;
 
                 //display custom context menu
+
+                //-----PLAN IS TO MAKE CTRLISDOWN, RMBISUP, XCOOR AND YCOOR MANAGED BEFORE DISPLAY OF CONTEXT MENU-----
+
                 customContextMenuIsOpen = displayCustomContextMenu(contextMenuObj, ctrlIsDown, rmbIsUp, xCoor, yCoor);
                 toolStripStatusLabel1.Text = "Custom context menu opened!";
 
@@ -1213,12 +1216,18 @@ namespace Text_Editor
 
         private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            //close custom context menu on mouse down
+            contextMenuObj.Visible = false;
+
             //try not to show default context menu
             richContextStrip.Visible = false;
         }
 
         private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
         {
+            //released key means cancelled invocation
+            ctrlIsDown = false;
+
             //if nothing is pressed, set status bar to nothing
             toolStripStatusLabel1.Text = "...";
         }
@@ -1241,10 +1250,5 @@ namespace Text_Editor
                 contextMenuObj.Visible = false;
             }            
         }
-
-        //****************************************************************************************************************************
-        // richTextBox1_MouseDown - Gets the line and column numbers of the cursor position in the RTB when the mouse clicks an area *
-        //****************************************************************************************************************************
-
     }
 }
