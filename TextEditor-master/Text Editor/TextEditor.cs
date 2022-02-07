@@ -35,8 +35,8 @@ namespace Text_Editor
 
         //context menu variable
         ContextMenu contextMenuObj;
-        bool ctrlIsDown;
-        bool rmbIsUp;
+        bool ctrlIsDown = false; //by default
+        bool rmbIsUp = false; //by default;
 
         public TextEditor()
         {
@@ -189,7 +189,12 @@ namespace Text_Editor
         }
         private void ContextMenu_Activated(object sender, EventArgs e)
         {
+            //to maintain highlighted text
             richTextBox1.HideSelection = false;
+
+            //reset default flag once custom context menu opens
+            ctrlIsDown = false;
+            rmbIsUp = false;
         }
 
         private void ContextMenu_Deactivate(object sender, EventArgs e)
@@ -203,8 +208,8 @@ namespace Text_Editor
             toolStripStatusLabel1.Text = "...";
 
             //revert button combination settings
-            this.ctrlIsDown = false;
-            this.rmbIsUp = false;
+            //this.ctrlIsDown = false;
+            //this.rmbIsUp = false;
         }
         //---------------------------end of event listeners---------------------------
 
@@ -212,8 +217,11 @@ namespace Text_Editor
         //----combine key and mouse events----
         [DllImport("user32.dll")]
         static extern ushort GetKeyState(int vKey);
+        [DllImport("user32.dll")]
+        static extern ushort GetAsyncKeyState(int vKey);
+
         //public static bool IsKeyPushedDown(System.Windows.Forms.Keys vKey)
-        public static bool IsKeyPushedDown(int vKey)//System.Windows.Forms.Keys vKey)
+        public bool IsKeyDown(int vKey)//System.Windows.Forms.Keys vKey)
         {
             //return 0 != (GetAsyncKeyState((int)vKey) & 0x8000);
             if((GetKeyState((int)vKey) & 0x8000) != 0) //if is down
@@ -221,46 +229,41 @@ namespace Text_Editor
                 //if control key is down
                 if(vKey == (int)Keys.ControlKey)
                 {
+                    ctrlIsDown = true;
                     Console.WriteLine("Control key is down!");
                 }
                 return true;
             }
-            else if((GetKeyState((int)vKey) & 0x8000) == 0) //if is up
-            {
-                if (vKey == (int)MouseButtons.Right)
-                {
-                    Console.WriteLine("Mouse button is clicked!");
-                }
-                return true;
-            }
             else //if is not down
             {
+                ctrlIsDown = false;
                 return false;
             }
         }
 
-        /*[DllImport("user32.dll")]
-        static extern ushort GetAsyncKeyState(int vKey);
-        //public static bool IsKeyPushedDown(System.Windows.Forms.Keys vKey)
-        public static bool IsMouseButtonDown(System.Windows.Forms.MouseButtons vButton)
+        public bool IsKeyUp(int vKey)//System.Windows.Forms.Keys vKey)
         {
-
-            //return 0 != (GetAsyncKeyState((int)vKey) & 0x8000);
-            if ((GetAsyncKeyState((int)vButton) & 0x8000) != 0) //if is down
+            if ((GetAsyncKeyState((int)vKey) & 0x8000) == 0) //if is up
             {
-                //if control key is down
-                if (vButton == MouseButtons.Right)
+                if (vKey == (int)MouseButtons.Right)
                 {
-                    Console.WriteLine("Right mouse button is clicked!");
+                    rmbIsUp = true;
+                    Console.WriteLine("Mouse button is up!");
                 }
                 return true;
             }
             else //if is not down
             {
+                rmbIsUp = false;
                 return false;
             }
-        }*/
+        }
         //----keyboard and mouse combine until here----
+
+        /*private bool contextMenuDisplayFlag()
+        {
+
+        }*/
 
         //prevent context menu opening beyond screen area
         private int isBeyondScreen(ContextMenu theContextMenu)
@@ -301,12 +304,16 @@ namespace Text_Editor
             int exceedFlag = 0; //success by default
             int newXCoor = xCoor;
             int newYCoor = yCoor;
+            //int newXCoor;
+            //int newYCoor;
 
             //this.Cursor = new Cursor(Cursor.Current.Handle);
             //get coordinate at middle of custom context menu
-            int midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
-            int midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
-            
+            //int midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
+            //int midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
+            int midXCoor;
+            int midYCoor;
+
             if (ctrlFlag == true) //if ctrl key is down
             {
                 if(rmbFlag == true) //if rmb is up
@@ -316,20 +323,24 @@ namespace Text_Editor
                     switch(exceedFlag)
                     {
                         case 1: //if exceed right boundary
-                            newXCoor = (Cursor.Position.X) - (screenDimension.Width - contextMenuObj.Width); //move context menu to the left
+                            //newXCoor = (Cursor.Position.X) - (screenDimension.Width - contextMenuObj.Width); //move context menu to the left
+                            newXCoor = (Cursor.Position.X) - (contextMenuObj.Width); //move context menu to the left
                             newYCoor = Cursor.Position.Y; //no need changes
                             //after exceedFlag, set where context menu position is
                             theContextMenu.Location = new Point(newXCoor, newYCoor);
                             break;
                         case 2: //if exceed bottom boundary
                             newXCoor = Cursor.Position.X; //no need changes
-                            newYCoor = (Cursor.Position.Y) - (screenDimension.Height - contextMenuObj.Height); //move context menu to the top
+                            //newYCoor = (Cursor.Position.Y) - (screenDimension.Height - contextMenuObj.Height); //move context menu to the top
+                            newYCoor = (Cursor.Position.Y) - (contextMenuObj.Height); //move context menu to the top
                             //after exceedFlag, set where context menu position is
                             theContextMenu.Location = new Point(newXCoor, newYCoor);
                             break;
                         case 3: //if exceed right & bottom boundary
-                            newXCoor = (Cursor.Position.X) - (screenDimension.Width - contextMenuObj.Width); //move context menu to the left
-                            newYCoor = (Cursor.Position.Y) - (screenDimension.Height - contextMenuObj.Height); //move context menu to the top
+                            //newXCoor = (Cursor.Position.X) - (screenDimension.Width - contextMenuObj.Width); //move context menu to the left
+                            //newYCoor = (Cursor.Position.Y) - (screenDimension.Height - contextMenuObj.Height); //move context menu to the top
+                            newXCoor = (Cursor.Position.X) - (contextMenuObj.Width); //move context menu to the left
+                            newYCoor = (Cursor.Position.Y) - (contextMenuObj.Height); //move context menu to the top
                             //after exceedFlag, set where context menu position is
                             theContextMenu.Location = new Point(newXCoor, newYCoor);
                             break;
@@ -345,10 +356,16 @@ namespace Text_Editor
                     //Cursor.Position = theContextMenu.PointToScreen(new Point(midXCoor, midYCoor));
                     //Cursor.Position = theContextMenu.PointToClient(new Point(theContextMenu.Width/2, theContextMenu.Height/2));
                     //Cursor.Position = getMidPoint;
-                    Cursor.Position = new Point(Cursor.Position.X + midXCoor, Cursor.Position.Y + midYCoor);
+
+                    //set here because depends on new coordinate of context menu, if exceed screen
+                    midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
+                    midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
+
+                    //Cursor.Position = new Point(Cursor.Position.X + midXCoor, Cursor.Position.Y + midYCoor);
+                    Cursor.Position = new Point(newXCoor + midXCoor, newYCoor + midYCoor);
 
                     //theContextMenu.Location = Cursor.Position;
-                    
+
                     theContextMenu.Visible = true;
 
                     return true; //indicates that the custom context menu is opened
@@ -1135,6 +1152,9 @@ namespace Text_Editor
 
             if (e.Button == MouseButtons.Right)
             {
+                //IsMouseButtonDown(MouseButtons.Right);
+                IsKeyUp((int)MouseButtons.Right);
+
                 //if context menu is still visible
                 if (contextMenuObj.Visible == true)
                 {
@@ -1156,7 +1176,7 @@ namespace Text_Editor
                     Console.WriteLine("Nope..doesnt work");
                 }*/
 
-                rmbIsUp = true;
+                //rmbIsUp = true;
 
                 //display custom context menu
                 customContextMenuIsOpen = displayCustomContextMenu(contextMenuObj, ctrlIsDown, rmbIsUp, xCoor, yCoor);
@@ -1184,19 +1204,15 @@ namespace Text_Editor
             //this is here to detect whether CTRL is pressed
             if(e.KeyCode == Keys.ControlKey)
             {
-                ctrlIsDown = true;
+                //ctrlIsDown = true;
                 toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
             }
 
-            IsKeyPushedDown((int)Keys.ControlKey);
+            IsKeyDown((int)Keys.ControlKey);
         }
 
         private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
-                //IsMouseButtonDown(MouseButtons.Right);
-                IsKeyPushedDown((int)MouseButtons.Right);
-
             //try not to show default context menu
             richContextStrip.Visible = false;
         }
@@ -1213,7 +1229,7 @@ namespace Text_Editor
             //avoid delay
             if (e.KeyCode == Keys.ControlKey)
             {
-                ctrlIsDown = true;
+                //ctrlIsDown = true;
             }
         }
 
