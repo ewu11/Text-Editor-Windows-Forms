@@ -209,10 +209,47 @@ namespace Text_Editor
         //---------------------------end of event listeners---------------------------
 
         //-------------------my methods-------------------
+        //prevent context menu opening beyond screen area
+        private int isBeyondScreen(ContextMenu theContextMenu)
+        {
+            int rightBoundary = theContextMenu.Right;
+            int bottomBoundary = theContextMenu.Bottom;
+            int screenWidth = screenDimension.Width;
+            int screenHeight = screenDimension.Height;
+
+            //check if more to the right
+            if (rightBoundary > screenWidth)
+            {
+                Console.WriteLine("Exceed screen width!");
+                return 1;
+            }
+            //check if more to the bottom
+            if (bottomBoundary > screenHeight)
+            {
+                Console.WriteLine("Exceed screen height!");
+                return 2;
+            }
+            //check if more to the right and bottom
+            if ((rightBoundary > screenWidth) && (bottomBoundary > screenHeight))
+            {
+                Console.WriteLine("Exceed screen width & height!");
+                return 3;
+            }
+            else //to solve "all code paths must return a value"
+            {
+                Console.WriteLine("No screen exceeded!");
+                return 0; //"exit successfully"
+            }
+        }
+
         private bool displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlFlag, bool rmbFlag, int xCoor, int yCoor)
         {
-            //this.Cursor = new Cursor(Cursor.Current.Handle);
+            //flag for exceed screen
+            int exceedFlag = 0; //success by default
+            int newXCoor = xCoor;
+            int newYCoor = yCoor;
 
+            //this.Cursor = new Cursor(Cursor.Current.Handle);
             //get coordinate at middle of custom context menu
             int midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
             int midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
@@ -221,7 +258,34 @@ namespace Text_Editor
             {
                 if(rmbFlag == true) //if rmb is up
                 {
-                    //display context menu
+                    exceedFlag = isBeyondScreen(theContextMenu);
+
+                    switch(exceedFlag)
+                    {
+                        case 1: //if exceed right boundary
+                            newXCoor = (Cursor.Position.X) - (screenDimension.Width-contextMenuObj.Width); //move context menu to the left
+                            newYCoor = Cursor.Position.Y; //no need changes
+                            //after exceedFlag, set where context menu position is
+                            theContextMenu.Location = new Point(newXCoor, newYCoor);
+                            break;
+                        case 2: //if exceed bottom boundary
+                            newXCoor = Cursor.Position.X; //no need changes
+                            newYCoor = (Cursor.Position.Y) - (screenDimension.Height - contextMenuObj.Height); //move context menu to the top
+                            //after exceedFlag, set where context menu position is
+                            theContextMenu.Location = new Point(newXCoor, newYCoor);
+                            break;
+                        case 3: //if exceed right & bottom boundary
+                            newXCoor = (Cursor.Position.X) - (screenDimension.Width - contextMenuObj.Width); //move context menu to the left
+                            newYCoor = (Cursor.Position.Y) - (screenDimension.Height - contextMenuObj.Height); //move context menu to the top
+                            //after exceedFlag, set where context menu position is
+                            theContextMenu.Location = new Point(newXCoor, newYCoor);
+                            break;
+                        default: //if exceeded nothing
+                            theContextMenu.Location = new Point(newXCoor, newYCoor);
+                            break;
+                    }
+
+                    //message: display context menu
                     Console.WriteLine("Context menu opens via COMBINATION!");
 
                     //set mouse location to middle of context menu
@@ -231,7 +295,7 @@ namespace Text_Editor
                     Cursor.Position = new Point(Cursor.Position.X + midXCoor, Cursor.Position.Y + midYCoor);
 
                     //theContextMenu.Location = Cursor.Position;
-                    theContextMenu.Location = new Point(xCoor, yCoor);
+                    
                     theContextMenu.Visible = true;
 
                     return true; //indicates that the custom context menu is opened
