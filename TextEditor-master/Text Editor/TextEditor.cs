@@ -28,7 +28,7 @@ namespace Text_Editor
         //int pos, line, column;    // for detecting line and column numbers
 
         //for screen dimension uses
-        int xCoor, yCoor; //for the invocation location
+        //int mouseXCoor, mouseYCoor; //for the invocation location
         Screen theScreen; //to store screen info
         //Rectangle contextMenuRect; //store context menu rectangle
         Rectangle screenDimension; //store screen dimension
@@ -251,6 +251,11 @@ namespace Text_Editor
                     rmbIsUp = true;
                     Console.WriteLine("Mouse button is up!");
                 }
+                if (vKey == (int)Keys.ControlKey)
+                {
+                    ctrlIsDown = false;
+                    Console.WriteLine("Control key is up!");
+                }
                 return true;
             }
             else //if is not down
@@ -270,7 +275,7 @@ namespace Text_Editor
             }
             else
             {
-                Console.WriteLine("FLAG ISSUES!");
+                Console.WriteLine("CTRL: n/a, RMB: n/a!");
                 return false;
             }
         }
@@ -1167,6 +1172,12 @@ namespace Text_Editor
 
                 if (canDisplay)
                 {
+                    //used by form location and cursor location processors
+                    //get mouse coordinate
+                    int xCoor = Cursor.Position.X;
+                    int yCoor = Cursor.Position.Y;
+                    Console.WriteLine("xCoor: {0}, yCoor: {1}", xCoor, yCoor);
+
                     //-----PLAN IS TO MAKE CTRLISDOWN, RMBISUP, XCOOR AND YCOOR MANAGED BEFORE DISPLAY OF CONTEXT MENU-----
                     Point formLocation = processContextMenuFormLocation(contextMenuObj, xCoor, yCoor);
                     //processContextMenuFormLocation(contextMenuObj, xCoor, yCoor);
@@ -1188,10 +1199,10 @@ namespace Text_Editor
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            //used by form location and cursor location processors
-            //get mouse coordinate
-            xCoor = Cursor.Position.X;
-            yCoor = Cursor.Position.Y;
+            ////used by form location and cursor location processors
+            ////get mouse coordinate
+            //xCoor = Cursor.Position.X;
+            //yCoor = Cursor.Position.Y;
 
             //this is here to detect whether CTRL is pressed
             if (e.KeyCode == Keys.ControlKey)
@@ -1200,7 +1211,7 @@ namespace Text_Editor
                 toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
             }
 
-            IsKeyDown((int)Keys.ControlKey);
+            IsKeyDown((int)Keys.ControlKey); //to set ctrlIsDown to true
         }
 
         private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
@@ -1218,25 +1229,19 @@ namespace Text_Editor
         private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
         {
             //released key means cancelled invocation
-            ctrlIsDown = false;
+            IsKeyUp((int)Keys.ControlKey); //to set ctrlIsDown to false
 
             //if nothing is pressed, set status bar to nothing
             toolStripStatusLabel1.Text = "...";
         }
 
-        private void richContextStrip_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        private void TextEditor_MouseEnter(object sender, EventArgs e)
         {
-            //to ensure custom context menu can open when default is opened
-            if(IsKeyDown((int)Keys.ControlKey))
-            {
-                toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
-                ctrlIsDown = true;
-            }
-            else
-            {
-                toolStripStatusLabel1.Text = "...";
-                ctrlIsDown = false;
-            }
+            //used by form location and cursor location processors
+            //get mouse coordinate
+            //xCoor = Cursor.Position.X;
+            //yCoor = Cursor.Position.Y;
+            //Console.WriteLine("xCoor: {0}, yCoor: {1}", xCoor, yCoor);
         }
 
         private void TextEditor_Activated(object sender, EventArgs e)
@@ -1247,5 +1252,63 @@ namespace Text_Editor
                 contextMenuObj.Visible = false;
             }            
         }
+
+        private void richContextStrip_VisibleChanged(object sender, EventArgs e)
+        {
+            if(richContextStrip.Visible == true) //if default context menu is opened
+            {
+                //MessageBox.Show(this, "You're trippin' bruh!", "Hmm");
+                //Console.WriteLine("You're trippin' bruh!");
+
+                if(IsKeyDown((int)Keys.ControlKey)) //if ctrl key is pressed
+                {
+                    ctrlIsDown = true;
+                    
+                    if(IsKeyDown((int)Keys.ControlKey)) //if rmb was pressed
+                    {
+                        rmbIsUp = true;
+                    }
+                    else //if ctrl was pressed but rmb was not
+                    {
+                        ctrlIsDown = false;
+                        rmbIsUp = false;
+                    }
+                }
+            }
+        }
+
+        /*private void richContextStrip_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            //cases:
+            //case 1: ctrl(down)->rmb(down), rmb(down): 'cuz to check whether rmb was clicked or not
+            //case 2: ctrl(down)->ctrl(up)
+
+            //to ensure custom context menu can open when default is opened
+            if (IsKeyDown((int)Keys.ControlKey)) //when ctrl key is down
+            {
+                toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
+                ctrlIsDown = true;
+
+                if (IsKeyDown((int)MouseButtons.Right)) //if mouse button is clicked when ctrl key is pressed
+                {
+                    toolStripStatusLabel1.Text = "Custom context menu opened!";
+                    rmbIsUp = true;
+                }
+                if (IsKeyUp((int)Keys.ControlKey)) //if ctrl key was released and rmb was not clicked
+                {
+                    toolStripStatusLabel1.Text = "...";
+                    ctrlIsDown = false;
+                    rmbIsUp = false;
+                }
+                else
+                {
+                    Console.WriteLine("Error on CTRL + RMB!");
+                }
+            }
+            *//*if ((IsKeyDown((int)Keys.ControlKey)) //if ctrl key is released and rmb is not clicked
+            {
+
+            }*//*
+        }*/
     }
 }

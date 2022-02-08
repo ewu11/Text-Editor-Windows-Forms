@@ -142,7 +142,8 @@
             this.clearToolStripMenuItem});
             this.richContextStrip.Name = "richContextStrip";
             this.richContextStrip.Size = new System.Drawing.Size(219, 212);
-            this.richContextStrip.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.richContextStrip_PreviewKeyDown);
+            this.richContextStrip.VisibleChanged += new System.EventHandler(this.richContextStrip_VisibleChanged);
+            //this.richContextStrip.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.richContextStrip_PreviewKeyDown);
             // 
             // cutToolStripMenuItem
             // 
@@ -810,6 +811,7 @@
             this.Text = "Rich Text Editor";
             this.Activated += new System.EventHandler(this.TextEditor_Activated);
             this.Load += new System.EventHandler(this.frmEditor_Load);
+            this.MouseEnter += new System.EventHandler(this.TextEditor_MouseEnter);
             this.richContextStrip.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
