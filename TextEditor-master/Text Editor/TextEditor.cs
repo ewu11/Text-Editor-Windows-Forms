@@ -340,7 +340,8 @@ namespace Text_Editor
             return theContextMenu.Location;
         }
 
-        private Point processContextMenuCursorLocation(ContextMenu theContextMenu, int xCoor, int yCoor)
+        //private Point processContextMenuCursorLocation(ContextMenu theContextMenu, int xCoor, int yCoor)
+        private Point processContextMenuCursorLocation(ContextMenu theContextMenu, Point formLocation)
         {
             //this.Cursor = new Cursor(Cursor.Current.Handle);
             //get coordinate at middle of custom context menu
@@ -359,7 +360,7 @@ namespace Text_Editor
             midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
 
             //Cursor.Position = new Point(Cursor.Position.X + midXCoor, Cursor.Position.Y + midYCoor);
-            Cursor.Position = new Point(xCoor + midXCoor, yCoor + midYCoor);
+            Cursor.Position = new Point(formLocation.X + midXCoor, formLocation.Y + midYCoor);
 
             //theContextMenu.Location = Cursor.Position;
             return Cursor.Position;
@@ -1154,7 +1155,7 @@ namespace Text_Editor
             //set default CM closed so that won't open concurrently
             richContextStrip.Visible = false;
 
-            bool customContextMenuIsOpen = false; //by default
+            //bool customContextMenuIsOpen = false; //by default
 
             if (e.Button == MouseButtons.Right)
             {
@@ -1170,16 +1171,14 @@ namespace Text_Editor
                     Point formLocation = processContextMenuFormLocation(contextMenuObj, xCoor, yCoor);
                     //processContextMenuFormLocation(contextMenuObj, xCoor, yCoor);
 
-                    Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, xCoor, yCoor);
+                    //Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, xCoor, yCoor);
+                    Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, formLocation);
                     //processContextMenuCursorLocation(contextMenuObj, xCoor, yCoor);
 
-                    customContextMenuIsOpen = displayCustomContextMenu(contextMenuObj, canDisplay, formLocation, cursorLocation); //display custom context menu
+                    displayCustomContextMenu(contextMenuObj, canDisplay, formLocation, cursorLocation);
                     toolStripStatusLabel1.Text = "Custom context menu opened!";
                 }
-                
-                //disable the default context menu from opening
-                //if custom context menu opens
-                if (!customContextMenuIsOpen)
+                else //if ctrl key is not pressed
                 {
                     richContextStrip.Visible = true;
                     toolStripStatusLabel1.Text = "Default context menu opened!";
