@@ -230,7 +230,7 @@ namespace Text_Editor
                 if(vKey == (int)Keys.ControlKey)
                 {
                     ctrlIsDown = true;
-                    Console.WriteLine("Control key is down!");
+                    toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
                 }
                 return true;
             }
@@ -1260,12 +1260,13 @@ namespace Text_Editor
                 //MessageBox.Show(this, "You're trippin' bruh!", "Hmm");
                 //Console.WriteLine("You're trippin' bruh!");
 
-                if(IsKeyDown((int)Keys.ControlKey)) //if ctrl key is pressed
+                if (IsKeyDown((int)Keys.ControlKey)) //if ctrl key is pressed
                 {
                     ctrlIsDown = true;
-                    
-                    if(IsKeyDown((int)Keys.ControlKey)) //if rmb was pressed
+
+                    if (IsKeyDown((int)Keys.ControlKey)) //if rmb was pressed
                     {
+                        //toolStripStatusLabel1.Text = "Custom context menu opened!";
                         rmbIsUp = true;
                     }
                     else //if ctrl was pressed but rmb was not
@@ -1274,6 +1275,10 @@ namespace Text_Editor
                         rmbIsUp = false;
                     }
                 }
+            }
+            else //when default cm closed
+            {
+                toolStripStatusLabel1.Text = "...";
             }
         }
     }
