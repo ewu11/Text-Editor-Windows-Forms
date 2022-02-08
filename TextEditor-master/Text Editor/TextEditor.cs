@@ -224,7 +224,7 @@ namespace Text_Editor
         public bool IsKeyDown(int vKey)//System.Windows.Forms.Keys vKey)
         {
             //return 0 != (GetAsyncKeyState((int)vKey) & 0x8000);
-            if((GetKeyState((int)vKey) & 0x8000) != 0) //if is down
+            if((GetKeyState((int)vKey) & 0x8000) != 0) // "!=0"; if is down
             {
                 //if control key is down
                 if(vKey == (int)Keys.ControlKey)
@@ -243,7 +243,8 @@ namespace Text_Editor
 
         public bool IsKeyUp(int vKey)//System.Windows.Forms.Keys vKey)
         {
-            if ((GetAsyncKeyState((int)vKey) & 0x8000) == 0) //if is up
+            //if ((GetAsyncKeyState((int)vKey) & 0x8000) == 0) // "==0"; if is up
+            if ((GetKeyState((int)vKey) & 0x8000) == 0) // "==0"; if is up
             {
                 if (vKey == (int)MouseButtons.Right)
                 {
@@ -260,10 +261,19 @@ namespace Text_Editor
         }
         //----keyboard and mouse combine until here----
 
-        /*private bool contextMenuDisplayFlag()
+        private bool contextMenuDisplayFlag(bool ctrlFlag, bool rmbFlag)
         {
-
-        }*/
+            if(ctrlFlag && rmbFlag) //if ctrl key is down & rmb is up
+            {
+                Console.WriteLine("CTRL: DOWN, RMB: UP!");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("FLAG ISSUES!");
+                return false;
+            }
+        }
 
         //prevent context menu opening beyond screen area
         private int isBeyondScreen(ContextMenu theContextMenu)
@@ -298,15 +308,40 @@ namespace Text_Editor
             }
         }
 
-        private bool displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlFlag, bool rmbFlag, int xCoor, int yCoor)
+        private Point processContextMenuFormLocation(ContextMenu theContextMenu, int xCoor, int yCoor)
         {
-            //flag for exceed screen
-            int exceedFlag = 0; //success by default
-            int newXCoor = xCoor;
-            int newYCoor = yCoor;
-            //int newXCoor;
-            //int newYCoor;
+            int exceedScreenFlag = isBeyondScreen(theContextMenu);
 
+            switch (exceedScreenFlag)
+            {
+                case 1: //if exceed right boundary
+                    xCoor = (Cursor.Position.X) - (contextMenuObj.Width); //move context menu to the left
+                    yCoor = Cursor.Position.Y; //no need changes
+                    //after exceedFlag, set where context menu position is
+                    theContextMenu.Location = new Point(xCoor, yCoor);
+                    break;
+                case 2: //if exceed bottom boundary
+                    xCoor = Cursor.Position.X; //no need changes
+                    yCoor = (Cursor.Position.Y) - (contextMenuObj.Height); //move context menu to the top
+                    //after exceedFlag, set where context menu position is
+                    theContextMenu.Location = new Point(xCoor, yCoor);
+                    break;
+                case 3: //if exceed right & bottom boundary
+                    xCoor = (Cursor.Position.X) - (contextMenuObj.Width); //move context menu to the left
+                    yCoor = (Cursor.Position.Y) - (contextMenuObj.Height); //move context menu to the top
+                    //after exceedFlag, set where context menu position is
+                    theContextMenu.Location = new Point(xCoor, yCoor);
+                    break;
+                default: //if exceeded nothing
+                    theContextMenu.Location = new Point(xCoor, yCoor);
+                    break;
+            }
+            //return the new location of context menu
+            return theContextMenu.Location;
+        }
+
+        private Point processContextMenuCursorLocation(ContextMenu theContextMenu, int xCoor, int yCoor)
+        {
             //this.Cursor = new Cursor(Cursor.Current.Handle);
             //get coordinate at middle of custom context menu
             //int midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
@@ -314,71 +349,42 @@ namespace Text_Editor
             int midXCoor;
             int midYCoor;
 
-            if (ctrlFlag == true) //if ctrl key is down
+            //set mouse location to middle of context menu
+            //Cursor.Position = theContextMenu.PointToScreen(new Point(midXCoor, midYCoor));
+            //Cursor.Position = theContextMenu.PointToClient(new Point(theContextMenu.Width/2, theContextMenu.Height/2));
+            //Cursor.Position = getMidPoint;
+
+            //set here because depends on new coordinate of context menu, if exceed screen
+            midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
+            midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
+
+            //Cursor.Position = new Point(Cursor.Position.X + midXCoor, Cursor.Position.Y + midYCoor);
+            Cursor.Position = new Point(xCoor + midXCoor, yCoor + midYCoor);
+
+            //theContextMenu.Location = Cursor.Position;
+            return Cursor.Position;
+        }
+
+        //private bool displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlFlag, bool rmbFlag, int xCoor, int yCoor)
+        private bool displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlRmbFlag, Point formLocation, Point cursorLocation)
+        {
+            if(ctrlRmbFlag == true) //if ctrl is down AND rmb is up
             {
-                if(rmbFlag == true) //if rmb is up
-                {
-                    exceedFlag = isBeyondScreen(theContextMenu);
+                //form location
+                theContextMenu.Location = formLocation;
 
-                    switch(exceedFlag)
-                    {
-                        case 1: //if exceed right boundary
-                            //newXCoor = (Cursor.Position.X) - (screenDimension.Width - contextMenuObj.Width); //move context menu to the left
-                            newXCoor = (Cursor.Position.X) - (contextMenuObj.Width); //move context menu to the left
-                            newYCoor = Cursor.Position.Y; //no need changes
-                            //after exceedFlag, set where context menu position is
-                            theContextMenu.Location = new Point(newXCoor, newYCoor);
-                            break;
-                        case 2: //if exceed bottom boundary
-                            newXCoor = Cursor.Position.X; //no need changes
-                            //newYCoor = (Cursor.Position.Y) - (screenDimension.Height - contextMenuObj.Height); //move context menu to the top
-                            newYCoor = (Cursor.Position.Y) - (contextMenuObj.Height); //move context menu to the top
-                            //after exceedFlag, set where context menu position is
-                            theContextMenu.Location = new Point(newXCoor, newYCoor);
-                            break;
-                        case 3: //if exceed right & bottom boundary
-                            //newXCoor = (Cursor.Position.X) - (screenDimension.Width - contextMenuObj.Width); //move context menu to the left
-                            //newYCoor = (Cursor.Position.Y) - (screenDimension.Height - contextMenuObj.Height); //move context menu to the top
-                            newXCoor = (Cursor.Position.X) - (contextMenuObj.Width); //move context menu to the left
-                            newYCoor = (Cursor.Position.Y) - (contextMenuObj.Height); //move context menu to the top
-                            //after exceedFlag, set where context menu position is
-                            theContextMenu.Location = new Point(newXCoor, newYCoor);
-                            break;
-                        default: //if exceeded nothing
-                            theContextMenu.Location = new Point(newXCoor, newYCoor);
-                            break;
-                    }
+                //cursor location
+                Cursor.Position = cursorLocation;
 
-                    //message: display context menu
-                    Console.WriteLine("Context menu opens via COMBINATION!");
+                //message: display context menu
+                Console.WriteLine("Context menu opens via COMBINATION!");
+                theContextMenu.Visible = true;
 
-                    //set mouse location to middle of context menu
-                    //Cursor.Position = theContextMenu.PointToScreen(new Point(midXCoor, midYCoor));
-                    //Cursor.Position = theContextMenu.PointToClient(new Point(theContextMenu.Width/2, theContextMenu.Height/2));
-                    //Cursor.Position = getMidPoint;
-
-                    //set here because depends on new coordinate of context menu, if exceed screen
-                    midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
-                    midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
-
-                    //Cursor.Position = new Point(Cursor.Position.X + midXCoor, Cursor.Position.Y + midYCoor);
-                    Cursor.Position = new Point(newXCoor + midXCoor, newYCoor + midYCoor);
-
-                    //theContextMenu.Location = Cursor.Position;
-
-                    theContextMenu.Visible = true;
-
-                    return true; //indicates that the custom context menu is opened
-                }
-                else
-                {
-                    Console.WriteLine("RMB button is FALSE!");
-                    return false;
-                }
+                return true; //indicates that the custom context menu is opened
             }
             else
             {
-                Console.WriteLine("CTRL key is FALSE!");
+                //Console.WriteLine("RMB button is FALSE!");
                 return false;
             }
 
@@ -1155,37 +1161,22 @@ namespace Text_Editor
                 //IsMouseButtonDown(MouseButtons.Right);
                 IsKeyUp((int)MouseButtons.Right);
 
-                //if context menu is still visible
-                if (contextMenuObj.Visible == true)
+                //here because the rmb event handler is above this
+                bool canDisplay = contextMenuDisplayFlag(ctrlIsDown, rmbIsUp); //get ctrl and rmb flag status
+
+                if (canDisplay)
                 {
-                    contextMenuObj.Visible = false; //so that can open at new location
+                    //-----PLAN IS TO MAKE CTRLISDOWN, RMBISUP, XCOOR AND YCOOR MANAGED BEFORE DISPLAY OF CONTEXT MENU-----
+                    Point formLocation = processContextMenuFormLocation(contextMenuObj, xCoor, yCoor);
+                    //processContextMenuFormLocation(contextMenuObj, xCoor, yCoor);
+
+                    Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, xCoor, yCoor);
+                    //processContextMenuCursorLocation(contextMenuObj, xCoor, yCoor);
+
+                    customContextMenuIsOpen = displayCustomContextMenu(contextMenuObj, canDisplay, formLocation, cursorLocation); //display custom context menu
+                    toolStripStatusLabel1.Text = "Custom context menu opened!";
                 }
-
-                //get mouse coordinate
-                xCoor = Cursor.Position.X;
-                yCoor = Cursor.Position.Y;
-
-                /*//logic for exceeding screen goes here
-                //if cm is opened more than screen width
-                if (contextMenuRect.Right > screenDimension.Width)
-                {
-                    xCoor = screenDimension.Width - contextMenuObj.Width;
-                }
-                else
-                {
-                    Console.WriteLine("Nope..doesnt work");
-                }*/
-
-                //rmbIsUp = true;
-
-                //display custom context menu
-
-                //-----PLAN IS TO MAKE CTRLISDOWN, RMBISUP, XCOOR AND YCOOR MANAGED BEFORE DISPLAY OF CONTEXT MENU-----
-
-                customContextMenuIsOpen = displayCustomContextMenu(contextMenuObj, ctrlIsDown, rmbIsUp, xCoor, yCoor);
-                toolStripStatusLabel1.Text = "Custom context menu opened!";
-
-
+                
                 //disable the default context menu from opening
                 //if custom context menu opens
                 if (!customContextMenuIsOpen)
@@ -1193,19 +1184,18 @@ namespace Text_Editor
                     richContextStrip.Visible = true;
                     toolStripStatusLabel1.Text = "Default context menu opened!";
                 }
-
-                /*//display the context menu on the TextEditor program
-                Console.WriteLine("Context menu opens!");
-
-                contextMenuObj.Location = Cursor.Position;
-                contextMenuObj.Visible = true;*/
             }
         }
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
+            //used by form location and cursor location processors
+            //get mouse coordinate
+            xCoor = Cursor.Position.X;
+            yCoor = Cursor.Position.Y;
+
             //this is here to detect whether CTRL is pressed
-            if(e.KeyCode == Keys.ControlKey)
+            if (e.KeyCode == Keys.ControlKey)
             {
                 //ctrlIsDown = true;
                 toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
@@ -1216,11 +1206,14 @@ namespace Text_Editor
 
         private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            //close custom context menu on mouse down
-            contextMenuObj.Visible = false;
-
             //try not to show default context menu
             richContextStrip.Visible = false;
+
+            //close if context menu is still visible
+            if (contextMenuObj.Visible == true)
+            {
+                contextMenuObj.Visible = false; //so that can open at new location
+            }            
         }
 
         private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
@@ -1234,11 +1227,16 @@ namespace Text_Editor
 
         private void richContextStrip_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            //this is here so that custom context menu can gain ctrl input faster
-            //avoid delay
-            if (e.KeyCode == Keys.ControlKey)
+            //to ensure custom context menu can open when default is opened
+            if(IsKeyDown((int)Keys.ControlKey))
             {
-                //ctrlIsDown = true;
+                toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
+                ctrlIsDown = true;
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "...";
+                ctrlIsDown = false;
             }
         }
 
