@@ -1276,39 +1276,5 @@ namespace Text_Editor
                 }
             }
         }
-
-        /*private void richContextStrip_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            //cases:
-            //case 1: ctrl(down)->rmb(down), rmb(down): 'cuz to check whether rmb was clicked or not
-            //case 2: ctrl(down)->ctrl(up)
-
-            //to ensure custom context menu can open when default is opened
-            if (IsKeyDown((int)Keys.ControlKey)) //when ctrl key is down
-            {
-                toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
-                ctrlIsDown = true;
-
-                if (IsKeyDown((int)MouseButtons.Right)) //if mouse button is clicked when ctrl key is pressed
-                {
-                    toolStripStatusLabel1.Text = "Custom context menu opened!";
-                    rmbIsUp = true;
-                }
-                if (IsKeyUp((int)Keys.ControlKey)) //if ctrl key was released and rmb was not clicked
-                {
-                    toolStripStatusLabel1.Text = "...";
-                    ctrlIsDown = false;
-                    rmbIsUp = false;
-                }
-                else
-                {
-                    Console.WriteLine("Error on CTRL + RMB!");
-                }
-            }
-            *//*if ((IsKeyDown((int)Keys.ControlKey)) //if ctrl key is released and rmb is not clicked
-            {
-
-            }*//*
-        }*/
     }
 }

@@ -143,7 +143,6 @@
             this.richContextStrip.Name = "richContextStrip";
             this.richContextStrip.Size = new System.Drawing.Size(219, 212);
             this.richContextStrip.VisibleChanged += new System.EventHandler(this.richContextStrip_VisibleChanged);
-            //this.richContextStrip.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.richContextStrip_PreviewKeyDown);
             // 
             // cutToolStripMenuItem
             // 
