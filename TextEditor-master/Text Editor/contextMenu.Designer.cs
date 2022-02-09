@@ -29,11 +29,11 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.copyBtn = new System.Windows.Forms.Button();
-            this.pasteBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.selectAllBtn = new System.Windows.Forms.Button();
             this.clearAllBtn = new System.Windows.Forms.Button();
             this.cutBtn = new System.Windows.Forms.Button();
+            this.pasteBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,25 +79,6 @@
             this.copyBtn.TabIndex = 1;
             this.copyBtn.Text = "Copy";
             this.copyBtn.UseVisualStyleBackColor = false;
-            // 
-            // pasteBtn
-            // 
-            this.pasteBtn.AutoSize = true;
-            this.pasteBtn.BackColor = System.Drawing.SystemColors.Window;
-            this.pasteBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pasteBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.pasteBtn.FlatAppearance.BorderSize = 0;
-            this.pasteBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.pasteBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.pasteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pasteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pasteBtn.Location = new System.Drawing.Point(0, 40);
-            this.pasteBtn.Margin = new System.Windows.Forms.Padding(0);
-            this.pasteBtn.Name = "pasteBtn";
-            this.pasteBtn.Size = new System.Drawing.Size(121, 40);
-            this.pasteBtn.TabIndex = 2;
-            this.pasteBtn.Text = "Paste";
-            this.pasteBtn.UseVisualStyleBackColor = false;
             // 
             // deleteBtn
             // 
@@ -174,6 +155,25 @@
             this.cutBtn.TabIndex = 0;
             this.cutBtn.Text = "Cut";
             this.cutBtn.UseVisualStyleBackColor = false;
+            // 
+            // pasteBtn
+            // 
+            this.pasteBtn.AutoSize = true;
+            this.pasteBtn.BackColor = System.Drawing.SystemColors.Window;
+            this.pasteBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pasteBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.pasteBtn.FlatAppearance.BorderSize = 0;
+            this.pasteBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.pasteBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.pasteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pasteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pasteBtn.Location = new System.Drawing.Point(0, 40);
+            this.pasteBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.pasteBtn.Name = "pasteBtn";
+            this.pasteBtn.Size = new System.Drawing.Size(121, 40);
+            this.pasteBtn.TabIndex = 2;
+            this.pasteBtn.Text = "Paste";
+            this.pasteBtn.UseVisualStyleBackColor = false;
             // 
             // ContextMenu
             // 
