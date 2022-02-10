@@ -63,9 +63,10 @@
             // 
             // copyBtn
             // 
+            this.copyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.copyBtn.AutoSize = true;
             this.copyBtn.BackColor = System.Drawing.SystemColors.Window;
-            this.copyBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.copyBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.copyBtn.FlatAppearance.BorderSize = 0;
             this.copyBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -82,9 +83,10 @@
             // 
             // deleteBtn
             // 
+            this.deleteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteBtn.AutoSize = true;
             this.deleteBtn.BackColor = System.Drawing.SystemColors.Window;
-            this.deleteBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.deleteBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.deleteBtn.FlatAppearance.BorderSize = 0;
             this.deleteBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -101,9 +103,10 @@
             // 
             // selectAllBtn
             // 
+            this.selectAllBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.selectAllBtn.AutoSize = true;
             this.selectAllBtn.BackColor = System.Drawing.SystemColors.Window;
-            this.selectAllBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectAllBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.selectAllBtn.FlatAppearance.BorderSize = 0;
             this.selectAllBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -116,13 +119,15 @@
             this.selectAllBtn.Size = new System.Drawing.Size(121, 41);
             this.selectAllBtn.TabIndex = 4;
             this.selectAllBtn.Text = "Select All";
+            this.selectAllBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.selectAllBtn.UseVisualStyleBackColor = false;
             // 
             // clearAllBtn
             // 
+            this.clearAllBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.clearAllBtn.AutoSize = true;
             this.clearAllBtn.BackColor = System.Drawing.SystemColors.Window;
-            this.clearAllBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clearAllBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.clearAllBtn.FlatAppearance.BorderSize = 0;
             this.clearAllBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -139,9 +144,10 @@
             // 
             // cutBtn
             // 
+            this.cutBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.cutBtn.AutoSize = true;
             this.cutBtn.BackColor = System.Drawing.SystemColors.Window;
-            this.cutBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cutBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.cutBtn.FlatAppearance.BorderSize = 0;
             this.cutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -154,13 +160,15 @@
             this.cutBtn.Size = new System.Drawing.Size(121, 40);
             this.cutBtn.TabIndex = 0;
             this.cutBtn.Text = "Cut";
+            this.cutBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cutBtn.UseVisualStyleBackColor = false;
             // 
             // pasteBtn
             // 
+            this.pasteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pasteBtn.AutoSize = true;
             this.pasteBtn.BackColor = System.Drawing.SystemColors.Window;
-            this.pasteBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pasteBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.pasteBtn.FlatAppearance.BorderSize = 0;
             this.pasteBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -173,6 +181,7 @@
             this.pasteBtn.Size = new System.Drawing.Size(121, 40);
             this.pasteBtn.TabIndex = 2;
             this.pasteBtn.Text = "Paste";
+            this.pasteBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.pasteBtn.UseVisualStyleBackColor = false;
             // 
             // ContextMenu

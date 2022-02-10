@@ -191,6 +191,10 @@ namespace Text_Editor
         }
         private void ContextMenu_Activated(object sender, EventArgs e)
         {
+            //this.Focus();
+            //contextMenuObj.Focus();
+            //contextMenuObj.Visible = true;
+
             //to maintain highlighted text
             richTextBox1.HideSelection = false;
 
@@ -288,6 +292,18 @@ namespace Text_Editor
                 Console.WriteLine("CTRL: n/a, RMB: n/a!");
                 return false;
             }
+        }
+
+        //taken from stackoverflow
+        private Point SetPopupLocation(ContextMenu theContextMenu, Point initPosition)
+        {
+            var p = new Point();
+            var wrkArea = Screen.FromControl(theContextMenu).WorkingArea;
+            p.X = wrkArea.Width - (initPosition.X + theContextMenu.Width);
+            p.Y = wrkArea.Height - (initPosition.Y + theContextMenu.Height);
+            p.X = p.X < 0 ? wrkArea.Width - theContextMenu.Width : initPosition.X;
+            p.Y = p.Y < 0 ? wrkArea.Height - theContextMenu.Height : initPosition.Y;
+            return p;
         }
 
         //prevent context menu opening beyond screen area
@@ -1212,6 +1228,7 @@ namespace Text_Editor
 
                 //here because the rmb event handler is above this
                 bool canDisplay = contextMenuDisplayFlag(ctrlIsDown, rmbIsUp); //get ctrl and rmb flag status 
+                Point formLocation;
 
                 if (canDisplay)
                 {
@@ -1232,11 +1249,14 @@ namespace Text_Editor
                     //processContextMenuFormLocation(contextMenuObj, xCoor, yCoor);
 
                     //to process whether custom context menu was opened beyond screen area or not
-                    exceedScreenFlag = isBeyondScreen(Cursor.Position.X, Cursor.Position.Y, contextMenuObj.Width, contextMenuObj.Height);
+                    formLocation = SetPopupLocation(contextMenuObj, (sender as Control).PointToScreen(e.Location));
+                    //-------HERE----------
+                    //exceedScreenFlag = isBeyondScreen(Cursor.Position.X, Cursor.Position.Y, contextMenuObj.Width, contextMenuObj.Height);
 
                     Point theMouseCoor = new Point(Cursor.Position.X, Cursor.Position.Y);
 
-                    Point formLocation = processContextMenuFormLocation(contextMenuObj, exceedScreenFlag, theMouseCoor);
+                    //-------HERE----------
+                    //Point formLocation = processContextMenuFormLocation(contextMenuObj, exceedScreenFlag, theMouseCoor);
 
                     //Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, xCoor, yCoor);
                     Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, formLocation);
