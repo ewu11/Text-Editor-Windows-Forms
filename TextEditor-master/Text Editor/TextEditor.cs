@@ -25,15 +25,9 @@ namespace Text_Editor
         string filenamee;    // file opened inside of RTB
         const int MIDDLE = 382;    // middle sum of RGB - max is 765
         int sumRGB;    // sum of the selected colors RGB
-                       //int pos, line, column;    // for detecting line and column numbers
-
-        //for screen dimension uses
-        //int mouseXCoor, mouseYCoor; //for the invocation location
 
         Screen theScreen; //to store screen info
-        //Rectangle contextMenuRect; //store context menu rectangle
         Rectangle screenDimension; //store screen dimension
-        int exceedScreenFlag;
 
         //context menu variable
         ContextMenu contextMenuObj;
@@ -49,12 +43,10 @@ namespace Text_Editor
             contextMenuObj = new ContextMenu();
 
             //----for screen size uses----
-            //theScreen = Screen.FromControl(contextMenuObj);
             theScreen = Screen.FromControl(this);
             //get screen size
             screenDimension = theScreen.WorkingArea;
             //get info of context menu dimension
-            //contextMenuRect = new Rectangle(contextMenuObj.Left, contextMenuObj.Top, contextMenuObj.Width, contextMenuObj.Height);
             //----until here screen size uses----
 
             //event listeners for buttons in context menu
@@ -191,10 +183,6 @@ namespace Text_Editor
         }
         private void ContextMenu_Activated(object sender, EventArgs e)
         {
-            //this.Focus();
-            //contextMenuObj.Focus();
-            //contextMenuObj.Visible = true;
-
             //to maintain highlighted text
             richTextBox1.HideSelection = false;
 
@@ -212,10 +200,6 @@ namespace Text_Editor
             }
 
             toolStripStatusLabel1.Text = "...";
-
-            //revert button combination settings
-            //this.ctrlIsDown = false;
-            //this.rmbIsUp = false;
         }
         //---------------------------end of event listeners---------------------------
 
@@ -226,7 +210,6 @@ namespace Text_Editor
             Console.WriteLine("Right: {0} Bottom: {1} Width: {2} Height: {3}", contextMenuObj.Right, contextMenuObj.Bottom, screenDimension.Width, screenDimension.Height);
             //(int rightBoundary, int bottomBoundary, int screenWidth, int screenHeight)
         }*/
-        
 
         //----combine key and mouse events----
         [DllImport("user32.dll")]
@@ -234,10 +217,8 @@ namespace Text_Editor
         [DllImport("user32.dll")]
         static extern ushort GetAsyncKeyState(int vKey);
 
-        //public static bool IsKeyPushedDown(System.Windows.Forms.Keys vKey)
-        public bool IsKeyDown(int vKey)//System.Windows.Forms.Keys vKey)
+        public bool IsKeyDown(int vKey)
         {
-            //return 0 != (GetAsyncKeyState((int)vKey) & 0x8000);
             if((GetKeyState((int)vKey) & 0x8000) != 0) // "!=0"; if is down
             {
                 //if control key is down
@@ -255,9 +236,8 @@ namespace Text_Editor
             }
         }
 
-        public bool IsKeyUp(int vKey)//System.Windows.Forms.Keys vKey)
+        public bool IsKeyUp(int vKey)
         {
-            //if ((GetAsyncKeyState((int)vKey) & 0x8000) == 0) // "==0"; if is up
             if ((GetKeyState((int)vKey) & 0x8000) == 0) // "==0"; if is up
             {
                 if (vKey == (int)MouseButtons.Right)
@@ -294,7 +274,7 @@ namespace Text_Editor
             }
         }
 
-        //taken from stackoverflow
+        //prevent context menu opening beyond screen area
         private Point SetPopupLocation(ContextMenu theContextMenu, Point initPosition)
         {
             var p = new Point();
@@ -306,47 +286,8 @@ namespace Text_Editor
             return p;
         }
 
-        //prevent context menu opening beyond screen area
-        //private int isBeyondScreen(ContextMenu theContextMenu)
-        //private int isBeyondScreen(Rectangle screenDimension, ContextMenu theContextMenu)
-        private int isBeyondScreen(int xCoor, int yCoor, int contextMenuWidth, int contextMenuHeight)
-        {
-            /*int rightBoundary = theContextMenu.Right;
-            int bottomBoundary = theContextMenu.Bottom;*/
-
-            //get user screen info
-            int screenWidth = screenDimension.Width;
-            int screenHeight = screenDimension.Height;
-
-            //check if more to the right
-            if ((xCoor + contextMenuWidth) >= screenWidth)
-            {
-                Console.WriteLine("Exceed screen width!");
-                return 1;
-            }
-            //check if more to the bottom
-            else if ((yCoor + contextMenuHeight) >= screenHeight)
-            {
-                Console.WriteLine("Exceed screen height!");
-                return 2;
-            }
-            //check if more to the right and bottom
-            else if (((xCoor + contextMenuWidth) >= screenWidth) && ((yCoor + contextMenuHeight) >= screenHeight))
-            {
-                Console.WriteLine("Exceed screen width & height!");
-                return 3;
-            }
-            else //to solve "all code paths must return a value"
-            {
-                Console.WriteLine("No screen exceeded!");
-                return -1; //"exit successfully"
-            }
-        }
-
-        //private Point processContextMenuFormLocation(ContextMenu theContextMenu, int screenExceedFlag, int xCoor, int yCoor)
         private Point processContextMenuFormLocation(ContextMenu theContextMenu, int screenExceedFlag, Point mouseCoor)
         {
-            //int exceedScreenFlag = isBeyondScreen(theContextMenu);
             //local form coordinate
             int formXCoor;
             int formYCoor;
@@ -362,17 +303,14 @@ namespace Text_Editor
                 case 2: //if exceed bottom boundary
                     formXCoor = (mouseCoor.X); //no need changes
                     formYCoor = (mouseCoor.Y) - (contextMenuObj.Height); //move context menu to the top
-                    //after exceedFlag, set where context menu position is
                     theContextMenu.Location = new Point(formXCoor, formYCoor);
                     break;
                 case 3: //if exceed right & bottom boundary
                     formXCoor = (mouseCoor.X) - (contextMenuObj.Width); //move context menu to the left
                     formYCoor = (mouseCoor.Y) - (contextMenuObj.Height); //move context menu to the top
-                    //after exceedFlag, set where context menu position is
                     theContextMenu.Location = new Point(formXCoor, formYCoor);
                     break;
                 case -1: //if exceeded nothing
-                    //theContextMenu.Location = new Point(formXCoor, formYCoor);
                     theContextMenu.Location = new Point(mouseCoor.X, mouseCoor.Y);
                     break;
             }
@@ -380,20 +318,10 @@ namespace Text_Editor
             return theContextMenu.Location;
         }
 
-        //private Point processContextMenuCursorLocation(ContextMenu theContextMenu, int xCoor, int yCoor)
         private Point processContextMenuCursorLocation(ContextMenu theContextMenu, Point formLocation)
         {
-            //this.Cursor = new Cursor(Cursor.Current.Handle);
-            //get coordinate at middle of custom context menu
-            //int midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
-            //int midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
             int midXCoor;
             int midYCoor;
-
-            //set mouse location to middle of context menu
-            //Cursor.Position = theContextMenu.PointToScreen(new Point(midXCoor, midYCoor));
-            //Cursor.Position = theContextMenu.PointToClient(new Point(theContextMenu.Width/2, theContextMenu.Height/2));
-            //Cursor.Position = getMidPoint;
 
             //set here because depends on new coordinate of context menu, if exceed screen
             midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
@@ -402,11 +330,9 @@ namespace Text_Editor
             //Cursor.Position = new Point(Cursor.Position.X + midXCoor, Cursor.Position.Y + midYCoor);
             Cursor.Position = new Point(formLocation.X + midXCoor, formLocation.Y + midYCoor);
 
-            //theContextMenu.Location = Cursor.Position;
             return Cursor.Position;
         }
 
-        //private bool displayCustomContextMenu(ContextMenu theContextMenu, bool ctrlFlag, bool rmbFlag, int xCoor, int yCoor)
         private void displayCustomContextMenu(ContextMenu theContextMenu, Point formLocation, Point cursorLocation)
         {
             //form location
@@ -423,39 +349,12 @@ namespace Text_Editor
             Console.WriteLine("Screen width: {0}, Screen height: {1}", screenDimension.Width, screenDimension.Height);
             Console.WriteLine("CM width: {0}, CM height: {1}", contextMenuObj.Width, contextMenuObj.Height);
             Console.WriteLine("Width flag: {0}, Height Flag: {1}\n", (contextMenuObj.Width+Cursor.Position.X), (contextMenuObj.Height + Cursor.Position.Y));
-
-            /*if(ctrlRmbFlag == true) //if ctrl is down AND rmb is up
-            {
-                //form location
-                theContextMenu.Location = formLocation;
-
-                //cursor location
-                Cursor.Position = cursorLocation;
-
-                //message: display context menu
-                Console.WriteLine("Context menu opens via COMBINATION!");
-                theContextMenu.Visible = true;
-
-                return true; //indicates that the custom context menu is opened
-            }
-            else
-            {
-                //Console.WriteLine("RMB button is FALSE!");
-                return false;
-            }*/
-
-            //finally, revert to default value
-            //!!IF NOT WORKING, TRY AT "CONTEXTMENU IS DEACTIVATED"
-            //this.ctrlIsDown = false;
-            //this.rmbIsUp = false;
         }
-
         //-------------------end of methods-------------------
 
         private void frmEditor_Load(object sender, EventArgs e)
         {
             //----for screen size uses----
-            //theScreen = Screen.FromControl(contextMenuObj);
             theScreen = Screen.FromControl(this);
             //get screen size
             screenDimension = theScreen.WorkingArea;
@@ -1217,12 +1116,8 @@ namespace Text_Editor
             //set default CM closed so that won't open concurrently
             richContextStrip.Visible = false;
 
-            //bool customContextMenuIsOpen = false; //by default
-
             if (e.Button == MouseButtons.Right)
             {
-                //getBoundaryInfo(); //testing
-
                 //IsMouseButtonDown(MouseButtons.Right);
                 IsKeyUp((int)MouseButtons.Right); //set rmbIsUp = true 
 
@@ -1232,35 +1127,13 @@ namespace Text_Editor
 
                 if (canDisplay)
                 {
-                    //testing get mouse coordinate
-                    //IntPtr xCoor = contextMenuObj.Cursor.Handle;// Cursor.Position.X;
-                    //int testing = xCoor.ToInt32();
-                    //Console.WriteLine("xCoor testing: {0}", testing);
-
-                    //used by form location and cursor location processors
-                    //get mouse coordinate
-                    //int xCoor = Cursor.Position.X;
-
-                    //int yCoor = Cursor.Position.Y;
-                    //Console.WriteLine("xCoor: {0}, yCoor: {1}", xCoor, yCoor);
-
-                    //-----PLAN IS TO MAKE CTRLISDOWN, RMBISUP, XCOOR AND YCOOR MANAGED BEFORE DISPLAY OF CONTEXT MENU-----
-                    //Point formLocation = processContextMenuFormLocation(contextMenuObj, exceedScreenFlag, xCoor, yCoor);
-                    //processContextMenuFormLocation(contextMenuObj, xCoor, yCoor);
-
                     //to process whether custom context menu was opened beyond screen area or not
                     formLocation = SetPopupLocation(contextMenuObj, (sender as Control).PointToScreen(e.Location));
-                    //-------HERE----------
-                    //exceedScreenFlag = isBeyondScreen(Cursor.Position.X, Cursor.Position.Y, contextMenuObj.Width, contextMenuObj.Height);
 
+                    //obtain center mouse coordinate to context menu
                     Point theMouseCoor = new Point(Cursor.Position.X, Cursor.Position.Y);
 
-                    //-------HERE----------
-                    //Point formLocation = processContextMenuFormLocation(contextMenuObj, exceedScreenFlag, theMouseCoor);
-
-                    //Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, xCoor, yCoor);
                     Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, formLocation);
-                    //processContextMenuCursorLocation(contextMenuObj, xCoor, yCoor);
 
                     displayCustomContextMenu(contextMenuObj, formLocation, cursorLocation);
                     toolStripStatusLabel1.Text = "Custom context menu opened!";
@@ -1275,27 +1148,14 @@ namespace Text_Editor
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            ////used by form location and cursor location processors
-            ////get mouse coordinate
-            //xCoor = Cursor.Position.X;
-            //yCoor = Cursor.Position.Y;
-
             //this is here to detect whether CTRL is pressed
             if (e.KeyCode == Keys.ControlKey)
             {
                 IsKeyDown((int)Keys.ControlKey); //to set ctrlIsDown to true
 
-                ////to process whether custom context menu was opened beyond screen area or not
-                //exceedScreenFlag = isBeyondScreen(contextMenuObj.Right, contextMenuObj.Bottom, screenDimension.Width, screenDimension.Height);
-
-                /*Point theMouseCoor = new Point(Cursor.Position.X, Cursor.Position.Y);
-                contextMenuObj.Location = processContextMenuFormLocation(contextMenuObj, exceedScreenFlag, theMouseCoor);*/
-
                 //ctrlIsDown = true;
                 toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
             }
-
-            //IsKeyDown((int)Keys.ControlKey); //to set ctrlIsDown to true
         }
 
         private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
@@ -1319,15 +1179,6 @@ namespace Text_Editor
             toolStripStatusLabel1.Text = "...";
         }
 
-        private void TextEditor_MouseEnter(object sender, EventArgs e)
-        {
-            //used by form location and cursor location processors
-            //get mouse coordinate
-            //xCoor = Cursor.Position.X;
-            //yCoor = Cursor.Position.Y;
-            //Console.WriteLine("xCoor: {0}, yCoor: {1}", xCoor, yCoor);
-        }
-
         private void TextEditor_Activated(object sender, EventArgs e)
         {
             if(contextMenuObj.Visible == true)
@@ -1341,16 +1192,12 @@ namespace Text_Editor
         {
             if(richContextStrip.Visible == true) //if default context menu is opened
             {
-                //MessageBox.Show(this, "You're trippin' bruh!", "Hmm");
-                //Console.WriteLine("You're trippin' bruh!");
-
                 if (IsKeyDown((int)Keys.ControlKey)) //if ctrl key is pressed
                 {
                     ctrlIsDown = true;
 
                     if (IsKeyDown((int)Keys.ControlKey)) //if rmb was pressed
                     {
-                        //toolStripStatusLabel1.Text = "Custom context menu opened!";
                         rmbIsUp = true;
                     }
                     else //if ctrl was pressed but rmb was not
