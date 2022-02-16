@@ -277,6 +277,10 @@ namespace Text_Editor
         //prevent context menu opening beyond screen area
         private Point SetPopupLocation(ContextMenu theContextMenu, Point initPosition)
         {
+            //testing displaying at different displays
+            //Rectangle screenSize = Screen.GetBounds(contextMenuObj);
+            //Screen screen = Screen.FromHandle(contextMenuObj.Handle);
+
             var p = new Point();
             var wrkArea = Screen.FromControl(theContextMenu).WorkingArea;
             p.X = wrkArea.Width - (initPosition.X + theContextMenu.Width);
@@ -336,7 +340,17 @@ namespace Text_Editor
         private void displayCustomContextMenu(ContextMenu theContextMenu, Point formLocation, Point cursorLocation)
         {
             //form location
+            /*if (Screen.AllScreens.Length > 1) //if multiple screens exists
+            {
+                theContextMenu.Location = Screen.AllScreens[1].WorkingArea.Location;
+            }
+            else //set at main and only display
+            {
+                theContextMenu.Location = formLocation;
+            }*/
+
             theContextMenu.Location = formLocation;
+
 
             //cursor location
             Cursor.Position = cursorLocation;
@@ -1127,16 +1141,21 @@ namespace Text_Editor
 
                 if (canDisplay)
                 {
-                    //to process whether custom context menu was opened beyond screen area or not
-                    formLocation = SetPopupLocation(contextMenuObj, (sender as Control).PointToScreen(e.Location));
-
                     //obtain center mouse coordinate to context menu
                     Point theMouseCoor = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+                    //to process whether custom context menu was opened beyond screen area or not
+                    //formLocation = SetPopupLocation(contextMenuObj, (sender as Control).PointToScreen(e.Location));
+                    formLocation = SetPopupLocation(contextMenuObj, theMouseCoor);
 
                     Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, formLocation);
 
                     displayCustomContextMenu(contextMenuObj, formLocation, cursorLocation);
                     toolStripStatusLabel1.Text = "Custom context menu opened!";
+
+                    //testing displaying at different displays
+                    //Rectangle screenSize = Screen.GetBounds(contextMenuObj);
+                    //Screen screen = Screen.FromHandle(contextMenuObj.Handle);
                 }
                 else //if ctrl key is not pressed
                 {

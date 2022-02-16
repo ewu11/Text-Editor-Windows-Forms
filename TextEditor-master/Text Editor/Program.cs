@@ -14,13 +14,15 @@ namespace Text_Editor
         [STAThread]
         static void Main()
         {
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false); //here because of error report
-
             //main program object
             TextEditor mainProgramObj = new TextEditor();
-
-            Application.EnableVisualStyles();
             Application.Run(mainProgramObj);
+
+            /*Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form2());*/
         }
     }
 }
