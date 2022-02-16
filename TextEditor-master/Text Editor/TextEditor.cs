@@ -275,14 +275,14 @@ namespace Text_Editor
         }
 
         //prevent context menu opening beyond screen area
-        private Point SetPopupLocation(ContextMenu theContextMenu, Point initPosition)
+        private Point SetPopupLocation(Screen theScreen, ContextMenu theContextMenu, Point initPosition)
         {
             //testing displaying at different displays
             //Rectangle screenSize = Screen.GetBounds(contextMenuObj);
             //Screen screen = Screen.FromHandle(contextMenuObj.Handle);
 
             var p = new Point();
-            var wrkArea = Screen.FromControl(theContextMenu).WorkingArea;
+            var wrkArea = theScreen.WorkingArea;
             p.X = wrkArea.Width - (initPosition.X + theContextMenu.Width);
             p.Y = wrkArea.Height - (initPosition.Y + theContextMenu.Height);
             p.X = p.X < 0 ? wrkArea.Width - theContextMenu.Width : initPosition.X;
@@ -1146,7 +1146,7 @@ namespace Text_Editor
 
                     //to process whether custom context menu was opened beyond screen area or not
                     //formLocation = SetPopupLocation(contextMenuObj, (sender as Control).PointToScreen(e.Location));
-                    formLocation = SetPopupLocation(contextMenuObj, theMouseCoor);
+                    formLocation = SetPopupLocation(Screen.FromControl(this), contextMenuObj, theMouseCoor);
 
                     Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, formLocation);
 
