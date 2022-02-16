@@ -810,6 +810,7 @@
             this.Text = "Rich Text Editor";
             this.Activated += new System.EventHandler(this.TextEditor_Activated);
             this.Load += new System.EventHandler(this.frmEditor_Load);
+            //this.LocationChanged += new System.EventHandler(this.TextEditor_LocationChanged);
             this.richContextStrip.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

@@ -79,6 +79,7 @@
             this.copyBtn.Size = new System.Drawing.Size(121, 40);
             this.copyBtn.TabIndex = 1;
             this.copyBtn.Text = "Copy";
+            this.copyBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.copyBtn.UseVisualStyleBackColor = false;
             // 
             // deleteBtn
@@ -99,6 +100,7 @@
             this.deleteBtn.Size = new System.Drawing.Size(121, 40);
             this.deleteBtn.TabIndex = 3;
             this.deleteBtn.Text = "Delete";
+            this.deleteBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.deleteBtn.UseVisualStyleBackColor = false;
             // 
             // selectAllBtn
@@ -140,6 +142,7 @@
             this.clearAllBtn.Size = new System.Drawing.Size(121, 41);
             this.clearAllBtn.TabIndex = 5;
             this.clearAllBtn.Text = "Clear All";
+            this.clearAllBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.clearAllBtn.UseVisualStyleBackColor = false;
             // 
             // cutBtn

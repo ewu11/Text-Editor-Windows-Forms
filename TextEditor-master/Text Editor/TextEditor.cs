@@ -1212,5 +1212,23 @@ namespace Text_Editor
                 toolStripStatusLabel1.Text = "...";
             }
         }
+
+        /*private void TextEditor_LocationChanged(object sender, EventArgs e)
+        {
+            //change the screen focused
+            //----for screen size uses----
+            theScreen = Screen.FromControl(this);
+            //get screen size
+            screenDimension = theScreen.WorkingArea;
+        }*/
+
+        /*private void TextEditor_Move(object sender, EventArgs e)
+        {
+            //change the screen focused
+            //----for screen size uses----
+            theScreen = Screen.FromControl(this);
+            //get screen size
+            screenDimension = theScreen.WorkingArea;
+        }*/
     }
 }
