@@ -1232,6 +1232,14 @@ namespace Text_Editor
             }
         }
 
+        private void openMultipleItemsTwoColumnsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExtraItems extraItemObj = new ExtraItems
+            {
+                Visible = true
+            };
+        }
+
         /*private void TextEditor_LocationChanged(object sender, EventArgs e)
         {
             //change the screen focused

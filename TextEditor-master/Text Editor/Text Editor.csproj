@@ -86,6 +86,12 @@
     <Compile Include="ContextMenu.Designer.cs">
       <DependentUpon>ContextMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExtraItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtraItems.Designer.cs">
+      <DependentUpon>ExtraItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="TextEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ContextMenu.resx">
       <DependentUpon>ContextMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExtraItems.resx">
+      <DependentUpon>ExtraItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TextEditor.resx">
       <DependentUpon>TextEditor.cs</DependentUpon>
