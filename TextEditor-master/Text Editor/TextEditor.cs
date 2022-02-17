@@ -339,6 +339,7 @@ namespace Text_Editor
 
         private void displayCustomContextMenu(ContextMenu theContextMenu, Point formLocation, Point cursorLocation)
         {
+            //first try
             //form location
             /*if (Screen.AllScreens.Length > 1) //if multiple screens exists
             {
@@ -349,8 +350,25 @@ namespace Text_Editor
                 theContextMenu.Location = formLocation;
             }*/
 
-            theContextMenu.Location = formLocation;
+            //second try
+            //get all the screens
+            //Screen[] availableScreens = Screen.AllScreens;
 
+            ////if user only use 1 screen
+            //if(availableScreens.Length == 1)
+            //{
+            //    //set the normal form location
+                
+            //    theContextMenu.StartPosition = FormStartPosition.Manual;
+            //    theContextMenu.Location = availableScreens[0].WorkingArea.Location;
+            //}
+            //else if (availableScreens.Length == 2) //if user has second screen
+            //{
+            //    theContextMenu.StartPosition = FormStartPosition.Manual;
+            //    theContextMenu.Location = availableScreens[1].WorkingArea.Location;
+            //}
+
+            theContextMenu.Location = formLocation;
 
             //cursor location
             Cursor.Position = cursorLocation;
