@@ -403,10 +403,10 @@ namespace Text_Editor
             Console.WriteLine("Context menu opens via COMBINATION!");
             theContextMenu.Visible = true;
 
-            Console.WriteLine("\nxCoor: {0}, yCoor: {1}", Cursor.Position.X, Cursor.Position.Y);
+            /*Console.WriteLine("\nxCoor: {0}, yCoor: {1}", Cursor.Position.X, Cursor.Position.Y);
             Console.WriteLine("Screen width: {0}, Screen height: {1}", screenDimension.Width, screenDimension.Height);
             Console.WriteLine("CM width: {0}, CM height: {1}", contextMenuObj.Width, contextMenuObj.Height);
-            Console.WriteLine("Width flag: {0}, Height Flag: {1}\n", (contextMenuObj.Width+Cursor.Position.X), (contextMenuObj.Height + Cursor.Position.Y));
+            Console.WriteLine("Width flag: {0}, Height Flag: {1}\n", (contextMenuObj.Width+Cursor.Position.X), (contextMenuObj.Height + Cursor.Position.Y));*/
         }
         //-------------------end of methods-------------------
 
@@ -1185,13 +1185,13 @@ namespace Text_Editor
                 if (canDisplay)
                 {
                     //obtain center mouse coordinate to context menu
-                    Point theMouseCoor = new Point(Cursor.Position.X, Cursor.Position.Y);
+                    //Point theMouseCoor = new Point(Cursor.Position.X, Cursor.Position.Y);
 
                     //to process whether custom context menu was opened beyond screen area or not
                     //formLocation = SetPopupLocation(contextMenuObj, (sender as Control).PointToScreen(e.Location));
 
                     //formLocation = SetPopupLocation(Screen.FromControl(this), contextMenuObj, theMouseCoor);
-                    formLocation = SetPopupLocation(Screen.FromControl(this), contextMenuObj, theMouseCoor);
+                    formLocation = SetPopupLocation(Screen.FromControl(this), contextMenuObj, (sender as Control).PointToScreen(e.Location));
 
                     Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, formLocation);
 
