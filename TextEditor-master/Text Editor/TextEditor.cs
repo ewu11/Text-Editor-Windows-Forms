@@ -42,12 +42,12 @@ namespace Text_Editor
             //for context menu
             contextMenuObj = new ContextMenu();
 
-            //----for screen size uses----
-            theScreen = Screen.FromControl(this);
-            //get screen size
-            screenDimension = theScreen.WorkingArea;
-            //get info of context menu dimension
-            //----until here screen size uses----
+            ////----for screen size uses----
+            //theScreen = Screen.FromControl(this);
+            ////get screen size
+            //screenDimension = theScreen.WorkingArea;
+            ////get info of context menu dimension
+            ////----until here screen size uses----
 
             //event listeners for buttons in context menu
             contextMenuObj.cutBtn.Click += new System.EventHandler(this.cutBtn_Click);
@@ -277,12 +277,38 @@ namespace Text_Editor
         //prevent context menu opening beyond screen area
         private Point SetPopupLocation(Screen theScreen, ContextMenu theContextMenu, Point initPosition)
         {
-            //testing displaying at different displays
-            //Rectangle screenSize = Screen.GetBounds(contextMenuObj);
-            //Screen screen = Screen.FromHandle(contextMenuObj.Handle);
+            //get all available screens
+            Screen[] allScreens = Screen.AllScreens;
+            Screen theUsedScreen = allScreens[0]; //main display as default
+
+            //if multiple screens exists
+            if(allScreens.Length > 1)
+            {
+                //get the certain screen info
+                if(theScreen.DeviceName == "\\\\.\\DISPLAY1")
+                {
+                    theUsedScreen = allScreens[0]; //use the one and only display
+                }
+                else if (theScreen.DeviceName == "\\\\.\\DISPLAY2")
+                {
+                    theUsedScreen = allScreens[1]; //use the second display
+                }
+                else if (theScreen.DeviceName == "\\\\.\\DISPLAY3")
+                {
+                    theUsedScreen = allScreens[2]; //use the third display
+                }
+            }
+            //if only one display exist
+            else
+            {
+                //use info of the only display used
+                theUsedScreen = allScreens[0]; //use the one and only display
+
+            }
 
             var p = new Point();
-            var wrkArea = theScreen.WorkingArea;
+            var wrkArea = theUsedScreen.WorkingArea; //get the screen being used
+
             p.X = wrkArea.Width - (initPosition.X + theContextMenu.Width);
             p.Y = wrkArea.Height - (initPosition.Y + theContextMenu.Height);
             p.X = p.X < 0 ? wrkArea.Width - theContextMenu.Width : initPosition.X;
@@ -390,7 +416,6 @@ namespace Text_Editor
             theScreen = Screen.FromControl(this);
             //get screen size
             screenDimension = theScreen.WorkingArea;
-
 
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
@@ -1164,6 +1189,8 @@ namespace Text_Editor
 
                     //to process whether custom context menu was opened beyond screen area or not
                     //formLocation = SetPopupLocation(contextMenuObj, (sender as Control).PointToScreen(e.Location));
+
+                    //formLocation = SetPopupLocation(Screen.FromControl(this), contextMenuObj, theMouseCoor);
                     formLocation = SetPopupLocation(Screen.FromControl(this), contextMenuObj, theMouseCoor);
 
                     Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, formLocation);

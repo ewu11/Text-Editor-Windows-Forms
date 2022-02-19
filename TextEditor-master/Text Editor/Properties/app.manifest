@@ -48,19 +48,19 @@
        
        Makes the application long-path aware. See https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation -->
 
-	<application xmlns="urn:schemas-microsoft-com:asm.v3">
+	<!--<application xmlns="urn:schemas-microsoft-com:asm.v3">
     <windowsSettings>
-		<!--<dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>
-	    <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2</dpiAwareness>-->
+		--><!--<dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>
+	    <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2</dpiAwareness>--><!--
 
-		<!-- legacy -->
+		--><!-- legacy --><!--
 		<dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true/pm</dpiAware>
-		<!-- falls back to pm if pmv2 is not available -->
+		--><!-- falls back to pm if pmv2 is not available --><!--
 		<dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">permonitorv2,permonitor</dpiAwareness>
 
 		<longPathAware xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">true</longPathAware>
     </windowsSettings>
-  </application>
+  </application>-->
   
   <!-- Enable themes for Windows common controls and dialogs (Windows XP and later) -->
   <!--
