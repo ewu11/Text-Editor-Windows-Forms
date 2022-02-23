@@ -193,13 +193,7 @@ namespace Text_Editor
 
         private void ContextMenu_Deactivate(object sender, EventArgs e)
         {
-            if(contextMenuObj.Visible == true)
-            {
-                //close the context menu
-                contextMenuObj.Visible = false;
-            }
 
-            toolStripStatusLabel1.Text = "...";
         }
         //---------------------------end of event listeners---------------------------
 
@@ -275,7 +269,7 @@ namespace Text_Editor
         }
 
         //prevent context menu opening beyond screen area
-        private Point SetPopupLocation(Screen theScreen, ContextMenu theContextMenu, Point initPosition)
+        private Point SetPopupLocation(Screen theScreen, Form theContextMenu, Point initPosition)
         {
             //get all available screens
             Screen[] allScreens = Screen.AllScreens;
@@ -306,8 +300,8 @@ namespace Text_Editor
 
             }
 
-            var p = new Point();
-            var wrkArea = theUsedScreen.WorkingArea; //get the screen being used
+            Point p = new Point();
+            Rectangle wrkArea = theUsedScreen.WorkingArea; //get the screen being used
 
             p.X = wrkArea.Width - (initPosition.X + theContextMenu.Width);
             p.Y = wrkArea.Height - (initPosition.Y + theContextMenu.Height);
@@ -1191,7 +1185,9 @@ namespace Text_Editor
                     //formLocation = SetPopupLocation(contextMenuObj, (sender as Control).PointToScreen(e.Location));
 
                     //formLocation = SetPopupLocation(Screen.FromControl(this), contextMenuObj, theMouseCoor);
+
                     formLocation = SetPopupLocation(Screen.FromControl(this), contextMenuObj, (sender as Control).PointToScreen(e.Location));
+                    //formLocation = (sender as Control).PointToScreen(e.Location);
 
                     Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, formLocation);
 
@@ -1201,6 +1197,11 @@ namespace Text_Editor
                     //testing displaying at different displays
                     //Rectangle screenSize = Screen.GetBounds(contextMenuObj);
                     //Screen screen = Screen.FromHandle(contextMenuObj.Handle);
+
+                    //extra
+                    /*var f = new Form() { Width = 400, Height = 400, StartPosition = FormStartPosition.Manual };
+                    f.Location = SetPopupLocation(Screen.FromControl(this), f, (sender as Control).PointToScreen(e.Location));
+                    f.Show();*/
                 }
                 else //if ctrl key is not pressed
                 {
