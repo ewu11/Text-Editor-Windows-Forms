@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,14 +15,8 @@ namespace Text_Editor
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false); //here because of error report
-            //main program object
-            TextEditor mainProgramObj = new TextEditor();
-            Application.Run(mainProgramObj);
-
-            /*Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2());*/
+            Application.Run(new frmEditor());
         }
     }
 }
