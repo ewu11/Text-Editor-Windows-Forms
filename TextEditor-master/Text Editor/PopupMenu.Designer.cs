@@ -52,7 +52,7 @@ namespace Text_Editor
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 29);
+            this.button1.Size = new System.Drawing.Size(146, 27);
             this.button1.TabIndex = 1;
             this.button1.Text = "Ctrl+X               Cut";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -69,10 +69,10 @@ namespace Text_Editor
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(166, 0);
+            this.button2.Location = new System.Drawing.Point(153, 0);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(161, 29);
+            this.button2.Size = new System.Drawing.Size(139, 27);
             this.button2.TabIndex = 2;
             this.button2.Text = "Copy         Ctrl+C";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -89,10 +89,10 @@ namespace Text_Editor
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(0, 29);
+            this.button3.Location = new System.Drawing.Point(0, 27);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(163, 29);
+            this.button3.Size = new System.Drawing.Size(146, 27);
             this.button3.TabIndex = 3;
             this.button3.Text = "Ctrl+V            Paste";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -109,10 +109,10 @@ namespace Text_Editor
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(166, 29);
+            this.button4.Location = new System.Drawing.Point(153, 27);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(161, 29);
+            this.button4.Size = new System.Drawing.Size(139, 27);
             this.button4.TabIndex = 4;
             this.button4.Text = "Delete       Del";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -129,10 +129,10 @@ namespace Text_Editor
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(0, 58);
+            this.button5.Location = new System.Drawing.Point(0, 54);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(163, 30);
+            this.button5.Size = new System.Drawing.Size(146, 27);
             this.button5.TabIndex = 5;
             this.button5.Text = "Ctrl+A      Select All";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -149,10 +149,10 @@ namespace Text_Editor
             this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(166, 58);
+            this.button6.Location = new System.Drawing.Point(153, 54);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(161, 30);
+            this.button6.Size = new System.Drawing.Size(139, 27);
             this.button6.TabIndex = 6;
             this.button6.Text = "Clear All";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -179,7 +179,7 @@ namespace Text_Editor
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(327, 88);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(292, 81);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // PopupMenu
@@ -188,7 +188,7 @@ namespace Text_Editor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(327, 88);
+            this.ClientSize = new System.Drawing.Size(292, 81);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
