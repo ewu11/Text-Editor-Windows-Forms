@@ -19,29 +19,397 @@ using System.Runtime.InteropServices;
 
 namespace Text_Editor
 {
-    public partial class frmEditor : Form
+    public partial class TextEditor : Form
     {
         List<string> colorList = new List<string>();    // holds the System.Drawing.Color names
         string filenamee;    // file opened inside of RTB
         const int MIDDLE = 382;    // middle sum of RGB - max is 765
         int sumRGB;    // sum of the selected colors RGB
-        int pos, line, column;    // for detecting line and column numbers
 
-        //----for popup menu uses----
-        PopupMenu popMenuObj;
+        Screen theScreen; //to store screen info
+        Rectangle screenDimension; //store screen dimension
+
+        //context menu variable
+        ContextMenu contextMenuObj;
         bool ctrlIsDown = false; //by default
         bool rmbIsUp = false; //by default;
-        //----for popup menu uses----
 
-        public frmEditor()
+        public TextEditor()
         {
+            //for main program
             InitializeComponent();
+
+            //for context menu
+            contextMenuObj = new ContextMenu();
+
+            ////----for screen size uses----
+            //theScreen = Screen.FromControl(this);
+            ////get screen size
+            //screenDimension = theScreen.WorkingArea;
+            ////get info of context menu dimension
+            ////----until here screen size uses----
+
+            //event listeners for buttons in context menu
+            contextMenuObj.cutBtn.Click += new System.EventHandler(this.cutBtn_Click);
+            contextMenuObj.pasteBtn.Click += new System.EventHandler(this.pasteBtn_Click);
+            contextMenuObj.selectAllBtn.Click += new System.EventHandler(this.selectAllBtn_Click);
+            contextMenuObj.copyBtn.Click += new System.EventHandler(this.copyBtn_Click);
+            contextMenuObj.deleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            contextMenuObj.clearAllBtn.Click += new System.EventHandler(this.clearAllBtn_Click);
+            contextMenuObj.Deactivate += new System.EventHandler(this.ContextMenu_Deactivate);
+            contextMenuObj.Activated += new System.EventHandler(this.ContextMenu_Activated);
+
+            //to change mouse color on hover
+            contextMenuObj.cutBtn.MouseLeave += new System.EventHandler(this.cutBtn_MouseLeave); //cut
+            contextMenuObj.cutBtn.MouseEnter += new System.EventHandler(this.cutBtn_MouseEnter);
+            contextMenuObj.copyBtn.MouseLeave += new System.EventHandler(this.copyBtn_MouseLeave); //copy
+            contextMenuObj.copyBtn.MouseEnter += new System.EventHandler(this.copyBtn_MouseEnter);
+            contextMenuObj.pasteBtn.MouseLeave += new System.EventHandler(this.pasteBtn_MouseLeave); //paste
+            contextMenuObj.pasteBtn.MouseEnter += new System.EventHandler(this.pasteBtn_MouseEnter);
+            contextMenuObj.deleteBtn.MouseLeave += new System.EventHandler(this.deleteBtn_MouseLeave); //delete
+            contextMenuObj.deleteBtn.MouseEnter += new System.EventHandler(this.deleteBtn_MouseEnter);
+            contextMenuObj.selectAllBtn.MouseLeave += new System.EventHandler(this.selectAllBtn_MouseLeave); //select all
+            contextMenuObj.selectAllBtn.MouseEnter += new System.EventHandler(this.selectAllBtn_MouseEnter);
+            contextMenuObj.clearAllBtn.MouseLeave += new System.EventHandler(this.clearAllBtn_MouseLeave); //clear all
+            contextMenuObj.clearAllBtn.MouseEnter += new System.EventHandler(this.clearAllBtn_MouseEnter);
         }
+
+        //event handlers for buttons in context menu
+        //-------------------------context menu event listeners---------------------------
+        //----mouse hover: change font color----
+        private void cutBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.cutBtn.ForeColor = Color.White;
+        }
+        private void cutBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.cutBtn.ForeColor = Color.Black;
+        }
+
+        private void copyBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.copyBtn.ForeColor = Color.White;
+        }
+
+        private void copyBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.copyBtn.ForeColor = Color.Black;
+        }
+
+        private void pasteBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.pasteBtn.ForeColor = Color.White;
+        }
+
+        private void pasteBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.pasteBtn.ForeColor = Color.Black;
+        }
+
+        private void deleteBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.deleteBtn.ForeColor = Color.White;
+        }
+
+        private void deleteBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.deleteBtn.ForeColor = Color.Black;
+        }
+
+        private void selectAllBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.selectAllBtn.ForeColor = Color.White;
+        }
+
+        private void selectAllBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.selectAllBtn.ForeColor = Color.Black;
+        }
+
+        private void clearAllBtn_MouseEnter(object sender, EventArgs e)
+        {
+            contextMenuObj.clearAllBtn.ForeColor = Color.White;
+        }
+
+        private void clearAllBtn_MouseLeave(object sender, EventArgs e)
+        {
+            contextMenuObj.clearAllBtn.ForeColor = Color.Black;
+        }
+        //----mouse hover: change font color until here----
+
+        private void cutBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Cut();
+            Console.WriteLine("Cut button pressed!");
+            contextMenuObj.Visible = false;
+        }
+
+        private void pasteBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Paste();
+            Console.WriteLine("Paste button pressed!");
+            contextMenuObj.Visible = false;
+        }
+
+        private void selectAllBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectAll();
+            Console.WriteLine("Select all button pressed!");
+            contextMenuObj.Visible = false;
+        }
+
+        private void copyBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Copy();
+            Console.WriteLine("Copy button pressed!");
+            contextMenuObj.Visible = false;
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.SelectedText = "";
+            richTextBox1.Focus();
+            Console.WriteLine("Delete button pressed!");
+            contextMenuObj.Visible = false;
+        }
+
+        private void clearAllBtn_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+            richTextBox1.Focus();
+            Console.WriteLine("Clear all button pressed!");
+            //contextMenuObj.Close();
+            contextMenuObj.Visible = false;
+        }
+        private void ContextMenu_Activated(object sender, EventArgs e)
+        {
+            //to maintain highlighted text
+            richTextBox1.HideSelection = false;
+
+            //reset default flag once custom context menu opens
+            ctrlIsDown = false;
+            rmbIsUp = false;
+        }
+
+        private void ContextMenu_Deactivate(object sender, EventArgs e)
+        {
+
+        }
+        //---------------------------end of event listeners---------------------------
+
+        //-------------------my methods-------------------
+        //get boundary info
+        /*public void getBoundaryInfo()
+        {
+            Console.WriteLine("Right: {0} Bottom: {1} Width: {2} Height: {3}", contextMenuObj.Right, contextMenuObj.Bottom, screenDimension.Width, screenDimension.Height);
+            //(int rightBoundary, int bottomBoundary, int screenWidth, int screenHeight)
+        }*/
+
+        //----combine key and mouse events----
+        [DllImport("user32.dll")]
+        static extern ushort GetKeyState(int vKey);
+        [DllImport("user32.dll")]
+        static extern ushort GetAsyncKeyState(int vKey);
+
+        public bool IsKeyDown(int vKey)
+        {
+            if((GetKeyState((int)vKey) & 0x8000) != 0) // "!=0"; if is down
+            {
+                //if control key is down
+                if(vKey == (int)Keys.ControlKey)
+                {
+                    ctrlIsDown = true;
+                    toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
+                }
+                return true;
+            }
+            else //if is not down
+            {
+                ctrlIsDown = false;
+                return false;
+            }
+        }
+
+        public bool IsKeyUp(int vKey)
+        {
+            if ((GetKeyState((int)vKey) & 0x8000) == 0) // "==0"; if is up
+            {
+                if (vKey == (int)MouseButtons.Right)
+                {
+                    rmbIsUp = true;
+                    Console.WriteLine("Mouse button is up!");
+                }
+                if (vKey == (int)Keys.ControlKey)
+                {
+                    ctrlIsDown = false;
+                    Console.WriteLine("Control key is up!");
+                }
+                return true;
+            }
+            else //if is not down
+            {
+                rmbIsUp = false;
+                return false;
+            }
+        }
+        //----keyboard and mouse combine until here----
+
+        private bool contextMenuDisplayFlag(bool ctrlFlag, bool rmbFlag)
+        {
+            if(ctrlFlag && rmbFlag) //if ctrl key is down & rmb is up
+            {
+                Console.WriteLine("CTRL: DOWN, RMB: UP!");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("CTRL: n/a, RMB: n/a!");
+                return false;
+            }
+        }
+
+        //prevent context menu opening beyond screen area
+        private Point SetPopupLocation(Screen theScreen, Form theContextMenu, Point initPosition)
+        {
+            //get all available screens
+            Screen[] allScreens = Screen.AllScreens;
+            Screen theUsedScreen = allScreens[0]; //main display as default
+
+            //if multiple screens exists
+            if(allScreens.Length > 1)
+            {
+                //get the certain screen info
+                if(theScreen.DeviceName == "\\\\.\\DISPLAY1")
+                {
+                    theUsedScreen = allScreens[0]; //use the one and only display
+                }
+                else if (theScreen.DeviceName == "\\\\.\\DISPLAY2")
+                {
+                    theUsedScreen = allScreens[1]; //use the second display
+                }
+                else if (theScreen.DeviceName == "\\\\.\\DISPLAY3")
+                {
+                    theUsedScreen = allScreens[2]; //use the third display
+                }
+            }
+            //if only one display exist
+            else
+            {
+                //use info of the only display used
+                theUsedScreen = allScreens[0]; //use the one and only display
+
+            }
+
+            Point p = new Point();
+            Rectangle wrkArea = theUsedScreen.WorkingArea; //get the screen being used
+
+            p.X = wrkArea.Width - (initPosition.X + theContextMenu.Width);
+            p.Y = wrkArea.Height - (initPosition.Y + theContextMenu.Height);
+            p.X = p.X < 0 ? wrkArea.Width - theContextMenu.Width : initPosition.X;
+            p.Y = p.Y < 0 ? wrkArea.Height - theContextMenu.Height : initPosition.Y;
+            return p;
+        }
+
+        private Point processContextMenuFormLocation(ContextMenu theContextMenu, int screenExceedFlag, Point mouseCoor)
+        {
+            //local form coordinate
+            int formXCoor;
+            int formYCoor;
+
+            switch (screenExceedFlag)
+            {
+                case 1: //if exceed right boundary
+                    formXCoor = (mouseCoor.X) - (contextMenuObj.Width); //move context menu to the left
+                    formYCoor = mouseCoor.Y; //no need changes
+                    //after exceedFlag, set where context menu position is
+                    theContextMenu.Location = new Point(formXCoor, formYCoor);
+                    break;
+                case 2: //if exceed bottom boundary
+                    formXCoor = (mouseCoor.X); //no need changes
+                    formYCoor = (mouseCoor.Y) - (contextMenuObj.Height); //move context menu to the top
+                    theContextMenu.Location = new Point(formXCoor, formYCoor);
+                    break;
+                case 3: //if exceed right & bottom boundary
+                    formXCoor = (mouseCoor.X) - (contextMenuObj.Width); //move context menu to the left
+                    formYCoor = (mouseCoor.Y) - (contextMenuObj.Height); //move context menu to the top
+                    theContextMenu.Location = new Point(formXCoor, formYCoor);
+                    break;
+                case -1: //if exceeded nothing
+                    theContextMenu.Location = new Point(mouseCoor.X, mouseCoor.Y);
+                    break;
+            }
+            //return the new location of context menu
+            return theContextMenu.Location;
+        }
+
+        private Point processContextMenuCursorLocation(ContextMenu theContextMenu, Point formLocation)
+        {
+            int midXCoor;
+            int midYCoor;
+
+            //set here because depends on new coordinate of context menu, if exceed screen
+            midXCoor = (theContextMenu.Width / 2); //middle coordinate of width
+            midYCoor = (theContextMenu.Height / 2); //middle coordinate of height
+
+            //Cursor.Position = new Point(Cursor.Position.X + midXCoor, Cursor.Position.Y + midYCoor);
+            Cursor.Position = new Point(formLocation.X + midXCoor, formLocation.Y + midYCoor);
+
+            return Cursor.Position;
+        }
+
+        private void displayCustomContextMenu(ContextMenu theContextMenu, Point formLocation, Point cursorLocation)
+        {
+            //first try
+            //form location
+            /*if (Screen.AllScreens.Length > 1) //if multiple screens exists
+            {
+                theContextMenu.Location = Screen.AllScreens[1].WorkingArea.Location;
+            }
+            else //set at main and only display
+            {
+                theContextMenu.Location = formLocation;
+            }*/
+
+            //second try
+            //get all the screens
+            //Screen[] availableScreens = Screen.AllScreens;
+
+            ////if user only use 1 screen
+            //if(availableScreens.Length == 1)
+            //{
+            //    //set the normal form location
+                
+            //    theContextMenu.StartPosition = FormStartPosition.Manual;
+            //    theContextMenu.Location = availableScreens[0].WorkingArea.Location;
+            //}
+            //else if (availableScreens.Length == 2) //if user has second screen
+            //{
+            //    theContextMenu.StartPosition = FormStartPosition.Manual;
+            //    theContextMenu.Location = availableScreens[1].WorkingArea.Location;
+            //}
+
+            theContextMenu.Location = formLocation;
+
+            //cursor location
+            Cursor.Position = cursorLocation;
+
+            //message: display context menu
+            Console.WriteLine("Context menu opens via COMBINATION!");
+            theContextMenu.Visible = true;
+
+            /*Console.WriteLine("\nxCoor: {0}, yCoor: {1}", Cursor.Position.X, Cursor.Position.Y);
+            Console.WriteLine("Screen width: {0}, Screen height: {1}", screenDimension.Width, screenDimension.Height);
+            Console.WriteLine("CM width: {0}, CM height: {1}", contextMenuObj.Width, contextMenuObj.Height);
+            Console.WriteLine("Width flag: {0}, Height Flag: {1}\n", (contextMenuObj.Width+Cursor.Position.X), (contextMenuObj.Height + Cursor.Position.Y));*/
+        }
+        //-------------------end of methods-------------------
 
         private void frmEditor_Load(object sender, EventArgs e)
         {
-            //for popup menu uses
-            popMenuObj = new PopupMenu(this);
+            //----for screen size uses----
+            theScreen = Screen.FromControl(this);
+            //get screen size
+            screenDimension = theScreen.WorkingArea;
 
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
@@ -64,7 +432,7 @@ namespace Text_Editor
             rightAlignStripButton.Checked = false;
             bulletListStripButton.Checked = false;
             wordWrapToolStripMenuItem.Image = null;
-            MinimizeBox = false;
+            MinimizeBox = true;
             MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
@@ -141,7 +509,7 @@ namespace Text_Editor
             int column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);
             lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
         }
-
+        
         //******************************************************************************************************************************
         // ConvertToRGB - Accepts a Color object as its parameter. Gets the RGB values of the object passed to it, calculates the sum. *
         //******************************************************************************************************************************
@@ -159,7 +527,6 @@ namespace Text_Editor
         }
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.SelectAll();     // select all text
             richTextBox1.SelectAll();     // select all text
         }
 
@@ -514,13 +881,12 @@ namespace Text_Editor
             richTextBox1.Cut();     // cut text
         }
 
-        private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void copyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
             richTextBox1.Copy();     // copy text
         }
 
-        private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
         {           
             richTextBox1.Paste();    // paste text
         }
@@ -798,20 +1164,46 @@ namespace Text_Editor
 
         private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            IsKeyUp((int)MouseButtons.Right); //causes rmbIsUp = true
+            //set default CM closed so that won't open concurrently
+            richContextStrip.Visible = false;
 
-            if(e.Button == MouseButtons.Right) //if rmb mouse clicked
+            if (e.Button == MouseButtons.Right)
             {
-                if(ctrlIsDown && rmbIsUp) //open the popup menu
-                {
-                    richContextStrip.Visible = false; //forces default context menu to close
+                //IsMouseButtonDown(MouseButtons.Right);
+                IsKeyUp((int)MouseButtons.Right); //set rmbIsUp = true 
 
-                    popMenuObj.Location = popMenuObj.SetPopupLocation(Screen.FromControl(this), popMenuObj, (sender as Control).PointToScreen(e.Location)); //location with logic
-                    Cursor.Position = popMenuObj.SetCursorLocation(popMenuObj.Location);
-                    popMenuObj.Visible = true;
+                //here because the rmb event handler is above this
+                bool canDisplay = contextMenuDisplayFlag(ctrlIsDown, rmbIsUp); //get ctrl and rmb flag status 
+                Point formLocation;
+
+                if (canDisplay)
+                {
+                    //obtain center mouse coordinate to context menu
+                    //Point theMouseCoor = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+                    //to process whether custom context menu was opened beyond screen area or not
+                    //formLocation = SetPopupLocation(contextMenuObj, (sender as Control).PointToScreen(e.Location));
+
+                    //formLocation = SetPopupLocation(Screen.FromControl(this), contextMenuObj, theMouseCoor);
+
+                    formLocation = SetPopupLocation(Screen.FromControl(this), contextMenuObj, (sender as Control).PointToScreen(e.Location));
+                    //formLocation = (sender as Control).PointToScreen(e.Location);
+
+                    Point cursorLocation = processContextMenuCursorLocation(contextMenuObj, formLocation);
+
+                    displayCustomContextMenu(contextMenuObj, formLocation, cursorLocation);
                     toolStripStatusLabel1.Text = "Custom context menu opened!";
+
+                    //testing displaying at different displays
+                    //Rectangle screenSize = Screen.GetBounds(contextMenuObj);
+                    //Screen screen = Screen.FromHandle(contextMenuObj.Handle);
+
+                    //extra
+                    /*var f = new Form() { Width = 400, Height = 400, StartPosition = FormStartPosition.Manual };
+                    f.Location = SetPopupLocation(Screen.FromControl(this), f, (sender as Control).PointToScreen(e.Location));
+                    f.Show();*/
                 }
-                else //open the default context menu
+                else //if ctrl key is not pressed
                 {
                     richContextStrip.Visible = true;
                     toolStripStatusLabel1.Text = "Default context menu opened!";
@@ -819,103 +1211,51 @@ namespace Text_Editor
             }
         }
 
-        //****************************************************************************************************************************************
-        // richTextBox1_KeyUp - Determines which key was released and gets the line and column numbers of the current cursor position in the RTB *
-        //**************************************************************************************************************************************** 
-        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
-        {
-            // determine key released
-            switch (e.KeyCode)
-            {
-                case Keys.Down:
-                    pos = richTextBox1.SelectionStart;    // get starting point
-                    line = richTextBox1.GetLineFromCharIndex(pos);    // get line number
-                    column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-                    lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-                    break;
-                case Keys.Right:
-                    pos = richTextBox1.SelectionStart; // get starting point
-                    line = richTextBox1.GetLineFromCharIndex(pos); // get line number
-                    column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-                    lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-                    break;
-                case Keys.Up:
-                    pos = richTextBox1.SelectionStart; // get starting point
-                    line = richTextBox1.GetLineFromCharIndex(pos); // get line number
-                    column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-                    lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-                    break;
-                case Keys.Left:
-                    pos = richTextBox1.SelectionStart; // get starting point
-                    line = richTextBox1.GetLineFromCharIndex(pos); // get line number
-                    column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-                    lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-                    break;
-                case Keys.ControlKey:
-                    IsKeyUp((int)Keys.ControlKey); //causes ctrlIsDown = false;
-                    toolStripStatusLabel1.Text = "...";
-                    break;
-            }
-        }
-
-        //****************************************************************************************************************************
-        // richTextBox1_MouseDown - Gets the line and column numbers of the cursor position in the RTB when the mouse clicks an area *
-        //****************************************************************************************************************************
-        private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            int pos = richTextBox1.SelectionStart;    // get starting point
-            int line = richTextBox1.GetLineFromCharIndex(pos);    // get line number
-            int column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-            lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-        }
-
-        public RichTextBox richTextBoxSetterGetter
-        {
-            get { return this.richTextBox1; }
-            set { this.richTextBox1 = value; }
-        }
-
-        public ToolStripStatusLabel toolStripStatusLabelSetterGetter
-        {
-            get { return this.toolStripStatusLabel1; }
-            set { this.toolStripStatusLabel1 = value; }
-        }
-
-        public bool ctrlKeyStatusSetterGetter
-        {
-            get { return this.ctrlIsDown; }
-            set { this.ctrlIsDown = value; }
-        }
-
-        public bool rmbKeyStatusSetterGetter
-        {
-            get { return this.rmbIsUp; }
-            set { this.rmbIsUp = value; }
-        }
-
-        //----combine key and mouse events----
-        [DllImport("user32.dll")]
-        static extern ushort GetKeyState(int vKey);
-        [DllImport("user32.dll")]
-        static extern ushort GetAsyncKeyState(int vKey);
-
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.ControlKey)
+            //this is here to detect whether CTRL is pressed
+            if (e.KeyCode == Keys.ControlKey)
             {
-                IsKeyDown((int)Keys.ControlKey); //causes ctrlIsDown = true
+                IsKeyDown((int)Keys.ControlKey); //to set ctrlIsDown to true
+
+                //ctrlIsDown = true;
+                toolStripStatusLabel1.Text = "Ctrl button pressed, click right mouse button to open custom context menu.";
             }
         }
 
-        private void richContextStrip_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            //try not to show default context menu
+            richContextStrip.Visible = false;
+
+            //close if context menu is still visible
+            if (contextMenuObj.Visible == true)
+            {
+                contextMenuObj.Visible = false; //so that can open at new location
+            }
+        }
+
+        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //released key means cancelled invocation
+            IsKeyUp((int)Keys.ControlKey); //to set ctrlIsDown to false
+
+            //if nothing is pressed, set status bar to nothing
             toolStripStatusLabel1.Text = "...";
         }
 
-        //IMPORTANT SO THAT DEFAULT CM AND POPUP MENU CAN OPEN PROPERLY
+        private void TextEditor_Activated(object sender, EventArgs e)
+        {
+            if(contextMenuObj.Visible == true)
+            {
+                //hide the context menu
+                contextMenuObj.Visible = false;
+            }            
+        }
+
         private void richContextStrip_VisibleChanged(object sender, EventArgs e)
         {
-            if (richContextStrip.Visible == true) //if default context menu is opened
+            if(richContextStrip.Visible == true) //if default context menu is opened
             {
                 if (IsKeyDown((int)Keys.ControlKey)) //if ctrl key is pressed
                 {
@@ -938,47 +1278,30 @@ namespace Text_Editor
             }
         }
 
-        public bool IsKeyDown(int vKey) //to set status of pressed key
+        private void openMultipleItemsTwoColumnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if ((GetKeyState((int)vKey) & 0x8000) != 0) // "!=0"; if key is down
+            ExtraItems extraItemObj = new ExtraItems
             {
-                //if control key is down
-                if (vKey == (int)Keys.ControlKey)
-                {
-                    ctrlIsDown = true;
-                    toolStripStatusLabel1.Text = "Control key is pressed, click on the right mouse button to open the custom context menu.";
-                }
-                return true;
-            }
-            else //if key is up
-            {
-                ctrlIsDown = false;
-                return false;
-            }
+                Visible = true
+            };
         }
 
-        public bool IsKeyUp(int vKey) //to set status of released key
+        /*private void TextEditor_LocationChanged(object sender, EventArgs e)
         {
-            if ((GetKeyState((int)vKey) & 0x8000) == 0) // "==0"; if key is up
-            {
-                if (vKey == (int)MouseButtons.Right)
-                {
-                    rmbIsUp = true;
-                }
-                if (vKey == (int)Keys.ControlKey)
-                {
-                    ctrlIsDown = false;
-                }
-                return true;
-            }
-            else //if key is down
-            {
-                rmbIsUp = false;
-                ctrlIsDown = true;
+            //change the screen focused
+            //----for screen size uses----
+            theScreen = Screen.FromControl(this);
+            //get screen size
+            screenDimension = theScreen.WorkingArea;
+        }*/
 
-                return false;
-            }
-        }
-        //----keyboard and mouse combine until here----
+        /*private void TextEditor_Move(object sender, EventArgs e)
+        {
+            //change the screen focused
+            //----for screen size uses----
+            theScreen = Screen.FromControl(this);
+            //get screen size
+            screenDimension = theScreen.WorkingArea;
+        }*/
     }
 }
