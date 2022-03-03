@@ -28,7 +28,8 @@ namespace Text_Editor
         int pos, line, column;    // for detecting line and column numbers
 
         //----for popup menu uses----
-        PopupMenu popMenuObj;
+        //PopupMenu popMenuObj;
+        PopupMenuFull popMenuObjFull;
         bool ctrlIsDown = false; //by default
         bool rmbIsUp = false; //by default;
         //----for popup menu uses----
@@ -41,7 +42,8 @@ namespace Text_Editor
         private void frmEditor_Load(object sender, EventArgs e)
         {
             //for popup menu uses
-            popMenuObj = new PopupMenu(this);
+            //popMenuObj = new PopupMenu(this);
+            popMenuObjFull = new PopupMenuFull(this);
 
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
@@ -303,9 +305,9 @@ namespace Text_Editor
         {
             try
             {
-                saveFileDialog1.ShowDialog();    // show the dialog
+                //saveFileDialog1.ShowDialog();    // show the dialog
                 string file;
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
                 {
                     string filename = saveFileDialog1.FileName;
                     // save the contents of the rich text box
@@ -323,8 +325,8 @@ namespace Text_Editor
 
         private void openFileStripButton_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();     // show the dialog
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            //openFileDialog1.ShowDialog();     // show the dialog
+            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 filenamee = openFileDialog1.FileName;
                 // load the file into the richTextBox
@@ -489,17 +491,17 @@ namespace Text_Editor
             richTextBox1.Undo();     // undo move
         }
 
-        private void redoStripButton_Click(object sender, EventArgs e)
+        public void redoStripButton_Click(object sender, EventArgs e)
         {            
             richTextBox1.Redo();    // redo move
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        public void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {            
             this.Close();     // close the form
         }
 
-        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        public void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {           
             richTextBox1.Undo();     // undo move
         }
@@ -509,52 +511,57 @@ namespace Text_Editor
             richTextBox1.Redo();     // redo move
         }
 
-        private void cutToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void cutToolStripMenuItem1_Click(object sender, EventArgs e)
         {            
             richTextBox1.Cut();     // cut text
         }
 
-        private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void copyToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             
             richTextBox1.Copy();     // copy text
         }
 
-        private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
         {           
             richTextBox1.Paste();    // paste text
         }
 
-        private void selectAllToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void selectAllToolStripMenuItem1_Click(object sender, EventArgs e)
         {            
             richTextBox1.SelectAll();    // select all text
         }
 
-        private void clearAllToolStripMenuItem_Click(object sender, EventArgs e)
+        public void clearAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // clear the rich text box
             richTextBox1.Clear();
             richTextBox1.Focus();
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        public void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // delete selected text
             richTextBox1.SelectedText = "";
             richTextBox1.Focus();
         }
 
-        private void OpenMenuItem_Click(object sender, EventArgs e)
+        public void OpenMenuItem_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            DialogResult openFileDialog = openFileDialog1.ShowDialog(this);
+
+            if (openFileDialog == DialogResult.OK)
             {
                 richTextBox1.LoadFile(openFileDialog1.FileName, RichTextBoxStreamType.PlainText);
                 // richTextBox1.LoadFile(openFileDialog1.FileName, RichTextBoxStreamType.RichText);  // loads the file in RTB format
             }
+            else
+            {
+                this.Visible = true;
+            }
         }
 
-        private void newMenuItem_Click(object sender, EventArgs e)
+        public void newMenuItem_Click(object sender, EventArgs e)
         {
             
             if (richTextBox1.Text != string.Empty)    // RTB has contents - prompt user to save changes
@@ -565,9 +572,9 @@ namespace Text_Editor
                 if(result == DialogResult.Yes)
                 {
                     // save the RTB contents if user selected yes
-                    saveFileDialog1.ShowDialog();    // show the dialog
+                    DialogResult saveFileDialog = saveFileDialog1.ShowDialog(this);    // show the dialog
                     string file;
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    if (saveFileDialog == DialogResult.OK)
                     {
                         string filename = saveFileDialog1.FileName;
                         // save the contents of the rich text box
@@ -595,19 +602,23 @@ namespace Text_Editor
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        public void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.ShowDialog();    // show the dialog
+            DialogResult saveFileDialog = saveFileDialog1.ShowDialog(this);    // show the dialog
             string file; 
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog == DialogResult.OK)
             {
                 string filename = saveFileDialog1.FileName;
                 // save the contents of the rich text box
                 richTextBox1.SaveFile(filename, RichTextBoxStreamType.PlainText);
+                file = Path.GetFileName(filenamee);    // get name of file
+                MessageBox.Show("File " + file + " was saved successfully.", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            file = Path.GetFileName(filenamee);    // get name of file
-            MessageBox.Show("File " + file + " was saved successfully.", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                this.Visible = true;
+            }
         }
 
         private void zoomDropDownButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -673,15 +684,15 @@ namespace Text_Editor
         {
             try
             {
-                fontDialog1.ShowDialog();    // show the Font Dialog
+                //fontDialog1.ShowDialog();    // show the Font Dialog
                 System.Drawing.Font oldFont = this.Font;    // gets current font
 
-                if (fontDialog1.ShowDialog() == DialogResult.OK)
+                if (fontDialog1.ShowDialog(this) == DialogResult.OK)
                 {
                     fontDialog1_Apply(richTextBox1, new System.EventArgs());
                 }
                 // set back to the recent font
-                else if (fontDialog1.ShowDialog() == DialogResult.Cancel)
+                else if (fontDialog1.ShowDialog(this) == DialogResult.Cancel)
                 {
                     // set current font back to the old font
                     this.Font = oldFont;
@@ -745,28 +756,28 @@ namespace Text_Editor
             e.Graphics.PageUnit = GraphicsUnit.Inch; 
         }
 
-        private void printStripButton_Click(object sender, EventArgs e)
+        public void printStripButton_Click(object sender, EventArgs e)
         {
             // printDialog associates with PrintDocument
             printDialog.Document = printDocument;
-            if (printDialog.ShowDialog() == DialogResult.OK)
+            if (printDialog.ShowDialog(this) == DialogResult.OK)
             {
                 printDocument.Print(); // Print the document
             }
         }
 
-        private void printPreviewStripButton_Click(object sender, EventArgs e)
+        public void printPreviewStripButton_Click(object sender, EventArgs e)
         {
             printPreviewDialog.Document = printDocument; 
             // Show PrintPreview Dialog 
-            printPreviewDialog.ShowDialog();
+            printPreviewDialog.ShowDialog(this);
         }
 
         private void printStripMenuItem_Click(object sender, EventArgs e)
         {
             // printDialog associates with PrintDocument
             printDialog.Document = printDocument;
-            if (printDialog.ShowDialog() == DialogResult.OK)
+            if (printDialog.ShowDialog(this) == DialogResult.OK)
             {
                 printDocument.Print();
             }
@@ -776,7 +787,7 @@ namespace Text_Editor
         {
             printPreviewDialog.Document = printDocument;
             // Show PrintPreview Dialog 
-            printPreviewDialog.ShowDialog();
+            printPreviewDialog.ShowDialog(this);
         }
 
         private void colorDialog1_HelpRequest(object sender, EventArgs e)
@@ -787,9 +798,9 @@ namespace Text_Editor
 
         private void colorOptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            colorDialog1.ShowDialog();
+            //colorDialog1.ShowDialog(this);
 
-            if(colorDialog1.ShowDialog() == DialogResult.OK)
+            if(colorDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 // set the selected color to the RTB's forecolor
                 richTextBox1.ForeColor = colorDialog1.Color;
@@ -806,10 +817,19 @@ namespace Text_Editor
                 {
                     richContextStrip.Visible = false; //forces default context menu to close
 
-                    popMenuObj.Location = popMenuObj.SetPopupLocation(Screen.FromControl(this), popMenuObj, (sender as Control).PointToScreen(e.Location)); //location with logic
+                    //--popup menu 1--
+                    /*popMenuObj.Location = popMenuObj.SetPopupLocation(Screen.FromControl(this), popMenuObj, (sender as Control).PointToScreen(e.Location)); //location with logic
                     Cursor.Position = popMenuObj.SetCursorLocation(popMenuObj.Location);
                     popMenuObj.Visible = true;
-                    toolStripStatusLabel1.Text = "Custom context menu opened!";
+                    toolStripStatusLabel1.Text = "Custom context menu opened!";*/
+                    //--popup menu 1--
+
+                    //--popup menu full--
+                    popMenuObjFull.Location = SetPopupLocationLocal(Screen.FromControl(this), popMenuObjFull, (sender as Control).PointToScreen(e.Location)); //location with logic
+                    Cursor.Position = SetCursorLocationLocal(popMenuObjFull.Location, popMenuObjFull);
+                    popMenuObjFull.Visible = true;
+                    toolStripStatusLabel1.Text = "Context menu opened!";
+                    //--popup menu full--
                 }
                 else //open the default context menu
                 {
@@ -869,10 +889,23 @@ namespace Text_Editor
             lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
         }
 
+        //----setter getter methods-----
         public RichTextBox richTextBoxSetterGetter
         {
             get { return this.richTextBox1; }
             set { this.richTextBox1 = value; }
+        }
+
+        public ToolStripMenuItem fileToolStripSetterGetter
+        {
+            get { return fileToolStripMenuItem; }
+            set { this.fileToolStripMenuItem = value; }
+        }
+
+        public ToolStripMenuItem editToolStripSetterGetter
+        {
+            get { return editToolStripMenuItem; }
+            set { this.editToolStripMenuItem = value; }
         }
 
         public ToolStripStatusLabel toolStripStatusLabelSetterGetter
@@ -892,6 +925,7 @@ namespace Text_Editor
             get { return this.rmbIsUp; }
             set { this.rmbIsUp = value; }
         }
+        //----setter getter methods-----
 
         //----combine key and mouse events----
         [DllImport("user32.dll")]
@@ -980,5 +1014,32 @@ namespace Text_Editor
             }
         }
         //----keyboard and mouse combine until here----
+
+        //----to position form location and mouse location----
+        public Point SetPopupLocationLocal(Screen screen, Form form, Point initPosition)
+        {
+            var p = new Point();
+            var wrkArea = screen.WorkingArea;
+            p.X = wrkArea.Right - (initPosition.X + form.Width);
+            p.Y = wrkArea.Bottom - (initPosition.Y + form.Height);
+            p.X = p.X < 0 ? wrkArea.Right - form.Width : initPosition.X;
+            p.Y = p.Y < 0 ? wrkArea.Bottom - form.Height : initPosition.Y;
+            return p;
+        }
+
+        public Point SetCursorLocationLocal(Point thePopupLocation, Form theForm)
+        {
+            Point newCursorPoint = new Point();
+            theForm = popMenuObjFull;
+
+            int popupWidth = theForm.Width;
+            int popupHeight = theForm.Height;
+
+            newCursorPoint.X = thePopupLocation.X + (popupWidth / 2);
+            newCursorPoint.Y = thePopupLocation.Y + (popupHeight / 2);
+
+            return newCursorPoint;
+        }
+        //----to position form location and mouse location----
     }
 }

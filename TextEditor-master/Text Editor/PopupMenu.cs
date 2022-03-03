@@ -15,16 +15,16 @@ namespace Text_Editor
         //global variables
         //frmEditor frmEditorObjLocal;
         //RichTextBox theRTB;
-        private frmEditor mainFormObj;
+        private frmEditor parentFormObj;
 
-        public PopupMenu()
+        public PopupMenu() //unused, 'cuz doesn't have parent's object info
         {
             InitializeComponent();
         }
 
-        public PopupMenu(frmEditor theForm)
+        public PopupMenu(frmEditor parentForm) //used; 'cuz have required parents obj info
         {
-            mainFormObj = theForm;
+            parentFormObj = parentForm;
             InitializeComponent();
         }
 
@@ -32,7 +32,7 @@ namespace Text_Editor
         {
             this.Visible = false; //close the popup menu
 
-            mainFormObj.toolStripStatusLabelSetterGetter.Text = "...";
+            parentFormObj.toolStripStatusLabelSetterGetter.Text = "...";
         }
 
         public Point SetPopupLocation(Screen screen, Form form, Point initPosition)
@@ -99,44 +99,44 @@ namespace Text_Editor
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(mainFormObj.richTextBoxSetterGetter, "cut");
+            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "cut");
             this.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(mainFormObj.richTextBoxSetterGetter, "copy");
+            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "copy");
             this.Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(mainFormObj.richTextBoxSetterGetter, "paste");
+            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "paste");
             this.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(mainFormObj.richTextBoxSetterGetter, "delete");
+            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "delete");
             this.Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(mainFormObj.richTextBoxSetterGetter, "selectAll");
+            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "selectAll");
             this.Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(mainFormObj.richTextBoxSetterGetter, "clearAll");
+            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "clearAll");
             this.Visible = false;
         }
 
         private void PopupMenu_Activated(object sender, EventArgs e)
         {
             //to maintain highlighted text
-            mainFormObj.richTextBoxSetterGetter.HideSelection = false;
+            parentFormObj.richTextBoxSetterGetter.HideSelection = false;
         }
     }
 }
