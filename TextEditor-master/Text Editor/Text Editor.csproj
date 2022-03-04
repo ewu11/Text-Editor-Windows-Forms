@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\eliwa\Desktop\WebSite\</PublishUrl>
+    <PublishUrl>C:\Users\eliwa\Desktop\WebSite2\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
+    <MapFileExtensions>false</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
@@ -146,6 +146,7 @@
     <Content Include="Images\AppExamples\AppEx2.png" />
     <Content Include="Images\AppExamples\AppEx3.png" />
     <Content Include="Images\AppExamples\AppEx4.png" />
+    <Content Include="ReadMe.txt" />
     <None Include="Resources\MMU-New-logo-png.png" />
     <None Include="Resources\newMenuItem.Image1.png" />
     <None Include="Resources\zoomDropDownButton.Image.png" />
