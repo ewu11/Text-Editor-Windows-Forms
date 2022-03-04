@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 
 namespace Text_Editor
 {
-    public partial class FormEditor : Form
+    public partial class MainFormEditor : Form
     {
         List<string> colorList = new List<string>();    // holds the System.Drawing.Color names
         string filenamee;    // file opened inside of RTB
@@ -34,7 +34,7 @@ namespace Text_Editor
         bool rmbIsUp = false; //by default;
         //----for popup menu uses----
 
-        public FormEditor()
+        public MainFormEditor()
         {
             InitializeComponent();
         }

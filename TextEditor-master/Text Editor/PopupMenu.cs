@@ -15,14 +15,14 @@ namespace Text_Editor
         //global variables
         //frmEditor frmEditorObjLocal;
         //RichTextBox theRTB;
-        private FormEditor parentFormObj;
+        private MainFormEditor parentFormObj;
 
         public PopupMenu() //unused, 'cuz doesn't have parent's object info
         {
             InitializeComponent();
         }
 
-        public PopupMenu(FormEditor parentForm) //used; 'cuz have required parents obj info
+        public PopupMenu(MainFormEditor parentForm) //used; 'cuz have required parents obj info
         {
             parentFormObj = parentForm;
             InitializeComponent();

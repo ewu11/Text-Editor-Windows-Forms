@@ -78,11 +78,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormEditor.cs">
+    <Compile Include="MainFormEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEditor.designer.cs">
-      <DependentUpon>FormEditor.cs</DependentUpon>
+    <Compile Include="MainFormEditor.designer.cs">
+      <DependentUpon>MainFormEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="PopupMenu.cs">
       <SubType>Form</SubType>
@@ -98,8 +98,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormEditor.resx">
-      <DependentUpon>FormEditor.cs</DependentUpon>
+    <EmbeddedResource Include="MainFormEditor.resx">
+      <DependentUpon>MainFormEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupMenu.resx">
       <DependentUpon>PopupMenu.cs</DependentUpon>
@@ -108,20 +108,20 @@
       <DependentUpon>PopupMenuFull.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -137,8 +137,6 @@
     <Content Include="Images\AppExamples\AppEx2.png" />
     <Content Include="Images\AppExamples\AppEx3.png" />
     <Content Include="Images\AppExamples\AppEx4.png" />
-    <None Include="Resources\smile2.png" />
-    <None Include="Resources\smile.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -193,6 +191,9 @@
       <IncludeHash>False</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
