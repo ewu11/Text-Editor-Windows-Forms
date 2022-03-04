@@ -846,10 +846,12 @@ namespace Text_Editor
                 //only for custom context menu, cuz default context menu has its own handler
                 if (contextMenuOption != 1)
                 {
+                    richContextStrip.SuspendLayout();
                     chosenContextMenu.Location = SetPopupLocationLocal(Screen.FromControl(this), (Form)chosenContextMenu, (sender as Control).PointToScreen(e.Location)); //location with logic
                     Cursor.Position = SetCursorLocationLocal(chosenContextMenu.Location, (Form)chosenContextMenu);
                     chosenContextMenu.Visible = true;
                     toolStripStatusLabel1.Text = cmMsj;
+                    richContextStrip.ResumeLayout();
                 }
                 else
                 {
