@@ -1064,6 +1064,13 @@ namespace Text_Editor
             contextMenuOption = selectedContextMenu(3, defaultContextMenuToolStripMenuItem, twocolumnContextMenuToolStripMenuItem, fullTwocolumnContextMenuToolStripMenuItem);
         }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aboutCustomContextMenu aboutDialog = new aboutCustomContextMenu();
+
+            aboutDialog.ShowDialog(this);
+        }
+
         public Point SetCursorLocationLocal(Point thePopupLocation, Form theForm)
         {
             Point newCursorPoint = new Point();

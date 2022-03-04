@@ -253,6 +253,16 @@ namespace Text_Editor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap MMU_New_logo_png {
+            get {
+                object obj = ResourceManager.GetObject("MMU_New_logo_png", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap newMenuItem_Image {
             get {
                 object obj = ResourceManager.GetObject("newMenuItem_Image", resourceCulture);

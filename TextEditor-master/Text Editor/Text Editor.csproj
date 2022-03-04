@@ -78,6 +78,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="aboutCustomContextMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="aboutCustomContextMenu.Designer.cs">
+      <DependentUpon>aboutCustomContextMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFormEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="aboutCustomContextMenu.resx">
+      <DependentUpon>aboutCustomContextMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainFormEditor.resx">
       <DependentUpon>MainFormEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +146,7 @@
     <Content Include="Images\AppExamples\AppEx2.png" />
     <Content Include="Images\AppExamples\AppEx3.png" />
     <Content Include="Images\AppExamples\AppEx4.png" />
+    <None Include="Resources\MMU-New-logo-png.png" />
     <None Include="Resources\newMenuItem.Image1.png" />
     <None Include="Resources\zoomDropDownButton.Image.png" />
     <None Include="Resources\undoToolStripMenuItem.Image.png" />
