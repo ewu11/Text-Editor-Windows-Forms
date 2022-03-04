@@ -32,6 +32,7 @@ namespace Text_Editor
         PopupMenuFull popMenuObjFull;
         bool ctrlIsDown = false; //by default
         bool rmbIsUp = false; //by default;
+        int contextMenuOption = 0; //by default; default context menu
         //----for popup menu uses----
 
         public MainFormEditor()
@@ -44,6 +45,8 @@ namespace Text_Editor
             //for popup menu uses
             //popMenuObj = new PopupMenu(this);
             popMenuObjFull = new PopupMenuFull(this);
+
+            contextMenuOption = 0; //sets the choice of context menu to default on the menu strip
 
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
@@ -1013,6 +1016,21 @@ namespace Text_Editor
                 return false;
             }
         }
+
+        private void defaultContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if not yet checked, then check it
+            if(defaultContextMenuToolStripMenuItem.CheckState == CheckState.Unchecked)
+            {
+                defaultContextMenuToolStripMenuItem.Checked = true;
+                //Console.WriteLine(defaultContextMenuToolStripMenuItem.CheckState.ToString());
+            }
+            else
+            {
+                defaultContextMenuToolStripMenuItem.Checked = false;
+            }
+        }
+
         //----keyboard and mouse combine until here----
 
         //----to position form location and mouse location----
@@ -1041,5 +1059,11 @@ namespace Text_Editor
             return newCursorPoint;
         }
         //----to position form location and mouse location----
+
+        //to check context menu selection from menu strip
+        /*public int contextMenuChoice(ToolStripMenuItem theToolStripMenuItem)
+        {
+
+        }*/
     }
 }
