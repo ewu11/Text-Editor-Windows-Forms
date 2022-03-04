@@ -90,6 +90,12 @@
     <Compile Include="MainFormEditor.designer.cs">
       <DependentUpon>MainFormEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="MatrixPopupMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MatrixPopupMenu.Designer.cs">
+      <DependentUpon>MatrixPopupMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="PopupMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainFormEditor.resx">
       <DependentUpon>MainFormEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatrixPopupMenu.resx">
+      <DependentUpon>MatrixPopupMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupMenu.resx">
       <DependentUpon>PopupMenu.cs</DependentUpon>
