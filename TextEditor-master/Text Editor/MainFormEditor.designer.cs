@@ -97,6 +97,10 @@
             this.wordWrapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.defaultContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.twocolumnContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullTwocolumnContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
@@ -106,10 +110,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lineColumnStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.defaultContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.twocolumnContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fullTwocolumnContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richContextStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -563,7 +563,7 @@
             // 
             this.newMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newMenuItem.Image")));
             this.newMenuItem.Name = "newMenuItem";
-            this.newMenuItem.Size = new System.Drawing.Size(228, 30);
+            this.newMenuItem.Size = new System.Drawing.Size(177, 26);
             this.newMenuItem.Text = "&New";
             this.newMenuItem.Click += new System.EventHandler(this.newMenuItem_Click);
             // 
@@ -571,7 +571,7 @@
             // 
             this.OpenMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("OpenMenuItem.Image")));
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(228, 30);
+            this.OpenMenuItem.Size = new System.Drawing.Size(177, 26);
             this.OpenMenuItem.Text = "&Open";
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
             // 
@@ -580,20 +580,20 @@
             this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(228, 30);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(225, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(174, 6);
             // 
             // printStripMenuItem
             // 
             this.printStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printStripMenuItem.Image")));
             this.printStripMenuItem.Name = "printStripMenuItem";
-            this.printStripMenuItem.Size = new System.Drawing.Size(228, 30);
+            this.printStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.printStripMenuItem.Text = "&Print";
             this.printStripMenuItem.Click += new System.EventHandler(this.printStripMenuItem_Click);
             // 
@@ -601,21 +601,21 @@
             // 
             this.printPreviewStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewStripMenuItem.Image")));
             this.printPreviewStripMenuItem.Name = "printPreviewStripMenuItem";
-            this.printPreviewStripMenuItem.Size = new System.Drawing.Size(228, 30);
+            this.printPreviewStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.printPreviewStripMenuItem.Text = "P&rint Preview";
             this.printPreviewStripMenuItem.Click += new System.EventHandler(this.printPreviewStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(225, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(174, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exitToolStripMenuItem.Image")));
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(228, 30);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -724,23 +724,62 @@
             // wordWrapToolStripMenuItem
             // 
             this.wordWrapToolStripMenuItem.Name = "wordWrapToolStripMenuItem";
-            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.wordWrapToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.wordWrapToolStripMenuItem.Text = "&WordWrap";
             this.wordWrapToolStripMenuItem.Click += new System.EventHandler(this.wordWrapToolStripMenuItem_Click);
             // 
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.fontToolStripMenuItem.Text = "&Font...";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
             // colorOptionsToolStripMenuItem
             // 
             this.colorOptionsToolStripMenuItem.Name = "colorOptionsToolStripMenuItem";
-            this.colorOptionsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.colorOptionsToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.colorOptionsToolStripMenuItem.Text = "&Color Options";
             this.colorOptionsToolStripMenuItem.Click += new System.EventHandler(this.colorOptionsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Checked = true;
+            this.toolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defaultContextMenuToolStripMenuItem,
+            this.twocolumnContextMenuToolStripMenuItem,
+            this.fullTwocolumnContextMenuToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(174, 24);
+            this.toolStripMenuItem1.Text = "Choose Context Menu..";
+            // 
+            // defaultContextMenuToolStripMenuItem
+            // 
+            this.defaultContextMenuToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.defaultContextMenuToolStripMenuItem.Name = "defaultContextMenuToolStripMenuItem";
+            this.defaultContextMenuToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
+            this.defaultContextMenuToolStripMenuItem.Text = "Default context menu";
+            this.defaultContextMenuToolStripMenuItem.ToolTipText = "Toggles the default context menu.";
+            this.defaultContextMenuToolStripMenuItem.Click += new System.EventHandler(this.defaultContextMenuToolStripMenuItem_Click);
+            // 
+            // twocolumnContextMenuToolStripMenuItem
+            // 
+            this.twocolumnContextMenuToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.twocolumnContextMenuToolStripMenuItem.Name = "twocolumnContextMenuToolStripMenuItem";
+            this.twocolumnContextMenuToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
+            this.twocolumnContextMenuToolStripMenuItem.Text = "Two-column context menu";
+            this.twocolumnContextMenuToolStripMenuItem.ToolTipText = "Toggles the two-column context menu, with default menu items.";
+            this.twocolumnContextMenuToolStripMenuItem.Click += new System.EventHandler(this.twocolumnContextMenuToolStripMenuItem_Click);
+            // 
+            // fullTwocolumnContextMenuToolStripMenuItem
+            // 
+            this.fullTwocolumnContextMenuToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fullTwocolumnContextMenuToolStripMenuItem.Name = "fullTwocolumnContextMenuToolStripMenuItem";
+            this.fullTwocolumnContextMenuToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
+            this.fullTwocolumnContextMenuToolStripMenuItem.Text = "Full two-column context menu";
+            this.fullTwocolumnContextMenuToolStripMenuItem.ToolTipText = "Toggles the two-column context menu, with full menu items.";
+            this.fullTwocolumnContextMenuToolStripMenuItem.Click += new System.EventHandler(this.fullTwocolumnContextMenuToolStripMenuItem_Click);
             // 
             // printDialog
             // 
@@ -794,43 +833,6 @@
             this.lineColumnStatusLabel.Size = new System.Drawing.Size(1098, 20);
             this.lineColumnStatusLabel.Spring = true;
             this.lineColumnStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Checked = true;
-            this.toolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.defaultContextMenuToolStripMenuItem,
-            this.twocolumnContextMenuToolStripMenuItem,
-            this.fullTwocolumnContextMenuToolStripMenuItem});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(174, 24);
-            this.toolStripMenuItem1.Text = "Choose Context Menu..";
-            // 
-            // defaultContextMenuToolStripMenuItem
-            // 
-            this.defaultContextMenuToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.defaultContextMenuToolStripMenuItem.Name = "defaultContextMenuToolStripMenuItem";
-            this.defaultContextMenuToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
-            this.defaultContextMenuToolStripMenuItem.Text = "Default context menu";
-            this.defaultContextMenuToolStripMenuItem.ToolTipText = "Toggles the default context menu.";
-            this.defaultContextMenuToolStripMenuItem.Click += new System.EventHandler(this.defaultContextMenuToolStripMenuItem_Click);
-            // 
-            // twocolumnContextMenuToolStripMenuItem
-            // 
-            this.twocolumnContextMenuToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.twocolumnContextMenuToolStripMenuItem.Name = "twocolumnContextMenuToolStripMenuItem";
-            this.twocolumnContextMenuToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
-            this.twocolumnContextMenuToolStripMenuItem.Text = "Two-column context menu";
-            this.twocolumnContextMenuToolStripMenuItem.ToolTipText = "Toggles the two-column context menu, with default menu items.";
-            // 
-            // fullTwocolumnContextMenuToolStripMenuItem
-            // 
-            this.fullTwocolumnContextMenuToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fullTwocolumnContextMenuToolStripMenuItem.Name = "fullTwocolumnContextMenuToolStripMenuItem";
-            this.fullTwocolumnContextMenuToolStripMenuItem.Size = new System.Drawing.Size(293, 26);
-            this.fullTwocolumnContextMenuToolStripMenuItem.Text = "Full two-column context menu";
-            this.fullTwocolumnContextMenuToolStripMenuItem.ToolTipText = "Toggles the two-column context menu, with full menu items.";
             // 
             // MainFormEditor
             // 

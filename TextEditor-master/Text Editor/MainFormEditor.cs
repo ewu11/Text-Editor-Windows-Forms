@@ -28,11 +28,11 @@ namespace Text_Editor
         int pos, line, column;    // for detecting line and column numbers
 
         //----for popup menu uses----
-        //PopupMenu popMenuObj;
+        PopupMenu popMenuObj;
         PopupMenuFull popMenuObjFull;
         bool ctrlIsDown = false; //by default
         bool rmbIsUp = false; //by default;
-        int contextMenuOption = 0; //by default; default context menu
+        int contextMenuOption; //by default; default context menu
         //----for popup menu uses----
 
         public MainFormEditor()
@@ -43,10 +43,13 @@ namespace Text_Editor
         private void frmEditor_Load(object sender, EventArgs e)
         {
             //for popup menu uses
-            //popMenuObj = new PopupMenu(this);
+            popMenuObj = new PopupMenu(this);
             popMenuObjFull = new PopupMenuFull(this);
 
-            contextMenuOption = 0; //sets the choice of context menu to default on the menu strip
+            contextMenuOption = 1; //sets the choice of context menu to default on the menu strip
+
+            //make default context menu selection checked
+            defaultContextMenuToolStripMenuItem.Checked = true;
 
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
@@ -812,33 +815,72 @@ namespace Text_Editor
 
         private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            IsKeyUp((int)MouseButtons.Right); //causes rmbIsUp = true
+            Control chosenContextMenu = richContextStrip; //by default, the default context menu;
+            string cmMsj = ""; //message for status tool strip
 
-            if(e.Button == MouseButtons.Right) //if rmb mouse clicked
+            //IsKeyUp((int)MouseButtons.Right); //causes rmbIsUp = true
+
+            if (e.Button == MouseButtons.Right) //if rmb mouse clicked
             {
-                if(ctrlIsDown && rmbIsUp) //open the popup menu
+                /*if(ctrlIsDown && rmbIsUp) //open the popup menu
                 {
-                    richContextStrip.Visible = false; //forces default context menu to close
+                    //richContextStrip.Visible = false; //forces default context menu to close
 
                     //--popup menu 1--
-                    /*popMenuObj.Location = popMenuObj.SetPopupLocation(Screen.FromControl(this), popMenuObj, (sender as Control).PointToScreen(e.Location)); //location with logic
+                    *//*popMenuObj.Location = popMenuObj.SetPopupLocation(Screen.FromControl(this), popMenuObj, (sender as Control).PointToScreen(e.Location)); //location with logic
                     Cursor.Position = popMenuObj.SetCursorLocation(popMenuObj.Location);
                     popMenuObj.Visible = true;
-                    toolStripStatusLabel1.Text = "Custom context menu opened!";*/
+                    toolStripStatusLabel1.Text = "Custom context menu opened!";*//*
                     //--popup menu 1--
 
                     //--popup menu full--
-                    popMenuObjFull.Location = SetPopupLocationLocal(Screen.FromControl(this), popMenuObjFull, (sender as Control).PointToScreen(e.Location)); //location with logic
+                    *//*popMenuObjFull.Location = SetPopupLocationLocal(Screen.FromControl(this), popMenuObjFull, (sender as Control).PointToScreen(e.Location)); //location with logic
                     Cursor.Position = SetCursorLocationLocal(popMenuObjFull.Location, popMenuObjFull);
                     popMenuObjFull.Visible = true;
-                    toolStripStatusLabel1.Text = "Context menu opened!";
+                    toolStripStatusLabel1.Text = "Context menu opened!";*//*
                     //--popup menu full--
                 }
                 else //open the default context menu
                 {
                     richContextStrip.Visible = true;
                     toolStripStatusLabel1.Text = "Default context menu opened!";
+                }*/
+
+                //----with popup menu selection----
+                switch (contextMenuOption)
+                {
+                    case 1:
+                        chosenContextMenu = richContextStrip; //by default, the default context menu
+                        break;
+                    case 2:
+                        chosenContextMenu = popMenuObj; //two column, simple context menu
+                        richContextStrip.Visible = false; //disable the default context menu display
+                        cmMsj = "Two column, simple context menu opened!";
+                        break;
+                    case 3:
+                        chosenContextMenu = popMenuObjFull; //two column, simple context menu
+                        richContextStrip.Visible = false; //disable the default context menu display
+                        cmMsj = "Two column, full context menu opened!";
+                        break;
+                    default:
+                        MessageBox.Show(this, "Context menu selection error!", "Alert!", MessageBoxButtons.OK);
+                        break;
                 }
+                //finally, process the popup menu location and mouse coordinate
+                //only for custom context menu, cuz default context menu has its own handler
+                if (contextMenuOption != 1)
+                {
+                    chosenContextMenu.Location = SetPopupLocationLocal(Screen.FromControl(this), (Form)chosenContextMenu, (sender as Control).PointToScreen(e.Location)); //location with logic
+                    Cursor.Position = SetCursorLocationLocal(chosenContextMenu.Location, (Form)chosenContextMenu);
+                    chosenContextMenu.Visible = true;
+                    toolStripStatusLabel1.Text = cmMsj;
+                }
+                else
+                {
+                    //for default context menu
+                    toolStripStatusLabel1.Text = "Default context menu opened!";
+                }
+                //----with popup menu selection----
             }
         }
 
@@ -874,10 +916,10 @@ namespace Text_Editor
                     column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
                     lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
                     break;
-                case Keys.ControlKey:
+                /*case Keys.ControlKey:
                     IsKeyUp((int)Keys.ControlKey); //causes ctrlIsDown = false;
                     toolStripStatusLabel1.Text = "...";
-                    break;
+                    break;*/
             }
         }
 
@@ -938,10 +980,10 @@ namespace Text_Editor
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.ControlKey)
+            /*if(e.KeyCode == Keys.ControlKey)
             {
                 IsKeyDown((int)Keys.ControlKey); //causes ctrlIsDown = true
-            }
+            }*/
         }
 
         private void richContextStrip_Closed(object sender, ToolStripDropDownClosedEventArgs e)
@@ -952,7 +994,7 @@ namespace Text_Editor
         //IMPORTANT SO THAT DEFAULT CM AND POPUP MENU CAN OPEN PROPERLY
         private void richContextStrip_VisibleChanged(object sender, EventArgs e)
         {
-            if (richContextStrip.Visible == true) //if default context menu is opened
+            /*if (richContextStrip.Visible == true) //if default context menu is opened
             {
                 if (IsKeyDown((int)Keys.ControlKey)) //if ctrl key is pressed
                 {
@@ -972,7 +1014,7 @@ namespace Text_Editor
             else //when default cm closed
             {
                 toolStripStatusLabel1.Text = "...";
-            }
+            }*/
         }
 
         public bool IsKeyDown(int vKey) //to set status of pressed key
@@ -1019,16 +1061,7 @@ namespace Text_Editor
 
         private void defaultContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if not yet checked, then check it
-            if(defaultContextMenuToolStripMenuItem.CheckState == CheckState.Unchecked)
-            {
-                defaultContextMenuToolStripMenuItem.Checked = true;
-                //Console.WriteLine(defaultContextMenuToolStripMenuItem.CheckState.ToString());
-            }
-            else
-            {
-                defaultContextMenuToolStripMenuItem.Checked = false;
-            }
+            contextMenuOption = selectedContextMenu(1, defaultContextMenuToolStripMenuItem, twocolumnContextMenuToolStripMenuItem, fullTwocolumnContextMenuToolStripMenuItem);
         }
 
         //----keyboard and mouse combine until here----
@@ -1045,10 +1078,20 @@ namespace Text_Editor
             return p;
         }
 
+        private void twocolumnContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contextMenuOption = selectedContextMenu(2, defaultContextMenuToolStripMenuItem, twocolumnContextMenuToolStripMenuItem, fullTwocolumnContextMenuToolStripMenuItem);
+        }
+
+        private void fullTwocolumnContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contextMenuOption = selectedContextMenu(3, defaultContextMenuToolStripMenuItem, twocolumnContextMenuToolStripMenuItem, fullTwocolumnContextMenuToolStripMenuItem);
+        }
+
         public Point SetCursorLocationLocal(Point thePopupLocation, Form theForm)
         {
             Point newCursorPoint = new Point();
-            theForm = popMenuObjFull;
+            //theForm = popMenuObjFull;
 
             int popupWidth = theForm.Width;
             int popupHeight = theForm.Height;
@@ -1061,9 +1104,39 @@ namespace Text_Editor
         //----to position form location and mouse location----
 
         //to check context menu selection from menu strip
-        /*public int contextMenuChoice(ToolStripMenuItem theToolStripMenuItem)
+        public int selectedContextMenu(int theToolStripMenuItem, ToolStripMenuItem defaultCM, ToolStripMenuItem simpleTwoColCM, ToolStripMenuItem fullTwoColCM)
         {
+            switch(theToolStripMenuItem)
+            {
+                case 1:
+                    //enable default default context menu
+                    defaultCM.CheckState = CheckState.Checked;
+                    defaultCM.CheckState = CheckState.Checked;
+                    Console.WriteLine("Default context menu selected!");
+                    //disable the others
+                    simpleTwoColCM.CheckState = CheckState.Unchecked;
+                    fullTwoColCM.CheckState = CheckState.Unchecked;
+                    break;
+                case 2:
+                    //enable two-column, simple context menu
+                    simpleTwoColCM.CheckState = CheckState.Checked;
+                    Console.WriteLine("Two-column, simple context menu context menu selected!");
+                    //disable the others
+                    defaultCM.CheckState = CheckState.Unchecked;
+                    fullTwoColCM.CheckState = CheckState.Unchecked;
+                    break;
+                case 3:
+                    //enable two-column, full context menu
+                    fullTwoColCM.CheckState = CheckState.Checked;
+                    Console.WriteLine("Two-column, full context menu context menu selected!");
+                    //disable the others
+                    simpleTwoColCM.CheckState = CheckState.Unchecked;
+                    defaultCM.CheckState = CheckState.Unchecked;
+                    break;
+            }
 
-        }*/
+            //send flag report to caller
+            return theToolStripMenuItem;
+        }
     }
 }
