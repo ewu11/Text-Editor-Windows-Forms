@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Custom Context Menu")]
-[assembly: AssemblyDescription("Done by Eliasaph Wan Uyo(1181101266)")]
+[assembly: AssemblyDescription("Done by Eliasaph Wan Uyo(1181101266) | Project Title Improving the Right Click Menu")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Company Name Multimedia University(MMU)")]
 [assembly: AssemblyProduct("Product Name Rich Text Editor")]
