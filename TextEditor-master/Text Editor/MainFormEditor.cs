@@ -822,30 +822,6 @@ namespace Text_Editor
 
             if (e.Button == MouseButtons.Right) //if rmb mouse clicked
             {
-                /*if(ctrlIsDown && rmbIsUp) //open the popup menu
-                {
-                    //richContextStrip.Visible = false; //forces default context menu to close
-
-                    //--popup menu 1--
-                    *//*popMenuObj.Location = popMenuObj.SetPopupLocation(Screen.FromControl(this), popMenuObj, (sender as Control).PointToScreen(e.Location)); //location with logic
-                    Cursor.Position = popMenuObj.SetCursorLocation(popMenuObj.Location);
-                    popMenuObj.Visible = true;
-                    toolStripStatusLabel1.Text = "Custom context menu opened!";*//*
-                    //--popup menu 1--
-
-                    //--popup menu full--
-                    *//*popMenuObjFull.Location = SetPopupLocationLocal(Screen.FromControl(this), popMenuObjFull, (sender as Control).PointToScreen(e.Location)); //location with logic
-                    Cursor.Position = SetCursorLocationLocal(popMenuObjFull.Location, popMenuObjFull);
-                    popMenuObjFull.Visible = true;
-                    toolStripStatusLabel1.Text = "Context menu opened!";*//*
-                    //--popup menu full--
-                }
-                else //open the default context menu
-                {
-                    richContextStrip.Visible = true;
-                    toolStripStatusLabel1.Text = "Default context menu opened!";
-                }*/
-
                 //----with popup menu selection----
                 switch (contextMenuOption)
                 {
