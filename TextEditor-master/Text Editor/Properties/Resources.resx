@@ -117,4 +117,125 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="boldStripButton3_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boldStripButton3.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bulletListStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bulletListStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="centerAlignStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\centerAlignStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="changeCaseDropDownButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\changeCaseDropDownButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clearAllToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clearAllToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clearFormattingStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clearFormattingStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clearToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clearToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="colorStripDropDownButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\colorStripDropDownButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="copyToolStripMenuItem1_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copyToolStripMenuItem1.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="copyToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copyToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cutToolStripMenuItem1_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cutToolStripMenuItem1.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cutToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cutToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="decreaseStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\decreaseStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="deleteStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\deleteStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="deleteToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\deleteToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exitToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exitToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="increaseStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\increaseStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="italicStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\italicStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="leftAlignStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\leftAlignStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newMenuItem_Image2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newMenuItem.Image1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="openFileStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\openFileStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OpenMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpenMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pasteToolStripMenuItem1_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pasteToolStripMenuItem1.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pasteToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pasteToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="printPreviewStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printPreviewStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="printPreviewStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printPreviewStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="printStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="printStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="redoStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\redoStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="redoToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\redoToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rightAlignStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rightAlignStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="saveStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saveStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="saveToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saveToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="selectAllToolStripMenuItem1_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\selectAllToolStripMenuItem1.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="selectAllToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\selectAllToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="underlineStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\underlineStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="undoStripButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\undoStripButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="undoToolStripMenuItem_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\undoToolStripMenuItem.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoomDropDownButton_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoomDropDownButton.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -137,6 +137,46 @@
     <Content Include="Images\AppExamples\AppEx2.png" />
     <Content Include="Images\AppExamples\AppEx3.png" />
     <Content Include="Images\AppExamples\AppEx4.png" />
+    <None Include="Resources\newMenuItem.Image1.png" />
+    <None Include="Resources\zoomDropDownButton.Image.png" />
+    <None Include="Resources\undoToolStripMenuItem.Image.png" />
+    <None Include="Resources\undoStripButton.Image.png" />
+    <None Include="Resources\underlineStripButton.Image.png" />
+    <None Include="Resources\selectAllToolStripMenuItem1.Image.png" />
+    <None Include="Resources\selectAllToolStripMenuItem.Image.png" />
+    <None Include="Resources\saveToolStripMenuItem.Image.png" />
+    <None Include="Resources\saveStripButton.Image.png" />
+    <None Include="Resources\rightAlignStripButton.Image.png" />
+    <None Include="Resources\redoToolStripMenuItem.Image.png" />
+    <None Include="Resources\redoStripButton.Image.png" />
+    <None Include="Resources\printStripMenuItem.Image.png" />
+    <None Include="Resources\printStripButton.Image.png" />
+    <None Include="Resources\printPreviewStripMenuItem.Image.png" />
+    <None Include="Resources\printPreviewStripButton.Image.png" />
+    <None Include="Resources\pasteToolStripMenuItem1.Image.png" />
+    <None Include="Resources\pasteToolStripMenuItem.Image.png" />
+    <None Include="Resources\OpenMenuItem.Image.png" />
+    <None Include="Resources\openFileStripButton.Image.png" />
+    <None Include="Resources\newMenuItem.Image.png" />
+    <None Include="Resources\leftAlignStripButton.Image.png" />
+    <None Include="Resources\italicStripButton.Image.png" />
+    <None Include="Resources\increaseStripButton.Image.png" />
+    <None Include="Resources\exitToolStripMenuItem.Image.png" />
+    <None Include="Resources\deleteToolStripMenuItem.Image.png" />
+    <None Include="Resources\deleteStripMenuItem.Image.png" />
+    <None Include="Resources\decreaseStripButton.Image.png" />
+    <None Include="Resources\cutToolStripMenuItem1.Image.png" />
+    <None Include="Resources\cutToolStripMenuItem.Image.png" />
+    <None Include="Resources\copyToolStripMenuItem1.Image.png" />
+    <None Include="Resources\copyToolStripMenuItem.Image.png" />
+    <None Include="Resources\colorStripDropDownButton.Image.png" />
+    <None Include="Resources\clearToolStripMenuItem.Image.png" />
+    <None Include="Resources\clearFormattingStripButton.Image.png" />
+    <None Include="Resources\clearAllToolStripMenuItem.Image.png" />
+    <None Include="Resources\changeCaseDropDownButton.Image.png" />
+    <None Include="Resources\centerAlignStripButton.Image.png" />
+    <None Include="Resources\bulletListStripButton.Image.png" />
+    <None Include="Resources\boldStripButton3.Image.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -192,9 +232,7 @@
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
