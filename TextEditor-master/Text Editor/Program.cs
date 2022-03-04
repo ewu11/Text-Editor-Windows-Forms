@@ -16,7 +16,7 @@ namespace Text_Editor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            frmEditor mainProgramObj = new frmEditor();
+            FormEditor mainProgramObj = new FormEditor();
             Application.Run(mainProgramObj);
         }
     }

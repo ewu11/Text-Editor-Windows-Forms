@@ -13,7 +13,7 @@ namespace Text_Editor
     public partial class PopupMenuFull : Form
     {
         //global variable(s)
-        frmEditor parentFormObj;
+        FormEditor parentFormObj;
 
         //not used; no parent info
         public PopupMenuFull()
@@ -22,7 +22,7 @@ namespace Text_Editor
         }
 
         //used; cuz obtains parent's info; able to access parents data
-        public PopupMenuFull(frmEditor parentForm)
+        public PopupMenuFull(FormEditor parentForm)
         {
             this.parentFormObj = parentForm;
             InitializeComponent();
