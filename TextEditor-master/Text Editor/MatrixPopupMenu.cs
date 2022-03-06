@@ -15,6 +15,7 @@ namespace Text_Editor
         //global variable(s)
         private MainFormEditor parentFormObj;
         private Point zoomFactorCSLocation;
+        private int bulletFlag = 0; //0 in default; bulletList off
 
         //not used, no info of parents
         public MatrixPopupMenu()
@@ -136,6 +137,21 @@ namespace Text_Editor
 
         private void button14_Click(object sender, EventArgs e)
         {
+            //---update this button's appearance---
+            if(bulletFlag == 0) //if bulletList is not yet clicked
+            {
+                this.button14.FlatAppearance.BorderColor = SystemColors.GradientActiveCaption;
+                this.button14.FlatAppearance.BorderSize = 3;
+                bulletFlag = 1;
+            }
+            else //if bulletList is already clicked
+            {
+                this.button14.FlatAppearance.BorderColor = SystemColors.Window;
+                this.button14.FlatAppearance.BorderSize = 0;
+                bulletFlag = 0;
+            }
+            //---update this button's appearance---
+
             parentFormObj.bulletListStripButton_Click(sender, e);
             showPopupMenu(0);
         }
