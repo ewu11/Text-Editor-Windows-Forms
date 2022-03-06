@@ -464,6 +464,7 @@ namespace Text_Editor
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "PopupMenuFull";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Activated += new System.EventHandler(this.PopupMenuFull_Activated);
             this.Deactivate += new System.EventHandler(this.PopupMenuFull_Deactivate);

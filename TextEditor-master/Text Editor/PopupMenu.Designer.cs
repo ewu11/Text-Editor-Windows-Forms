@@ -32,13 +32,13 @@ namespace Text_Editor
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PopupMenu));
             this.button1 = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,17 @@ namespace Text_Editor
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "clearAllToolStripMenuItem.Image.png");
+            this.imageList1.Images.SetKeyName(1, "copyToolStripMenuItem.Image.png");
+            this.imageList1.Images.SetKeyName(2, "cutToolStripMenuItem.Image.png");
+            this.imageList1.Images.SetKeyName(3, "deleteStripMenuItem.Image.png");
+            this.imageList1.Images.SetKeyName(4, "pasteToolStripMenuItem.Image.png");
+            this.imageList1.Images.SetKeyName(5, "selectAllToolStripMenuItem.Image.png");
             // 
             // button2
             // 
@@ -210,17 +221,6 @@ namespace Text_Editor
             this.tableLayoutPanel1.Size = new System.Drawing.Size(376, 85);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "clearAllToolStripMenuItem.Image.png");
-            this.imageList1.Images.SetKeyName(1, "copyToolStripMenuItem.Image.png");
-            this.imageList1.Images.SetKeyName(2, "cutToolStripMenuItem.Image.png");
-            this.imageList1.Images.SetKeyName(3, "deleteStripMenuItem.Image.png");
-            this.imageList1.Images.SetKeyName(4, "pasteToolStripMenuItem.Image.png");
-            this.imageList1.Images.SetKeyName(5, "selectAllToolStripMenuItem.Image.png");
-            // 
             // PopupMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -232,6 +232,7 @@ namespace Text_Editor
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "PopupMenu";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Activated += new System.EventHandler(this.PopupMenu_Activated);
             this.Deactivate += new System.EventHandler(this.PopupMenu_Deactivate);

@@ -14,6 +14,7 @@ namespace Text_Editor
     {
         //global variable(s)
         private MainFormEditor parentFormObj;
+        private Point zoomFactorCSLocation;
 
         //not used, no info of parents
         public MatrixPopupMenu()
@@ -24,6 +25,7 @@ namespace Text_Editor
         public MatrixPopupMenu(MainFormEditor parentForm)
         {
             this.parentFormObj = parentForm;
+
             InitializeComponent();
         }
 
@@ -32,6 +34,41 @@ namespace Text_Editor
             this.Visible = false;
 
             parentFormObj.toolStripStatusLabelSetterGetter.Text = "...";
+
+            if(zoomFactorContextStrip.Visible == true)
+            {
+                //zoomFactorContextStrip.Close();
+                zoomFactorContextStrip.Visible = false;
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            /*if((e as MouseEventArgs).Button == MouseButtons.Left)
+            {
+                zoomFactorContextStrip.Show(button15, zoomFactorCSLocation);
+            }*/
+        }
+
+        private void MatrixPopupMenu_Load(object sender, EventArgs e)
+        {
+            zoomFactorCSLocation = new Point(0, this.button15.Height);
+        }
+
+        private void button15_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.TopMost = true;
+                zoomFactorContextStrip.Show(button15, zoomFactorCSLocation);
+                //zoomFactorContextStrip.Visible = true;
+            }
+        }
+
+        private void button15_MouseDown(object sender, MouseEventArgs e)
+        {
+            zoomFactorContextStrip.Close();
+            //zoomFactorContextStrip.Visible = false;
         }
     }
 }
