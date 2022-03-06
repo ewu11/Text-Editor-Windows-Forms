@@ -352,7 +352,7 @@
             this.fontSizeComboBox.Name = "fontSizeComboBox";
             this.fontSizeComboBox.Size = new System.Drawing.Size(96, 28);
             this.fontSizeComboBox.Text = "Font Size";
-            this.fontSizeComboBox.ToolTipText = "Font Size";
+            this.fontSizeComboBox.ToolTipText = "Font Size; 12(default)";
             this.fontSizeComboBox.SelectedIndexChanged += new System.EventHandler(this.fontSizeComboBox_SelectedIndexChanged);
             // 
             // increaseStripButton
@@ -863,6 +863,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.richTextBox1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);

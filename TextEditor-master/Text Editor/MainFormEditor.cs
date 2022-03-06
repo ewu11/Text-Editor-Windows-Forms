@@ -313,7 +313,7 @@ namespace Text_Editor
                 return;
             }
             // sets the font size when changed
-            richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily,Convert.ToInt32(fontSizeComboBox.Text),richTextBox1.SelectionFont.Style);
+            richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, Convert.ToInt32(fontSizeComboBox.Text), richTextBox1.SelectionFont.Style);
         }
 
         private void fontStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -435,11 +435,23 @@ namespace Text_Editor
             {
                 bulletListStripButton.Checked = true;
                 richTextBox1.SelectionBullet = true;    // BULLET LIST is active
+
+                //--to update matrix popup button14--
+                matrixPopupMenuObj.button14SetterGetter.FlatAppearance.BorderColor = SystemColors.GradientActiveCaption;
+                matrixPopupMenuObj.button14SetterGetter.FlatAppearance.BorderSize = 3;
+                matrixPopupMenuObj.bulletFlagSetterGetter = 1;
+                //--to update matrix popup button14--
             }
             else if (bulletListStripButton.Checked == true)
             {
                 bulletListStripButton.Checked = false;
                 richTextBox1.SelectionBullet = false;    // BULLET LIST is not active
+
+                //--to update matrix popup button14--
+                matrixPopupMenuObj.button14SetterGetter.FlatAppearance.BorderColor = SystemColors.Window;
+                matrixPopupMenuObj.button14SetterGetter.FlatAppearance.BorderSize = 0;
+                matrixPopupMenuObj.bulletFlagSetterGetter = 0;
+                //--to update matrix popup button14--
             }
         }
 
@@ -459,7 +471,8 @@ namespace Text_Editor
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
+                //MessageBox.Show(ex.Message, "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
+                MessageBox.Show("Please select \"Font Size\"!", "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
             }
         }
 
@@ -474,12 +487,13 @@ namespace Text_Editor
                     return;
                 }
                 // sets the updated font size
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily,size,richTextBox1.SelectionFont.Style);
+                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, size, richTextBox1.SelectionFont.Style);
                 fontSizeComboBox.Text = size.ToString();    // update font size
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
+                //MessageBox.Show(ex.Message, "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
+                MessageBox.Show("Please select \"Font Size\"!", "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
             }
         }
 

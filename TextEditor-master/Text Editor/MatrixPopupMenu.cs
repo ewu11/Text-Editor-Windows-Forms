@@ -219,6 +219,18 @@ namespace Text_Editor
             get { return zoomFactorContextStrip; }
             set { zoomFactorContextStrip = value; }
         }
+
+        public int bulletFlagSetterGetter
+        {
+            get { return this.bulletFlag; }
+            set { this.bulletFlag = value; }
+        }
+
+        public Button button14SetterGetter
+        {
+            get { return this.button14; }
+            set { this.button14 = value; }
+        }
         //-----setter getter methods-----
     }
 }

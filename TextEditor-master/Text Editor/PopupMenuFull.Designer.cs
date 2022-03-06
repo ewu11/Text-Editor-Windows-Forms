@@ -91,6 +91,7 @@ namespace Text_Editor
             // 
             this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button14.AutoSize = true;
             this.button14.BackColor = System.Drawing.SystemColors.Window;
             this.button14.FlatAppearance.BorderSize = 0;
             this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -159,6 +160,7 @@ namespace Text_Editor
             // 
             this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.button13.AutoSize = true;
             this.button13.BackColor = System.Drawing.SystemColors.Window;
             this.button13.FlatAppearance.BorderSize = 0;
             this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -182,6 +184,7 @@ namespace Text_Editor
             // 
             this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button12.AutoSize = true;
             this.button12.BackColor = System.Drawing.SystemColors.Window;
             this.button12.FlatAppearance.BorderSize = 0;
             this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -205,6 +208,7 @@ namespace Text_Editor
             // 
             this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.button11.AutoSize = true;
             this.button11.BackColor = System.Drawing.SystemColors.Window;
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -228,6 +232,7 @@ namespace Text_Editor
             // 
             this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.AutoSize = true;
             this.button10.BackColor = System.Drawing.SystemColors.Window;
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -251,6 +256,7 @@ namespace Text_Editor
             // 
             this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.button9.AutoSize = true;
             this.button9.BackColor = System.Drawing.SystemColors.Window;
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -274,6 +280,7 @@ namespace Text_Editor
             // 
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.AutoSize = true;
             this.button8.BackColor = System.Drawing.SystemColors.Window;
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -297,6 +304,7 @@ namespace Text_Editor
             // 
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.button7.AutoSize = true;
             this.button7.BackColor = System.Drawing.SystemColors.Window;
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -320,6 +328,7 @@ namespace Text_Editor
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.AutoSize = true;
             this.button6.BackColor = System.Drawing.SystemColors.Window;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -343,6 +352,7 @@ namespace Text_Editor
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.button5.AutoSize = true;
             this.button5.BackColor = System.Drawing.SystemColors.Window;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -366,6 +376,7 @@ namespace Text_Editor
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.AutoSize = true;
             this.button4.BackColor = System.Drawing.SystemColors.Window;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -389,6 +400,7 @@ namespace Text_Editor
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.button3.AutoSize = true;
             this.button3.BackColor = System.Drawing.SystemColors.Window;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -412,6 +424,7 @@ namespace Text_Editor
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.AutoSize = true;
             this.button2.BackColor = System.Drawing.SystemColors.Window;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -435,6 +448,7 @@ namespace Text_Editor
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.SystemColors.Window;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button1.FlatAppearance.BorderSize = 0;
@@ -462,6 +476,7 @@ namespace Text_Editor
             this.ClientSize = new System.Drawing.Size(376, 212);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "PopupMenuFull";
             this.ShowInTaskbar = false;
@@ -469,6 +484,7 @@ namespace Text_Editor
             this.Activated += new System.EventHandler(this.PopupMenuFull_Activated);
             this.Deactivate += new System.EventHandler(this.PopupMenuFull_Deactivate);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
