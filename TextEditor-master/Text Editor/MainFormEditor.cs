@@ -34,6 +34,7 @@ namespace Text_Editor
         bool ctrlIsDown = false; //by default
         bool rmbIsUp = false; //by default;
         int contextMenuOption; //by default; default context menu
+        Bitmap bmp;
         //----for popup menu uses----
 
         public MainFormEditor()
@@ -56,6 +57,14 @@ namespace Text_Editor
 
             //make default context menu selection checked
             defaultContextMenuToolStripMenuItem.Checked = true;
+
+            // draw bmp in image property of selected item, while its active
+            //--used by ToolStripDropDown & zoomFactorContextStrip--
+            bmp = new Bitmap(5, 5);
+            using (Graphics gfx = Graphics.FromImage(bmp))
+            {
+                gfx.FillEllipse(Brushes.Black, 1, 1, 3, 3);
+            }
 
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
@@ -154,6 +163,11 @@ namespace Text_Editor
             int line = richTextBox1.GetLineFromCharIndex(pos);
             int column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);
             lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
+
+            //---make ToolStripDropDown & zoomFactorContextStrip selection in default---
+            zoomDropDownButton.DropDownItems[3].Image = bmp;
+            matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items[3].Image = bmp;
+            //---make ToolStripDropDown & zoomFactorContextStrip selection in default---
         }
 
         //******************************************************************************************************************************
@@ -415,7 +429,7 @@ namespace Text_Editor
             richTextBox1.SelectionAlignment = HorizontalAlignment.Right;    // selects right alignment
         }
 
-        private void bulletListStripButton_Click(object sender, EventArgs e)
+        public void bulletListStripButton_Click(object sender, EventArgs e)
         {
             if (bulletListStripButton.Checked == false)
             {
@@ -633,24 +647,27 @@ namespace Text_Editor
             }
         }
 
-        private void zoomDropDownButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        public void zoomDropDownButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            //---logics responsible for zoom factor---
             float zoomPercent = Convert.ToSingle(e.ClickedItem.Text.Trim('%')); // convert
             richTextBox1.ZoomFactor = zoomPercent / 100;    // set zoom factor
+            //---logics responsible for zoom factor---
 
-            if(e.ClickedItem.Image == null)
+            /*// draw bmp in image property of selected item, while its active
+            Bitmap bmp = new Bitmap(5, 5);
+            using (Graphics gfx = Graphics.FromImage(bmp))
+            {
+                gfx.FillEllipse(Brushes.Black, 1, 1, 3, 3);
+            }*/
+
+            //---old, simple logic---
+            /*if (e.ClickedItem.Image == null)
             {
                 // sets all the image properties to null - incase one is already selected beforehand
                 for (int i = 0; i < zoomDropDownButton.DropDownItems.Count; i++)
                 {
                     zoomDropDownButton.DropDownItems[i].Image = null;
-                }
-
-                // draw bmp in image property of selected item, while its active
-                Bitmap bmp = new Bitmap(5, 5);
-                using (Graphics gfx = Graphics.FromImage(bmp))
-                {
-                    gfx.FillEllipse(Brushes.Black, 1, 1, 3, 3);
                 }
                 e.ClickedItem.Image = bmp;    // draw ellipse in image property
             }
@@ -658,7 +675,40 @@ namespace Text_Editor
             {
                 e.ClickedItem.Image = null;
                 richTextBox1.ZoomFactor = 1.0f;    // set back to NO ZOOM
+            }*/
+            //---old, simple logic---
+
+            //----to update zoom factor selection in both ToolStripDropDown & zoomFactorContextStrip----
+            //from ToolStripDropDown -> zoomFactorContextStrip
+            for (int i = 0; i < matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items.Count; i++)
+            {
+                matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items[i].Image = null;
+
+                if (zoomDropDownButton.DropDownItems[i].ToString() == e.ClickedItem.ToString())
+                {
+                    matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items[i].Image = bmp;
+                }
+                else
+                {
+                    Console.WriteLine("Error!");
+                }
             }
+
+            //from zoomFactorContextStrip -> ToolStripDropDown
+            for (int i = 0; i < matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items.Count; i++)
+            {
+                zoomDropDownButton.DropDownItems[i].Image = null;
+
+                if (matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items[i].ToString() == e.ClickedItem.ToString())
+                {
+                    zoomDropDownButton.DropDownItems[i].Image = bmp;
+                }
+                else
+                {
+                    Console.WriteLine("Error!");
+                }
+            }
+            //----to update zoom factor selection in both ToolStripDropDown & zoomFactorContextStrip----
         }
 
         private void uppercaseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -928,17 +978,24 @@ namespace Text_Editor
             set { this.richTextBox1 = value; }
         }
 
-        public ToolStripMenuItem fileToolStripSetterGetter
+        public ToolStripDropDownButton zoomDropDownSetterGetter
+        {
+            get { return zoomDropDownButton; }
+            set { zoomDropDownButton = value; }
+        }
+        
+
+        /*public ToolStripMenuItem fileToolStripSetterGetter
         {
             get { return fileToolStripMenuItem; }
             set { this.fileToolStripMenuItem = value; }
-        }
+        }*/
 
-        public ToolStripMenuItem editToolStripSetterGetter
+        /*public ToolStripMenuItem editToolStripSetterGetter
         {
             get { return editToolStripMenuItem; }
             set { this.editToolStripMenuItem = value; }
-        }
+        }*/
 
         public ToolStripStatusLabel toolStripStatusLabelSetterGetter
         {
@@ -946,17 +1003,17 @@ namespace Text_Editor
             set { this.toolStripStatusLabel1 = value; }
         }
 
-        public bool ctrlKeyStatusSetterGetter
+        /*public bool ctrlKeyStatusSetterGetter
         {
             get { return this.ctrlIsDown; }
             set { this.ctrlIsDown = value; }
-        }
+        }*/
 
-        public bool rmbKeyStatusSetterGetter
+        /*public bool rmbKeyStatusSetterGetter
         {
             get { return this.rmbIsUp; }
             set { this.rmbIsUp = value; }
-        }
+        }*/
         //----setter getter methods-----
 
         //----combine key and mouse events----
