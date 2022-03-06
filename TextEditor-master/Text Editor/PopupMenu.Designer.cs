@@ -59,7 +59,7 @@ namespace Text_Editor
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 28);
+            this.button1.Size = new System.Drawing.Size(141, 26);
             this.button1.TabIndex = 1;
             this.button1.Text = "Ctrl+X                Cut";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -91,10 +91,10 @@ namespace Text_Editor
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.ImageKey = "copyToolStripMenuItem.Image.png";
             this.button2.ImageList = this.imageList1;
-            this.button2.Location = new System.Drawing.Point(199, 0);
+            this.button2.Location = new System.Drawing.Point(151, 0);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(177, 28);
+            this.button2.Size = new System.Drawing.Size(141, 26);
             this.button2.TabIndex = 2;
             this.button2.Text = "Copy            Ctrl+C";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -115,10 +115,10 @@ namespace Text_Editor
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.ImageKey = "pasteToolStripMenuItem.Image.png";
             this.button3.ImageList = this.imageList1;
-            this.button3.Location = new System.Drawing.Point(0, 28);
+            this.button3.Location = new System.Drawing.Point(0, 26);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(180, 28);
+            this.button3.Size = new System.Drawing.Size(141, 26);
             this.button3.TabIndex = 3;
             this.button3.Text = "Ctrl+V             Paste";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -139,10 +139,10 @@ namespace Text_Editor
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button4.ImageKey = "deleteStripMenuItem.Image.png";
             this.button4.ImageList = this.imageList1;
-            this.button4.Location = new System.Drawing.Point(199, 28);
+            this.button4.Location = new System.Drawing.Point(151, 26);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(177, 28);
+            this.button4.Size = new System.Drawing.Size(141, 26);
             this.button4.TabIndex = 4;
             this.button4.Text = "Delete          Del";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -163,10 +163,10 @@ namespace Text_Editor
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.ImageKey = "selectAllToolStripMenuItem.Image.png";
             this.button5.ImageList = this.imageList1;
-            this.button5.Location = new System.Drawing.Point(0, 56);
+            this.button5.Location = new System.Drawing.Point(0, 52);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(180, 29);
+            this.button5.Size = new System.Drawing.Size(141, 27);
             this.button5.TabIndex = 5;
             this.button5.Text = "Ctrl+A       Select All";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -187,10 +187,10 @@ namespace Text_Editor
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button6.ImageKey = "clearAllToolStripMenuItem.Image.png";
             this.button6.ImageList = this.imageList1;
-            this.button6.Location = new System.Drawing.Point(199, 56);
+            this.button6.Location = new System.Drawing.Point(151, 52);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(177, 29);
+            this.button6.Size = new System.Drawing.Size(141, 27);
             this.button6.TabIndex = 6;
             this.button6.Text = "Clear All";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -199,8 +199,9 @@ namespace Text_Editor
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -218,20 +219,22 @@ namespace Text_Editor
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(376, 85);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(292, 79);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // PopupMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuPopup;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(376, 85);
+            this.ClientSize = new System.Drawing.Size(292, 79);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PopupMenu";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -240,6 +243,7 @@ namespace Text_Editor
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

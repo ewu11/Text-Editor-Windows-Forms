@@ -469,7 +469,8 @@ namespace Text_Editor
                 richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily,size,richTextBox1.SelectionFont.Style);
                 fontSizeComboBox.Text = size.ToString();    // update font size
             }
-            catch(Exception ex)
+            //catch(Exception ex)
+            catch (Exception ex)
             {
                 //MessageBox.Show(ex.Message, "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
                 MessageBox.Show("Please select \"Font Size\"!", "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message

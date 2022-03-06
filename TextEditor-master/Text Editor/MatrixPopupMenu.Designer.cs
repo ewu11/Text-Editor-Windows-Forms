@@ -68,13 +68,14 @@ namespace Text_Editor
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel1.Controls.Add(this.button16, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.button15, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.button14, 1, 3);
@@ -100,8 +101,8 @@ namespace Text_Editor
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(421, 256);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 192);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // button16
@@ -115,10 +116,10 @@ namespace Text_Editor
             this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button16.ImageKey = "exitToolStripMenuItem.Image.png";
             this.button16.ImageList = this.imageList1;
-            this.button16.Location = new System.Drawing.Point(315, 192);
+            this.button16.Location = new System.Drawing.Point(240, 144);
             this.button16.Margin = new System.Windows.Forms.Padding(0);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(106, 64);
+            this.button16.Size = new System.Drawing.Size(80, 48);
             this.button16.TabIndex = 15;
             this.button16.Text = "Exit | Alt+F4";
             this.button16.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -183,10 +184,10 @@ namespace Text_Editor
             this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button15.ImageKey = "zoomDropDownButton.Image.png";
             this.button15.ImageList = this.imageList1;
-            this.button15.Location = new System.Drawing.Point(210, 192);
+            this.button15.Location = new System.Drawing.Point(160, 144);
             this.button15.Margin = new System.Windows.Forms.Padding(0);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(105, 64);
+            this.button15.Size = new System.Drawing.Size(80, 48);
             this.button15.TabIndex = 14;
             this.button15.Text = "Zoom Factor";
             this.button15.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -206,10 +207,10 @@ namespace Text_Editor
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button14.ImageKey = "bulletListStripButton.Image.png";
             this.button14.ImageList = this.imageList1;
-            this.button14.Location = new System.Drawing.Point(105, 192);
+            this.button14.Location = new System.Drawing.Point(80, 144);
             this.button14.Margin = new System.Windows.Forms.Padding(0);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(105, 64);
+            this.button14.Size = new System.Drawing.Size(80, 48);
             this.button14.TabIndex = 13;
             this.button14.Text = "Bullet List";
             this.button14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -228,10 +229,10 @@ namespace Text_Editor
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button13.ImageKey = "clearAllToolStripMenuItem.Image.png";
             this.button13.ImageList = this.imageList1;
-            this.button13.Location = new System.Drawing.Point(0, 192);
+            this.button13.Location = new System.Drawing.Point(0, 144);
             this.button13.Margin = new System.Windows.Forms.Padding(0);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(105, 64);
+            this.button13.Size = new System.Drawing.Size(80, 48);
             this.button13.TabIndex = 12;
             this.button13.Text = "Clear All";
             this.button13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -250,10 +251,10 @@ namespace Text_Editor
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button12.ImageKey = "selectAllToolStripMenuItem.Image.png";
             this.button12.ImageList = this.imageList1;
-            this.button12.Location = new System.Drawing.Point(315, 128);
+            this.button12.Location = new System.Drawing.Point(240, 96);
             this.button12.Margin = new System.Windows.Forms.Padding(0);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(106, 64);
+            this.button12.Size = new System.Drawing.Size(80, 48);
             this.button12.TabIndex = 11;
             this.button12.Text = "Select All | Ctrl+A";
             this.button12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -272,10 +273,10 @@ namespace Text_Editor
             this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button11.ImageKey = "deleteToolStripMenuItem.Image.png";
             this.button11.ImageList = this.imageList1;
-            this.button11.Location = new System.Drawing.Point(222, 128);
+            this.button11.Location = new System.Drawing.Point(164, 96);
             this.button11.Margin = new System.Windows.Forms.Padding(0);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(81, 64);
+            this.button11.Size = new System.Drawing.Size(72, 48);
             this.button11.TabIndex = 10;
             this.button11.Text = "Delete | Del";
             this.button11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -294,10 +295,10 @@ namespace Text_Editor
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button10.ImageKey = "pasteToolStripMenuItem.Image.png";
             this.button10.ImageList = this.imageList1;
-            this.button10.Location = new System.Drawing.Point(105, 128);
+            this.button10.Location = new System.Drawing.Point(80, 96);
             this.button10.Margin = new System.Windows.Forms.Padding(0);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(105, 64);
+            this.button10.Size = new System.Drawing.Size(80, 48);
             this.button10.TabIndex = 9;
             this.button10.Text = "Paste | Ctrl+V";
             this.button10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -316,10 +317,10 @@ namespace Text_Editor
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button9.ImageKey = "copyToolStripMenuItem.Image.png";
             this.button9.ImageList = this.imageList1;
-            this.button9.Location = new System.Drawing.Point(0, 128);
+            this.button9.Location = new System.Drawing.Point(0, 96);
             this.button9.Margin = new System.Windows.Forms.Padding(0);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(105, 64);
+            this.button9.Size = new System.Drawing.Size(80, 48);
             this.button9.TabIndex = 8;
             this.button9.Text = "Copy | Ctrl+C";
             this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -338,10 +339,10 @@ namespace Text_Editor
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button8.ImageKey = "cutToolStripMenuItem.Image.png";
             this.button8.ImageList = this.imageList1;
-            this.button8.Location = new System.Drawing.Point(315, 64);
+            this.button8.Location = new System.Drawing.Point(240, 48);
             this.button8.Margin = new System.Windows.Forms.Padding(0);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(106, 64);
+            this.button8.Size = new System.Drawing.Size(80, 48);
             this.button8.TabIndex = 7;
             this.button8.Text = "Cut | Ctrl+X";
             this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -360,10 +361,10 @@ namespace Text_Editor
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button7.ImageKey = "redoStripButton.Image.png";
             this.button7.ImageList = this.imageList1;
-            this.button7.Location = new System.Drawing.Point(210, 64);
+            this.button7.Location = new System.Drawing.Point(160, 48);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(105, 64);
+            this.button7.Size = new System.Drawing.Size(80, 48);
             this.button7.TabIndex = 6;
             this.button7.Text = "Redo | Ctrl+Y";
             this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -382,10 +383,10 @@ namespace Text_Editor
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button6.ImageKey = "undoStripButton.Image.png";
             this.button6.ImageList = this.imageList1;
-            this.button6.Location = new System.Drawing.Point(105, 64);
+            this.button6.Location = new System.Drawing.Point(80, 48);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(105, 64);
+            this.button6.Size = new System.Drawing.Size(80, 48);
             this.button6.TabIndex = 5;
             this.button6.Text = "Undo | Ctrl+Z";
             this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -404,10 +405,10 @@ namespace Text_Editor
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button5.ImageKey = "printPreviewStripButton.Image.png";
             this.button5.ImageList = this.imageList1;
-            this.button5.Location = new System.Drawing.Point(0, 64);
+            this.button5.Location = new System.Drawing.Point(0, 48);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(105, 64);
+            this.button5.Size = new System.Drawing.Size(80, 48);
             this.button5.TabIndex = 4;
             this.button5.Text = "Print Preview";
             this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -426,10 +427,10 @@ namespace Text_Editor
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button4.ImageKey = "printStripButton.Image.png";
             this.button4.ImageList = this.imageList1;
-            this.button4.Location = new System.Drawing.Point(315, 0);
+            this.button4.Location = new System.Drawing.Point(240, 0);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(106, 64);
+            this.button4.Size = new System.Drawing.Size(80, 48);
             this.button4.TabIndex = 3;
             this.button4.Text = "Print";
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -448,10 +449,10 @@ namespace Text_Editor
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button3.ImageKey = "saveStripButton.Image.png";
             this.button3.ImageList = this.imageList1;
-            this.button3.Location = new System.Drawing.Point(210, 0);
+            this.button3.Location = new System.Drawing.Point(160, 0);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 64);
+            this.button3.Size = new System.Drawing.Size(80, 48);
             this.button3.TabIndex = 2;
             this.button3.Text = "Save | Ctrl+S";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -470,10 +471,10 @@ namespace Text_Editor
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
             this.button2.ImageKey = "openFileStripButton.Image.png";
             this.button2.ImageList = this.imageList1;
-            this.button2.Location = new System.Drawing.Point(105, 0);
+            this.button2.Location = new System.Drawing.Point(80, 0);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 64);
+            this.button2.Size = new System.Drawing.Size(80, 48);
             this.button2.TabIndex = 1;
             this.button2.Text = "Open";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -495,7 +496,7 @@ namespace Text_Editor
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 64);
+            this.button1.Size = new System.Drawing.Size(80, 48);
             this.button1.TabIndex = 0;
             this.button1.Text = "New";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -519,79 +520,81 @@ namespace Text_Editor
             this.toolStripMenuItem6,
             this.toolStripMenuItem7});
             this.zoomFactorContextStrip.Name = "zoomFactorContextStrip";
-            this.zoomFactorContextStrip.Size = new System.Drawing.Size(107, 220);
+            this.zoomFactorContextStrip.Size = new System.Drawing.Size(97, 202);
             this.zoomFactorContextStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.zoomFactorContextStrip_ItemClicked);
             // 
             // firstItemToolStripMenuItem
             // 
             this.firstItemToolStripMenuItem.Name = "firstItemToolStripMenuItem";
-            this.firstItemToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
+            this.firstItemToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.firstItemToolStripMenuItem.Text = "20%";
             // 
             // secondItemToolStripMenuItem
             // 
             this.secondItemToolStripMenuItem.Name = "secondItemToolStripMenuItem";
-            this.secondItemToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
+            this.secondItemToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.secondItemToolStripMenuItem.Text = "50%";
             // 
             // thirdItemToolStripMenuItem
             // 
             this.thirdItemToolStripMenuItem.Name = "thirdItemToolStripMenuItem";
-            this.thirdItemToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
+            this.thirdItemToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.thirdItemToolStripMenuItem.Text = "70%";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.ShowShortcutKeys = false;
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(106, 24);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(96, 22);
             this.toolStripMenuItem2.Text = "100%";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.ShowShortcutKeys = false;
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(106, 24);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(96, 22);
             this.toolStripMenuItem3.Text = "150%";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.ShowShortcutKeys = false;
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(106, 24);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(96, 22);
             this.toolStripMenuItem4.Text = "200%";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.ShowShortcutKeys = false;
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(106, 24);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(96, 22);
             this.toolStripMenuItem5.Text = "300%";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.ShowShortcutKeys = false;
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(106, 24);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(96, 22);
             this.toolStripMenuItem6.Text = "400%";
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.ShowShortcutKeys = false;
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(106, 24);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(96, 22);
             this.toolStripMenuItem7.Text = "500%";
             // 
             // MatrixPopupMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuPopup;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(421, 256);
+            this.ClientSize = new System.Drawing.Size(320, 193);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MatrixPopupMenu";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -601,6 +604,7 @@ namespace Text_Editor
             this.tableLayoutPanel1.PerformLayout();
             this.zoomFactorContextStrip.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
