@@ -65,11 +65,7 @@ namespace Text_Editor
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -92,6 +88,7 @@ namespace Text_Editor
             this.tableLayoutPanel1.Controls.Add(this.button3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -102,7 +99,7 @@ namespace Text_Editor
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 192);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(430, 240);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // button16
@@ -113,17 +110,17 @@ namespace Text_Editor
             this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button16.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button16.ImageKey = "exitToolStripMenuItem.Image.png";
             this.button16.ImageList = this.imageList1;
-            this.button16.Location = new System.Drawing.Point(240, 144);
+            this.button16.Location = new System.Drawing.Point(321, 180);
             this.button16.Margin = new System.Windows.Forms.Padding(0);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(80, 48);
+            this.button16.Size = new System.Drawing.Size(109, 60);
             this.button16.TabIndex = 15;
             this.button16.Text = "Exit | Alt+F4";
             this.button16.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button16.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
@@ -181,17 +178,17 @@ namespace Text_Editor
             this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button15.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button15.ImageKey = "zoomDropDownButton.Image.png";
             this.button15.ImageList = this.imageList1;
-            this.button15.Location = new System.Drawing.Point(160, 144);
+            this.button15.Location = new System.Drawing.Point(214, 180);
             this.button15.Margin = new System.Windows.Forms.Padding(0);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(80, 48);
+            this.button15.Size = new System.Drawing.Size(107, 60);
             this.button15.TabIndex = 14;
             this.button15.Text = "Zoom Factor";
             this.button15.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button15.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button15.UseVisualStyleBackColor = true;
             this.button15.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button15_MouseDown);
             this.button15.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button15_MouseUp);
@@ -204,17 +201,17 @@ namespace Text_Editor
             this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button14.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button14.ImageKey = "bulletListStripButton.Image.png";
             this.button14.ImageList = this.imageList1;
-            this.button14.Location = new System.Drawing.Point(80, 144);
+            this.button14.Location = new System.Drawing.Point(107, 180);
             this.button14.Margin = new System.Windows.Forms.Padding(0);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(80, 48);
+            this.button14.Size = new System.Drawing.Size(107, 60);
             this.button14.TabIndex = 13;
             this.button14.Text = "Bullet List";
             this.button14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
@@ -226,17 +223,17 @@ namespace Text_Editor
             this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button13.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button13.ImageKey = "clearAllToolStripMenuItem.Image.png";
             this.button13.ImageList = this.imageList1;
-            this.button13.Location = new System.Drawing.Point(0, 144);
+            this.button13.Location = new System.Drawing.Point(0, 180);
             this.button13.Margin = new System.Windows.Forms.Padding(0);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(80, 48);
+            this.button13.Size = new System.Drawing.Size(107, 60);
             this.button13.TabIndex = 12;
             this.button13.Text = "Clear All";
             this.button13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
@@ -248,39 +245,39 @@ namespace Text_Editor
             this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button12.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button12.ImageKey = "selectAllToolStripMenuItem.Image.png";
             this.button12.ImageList = this.imageList1;
-            this.button12.Location = new System.Drawing.Point(240, 96);
+            this.button12.Location = new System.Drawing.Point(321, 120);
             this.button12.Margin = new System.Windows.Forms.Padding(0);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(80, 48);
+            this.button12.Size = new System.Drawing.Size(109, 60);
             this.button12.TabIndex = 11;
             this.button12.Text = "Select All | Ctrl+A";
             this.button12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button11
             // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button11.AutoSize = true;
+            this.button11.Dock = System.Windows.Forms.DockStyle.Right;
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button11.ImageKey = "deleteToolStripMenuItem.Image.png";
             this.button11.ImageList = this.imageList1;
-            this.button11.Location = new System.Drawing.Point(164, 96);
+            this.button11.Location = new System.Drawing.Point(222, 120);
             this.button11.Margin = new System.Windows.Forms.Padding(0);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(72, 48);
+            this.button11.Size = new System.Drawing.Size(99, 60);
             this.button11.TabIndex = 10;
             this.button11.Text = "Delete | Del";
             this.button11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
@@ -292,17 +289,17 @@ namespace Text_Editor
             this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button10.ImageKey = "pasteToolStripMenuItem.Image.png";
             this.button10.ImageList = this.imageList1;
-            this.button10.Location = new System.Drawing.Point(80, 96);
+            this.button10.Location = new System.Drawing.Point(107, 120);
             this.button10.Margin = new System.Windows.Forms.Padding(0);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(80, 48);
+            this.button10.Size = new System.Drawing.Size(107, 60);
             this.button10.TabIndex = 9;
             this.button10.Text = "Paste | Ctrl+V";
             this.button10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
@@ -314,17 +311,17 @@ namespace Text_Editor
             this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button9.ImageKey = "copyToolStripMenuItem.Image.png";
             this.button9.ImageList = this.imageList1;
-            this.button9.Location = new System.Drawing.Point(0, 96);
+            this.button9.Location = new System.Drawing.Point(0, 120);
             this.button9.Margin = new System.Windows.Forms.Padding(0);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(80, 48);
+            this.button9.Size = new System.Drawing.Size(107, 60);
             this.button9.TabIndex = 8;
             this.button9.Text = "Copy | Ctrl+C";
             this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
@@ -336,17 +333,17 @@ namespace Text_Editor
             this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button8.ImageKey = "cutToolStripMenuItem.Image.png";
             this.button8.ImageList = this.imageList1;
-            this.button8.Location = new System.Drawing.Point(240, 48);
+            this.button8.Location = new System.Drawing.Point(321, 60);
             this.button8.Margin = new System.Windows.Forms.Padding(0);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(80, 48);
+            this.button8.Size = new System.Drawing.Size(109, 60);
             this.button8.TabIndex = 7;
             this.button8.Text = "Cut | Ctrl+X";
             this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
@@ -358,17 +355,17 @@ namespace Text_Editor
             this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button7.ImageKey = "redoStripButton.Image.png";
             this.button7.ImageList = this.imageList1;
-            this.button7.Location = new System.Drawing.Point(160, 48);
+            this.button7.Location = new System.Drawing.Point(214, 60);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(80, 48);
+            this.button7.Size = new System.Drawing.Size(107, 60);
             this.button7.TabIndex = 6;
             this.button7.Text = "Redo | Ctrl+Y";
             this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -380,17 +377,17 @@ namespace Text_Editor
             this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button6.ImageKey = "undoStripButton.Image.png";
             this.button6.ImageList = this.imageList1;
-            this.button6.Location = new System.Drawing.Point(80, 48);
+            this.button6.Location = new System.Drawing.Point(107, 60);
             this.button6.Margin = new System.Windows.Forms.Padding(0);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(80, 48);
+            this.button6.Size = new System.Drawing.Size(107, 60);
             this.button6.TabIndex = 5;
             this.button6.Text = "Undo | Ctrl+Z";
             this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -402,17 +399,17 @@ namespace Text_Editor
             this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button5.ImageKey = "printPreviewStripButton.Image.png";
             this.button5.ImageList = this.imageList1;
-            this.button5.Location = new System.Drawing.Point(0, 48);
+            this.button5.Location = new System.Drawing.Point(0, 60);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(80, 48);
+            this.button5.Size = new System.Drawing.Size(107, 60);
             this.button5.TabIndex = 4;
             this.button5.Text = "Print Preview";
             this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -424,17 +421,17 @@ namespace Text_Editor
             this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button4.ImageKey = "printStripButton.Image.png";
             this.button4.ImageList = this.imageList1;
-            this.button4.Location = new System.Drawing.Point(240, 0);
+            this.button4.Location = new System.Drawing.Point(321, 0);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(80, 48);
+            this.button4.Size = new System.Drawing.Size(109, 60);
             this.button4.TabIndex = 3;
             this.button4.Text = "Print";
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -446,17 +443,17 @@ namespace Text_Editor
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button3.ImageKey = "saveStripButton.Image.png";
             this.button3.ImageList = this.imageList1;
-            this.button3.Location = new System.Drawing.Point(160, 0);
+            this.button3.Location = new System.Drawing.Point(214, 0);
             this.button3.Margin = new System.Windows.Forms.Padding(0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(80, 48);
+            this.button3.Size = new System.Drawing.Size(107, 60);
             this.button3.TabIndex = 2;
             this.button3.Text = "Save | Ctrl+S";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -468,17 +465,17 @@ namespace Text_Editor
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button2.ImageKey = "openFileStripButton.Image.png";
             this.button2.ImageList = this.imageList1;
-            this.button2.Location = new System.Drawing.Point(80, 0);
+            this.button2.Location = new System.Drawing.Point(107, 0);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 48);
+            this.button2.Size = new System.Drawing.Size(107, 60);
             this.button2.TabIndex = 1;
             this.button2.Text = "Open";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -490,17 +487,17 @@ namespace Text_Editor
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button1.ImageKey = "newMenuItem.Image.png";
             this.button1.ImageList = this.imageList1;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 48);
+            this.button1.Size = new System.Drawing.Size(107, 60);
             this.button1.TabIndex = 0;
             this.button1.Text = "New";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -588,13 +585,15 @@ namespace Text_Editor
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuPopup;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(320, 193);
+            this.ClientSize = new System.Drawing.Size(430, 240);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MatrixPopupMenu";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
