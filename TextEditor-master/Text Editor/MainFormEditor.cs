@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 
 namespace Text_Editor
 {
-    public partial class FormEditor : Form
+    public partial class MainFormEditor : Form
     {
         List<string> colorList = new List<string>();    // holds the System.Drawing.Color names
         string filenamee;    // file opened inside of RTB
@@ -28,22 +28,43 @@ namespace Text_Editor
         int pos, line, column;    // for detecting line and column numbers
 
         //----for popup menu uses----
-        //PopupMenu popMenuObj;
+        PopupMenu popMenuObj;
         PopupMenuFull popMenuObjFull;
+        MatrixPopupMenu matrixPopupMenuObj;
         bool ctrlIsDown = false; //by default
         bool rmbIsUp = false; //by default;
+        int contextMenuOption; //by default; default context menu
+        Bitmap bmp;
         //----for popup menu uses----
 
-        public FormEditor()
+        public MainFormEditor()
         {
             InitializeComponent();
+
+            //to enable double buffering; thus reduce flicker
+            //fix flickering issues to the rich text box
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
         }
 
         private void frmEditor_Load(object sender, EventArgs e)
         {
             //for popup menu uses
-            //popMenuObj = new PopupMenu(this);
+            popMenuObj = new PopupMenu(this);
             popMenuObjFull = new PopupMenuFull(this);
+            matrixPopupMenuObj = new MatrixPopupMenu(this);
+
+            contextMenuOption = 1; //sets the choice of context menu to default on the menu strip
+
+            //make default context menu selection checked
+            defaultContextMenuToolStripMenuItem.Checked = true;
+
+            // draw bmp in image property of selected item, while its active
+            //--used by ToolStripDropDown & zoomFactorContextStrip--
+            bmp = new Bitmap(5, 5);
+            using (Graphics gfx = Graphics.FromImage(bmp))
+            {
+                gfx.FillEllipse(Brushes.Black, 1, 1, 3, 3);
+            }
 
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
@@ -142,6 +163,11 @@ namespace Text_Editor
             int line = richTextBox1.GetLineFromCharIndex(pos);
             int column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);
             lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
+
+            //---make ToolStripDropDown & zoomFactorContextStrip selection in default---
+            zoomDropDownButton.DropDownItems[3].Image = bmp;
+            matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items[3].Image = bmp;
+            //---make ToolStripDropDown & zoomFactorContextStrip selection in default---
         }
 
         //******************************************************************************************************************************
@@ -287,7 +313,7 @@ namespace Text_Editor
                 return;
             }
             // sets the font size when changed
-            richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily,Convert.ToInt32(fontSizeComboBox.Text),richTextBox1.SelectionFont.Style);
+            richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, Convert.ToInt32(fontSizeComboBox.Text), richTextBox1.SelectionFont.Style);
         }
 
         private void fontStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -403,17 +429,29 @@ namespace Text_Editor
             richTextBox1.SelectionAlignment = HorizontalAlignment.Right;    // selects right alignment
         }
 
-        private void bulletListStripButton_Click(object sender, EventArgs e)
+        public void bulletListStripButton_Click(object sender, EventArgs e)
         {
             if (bulletListStripButton.Checked == false)
             {
                 bulletListStripButton.Checked = true;
                 richTextBox1.SelectionBullet = true;    // BULLET LIST is active
+
+                //--to update matrix popup button14--
+                matrixPopupMenuObj.button14SetterGetter.FlatAppearance.BorderColor = SystemColors.GradientActiveCaption;
+                matrixPopupMenuObj.button14SetterGetter.FlatAppearance.BorderSize = 3;
+                matrixPopupMenuObj.bulletFlagSetterGetter = 1;
+                //--to update matrix popup button14--
             }
             else if (bulletListStripButton.Checked == true)
             {
                 bulletListStripButton.Checked = false;
                 richTextBox1.SelectionBullet = false;    // BULLET LIST is not active
+
+                //--to update matrix popup button14--
+                matrixPopupMenuObj.button14SetterGetter.FlatAppearance.BorderColor = SystemColors.Window;
+                matrixPopupMenuObj.button14SetterGetter.FlatAppearance.BorderSize = 0;
+                matrixPopupMenuObj.bulletFlagSetterGetter = 0;
+                //--to update matrix popup button14--
             }
         }
 
@@ -431,9 +469,11 @@ namespace Text_Editor
                 richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily,size,richTextBox1.SelectionFont.Style);
                 fontSizeComboBox.Text = size.ToString();    // update font size
             }
-            catch(Exception ex)
+            //catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
+                //MessageBox.Show(ex.Message, "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
+                MessageBox.Show("Please select \"Font Size\"!", "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
             }
         }
 
@@ -448,12 +488,13 @@ namespace Text_Editor
                     return;
                 }
                 // sets the updated font size
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily,size,richTextBox1.SelectionFont.Style);
+                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, size, richTextBox1.SelectionFont.Style);
                 fontSizeComboBox.Text = size.ToString();    // update font size
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
+                //MessageBox.Show(ex.Message, "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
+                MessageBox.Show("Please select \"Font Size\"!", "Error Information", MessageBoxButtons.OK, MessageBoxIcon.Warning); // show error message
             }
         }
 
@@ -621,24 +662,27 @@ namespace Text_Editor
             }
         }
 
-        private void zoomDropDownButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        public void zoomDropDownButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            //---logics responsible for zoom factor---
             float zoomPercent = Convert.ToSingle(e.ClickedItem.Text.Trim('%')); // convert
             richTextBox1.ZoomFactor = zoomPercent / 100;    // set zoom factor
+            //---logics responsible for zoom factor---
 
-            if(e.ClickedItem.Image == null)
+            /*// draw bmp in image property of selected item, while its active
+            Bitmap bmp = new Bitmap(5, 5);
+            using (Graphics gfx = Graphics.FromImage(bmp))
+            {
+                gfx.FillEllipse(Brushes.Black, 1, 1, 3, 3);
+            }*/
+
+            //---old, simple logic---
+            /*if (e.ClickedItem.Image == null)
             {
                 // sets all the image properties to null - incase one is already selected beforehand
                 for (int i = 0; i < zoomDropDownButton.DropDownItems.Count; i++)
                 {
                     zoomDropDownButton.DropDownItems[i].Image = null;
-                }
-
-                // draw bmp in image property of selected item, while its active
-                Bitmap bmp = new Bitmap(5, 5);
-                using (Graphics gfx = Graphics.FromImage(bmp))
-                {
-                    gfx.FillEllipse(Brushes.Black, 1, 1, 3, 3);
                 }
                 e.ClickedItem.Image = bmp;    // draw ellipse in image property
             }
@@ -646,7 +690,40 @@ namespace Text_Editor
             {
                 e.ClickedItem.Image = null;
                 richTextBox1.ZoomFactor = 1.0f;    // set back to NO ZOOM
+            }*/
+            //---old, simple logic---
+
+            //----to update zoom factor selection in both ToolStripDropDown & zoomFactorContextStrip----
+            //from ToolStripDropDown -> zoomFactorContextStrip
+            for (int i = 0; i < matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items.Count; i++)
+            {
+                matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items[i].Image = null;
+
+                if (zoomDropDownButton.DropDownItems[i].ToString() == e.ClickedItem.ToString())
+                {
+                    matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items[i].Image = bmp;
+                }
+                else
+                {
+                    Console.WriteLine("Error!");
+                }
             }
+
+            //from zoomFactorContextStrip -> ToolStripDropDown
+            for (int i = 0; i < matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items.Count; i++)
+            {
+                zoomDropDownButton.DropDownItems[i].Image = null;
+
+                if (matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items[i].ToString() == e.ClickedItem.ToString())
+                {
+                    zoomDropDownButton.DropDownItems[i].Image = bmp;
+                }
+                else
+                {
+                    Console.WriteLine("Error!");
+                }
+            }
+            //----to update zoom factor selection in both ToolStripDropDown & zoomFactorContextStrip----
         }
 
         private void uppercaseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -809,33 +886,53 @@ namespace Text_Editor
 
         private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            IsKeyUp((int)MouseButtons.Right); //causes rmbIsUp = true
+            Control chosenContextMenu = richContextStrip; //by default, the default context menu;
+            string cmMsj = ""; //message for status tool strip
 
-            if(e.Button == MouseButtons.Right) //if rmb mouse clicked
+            //IsKeyUp((int)MouseButtons.Right); //causes rmbIsUp = true
+
+            if (e.Button == MouseButtons.Right) //if rmb mouse clicked
             {
-                if(ctrlIsDown && rmbIsUp) //open the popup menu
+                //----with popup menu selection----
+                switch (contextMenuOption)
                 {
-                    richContextStrip.Visible = false; //forces default context menu to close
-
-                    //--popup menu 1--
-                    /*popMenuObj.Location = popMenuObj.SetPopupLocation(Screen.FromControl(this), popMenuObj, (sender as Control).PointToScreen(e.Location)); //location with logic
-                    Cursor.Position = popMenuObj.SetCursorLocation(popMenuObj.Location);
-                    popMenuObj.Visible = true;
-                    toolStripStatusLabel1.Text = "Custom context menu opened!";*/
-                    //--popup menu 1--
-
-                    //--popup menu full--
-                    popMenuObjFull.Location = SetPopupLocationLocal(Screen.FromControl(this), popMenuObjFull, (sender as Control).PointToScreen(e.Location)); //location with logic
-                    Cursor.Position = SetCursorLocationLocal(popMenuObjFull.Location, popMenuObjFull);
-                    popMenuObjFull.Visible = true;
-                    toolStripStatusLabel1.Text = "Context menu opened!";
-                    //--popup menu full--
+                    case 1:
+                        chosenContextMenu = richContextStrip; //by default, the default context menu
+                        break;
+                    case 2:
+                        chosenContextMenu = popMenuObj; //two column, simple context menu
+                        richContextStrip.Visible = false; //disable the default context menu display
+                        cmMsj = "Two column, simple context menu opened!";
+                        break;
+                    case 3:
+                        chosenContextMenu = popMenuObjFull; //two column, simple context menu
+                        richContextStrip.Visible = false; //disable the default context menu display
+                        cmMsj = "Two column, full context menu opened!";
+                        break;
+                    case 4:
+                        chosenContextMenu = matrixPopupMenuObj; //two column, simple context menu
+                        richContextStrip.Visible = false; //disable the default context menu display
+                        cmMsj = "Matrix context menu opened!";
+                        break;
+                    default:
+                        MessageBox.Show(this, "Context menu selection error!", "Alert!", MessageBoxButtons.OK);
+                        break;
                 }
-                else //open the default context menu
+                //finally, process the popup menu location and mouse coordinate
+                //only for custom context menu, cuz default context menu has its own handler
+                if (contextMenuOption != 1)
                 {
-                    richContextStrip.Visible = true;
+                    chosenContextMenu.Location = SetPopupLocationLocal(Screen.FromControl(this), (Form)chosenContextMenu, (sender as Control).PointToScreen(e.Location)); //location with logic
+                    Cursor.Position = SetCursorLocationLocal(chosenContextMenu.Location, (Form)chosenContextMenu);
+                    chosenContextMenu.Visible = true;
+                    toolStripStatusLabel1.Text = cmMsj;
+                }
+                else
+                {
+                    //for default context menu
                     toolStripStatusLabel1.Text = "Default context menu opened!";
                 }
+                //----with popup menu selection----
             }
         }
 
@@ -871,10 +968,10 @@ namespace Text_Editor
                     column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
                     lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
                     break;
-                case Keys.ControlKey:
+                /*case Keys.ControlKey:
                     IsKeyUp((int)Keys.ControlKey); //causes ctrlIsDown = false;
                     toolStripStatusLabel1.Text = "...";
-                    break;
+                    break;*/
             }
         }
 
@@ -896,17 +993,24 @@ namespace Text_Editor
             set { this.richTextBox1 = value; }
         }
 
-        public ToolStripMenuItem fileToolStripSetterGetter
+        public ToolStripDropDownButton zoomDropDownSetterGetter
+        {
+            get { return zoomDropDownButton; }
+            set { zoomDropDownButton = value; }
+        }
+        
+
+        /*public ToolStripMenuItem fileToolStripSetterGetter
         {
             get { return fileToolStripMenuItem; }
             set { this.fileToolStripMenuItem = value; }
-        }
+        }*/
 
-        public ToolStripMenuItem editToolStripSetterGetter
+        /*public ToolStripMenuItem editToolStripSetterGetter
         {
             get { return editToolStripMenuItem; }
             set { this.editToolStripMenuItem = value; }
-        }
+        }*/
 
         public ToolStripStatusLabel toolStripStatusLabelSetterGetter
         {
@@ -914,17 +1018,17 @@ namespace Text_Editor
             set { this.toolStripStatusLabel1 = value; }
         }
 
-        public bool ctrlKeyStatusSetterGetter
+        /*public bool ctrlKeyStatusSetterGetter
         {
             get { return this.ctrlIsDown; }
             set { this.ctrlIsDown = value; }
-        }
+        }*/
 
-        public bool rmbKeyStatusSetterGetter
+        /*public bool rmbKeyStatusSetterGetter
         {
             get { return this.rmbIsUp; }
             set { this.rmbIsUp = value; }
-        }
+        }*/
         //----setter getter methods-----
 
         //----combine key and mouse events----
@@ -935,10 +1039,10 @@ namespace Text_Editor
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.ControlKey)
+            /*if(e.KeyCode == Keys.ControlKey)
             {
                 IsKeyDown((int)Keys.ControlKey); //causes ctrlIsDown = true
-            }
+            }*/
         }
 
         private void richContextStrip_Closed(object sender, ToolStripDropDownClosedEventArgs e)
@@ -949,7 +1053,7 @@ namespace Text_Editor
         //IMPORTANT SO THAT DEFAULT CM AND POPUP MENU CAN OPEN PROPERLY
         private void richContextStrip_VisibleChanged(object sender, EventArgs e)
         {
-            if (richContextStrip.Visible == true) //if default context menu is opened
+            /*if (richContextStrip.Visible == true) //if default context menu is opened
             {
                 if (IsKeyDown((int)Keys.ControlKey)) //if ctrl key is pressed
                 {
@@ -969,7 +1073,7 @@ namespace Text_Editor
             else //when default cm closed
             {
                 toolStripStatusLabel1.Text = "...";
-            }
+            }*/
         }
 
         public bool IsKeyDown(int vKey) //to set status of pressed key
@@ -1013,6 +1117,12 @@ namespace Text_Editor
                 return false;
             }
         }
+
+        private void defaultContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contextMenuOption = selectedContextMenu(1, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, matrixContextMenuToolStripMenuItem);
+        }
+
         //----keyboard and mouse combine until here----
 
         //----to position form location and mouse location----
@@ -1027,10 +1137,32 @@ namespace Text_Editor
             return p;
         }
 
+        private void twocolumnContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contextMenuOption = selectedContextMenu(2, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, matrixContextMenuToolStripMenuItem);
+        }
+
+        private void fullTwocolumnContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contextMenuOption = selectedContextMenu(3, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, matrixContextMenuToolStripMenuItem);
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aboutCustomContextMenu aboutDialog = new aboutCustomContextMenu();
+
+            aboutDialog.ShowDialog(this);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            contextMenuOption = selectedContextMenu(4, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, matrixContextMenuToolStripMenuItem);
+        }
+
         public Point SetCursorLocationLocal(Point thePopupLocation, Form theForm)
         {
             Point newCursorPoint = new Point();
-            theForm = popMenuObjFull;
+            //theForm = popMenuObjFull;
 
             int popupWidth = theForm.Width;
             int popupHeight = theForm.Height;
@@ -1041,5 +1173,52 @@ namespace Text_Editor
             return newCursorPoint;
         }
         //----to position form location and mouse location----
+
+        //to check context menu selection from menu strip
+        public int selectedContextMenu(int theToolStripMenuItem, ToolStripMenuItem defaultCM, ToolStripMenuItem simpleTwoColCM, ToolStripMenuItem fullTwoColCM, ToolStripMenuItem matrixCM)
+        {
+            switch(theToolStripMenuItem)
+            {
+                case 1:
+                    //enable default default context menu
+                    defaultCM.CheckState = CheckState.Checked;
+                    Console.WriteLine("Default context menu selected!");
+                    //disable the others
+                    simpleTwoColCM.CheckState = CheckState.Unchecked;
+                    fullTwoColCM.CheckState = CheckState.Unchecked;
+                    matrixCM.CheckState = CheckState.Unchecked;
+                    break;
+                case 2:
+                    //enable two-column, simple context menu
+                    simpleTwoColCM.CheckState = CheckState.Checked;
+                    Console.WriteLine("Two-column, simple context menu context menu selected!");
+                    //disable the others
+                    defaultCM.CheckState = CheckState.Unchecked;
+                    fullTwoColCM.CheckState = CheckState.Unchecked;
+                    matrixCM.CheckState = CheckState.Unchecked;
+                    break;
+                case 3:
+                    //enable two-column, full context menu
+                    fullTwoColCM.CheckState = CheckState.Checked;
+                    Console.WriteLine("Two-column, full context menu context menu selected!");
+                    //disable the others
+                    simpleTwoColCM.CheckState = CheckState.Unchecked;
+                    defaultCM.CheckState = CheckState.Unchecked;
+                    matrixCM.CheckState = CheckState.Unchecked;
+                    break;
+                case 4:
+                    //enable matrix context menu
+                    matrixCM.CheckState = CheckState.Checked;
+                    Console.WriteLine("Two-column, full context menu context menu selected!");
+                    //disable the others
+                    defaultCM.CheckState = CheckState.Unchecked;
+                    simpleTwoColCM.CheckState = CheckState.Unchecked;
+                    fullTwoColCM.CheckState = CheckState.Unchecked;
+                    break;
+            }
+
+            //send flag report to caller
+            return theToolStripMenuItem;
+        }
     }
 }

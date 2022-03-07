@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Text_Editor</RootNamespace>
     <AssemblyName>Text Editor</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\eliwa\Desktop\WebSite\</PublishUrl>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\eliwa\Desktop\WebSite2\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +23,7 @@
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
+    <MapFileExtensions>false</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
@@ -78,11 +79,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormEditor.cs">
+    <Compile Include="aboutCustomContextMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEditor.designer.cs">
-      <DependentUpon>FormEditor.cs</DependentUpon>
+    <Compile Include="aboutCustomContextMenu.Designer.cs">
+      <DependentUpon>aboutCustomContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFormEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFormEditor.designer.cs">
+      <DependentUpon>MainFormEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MatrixPopupMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MatrixPopupMenu.Designer.cs">
+      <DependentUpon>MatrixPopupMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="PopupMenu.cs">
       <SubType>Form</SubType>
@@ -98,8 +111,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormEditor.resx">
-      <DependentUpon>FormEditor.cs</DependentUpon>
+    <EmbeddedResource Include="aboutCustomContextMenu.resx">
+      <DependentUpon>aboutCustomContextMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFormEditor.resx">
+      <DependentUpon>MainFormEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatrixPopupMenu.resx">
+      <DependentUpon>MatrixPopupMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PopupMenu.resx">
       <DependentUpon>PopupMenu.cs</DependentUpon>
@@ -108,20 +127,20 @@
       <DependentUpon>PopupMenuFull.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -137,8 +156,48 @@
     <Content Include="Images\AppExamples\AppEx2.png" />
     <Content Include="Images\AppExamples\AppEx3.png" />
     <Content Include="Images\AppExamples\AppEx4.png" />
-    <None Include="Resources\smile2.png" />
-    <None Include="Resources\smile.jpg" />
+    <Content Include="ReadMe.txt" />
+    <None Include="Resources\MMU-New-logo-png.png" />
+    <None Include="Resources\newMenuItem.Image1.png" />
+    <None Include="Resources\zoomDropDownButton.Image.png" />
+    <None Include="Resources\undoToolStripMenuItem.Image.png" />
+    <None Include="Resources\undoStripButton.Image.png" />
+    <None Include="Resources\underlineStripButton.Image.png" />
+    <None Include="Resources\selectAllToolStripMenuItem1.Image.png" />
+    <None Include="Resources\selectAllToolStripMenuItem.Image.png" />
+    <None Include="Resources\saveToolStripMenuItem.Image.png" />
+    <None Include="Resources\saveStripButton.Image.png" />
+    <None Include="Resources\rightAlignStripButton.Image.png" />
+    <None Include="Resources\redoToolStripMenuItem.Image.png" />
+    <None Include="Resources\redoStripButton.Image.png" />
+    <None Include="Resources\printStripMenuItem.Image.png" />
+    <None Include="Resources\printStripButton.Image.png" />
+    <None Include="Resources\printPreviewStripMenuItem.Image.png" />
+    <None Include="Resources\printPreviewStripButton.Image.png" />
+    <None Include="Resources\pasteToolStripMenuItem1.Image.png" />
+    <None Include="Resources\pasteToolStripMenuItem.Image.png" />
+    <None Include="Resources\OpenMenuItem.Image.png" />
+    <None Include="Resources\openFileStripButton.Image.png" />
+    <None Include="Resources\newMenuItem.Image.png" />
+    <None Include="Resources\leftAlignStripButton.Image.png" />
+    <None Include="Resources\italicStripButton.Image.png" />
+    <None Include="Resources\increaseStripButton.Image.png" />
+    <None Include="Resources\exitToolStripMenuItem.Image.png" />
+    <None Include="Resources\deleteToolStripMenuItem.Image.png" />
+    <None Include="Resources\deleteStripMenuItem.Image.png" />
+    <None Include="Resources\decreaseStripButton.Image.png" />
+    <None Include="Resources\cutToolStripMenuItem1.Image.png" />
+    <None Include="Resources\cutToolStripMenuItem.Image.png" />
+    <None Include="Resources\copyToolStripMenuItem1.Image.png" />
+    <None Include="Resources\copyToolStripMenuItem.Image.png" />
+    <None Include="Resources\colorStripDropDownButton.Image.png" />
+    <None Include="Resources\clearToolStripMenuItem.Image.png" />
+    <None Include="Resources\clearFormattingStripButton.Image.png" />
+    <None Include="Resources\clearAllToolStripMenuItem.Image.png" />
+    <None Include="Resources\changeCaseDropDownButton.Image.png" />
+    <None Include="Resources\centerAlignStripButton.Image.png" />
+    <None Include="Resources\bulletListStripButton.Image.png" />
+    <None Include="Resources\boldStripButton3.Image.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -194,6 +253,7 @@
       <FileType>File</FileType>
     </PublishFile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

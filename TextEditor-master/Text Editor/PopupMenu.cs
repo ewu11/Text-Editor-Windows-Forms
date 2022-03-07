@@ -15,14 +15,14 @@ namespace Text_Editor
         //global variables
         //frmEditor frmEditorObjLocal;
         //RichTextBox theRTB;
-        private FormEditor parentFormObj;
+        private MainFormEditor parentFormObj;
 
         public PopupMenu() //unused, 'cuz doesn't have parent's object info
         {
             InitializeComponent();
         }
 
-        public PopupMenu(FormEditor parentForm) //used; 'cuz have required parents obj info
+        public PopupMenu(MainFormEditor parentForm) //used; 'cuz have required parents obj info
         {
             parentFormObj = parentForm;
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace Text_Editor
             parentFormObj.toolStripStatusLabelSetterGetter.Text = "...";
         }
 
-        public Point SetPopupLocation(Screen screen, Form form, Point initPosition)
+        /*public Point SetPopupLocation(Screen screen, Form form, Point initPosition)
         {
             var p = new Point();
             var wrkArea = screen.WorkingArea;
@@ -44,9 +44,9 @@ namespace Text_Editor
             p.X = p.X < 0 ? wrkArea.Right - form.Width : initPosition.X;
             p.Y = p.Y < 0 ? wrkArea.Bottom - form.Height : initPosition.Y;
             return p;
-        }
+        }*/
 
-        public Point SetCursorLocation(Point thePopupLocation)
+        /*public Point SetCursorLocation(Point thePopupLocation)
         {
             Point newCursorPoint = new Point();
 
@@ -57,7 +57,7 @@ namespace Text_Editor
             newCursorPoint.Y = thePopupLocation.Y + (popupHeight / 2);
 
             return newCursorPoint;
-        }
+        }*/
 
         public void PopUpMenuFunctions(RichTextBox theRTB, string theFunction)
         {
