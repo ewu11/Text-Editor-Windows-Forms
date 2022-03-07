@@ -150,7 +150,7 @@ namespace Text_Editor
             this.okButton.Text = "&OK";
             // 
             // aboutCustomContextMenu
-            // (6F, 13F);
+            // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -160,7 +160,7 @@ namespace Text_Editor
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "aboutCustomContextMenu";
-            this.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.Padding = new System.Windows.Forms.Padding(9);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
