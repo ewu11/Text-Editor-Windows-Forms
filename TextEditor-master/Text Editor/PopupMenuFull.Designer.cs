@@ -65,7 +65,6 @@ namespace Text_Editor
             this.tableLayoutPanel1.Controls.Add(this.button13, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.button12, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.button11, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.button10, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.button9, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.button8, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.button7, 0, 3);
@@ -75,6 +74,7 @@ namespace Text_Editor
             this.tableLayoutPanel1.Controls.Add(this.button3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button10, 1, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -489,15 +489,15 @@ namespace Text_Editor
             // PopupMenuFull
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuPopup;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(342, 228);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PopupMenuFull";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
