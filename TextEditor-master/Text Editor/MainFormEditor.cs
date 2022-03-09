@@ -31,10 +31,8 @@ namespace Text_Editor
         PopupMenu popMenuObj;
         PopupMenuFull popMenuObjFull;
         MatrixPopupMenu matrixPopupMenuObj;
-        bool ctrlIsDown = false; //by default
-        bool rmbIsUp = false; //by default;
         int contextMenuOption; //by default; default context menu
-        Bitmap bmp;
+        Bitmap bmp; //to store the check button design
         //----for popup menu uses----
 
         public MainFormEditor()
@@ -65,6 +63,7 @@ namespace Text_Editor
             {
                 gfx.FillEllipse(Brushes.Black, 1, 1, 3, 3);
             }
+            //--used by ToolStripDropDown & zoomFactorContextStrip--
 
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
@@ -669,30 +668,6 @@ namespace Text_Editor
             richTextBox1.ZoomFactor = zoomPercent / 100;    // set zoom factor
             //---logics responsible for zoom factor---
 
-            /*// draw bmp in image property of selected item, while its active
-            Bitmap bmp = new Bitmap(5, 5);
-            using (Graphics gfx = Graphics.FromImage(bmp))
-            {
-                gfx.FillEllipse(Brushes.Black, 1, 1, 3, 3);
-            }*/
-
-            //---old, simple logic---
-            /*if (e.ClickedItem.Image == null)
-            {
-                // sets all the image properties to null - incase one is already selected beforehand
-                for (int i = 0; i < zoomDropDownButton.DropDownItems.Count; i++)
-                {
-                    zoomDropDownButton.DropDownItems[i].Image = null;
-                }
-                e.ClickedItem.Image = bmp;    // draw ellipse in image property
-            }
-            else
-            {
-                e.ClickedItem.Image = null;
-                richTextBox1.ZoomFactor = 1.0f;    // set back to NO ZOOM
-            }*/
-            //---old, simple logic---
-
             //----to update zoom factor selection in both ToolStripDropDown & zoomFactorContextStrip----
             //from ToolStripDropDown -> zoomFactorContextStrip
             for (int i = 0; i < matrixPopupMenuObj.zoomFactorContextStripSetterGetter.Items.Count; i++)
@@ -761,7 +736,6 @@ namespace Text_Editor
         {
             try
             {
-                //fontDialog1.ShowDialog();    // show the Font Dialog
                 System.Drawing.Font oldFont = this.Font;    // gets current font
 
                 if (fontDialog1.ShowDialog(this) == DialogResult.OK)
@@ -875,8 +849,6 @@ namespace Text_Editor
 
         private void colorOptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //colorDialog1.ShowDialog(this);
-
             if(colorDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 // set the selected color to the RTB's forecolor
@@ -889,7 +861,6 @@ namespace Text_Editor
             Control chosenContextMenu = richContextStrip; //by default, the default context menu;
             string cmMsj = ""; //message for status tool strip
 
-            //IsKeyUp((int)MouseButtons.Right); //causes rmbIsUp = true
 
             if (e.Button == MouseButtons.Right) //if rmb mouse clicked
             {
@@ -968,10 +939,6 @@ namespace Text_Editor
                     column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
                     lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
                     break;
-                /*case Keys.ControlKey:
-                    IsKeyUp((int)Keys.ControlKey); //causes ctrlIsDown = false;
-                    toolStripStatusLabel1.Text = "...";
-                    break;*/
             }
         }
 
@@ -998,37 +965,12 @@ namespace Text_Editor
             get { return zoomDropDownButton; }
             set { zoomDropDownButton = value; }
         }
-        
-
-        /*public ToolStripMenuItem fileToolStripSetterGetter
-        {
-            get { return fileToolStripMenuItem; }
-            set { this.fileToolStripMenuItem = value; }
-        }*/
-
-        /*public ToolStripMenuItem editToolStripSetterGetter
-        {
-            get { return editToolStripMenuItem; }
-            set { this.editToolStripMenuItem = value; }
-        }*/
 
         public ToolStripStatusLabel toolStripStatusLabelSetterGetter
         {
             get { return this.toolStripStatusLabel1; }
             set { this.toolStripStatusLabel1 = value; }
         }
-
-        /*public bool ctrlKeyStatusSetterGetter
-        {
-            get { return this.ctrlIsDown; }
-            set { this.ctrlIsDown = value; }
-        }*/
-
-        /*public bool rmbKeyStatusSetterGetter
-        {
-            get { return this.rmbIsUp; }
-            set { this.rmbIsUp = value; }
-        }*/
         //----setter getter methods-----
 
         //----combine key and mouse events----
@@ -1037,93 +979,15 @@ namespace Text_Editor
         [DllImport("user32.dll")]
         static extern ushort GetAsyncKeyState(int vKey);
 
-        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            /*if(e.KeyCode == Keys.ControlKey)
-            {
-                IsKeyDown((int)Keys.ControlKey); //causes ctrlIsDown = true
-            }*/
-        }
-
         private void richContextStrip_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
             toolStripStatusLabel1.Text = "...";
-        }
-
-        //IMPORTANT SO THAT DEFAULT CM AND POPUP MENU CAN OPEN PROPERLY
-        private void richContextStrip_VisibleChanged(object sender, EventArgs e)
-        {
-            /*if (richContextStrip.Visible == true) //if default context menu is opened
-            {
-                if (IsKeyDown((int)Keys.ControlKey)) //if ctrl key is pressed
-                {
-                    ctrlIsDown = true;
-
-                    if (IsKeyDown((int)Keys.ControlKey)) //if rmb was pressed
-                    {
-                        rmbIsUp = true;
-                    }
-                    else //if ctrl was pressed but rmb was not
-                    {
-                        ctrlIsDown = false;
-                        rmbIsUp = false;
-                    }
-                }
-            }
-            else //when default cm closed
-            {
-                toolStripStatusLabel1.Text = "...";
-            }*/
-        }
-
-        public bool IsKeyDown(int vKey) //to set status of pressed key
-        {
-            if ((GetKeyState((int)vKey) & 0x8000) != 0) // "!=0"; if key is down
-            {
-                //if control key is down
-                if (vKey == (int)Keys.ControlKey)
-                {
-                    ctrlIsDown = true;
-                    toolStripStatusLabel1.Text = "Control key is pressed, click on the right mouse button to open the custom context menu.";
-                }
-                return true;
-            }
-            else //if key is up
-            {
-                ctrlIsDown = false;
-                return false;
-            }
-        }
-
-        public bool IsKeyUp(int vKey) //to set status of released key
-        {
-            if ((GetKeyState((int)vKey) & 0x8000) == 0) // "==0"; if key is up
-            {
-                if (vKey == (int)MouseButtons.Right)
-                {
-                    rmbIsUp = true;
-                }
-                if (vKey == (int)Keys.ControlKey)
-                {
-                    ctrlIsDown = false;
-                }
-                return true;
-            }
-            else //if key is down
-            {
-                rmbIsUp = false;
-                ctrlIsDown = true;
-
-                return false;
-            }
         }
 
         private void defaultContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             contextMenuOption = selectedContextMenu(1, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, matrixContextMenuToolStripMenuItem);
         }
-
-        //----keyboard and mouse combine until here----
 
         //----to position form location and mouse location----
         public Point SetPopupLocationLocal(Screen screen, Form form, Point initPosition)
@@ -1136,6 +1000,20 @@ namespace Text_Editor
             p.Y = p.Y < 0 ? wrkArea.Bottom - form.Height : initPosition.Y;
             return p;
         }
+
+        public Point SetCursorLocationLocal(Point thePopupLocation, Form theForm)
+        {
+            Point newCursorPoint = new Point();
+
+            int popupWidth = theForm.Width;
+            int popupHeight = theForm.Height;
+
+            newCursorPoint.X = thePopupLocation.X + (popupWidth / 2);
+            newCursorPoint.Y = thePopupLocation.Y + (popupHeight / 2);
+
+            return newCursorPoint;
+        }
+        //----to position form location and mouse location----
 
         private void twocolumnContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1158,21 +1036,6 @@ namespace Text_Editor
         {
             contextMenuOption = selectedContextMenu(4, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, matrixContextMenuToolStripMenuItem);
         }
-
-        public Point SetCursorLocationLocal(Point thePopupLocation, Form theForm)
-        {
-            Point newCursorPoint = new Point();
-            //theForm = popMenuObjFull;
-
-            int popupWidth = theForm.Width;
-            int popupHeight = theForm.Height;
-
-            newCursorPoint.X = thePopupLocation.X + (popupWidth / 2);
-            newCursorPoint.Y = thePopupLocation.Y + (popupHeight / 2);
-
-            return newCursorPoint;
-        }
-        //----to position form location and mouse location----
 
         //to check context menu selection from menu strip
         public int selectedContextMenu(int theToolStripMenuItem, ToolStripMenuItem defaultCM, ToolStripMenuItem simpleTwoColCM, ToolStripMenuItem fullTwoColCM, ToolStripMenuItem matrixCM)

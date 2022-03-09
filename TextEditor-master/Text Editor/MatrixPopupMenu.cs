@@ -38,7 +38,6 @@ namespace Text_Editor
 
             if(zoomFactorContextStrip.Visible == true)
             {
-                //zoomFactorContextStrip.Close();
                 zoomFactorContextStrip.Visible = false;
             }
         }
@@ -46,15 +45,6 @@ namespace Text_Editor
         private void MatrixPopupMenu_Load(object sender, EventArgs e)
         {
             zoomFactorCSLocation = new Point(0, this.button15.Height);
-
-            //---do something in menu items for zoomFactorContextMenuStrip---
-            //--loop way--
-            /*foreach (ToolStripMenuItem item in zoomFactorContextStrip.Items)
-            {
-                item.Checked = true;
-            }*/
-            //--loop way--
-            //---do something in menu items for zoomFactorContextMenuStrip---
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -157,20 +147,19 @@ namespace Text_Editor
         }
 
         //---button15 is dropdown; special case---
+        //dropdown is represented by a "contextmenustrip"
         private void button15_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 this.TopMost = true;
-                zoomFactorContextStrip.Show(button15, zoomFactorCSLocation);
-                //zoomFactorContextStrip.Visible = true;
+                zoomFactorContextStrip.Show(button15, zoomFactorCSLocation); //cant use "visible" property; cant manage its location
             }
         }
 
         private void button15_MouseDown(object sender, MouseEventArgs e)
         {
             zoomFactorContextStrip.Close();
-            //zoomFactorContextStrip.Visible = false;
         }
         //---button15 is dropdown; special case---
 

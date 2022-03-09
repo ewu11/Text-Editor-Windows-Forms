@@ -129,7 +129,6 @@
             this.richTextBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragDrop);
             this.richTextBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragEnter);
             this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
-            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyUp);
             this.richTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseDown);
             this.richTextBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseUp);
@@ -147,7 +146,6 @@
             this.richContextStrip.Name = "richContextStrip";
             this.richContextStrip.Size = new System.Drawing.Size(173, 184);
             this.richContextStrip.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.richContextStrip_Closed);
-            this.richContextStrip.VisibleChanged += new System.EventHandler(this.richContextStrip_VisibleChanged);
             // 
             // cutToolStripMenuItem
             // 

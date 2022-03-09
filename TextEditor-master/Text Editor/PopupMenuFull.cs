@@ -144,7 +144,6 @@ namespace Text_Editor
                 default:
                     Console.WriteLine("Invalid function argument!");
                     break;
-
             }
         }
     }
