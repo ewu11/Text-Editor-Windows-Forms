@@ -101,7 +101,7 @@
             this.defaultContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.twoColumnContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullTwoColumnContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.matrixContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullMatrixContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.printDialog = new System.Windows.Forms.PrintDialog();
@@ -112,6 +112,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lineColumnStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.simpleMatrixContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richContextStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -129,7 +130,6 @@
             this.richTextBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragDrop);
             this.richTextBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragEnter);
             this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
-            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyUp);
             this.richTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseDown);
             this.richTextBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseUp);
@@ -147,7 +147,6 @@
             this.richContextStrip.Name = "richContextStrip";
             this.richContextStrip.Size = new System.Drawing.Size(173, 184);
             this.richContextStrip.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.richContextStrip_Closed);
-            this.richContextStrip.VisibleChanged += new System.EventHandler(this.richContextStrip_VisibleChanged);
             // 
             // cutToolStripMenuItem
             // 
@@ -749,7 +748,8 @@
             this.defaultContextMenuToolStripMenuItem,
             this.twoColumnContextMenuToolStripMenuItem,
             this.fullTwoColumnContextMenuToolStripMenuItem,
-            this.matrixContextMenuToolStripMenuItem,
+            this.simpleMatrixContextMenuToolStripMenuItem,
+            this.fullMatrixContextMenuToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
@@ -782,12 +782,12 @@
             this.fullTwoColumnContextMenuToolStripMenuItem.ToolTipText = "Toggles the two-column context menu, with full menu items.";
             this.fullTwoColumnContextMenuToolStripMenuItem.Click += new System.EventHandler(this.fullTwocolumnContextMenuToolStripMenuItem_Click);
             // 
-            // matrixContextMenuToolStripMenuItem
+            // fullMatrixContextMenuToolStripMenuItem
             // 
-            this.matrixContextMenuToolStripMenuItem.Name = "matrixContextMenuToolStripMenuItem";
-            this.matrixContextMenuToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
-            this.matrixContextMenuToolStripMenuItem.Text = "&Matrix context menu";
-            this.matrixContextMenuToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.fullMatrixContextMenuToolStripMenuItem.Name = "fullMatrixContextMenuToolStripMenuItem";
+            this.fullMatrixContextMenuToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.fullMatrixContextMenuToolStripMenuItem.Text = "Full matrix context &menu";
+            this.fullMatrixContextMenuToolStripMenuItem.Click += new System.EventHandler(this.fullMatrixContextMenuToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -847,6 +847,13 @@
             this.lineColumnStatusLabel.Size = new System.Drawing.Size(821, 17);
             this.lineColumnStatusLabel.Spring = true;
             this.lineColumnStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // simpleMatrixContextMenuToolStripMenuItem
+            // 
+            this.simpleMatrixContextMenuToolStripMenuItem.Name = "simpleMatrixContextMenuToolStripMenuItem";
+            this.simpleMatrixContextMenuToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.simpleMatrixContextMenuToolStripMenuItem.Text = "Simple matrix &context menu";
+            this.simpleMatrixContextMenuToolStripMenuItem.Click += new System.EventHandler(this.simpleMatrixContextMenuToolStripMenuItem_Click);
             // 
             // MainFormEditor
             // 
@@ -961,6 +968,7 @@
         private System.Windows.Forms.ToolStripMenuItem twoColumnContextMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullTwoColumnContextMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem matrixContextMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fullMatrixContextMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem simpleMatrixContextMenuToolStripMenuItem;
     }
 }

@@ -13,8 +13,6 @@ namespace Text_Editor
     public partial class PopupMenu : Form
     {
         //global variables
-        //frmEditor frmEditorObjLocal;
-        //RichTextBox theRTB;
         private MainFormEditor parentFormObj;
 
         public PopupMenu() //unused, 'cuz doesn't have parent's object info
@@ -35,101 +33,39 @@ namespace Text_Editor
             parentFormObj.toolStripStatusLabelSetterGetter.Text = "...";
         }
 
-        /*public Point SetPopupLocation(Screen screen, Form form, Point initPosition)
-        {
-            var p = new Point();
-            var wrkArea = screen.WorkingArea;
-            p.X = wrkArea.Right - (initPosition.X + form.Width);
-            p.Y = wrkArea.Bottom - (initPosition.Y + form.Height);
-            p.X = p.X < 0 ? wrkArea.Right - form.Width : initPosition.X;
-            p.Y = p.Y < 0 ? wrkArea.Bottom - form.Height : initPosition.Y;
-            return p;
-        }*/
-
-        /*public Point SetCursorLocation(Point thePopupLocation)
-        {
-            Point newCursorPoint = new Point();
-
-            int popupWidth = this.Width;
-            int popupHeight = this.Height;
-
-            newCursorPoint.X = thePopupLocation.X + (popupWidth / 2);
-            newCursorPoint.Y = thePopupLocation.Y + (popupHeight / 2);
-
-            return newCursorPoint;
-        }*/
-
-        public void PopUpMenuFunctions(RichTextBox theRTB, string theFunction)
-        {
-            //frmEditor frmEditorObjLocal = new frmEditor();
-            //RichTextBox theRTB = frmEditorObjLocal.richTextBoxSetterGetter;
-
-            if (theFunction == "cut")
-            {
-                theRTB.Cut();
-                this.Visible = false;
-            }
-            if (theFunction == "copy")
-            {
-                theRTB.Copy();
-            }
-            if (theFunction == "paste")
-            {
-                theRTB.Paste();
-                this.Visible = false;
-            }
-            if (theFunction == "delete")
-            {
-                theRTB.SelectedText = "";
-                theRTB.Focus();
-                this.Visible = false;
-            }
-            if (theFunction == "selectAll")
-            {
-                theRTB.SelectAll();
-                this.Visible = false;
-            }
-            if (theFunction == "clearAll")
-            {
-                theRTB.Clear();
-                theRTB.Focus();
-                this.Visible = false;
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "cut");
+            parentFormObj.cutToolStripMenuItem1_Click(sender, e);
             this.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "copy");
+            parentFormObj.copyToolStripMenuItem1_Click(sender, e);
             this.Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "paste");
+            parentFormObj.pasteToolStripMenuItem1_Click(sender, e);
             this.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "delete");
+            parentFormObj.deleteToolStripMenuItem_Click(sender, e);
             this.Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "selectAll");
+            parentFormObj.selectAllToolStripMenuItem1_Click(sender, e);
             this.Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            PopUpMenuFunctions(parentFormObj.richTextBoxSetterGetter, "clearAll");
+            parentFormObj.clearAllToolStripMenuItem_Click(sender, e);
             this.Visible = false;
         }
 
