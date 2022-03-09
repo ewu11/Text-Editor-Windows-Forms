@@ -866,6 +866,17 @@ namespace Text_Editor
 
             if (e.Button == MouseButtons.Right) //if rmb mouse clicked
             {
+                this.richContextStrip.Visible = false;
+
+                /*HoriPopupMenu horiPopupMenuObj = new HoriPopupMenu(this);
+                horiPopupMenuObj.Location = Cursor.Position;
+                horiPopupMenuObj.Visible = true;*/
+
+                VertPopupMenu vertPopupMenuObj = new VertPopupMenu(this);
+                vertPopupMenuObj.Location = Cursor.Position;
+                vertPopupMenuObj.Visible = true;
+            }
+                /*
                 //----with popup menu selection----
                 switch (contextMenuOption)
                 {
@@ -911,13 +922,13 @@ namespace Text_Editor
                     toolStripStatusLabel1.Text = "Default context menu opened!";
                 }
                 //----with popup menu selection----
+            }*/
             }
-        }
 
-        //****************************************************************************************************************************************
-        // richTextBox1_KeyUp - Determines which key was released and gets the line and column numbers of the current cursor position in the RTB *
-        //**************************************************************************************************************************************** 
-        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
+            //****************************************************************************************************************************************
+            // richTextBox1_KeyUp - Determines which key was released and gets the line and column numbers of the current cursor position in the RTB *
+            //**************************************************************************************************************************************** 
+            private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
         {
             // determine key released
             switch (e.KeyCode)
