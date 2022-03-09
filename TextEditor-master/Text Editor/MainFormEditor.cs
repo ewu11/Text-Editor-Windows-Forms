@@ -28,8 +28,8 @@ namespace Text_Editor
         int pos, line, column;    // for detecting line and column numbers
 
         //----for popup menu uses----
-        PopupMenu popMenuObj;
-        PopupMenuFull popMenuObjFull;
+        TCPopupMenuSimple popMenuObj;
+        TCPopupMenuFull popMenuObjFull;
         MatrixPopupMenu matrixPopupMenuObj;
         MatrixPopupMenuFull matrixPopupMenuFullObj;
         int contextMenuOption; //by default; default context menu
@@ -48,8 +48,8 @@ namespace Text_Editor
         private void frmEditor_Load(object sender, EventArgs e)
         {
             //for popup menu uses
-            popMenuObj = new PopupMenu(this);
-            popMenuObjFull = new PopupMenuFull(this);
+            popMenuObj = new TCPopupMenuSimple(this);
+            popMenuObjFull = new TCPopupMenuFull(this);
             matrixPopupMenuObj = new MatrixPopupMenu(this);
             matrixPopupMenuFullObj = new MatrixPopupMenuFull(this);
 

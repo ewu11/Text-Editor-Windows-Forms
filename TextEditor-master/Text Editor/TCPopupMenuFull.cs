@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace Text_Editor
 {
-    public partial class PopupMenuFull : Form
+    public partial class TCPopupMenuFull : Form
     {
         //global variable(s)
         MainFormEditor parentFormObj;
 
         //not used; no parent info
-        public PopupMenuFull()
+        public TCPopupMenuFull()
         {
             InitializeComponent();
         }
 
         //used; cuz obtains parent's info; able to access parents data
-        public PopupMenuFull(MainFormEditor parentForm)
+        public TCPopupMenuFull(MainFormEditor parentForm)
         {
             this.parentFormObj = parentForm;
             InitializeComponent();

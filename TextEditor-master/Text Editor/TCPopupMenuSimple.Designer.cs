@@ -1,7 +1,7 @@
 ﻿
 namespace Text_Editor
 {
-    partial class PopupMenu
+    partial class TCPopupMenuSimple
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Text_Editor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PopupMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TCPopupMenuSimple));
             this.button1 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button2 = new System.Windows.Forms.Button();

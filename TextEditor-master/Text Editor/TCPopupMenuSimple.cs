@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace Text_Editor
 {
-    public partial class PopupMenu : Form
+    public partial class TCPopupMenuSimple : Form
     {
         //global variables
         private MainFormEditor parentFormObj;
 
-        public PopupMenu() //unused, 'cuz doesn't have parent's object info
+        public TCPopupMenuSimple() //unused, 'cuz doesn't have parent's object info
         {
             InitializeComponent();
         }
 
-        public PopupMenu(MainFormEditor parentForm) //used; 'cuz have required parents obj info
+        public TCPopupMenuSimple(MainFormEditor parentForm) //used; 'cuz have required parents obj info
         {
             parentFormObj = parentForm;
             InitializeComponent();

@@ -73,6 +73,6 @@ namespace Text_Editor
         private void MatrixPopupMenu_Activated(object sender, EventArgs e)
         {
             parentFormObj.richTextBoxSetterGetter.HideSelection = false;
-        }
+        }        
     }
 }
