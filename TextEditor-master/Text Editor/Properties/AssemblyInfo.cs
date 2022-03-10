@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Custom Context Menu")]
-[assembly: AssemblyDescription("Done by Eliasaph Wan Uyo(1181101266) | Project Title Improving the Right Click Menu")]
+[assembly: AssemblyTitle("Rich Text Editor")]
+[assembly: AssemblyDescription("An open source Rich Text Editor Program, coded by Eliasaph Wan Uyo(1181101266).")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Company Name Multimedia University(MMU)")]
-[assembly: AssemblyProduct("Product Name Rich Text Editor")]
-[assembly: AssemblyCopyright("Copyright © 2022")]
+[assembly: AssemblyCompany("MIT")]
+[assembly: AssemblyProduct("Rich Text Editor")]
+[assembly: AssemblyCopyright("Copyright (c) 2019 hjohnson12")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

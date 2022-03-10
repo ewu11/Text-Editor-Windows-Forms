@@ -1,7 +1,8 @@
 ﻿=============
 PLEASE NOTE!
 =============
-* If your system suspects for virus detections, please ignore as this is just a false alarm. The program and all the file contents are 100% safe.
+1. If your system suspects for virus detections, please ignore as this is just a false alarm. The program and all the file contents are 100% safe.
+2. If you have installed this program into your system before, please uninstall before installing again.
 
 =============
 TO INSTALL
