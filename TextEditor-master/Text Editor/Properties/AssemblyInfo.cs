@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Rich Text Editor")]
-[assembly: AssemblyDescription("An open source Rich Text Editor Program, coded by Eliasaph Wan Uyo(1181101266).")]
+[assembly: AssemblyDescription("An open source Rich Text Editor Program, done by hjohnson12, sam-wheat, yoshiask, and RobbyRobbyRobby. It is then used for a Final Year Project(FYP) coded by Eliasaph Wan Uyo(1181101266), from Multimedia University(MMU).")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MIT")]
 [assembly: AssemblyProduct("Rich Text Editor")]
