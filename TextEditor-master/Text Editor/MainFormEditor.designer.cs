@@ -98,10 +98,13 @@
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.defaultContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.twoColumnContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fullTwoColumnContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fullMatrixContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.defaultCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleTCCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullTCCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleMtxCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fullMtxCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vertiCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horiCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.printDialog = new System.Windows.Forms.PrintDialog();
@@ -112,7 +115,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lineColumnStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.simpleMatrixContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richContextStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -745,49 +747,73 @@
             this.toolStripMenuItem1.Checked = true;
             this.toolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.defaultContextMenuToolStripMenuItem,
-            this.twoColumnContextMenuToolStripMenuItem,
-            this.fullTwoColumnContextMenuToolStripMenuItem,
-            this.simpleMatrixContextMenuToolStripMenuItem,
-            this.fullMatrixContextMenuToolStripMenuItem,
+            this.defaultCMMenuItem,
+            this.simpleTCCMMenuItem,
+            this.fullTCCMMenuItem,
+            this.simpleMtxCMMenuItem,
+            this.fullMtxCMMenuItem,
+            this.vertiCMMenuItem,
+            this.horiCMMenuItem,
             this.aboutToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
             this.toolStripMenuItem1.Text = "&Choose Context Menu..";
+            this.toolStripMenuItem1.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripMenuItem1_DropDownItemClicked);
             // 
-            // defaultContextMenuToolStripMenuItem
+            // defaultCMMenuItem
             // 
-            this.defaultContextMenuToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.defaultContextMenuToolStripMenuItem.Name = "defaultContextMenuToolStripMenuItem";
-            this.defaultContextMenuToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
-            this.defaultContextMenuToolStripMenuItem.Text = "&Default context menu";
-            this.defaultContextMenuToolStripMenuItem.ToolTipText = "Toggles the default context menu.";
-            this.defaultContextMenuToolStripMenuItem.Click += new System.EventHandler(this.defaultContextMenuToolStripMenuItem_Click);
+            this.defaultCMMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.defaultCMMenuItem.Name = "defaultCMMenuItem";
+            this.defaultCMMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.defaultCMMenuItem.Text = "&Default context menu";
+            this.defaultCMMenuItem.ToolTipText = "Toggles the default context menu.";
+            this.defaultCMMenuItem.Click += new System.EventHandler(this.defaultContextMenuToolStripMenuItem_Click);
             // 
-            // twoColumnContextMenuToolStripMenuItem
+            // simpleTCCMMenuItem
             // 
-            this.twoColumnContextMenuToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.twoColumnContextMenuToolStripMenuItem.Name = "twoColumnContextMenuToolStripMenuItem";
-            this.twoColumnContextMenuToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
-            this.twoColumnContextMenuToolStripMenuItem.Text = "Two-column &simple context menu";
-            this.twoColumnContextMenuToolStripMenuItem.ToolTipText = "Toggles the two-column context menu, with default menu items.";
-            this.twoColumnContextMenuToolStripMenuItem.Click += new System.EventHandler(this.twocolumnContextMenuToolStripMenuItem_Click);
+            this.simpleTCCMMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.simpleTCCMMenuItem.Name = "simpleTCCMMenuItem";
+            this.simpleTCCMMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.simpleTCCMMenuItem.Text = "Two-column &simple context menu";
+            this.simpleTCCMMenuItem.ToolTipText = "Toggles the two-column context menu, with default menu items.";
+            this.simpleTCCMMenuItem.Click += new System.EventHandler(this.twocolumnContextMenuToolStripMenuItem_Click);
             // 
-            // fullTwoColumnContextMenuToolStripMenuItem
+            // fullTCCMMenuItem
             // 
-            this.fullTwoColumnContextMenuToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fullTwoColumnContextMenuToolStripMenuItem.Name = "fullTwoColumnContextMenuToolStripMenuItem";
-            this.fullTwoColumnContextMenuToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
-            this.fullTwoColumnContextMenuToolStripMenuItem.Text = "Two-column &full context menu";
-            this.fullTwoColumnContextMenuToolStripMenuItem.ToolTipText = "Toggles the two-column context menu, with full menu items.";
-            this.fullTwoColumnContextMenuToolStripMenuItem.Click += new System.EventHandler(this.fullTwocolumnContextMenuToolStripMenuItem_Click);
+            this.fullTCCMMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fullTCCMMenuItem.Name = "fullTCCMMenuItem";
+            this.fullTCCMMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.fullTCCMMenuItem.Text = "Two-column &full context menu";
+            this.fullTCCMMenuItem.ToolTipText = "Toggles the two-column context menu, with full menu items.";
+            this.fullTCCMMenuItem.Click += new System.EventHandler(this.fullTwocolumnContextMenuToolStripMenuItem_Click);
             // 
-            // fullMatrixContextMenuToolStripMenuItem
+            // simpleMtxCMMenuItem
             // 
-            this.fullMatrixContextMenuToolStripMenuItem.Name = "fullMatrixContextMenuToolStripMenuItem";
-            this.fullMatrixContextMenuToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
-            this.fullMatrixContextMenuToolStripMenuItem.Text = "Full matrix context &menu";
-            this.fullMatrixContextMenuToolStripMenuItem.Click += new System.EventHandler(this.fullMatrixContextMenuToolStripMenuItem_Click);
+            this.simpleMtxCMMenuItem.Name = "simpleMtxCMMenuItem";
+            this.simpleMtxCMMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.simpleMtxCMMenuItem.Text = "Simple matrix &context menu";
+            this.simpleMtxCMMenuItem.Click += new System.EventHandler(this.simpleMatrixContextMenuToolStripMenuItem_Click);
+            // 
+            // fullMtxCMMenuItem
+            // 
+            this.fullMtxCMMenuItem.Name = "fullMtxCMMenuItem";
+            this.fullMtxCMMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.fullMtxCMMenuItem.Text = "Full matrix context &menu";
+            this.fullMtxCMMenuItem.Click += new System.EventHandler(this.fullMatrixContextMenuToolStripMenuItem_Click);
+            // 
+            // vertiCMMenuItem
+            // 
+            this.vertiCMMenuItem.Name = "vertiCMMenuItem";
+            this.vertiCMMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.vertiCMMenuItem.Text = "Vertical context menu";
+            this.vertiCMMenuItem.Click += new System.EventHandler(this.vertiCMMenuItem_Click);
+            // 
+            // horiCMMenuItem
+            // 
+            this.horiCMMenuItem.Name = "horiCMMenuItem";
+            this.horiCMMenuItem.Size = new System.Drawing.Size(256, 22);
+            this.horiCMMenuItem.Text = "Horizontal context menu";
+            this.horiCMMenuItem.Click += new System.EventHandler(this.horiCMMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -847,13 +873,6 @@
             this.lineColumnStatusLabel.Size = new System.Drawing.Size(821, 17);
             this.lineColumnStatusLabel.Spring = true;
             this.lineColumnStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // simpleMatrixContextMenuToolStripMenuItem
-            // 
-            this.simpleMatrixContextMenuToolStripMenuItem.Name = "simpleMatrixContextMenuToolStripMenuItem";
-            this.simpleMatrixContextMenuToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
-            this.simpleMatrixContextMenuToolStripMenuItem.Text = "Simple matrix &context menu";
-            this.simpleMatrixContextMenuToolStripMenuItem.Click += new System.EventHandler(this.simpleMatrixContextMenuToolStripMenuItem_Click);
             // 
             // MainFormEditor
             // 
@@ -964,11 +983,13 @@
         private System.Windows.Forms.ToolStripStatusLabel lineColumnStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem defaultContextMenuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem twoColumnContextMenuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fullTwoColumnContextMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem defaultCMMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem simpleTCCMMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fullTCCMMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fullMatrixContextMenuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem simpleMatrixContextMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fullMtxCMMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem simpleMtxCMMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vertiCMMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horiCMMenuItem;
     }
 }
