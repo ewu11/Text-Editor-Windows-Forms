@@ -805,14 +805,14 @@
             // 
             this.vertiCMMenuItem.Name = "vertiCMMenuItem";
             this.vertiCMMenuItem.Size = new System.Drawing.Size(256, 22);
-            this.vertiCMMenuItem.Text = "Vertical context menu";
+            this.vertiCMMenuItem.Text = "&Vertical context menu";
             this.vertiCMMenuItem.Click += new System.EventHandler(this.vertiCMMenuItem_Click);
             // 
             // horiCMMenuItem
             // 
             this.horiCMMenuItem.Name = "horiCMMenuItem";
             this.horiCMMenuItem.Size = new System.Drawing.Size(256, 22);
-            this.horiCMMenuItem.Text = "Horizontal context menu";
+            this.horiCMMenuItem.Text = "&Horizontal context menu";
             this.horiCMMenuItem.Click += new System.EventHandler(this.horiCMMenuItem_Click);
             // 
             // aboutToolStripMenuItem

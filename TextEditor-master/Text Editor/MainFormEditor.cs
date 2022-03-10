@@ -1014,7 +1014,15 @@ namespace Text_Editor
                 (toolStripMenuItem1.DropDownItems[i] as ToolStripMenuItem).Checked = false;
             }
             //check only the one selected
-            (e.ClickedItem as ToolStripMenuItem).Checked = true;
+            //except for "About" menu item
+            if(e.ClickedItem.Name == "aboutToolStripMenuItem")
+            {
+                (e.ClickedItem as ToolStripMenuItem).Checked = false;
+            }
+            else
+            {
+                (e.ClickedItem as ToolStripMenuItem).Checked = true;
+            }
         }
 
         private void defaultContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1038,7 +1046,7 @@ namespace Text_Editor
         private void simpleMatrixContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             contextMenuOption = 4;
-            this.toolStripStatusLabel1.Text = "Simple matrix context menu chosen!!";
+            this.toolStripStatusLabel1.Text = "Simple matrix context menu chosen!";
         }
 
         private void fullMatrixContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
