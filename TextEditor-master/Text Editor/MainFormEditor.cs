@@ -28,10 +28,12 @@ namespace Text_Editor
         int pos, line, column;    // for detecting line and column numbers
 
         //----for popup menu uses----
-        PopupMenu popMenuObj;
-        PopupMenuFull popMenuObjFull;
+        TCPopupMenuSimple popMenuObj;
+        TCPopupMenuFull popMenuObjFull;
         MatrixPopupMenu matrixPopupMenuObj;
         MatrixPopupMenuFull matrixPopupMenuFullObj;
+        VertPopupMenu vertPopupMenuObj;
+        HoriPopupMenu horiPopupMenuObj;
         int contextMenuOption; //by default; default context menu
         Bitmap bmp; //to store the check button design
         //----for popup menu uses----
@@ -48,15 +50,17 @@ namespace Text_Editor
         private void frmEditor_Load(object sender, EventArgs e)
         {
             //for popup menu uses
-            popMenuObj = new PopupMenu(this);
-            popMenuObjFull = new PopupMenuFull(this);
+            popMenuObj = new TCPopupMenuSimple(this);
+            popMenuObjFull = new TCPopupMenuFull(this);
             matrixPopupMenuObj = new MatrixPopupMenu(this);
             matrixPopupMenuFullObj = new MatrixPopupMenuFull(this);
+            vertPopupMenuObj = new VertPopupMenu(this);
+            horiPopupMenuObj = new HoriPopupMenu(this);
 
             contextMenuOption = 1; //sets the choice of context menu to default on the menu strip
 
             //make default context menu selection checked
-            defaultContextMenuToolStripMenuItem.Checked = true;
+            defaultCMMenuItem.Checked = true;
 
             // draw bmp in image property of selected item, while its active
             //--used by ToolStripDropDown & zoomFactorContextStrip--
@@ -892,6 +896,16 @@ namespace Text_Editor
                         chosenContextMenu = matrixPopupMenuFullObj; //two column, simple context menu
                         cmMsj = "Full matrix context menu opened!";
                         break;
+                    case 6:
+                        richContextStrip.Visible = false; //disable the default context menu display
+                        chosenContextMenu = vertPopupMenuObj; //two column, simple context menu
+                        cmMsj = "Vertical context menu opened!";
+                        break;
+                    case 7:
+                        richContextStrip.Visible = false; //disable the default context menu display
+                        chosenContextMenu = horiPopupMenuObj; //two column, simple context menu
+                        cmMsj = "Horizontal context menu opened!";
+                        break;
                     default:
                         MessageBox.Show(this, "Context menu selection error!", "Alert!", MessageBoxButtons.OK);
                         break;
@@ -914,10 +928,10 @@ namespace Text_Editor
             }
         }
 
-        //****************************************************************************************************************************************
-        // richTextBox1_KeyUp - Determines which key was released and gets the line and column numbers of the current cursor position in the RTB *
-        //**************************************************************************************************************************************** 
-        private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
+            //****************************************************************************************************************************************
+            // richTextBox1_KeyUp - Determines which key was released and gets the line and column numbers of the current cursor position in the RTB *
+            //**************************************************************************************************************************************** 
+            private void richTextBox1_KeyUp(object sender, KeyEventArgs e)
         {
             // determine key released
             switch (e.KeyCode)
@@ -992,34 +1006,57 @@ namespace Text_Editor
         }
 
         //----to manage context menu tool strip selection----
+        private void toolStripMenuItem1_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            //clear the checked status
+            for (int i = 0; i < toolStripMenuItem1.DropDownItems.Count; i++)
+            {
+                (toolStripMenuItem1.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+            }
+            //check only the one selected
+            (e.ClickedItem as ToolStripMenuItem).Checked = true;
+        }
+
         private void defaultContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            contextMenuOption = selectedContextMenu(1, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, simpleMatrixContextMenuToolStripMenuItem, fullMatrixContextMenuToolStripMenuItem);
+            contextMenuOption = 1;
             this.toolStripStatusLabel1.Text = "Default context menu chosen!";
         }
 
         private void twocolumnContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            contextMenuOption = selectedContextMenu(2, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, simpleMatrixContextMenuToolStripMenuItem, fullMatrixContextMenuToolStripMenuItem);
+            contextMenuOption = 2;
             this.toolStripStatusLabel1.Text = "Simple two-column context menu chosen!";
         }
 
         private void fullTwocolumnContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            contextMenuOption = selectedContextMenu(3, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, simpleMatrixContextMenuToolStripMenuItem, fullMatrixContextMenuToolStripMenuItem);
+            contextMenuOption = 3;
             this.toolStripStatusLabel1.Text = "Full two-column context menu chosen!";
         }
 
         private void simpleMatrixContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            contextMenuOption = selectedContextMenu(4, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, simpleMatrixContextMenuToolStripMenuItem, fullMatrixContextMenuToolStripMenuItem);
+            contextMenuOption = 4;
             this.toolStripStatusLabel1.Text = "Simple matrix context menu chosen!!";
         }
 
         private void fullMatrixContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            contextMenuOption = selectedContextMenu(5, defaultContextMenuToolStripMenuItem, twoColumnContextMenuToolStripMenuItem, fullTwoColumnContextMenuToolStripMenuItem, simpleMatrixContextMenuToolStripMenuItem, fullMatrixContextMenuToolStripMenuItem);
+            contextMenuOption = 5;
             this.toolStripStatusLabel1.Text = "Full matrix context menu chosen!";
+        }
+
+        private void vertiCMMenuItem_Click(object sender, EventArgs e)
+        {
+            contextMenuOption = 6;
+            this.toolStripStatusLabel1.Text = "Vertical context menu chosen!";
+        }
+
+        private void horiCMMenuItem_Click(object sender, EventArgs e)
+        {
+            contextMenuOption = 7;
+            this.toolStripStatusLabel1.Text = "Horizontal context menu chosen!";
         }
         //----to manage context menu tool strip selection----
 
@@ -1049,8 +1086,6 @@ namespace Text_Editor
         }
         //----to position form location and mouse location----
 
-
-
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             aboutCustomContextMenu aboutDialog = new aboutCustomContextMenu();
@@ -1058,68 +1093,21 @@ namespace Text_Editor
             aboutDialog.ShowDialog(this);
         }
 
-        
-
-        //to check context menu selection from menu strip
-        //----!CAN BE IMPROVED BY USING LOOP TO GO THROUGH DISABLED CHECKSTATES!----
-        public int selectedContextMenu(int theToolStripMenuItem, ToolStripMenuItem defaultCM, ToolStripMenuItem simpleTwoColCM, ToolStripMenuItem fullTwoColCM, ToolStripMenuItem simpleMatrixCM ,ToolStripMenuItem fullMatrixCM)
+        //to be used by other context menu forms, since they can access parent form
+        public void showForm(Form theForm, int theFlag)
         {
-            switch(theToolStripMenuItem)
+            switch(theFlag)
             {
+                case 0:
+                    theForm.Visible = false;
+                    break;
                 case 1:
-                    //enable default default context menu
-                    defaultCM.CheckState = CheckState.Checked;
-                    Console.WriteLine("Default context menu selected!");
-                    //disable the others
-                    simpleTwoColCM.CheckState = CheckState.Unchecked;
-                    fullTwoColCM.CheckState = CheckState.Unchecked;
-                    simpleMatrixCM.CheckState = CheckState.Unchecked;
-                    fullMatrixCM.CheckState = CheckState.Unchecked;
+                    theForm.Visible = true;
                     break;
-                case 2:
-                    //enable two-column, simple context menu
-                    simpleTwoColCM.CheckState = CheckState.Checked;
-                    Console.WriteLine("Simple two-column  context menu context menu selected!");
-                    //disable the others
-                    defaultCM.CheckState = CheckState.Unchecked;
-                    fullTwoColCM.CheckState = CheckState.Unchecked;
-                    simpleMatrixCM.CheckState = CheckState.Unchecked;
-                    fullMatrixCM.CheckState = CheckState.Unchecked;
-                    break;
-                case 3:
-                    //enable two-column, full context menu
-                    fullTwoColCM.CheckState = CheckState.Checked;
-                    Console.WriteLine("Full two-column context menu context menu selected!");
-                    //disable the others
-                    defaultCM.CheckState = CheckState.Unchecked;
-                    simpleTwoColCM.CheckState = CheckState.Unchecked;
-                    simpleMatrixCM.CheckState = CheckState.Unchecked;
-                    fullMatrixCM.CheckState = CheckState.Unchecked;
-                    break;
-                case 4:
-                    //enable simple matrix context menu
-                    simpleMatrixCM.CheckState = CheckState.Checked;
-                    Console.WriteLine("Simple matrix context menu selected!");
-                    //disable the others
-                    defaultCM.CheckState = CheckState.Unchecked;
-                    simpleTwoColCM.CheckState = CheckState.Unchecked;
-                    fullTwoColCM.CheckState = CheckState.Unchecked;
-                    fullMatrixCM.CheckState = CheckState.Unchecked;
-                    break;
-                case 5:
-                    //enable matrix context menu
-                    fullMatrixCM.CheckState = CheckState.Checked;
-                    Console.WriteLine("Full matrix context menu selected!");
-                    //disable the others
-                    defaultCM.CheckState = CheckState.Unchecked;
-                    simpleTwoColCM.CheckState = CheckState.Unchecked;
-                    fullTwoColCM.CheckState = CheckState.Unchecked;
-                    simpleMatrixCM.CheckState = CheckState.Unchecked;
+                default:
+                    MessageBox.Show(this, "showForm() error!", "Alert!", MessageBoxButtons.OK);
                     break;
             }
-
-            //send flag report to caller
-            return theToolStripMenuItem;
         }
     }
 }

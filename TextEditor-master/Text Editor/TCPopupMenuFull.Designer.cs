@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Text_Editor
 {
-    partial class PopupMenuFull
+    partial class TCPopupMenuFull
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@ namespace Text_Editor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PopupMenuFull));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TCPopupMenuFull));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button14 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
