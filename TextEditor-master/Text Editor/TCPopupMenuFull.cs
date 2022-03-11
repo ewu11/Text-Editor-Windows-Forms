@@ -22,10 +22,43 @@ namespace Text_Editor
         }
 
         //used; cuz obtains parent's info; able to access parents data
-        public TCPopupMenuFull(MainFormEditor parentForm)
+        public TCPopupMenuFull(MainFormEditor parentForm, int iconFlag) //without icons
         {
             this.parentFormObj = parentForm;
             InitializeComponent();
+
+            switch(iconFlag)
+            {
+                case 0: //remove iconss
+                    this.imageList1.Images.Clear();
+                    this.Width -= 60;
+                    /*foreach(var button in this.Controls.OfType<Button>())
+                    {
+                        button.Width -= 50;
+                    }*/
+                    button1.Width -= 10;
+                    button2.Width -= 10;
+                    button3.Width -= 10;
+                    button4.Width -= 10;
+                    button5.Width -= 10;
+                    button6.Width -= 10;
+                    button7.Width -= 10;
+                    button8.Width -= 10;
+                    button9.Width -= 10;
+                    button10.Width -= 10;
+                    button11.Width -= 10;
+                    button12.Width -= 10;
+                    button13.Width -= 10;
+                    button14.Width -= 10;
+                    break;
+                case 1:
+                    //do nothing
+                    //cuz implemented in "InitializeComponent()"
+                    break;
+                default:
+                    MessageBox.Show(this.Parent, "TCPopupMenuFull constructor error!", "Alert!", MessageBoxButtons.OK);
+                    break;
+            }
         }
 
         //-----popup menu button functions-----

@@ -51,7 +51,7 @@ namespace Text_Editor
         {
             //for popup menu uses
             popMenuObj = new TCPopupMenuSimple(this);
-            popMenuObjFull = new TCPopupMenuFull(this);
+            //popMenuObjFull = new TCPopupMenuFull(this);
             matrixPopupMenuObj = new MatrixPopupMenu(this);
             matrixPopupMenuFullObj = new MatrixPopupMenuFull(this);
             vertPopupMenuObj = new VertPopupMenu(this);
@@ -884,7 +884,12 @@ namespace Text_Editor
                     case 3:
                         richContextStrip.Visible = false; //disable the default context menu display
                         chosenContextMenu = popMenuObjFull; //two column, simple context menu
-                        cmMsj = "Full two-column context menu opened!";
+                        cmMsj = "Full two-column context menu, with icons opened!";
+                        break;
+                    case 33:
+                        richContextStrip.Visible = false; //disable the default context menu display
+                        chosenContextMenu = popMenuObjFull; //two column, simple context menu
+                        cmMsj = "Full two-column context menu, without icons opened!";
                         break;
                     case 4:
                         richContextStrip.Visible = false; //disable the default context menu display
@@ -1008,21 +1013,7 @@ namespace Text_Editor
         //----to manage context menu tool strip selection----
         private void toolStripMenuItem1_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            //clear the checked status
-            for (int i = 0; i < toolStripMenuItem1.DropDownItems.Count; i++)
-            {
-                (toolStripMenuItem1.DropDownItems[i] as ToolStripMenuItem).Checked = false;
-            }
-            //check only the one selected
-            //except for "About" menu item
-            if(e.ClickedItem.Name == "aboutToolStripMenuItem")
-            {
-                (e.ClickedItem as ToolStripMenuItem).Checked = false;
-            }
-            else
-            {
-                (e.ClickedItem as ToolStripMenuItem).Checked = true;
-            }
+            manageCheckStatus(e);
         }
 
         private void defaultContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1037,11 +1028,29 @@ namespace Text_Editor
             this.toolStripStatusLabel1.Text = "Simple two-column context menu chosen!";
         }
 
-        private void fullTwocolumnContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        //---item 3---
+        private void fullTCCMMenuItem_Click(object sender, EventArgs e)
         {
-            contextMenuOption = 3;
-            this.toolStripStatusLabel1.Text = "Full two-column context menu chosen!";
+            //clear existing object data
+            popMenuObjFull = null;
         }
+
+        private void withIconsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            popMenuObjFull = new TCPopupMenuFull(this, 1);
+
+            contextMenuOption = 3;
+            this.toolStripStatusLabel1.Text = "Full two-column context menu, with icons chosen!";
+        }
+
+        private void withoutIconsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            popMenuObjFull = new TCPopupMenuFull(this, 0);
+
+            contextMenuOption = 33;
+            this.toolStripStatusLabel1.Text = "Full two-column context menu, without icons chosen!";
+        }
+        //---item 3---
 
         private void simpleMatrixContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1101,6 +1110,31 @@ namespace Text_Editor
             aboutDialog.ShowDialog(this);
         }
 
+        private void fullTCCMMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            manageCheckStatus(e);
+
+            /*if ((e.ClickedItem as ToolStripMenuItem).Checked)
+            {
+                fullTCCMMenuItem.Checked = true;
+            }
+            else
+            {
+                fullTCCMMenuItem.Checked = false;
+            }*/
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            for(int i=0; i<fullTCCMMenuItem.DropDownItems.Count; i++)
+            {
+                if((fullTCCMMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked == true)
+                {
+                    fullTCCMMenuItem.Checked = true;
+                }
+            }
+        }
+
         //to be used by other context menu forms, since they can access parent form
         public void showForm(Form theForm, int theFlag)
         {
@@ -1115,6 +1149,49 @@ namespace Text_Editor
                 default:
                     MessageBox.Show(this, "showForm() error!", "Alert!", MessageBoxButtons.OK);
                     break;
+            }
+        }
+
+        //---manage drop down "check" statuses---
+        //CHANGING THE IF ELSE SYNTAXES ON ALL CASES WILL AFFECT THE MENU ITEM CHECKED FUNCTIONALITY
+        private void manageCheckStatus(ToolStripItemClickedEventArgs e)
+        {
+            //check only the one selected
+            //except for "About" menu item
+            if (e.ClickedItem.Name == "aboutToolStripMenuItem")
+            {
+                (e.ClickedItem as ToolStripMenuItem).CheckState = CheckState.Unchecked;
+
+                for (int i = 0; i < toolStripMenuItem1.DropDownItems.Count; i++)
+                {
+                    //if any menu item is checked, just maintain
+                    if ((toolStripMenuItem1.DropDownItems[i] as ToolStripMenuItem).Checked)
+                    {
+                        continue;
+                    }
+                }
+            }
+
+            else if (e.ClickedItem.Name == "fullTCCMMenuItem")
+            {
+                //without this, the "checked" status for fullTCCMMenuItem will not work properly
+            }
+
+            //if any other items are selected, clear the check status first
+            //then only maintain the checked status on the chosen item
+            else
+            {
+                for (int i = 0; i < toolStripMenuItem1.DropDownItems.Count; i++)
+                {
+                    (toolStripMenuItem1.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                }
+
+                for (int i = 0; i < fullTCCMMenuItem.DropDownItems.Count; i++)
+                {
+                    (fullTCCMMenuItem.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                }
+
+                (e.ClickedItem as ToolStripMenuItem).Checked = true;
             }
         }
     }
