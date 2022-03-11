@@ -101,6 +101,8 @@
             this.defaultCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simpleTCCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullTCCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.withIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.withoutIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simpleMtxCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullMtxCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vertiCMMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -543,6 +545,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(852, 24);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -766,7 +769,7 @@
             this.defaultCMMenuItem.Name = "defaultCMMenuItem";
             this.defaultCMMenuItem.Size = new System.Drawing.Size(256, 22);
             this.defaultCMMenuItem.Text = "&Default context menu";
-            this.defaultCMMenuItem.ToolTipText = "Toggles the default context menu.";
+            this.defaultCMMenuItem.ToolTipText = "Toggles the default context menu";
             this.defaultCMMenuItem.Click += new System.EventHandler(this.defaultContextMenuToolStripMenuItem_Click);
             // 
             // simpleTCCMMenuItem
@@ -781,17 +784,36 @@
             // fullTCCMMenuItem
             // 
             this.fullTCCMMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fullTCCMMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.withIconsToolStripMenuItem,
+            this.withoutIconsToolStripMenuItem});
             this.fullTCCMMenuItem.Name = "fullTCCMMenuItem";
             this.fullTCCMMenuItem.Size = new System.Drawing.Size(256, 22);
             this.fullTCCMMenuItem.Text = "Two-column &full context menu";
             this.fullTCCMMenuItem.ToolTipText = "Toggles the two-column context menu, with full menu items.";
-            this.fullTCCMMenuItem.Click += new System.EventHandler(this.fullTwocolumnContextMenuToolStripMenuItem_Click);
+            this.fullTCCMMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.fullTCCMMenuItem_DropDownItemClicked);
+            this.fullTCCMMenuItem.Click += new System.EventHandler(this.fullTCCMMenuItem_Click);
+            // 
+            // withIconsToolStripMenuItem
+            // 
+            this.withIconsToolStripMenuItem.Name = "withIconsToolStripMenuItem";
+            this.withIconsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.withIconsToolStripMenuItem.Text = "With &Icons";
+            this.withIconsToolStripMenuItem.Click += new System.EventHandler(this.withIconsToolStripMenuItem_Click);
+            // 
+            // withoutIconsToolStripMenuItem
+            // 
+            this.withoutIconsToolStripMenuItem.Name = "withoutIconsToolStripMenuItem";
+            this.withoutIconsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.withoutIconsToolStripMenuItem.Text = "&Without Icons";
+            this.withoutIconsToolStripMenuItem.Click += new System.EventHandler(this.withoutIconsToolStripMenuItem_Click);
             // 
             // simpleMtxCMMenuItem
             // 
             this.simpleMtxCMMenuItem.Name = "simpleMtxCMMenuItem";
             this.simpleMtxCMMenuItem.Size = new System.Drawing.Size(256, 22);
             this.simpleMtxCMMenuItem.Text = "Simple matrix &context menu";
+            this.simpleMtxCMMenuItem.ToolTipText = "Toggles the simple matrix context menu.";
             this.simpleMtxCMMenuItem.Click += new System.EventHandler(this.simpleMatrixContextMenuToolStripMenuItem_Click);
             // 
             // fullMtxCMMenuItem
@@ -799,6 +821,7 @@
             this.fullMtxCMMenuItem.Name = "fullMtxCMMenuItem";
             this.fullMtxCMMenuItem.Size = new System.Drawing.Size(256, 22);
             this.fullMtxCMMenuItem.Text = "Full matrix context &menu";
+            this.fullMtxCMMenuItem.ToolTipText = "Toggles the full matrix context menu.";
             this.fullMtxCMMenuItem.Click += new System.EventHandler(this.fullMatrixContextMenuToolStripMenuItem_Click);
             // 
             // vertiCMMenuItem
@@ -806,6 +829,7 @@
             this.vertiCMMenuItem.Name = "vertiCMMenuItem";
             this.vertiCMMenuItem.Size = new System.Drawing.Size(256, 22);
             this.vertiCMMenuItem.Text = "&Vertical context menu";
+            this.vertiCMMenuItem.ToolTipText = "Toggles the vertical context menu.";
             this.vertiCMMenuItem.Click += new System.EventHandler(this.vertiCMMenuItem_Click);
             // 
             // horiCMMenuItem
@@ -813,6 +837,7 @@
             this.horiCMMenuItem.Name = "horiCMMenuItem";
             this.horiCMMenuItem.Size = new System.Drawing.Size(256, 22);
             this.horiCMMenuItem.Text = "&Horizontal context menu";
+            this.horiCMMenuItem.ToolTipText = "Toggles the horizontal context menu.";
             this.horiCMMenuItem.Click += new System.EventHandler(this.horiCMMenuItem_Click);
             // 
             // aboutToolStripMenuItem
@@ -820,6 +845,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(256, 22);
             this.aboutToolStripMenuItem.Text = "&About";
+            this.aboutToolStripMenuItem.ToolTipText = "Open the \"About\" dialog.";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // printDialog
@@ -991,5 +1017,7 @@
         private System.Windows.Forms.ToolStripMenuItem simpleMtxCMMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vertiCMMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horiCMMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem withIconsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem withoutIconsToolStripMenuItem;
     }
 }
