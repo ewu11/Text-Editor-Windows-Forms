@@ -1007,20 +1007,30 @@ namespace Text_Editor
 
         //----to manage context menu tool strip selection----
         private void toolStripMenuItem1_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            //clear the checked status
-            for (int i = 0; i < toolStripMenuItem1.DropDownItems.Count; i++)
-            {
-                (toolStripMenuItem1.DropDownItems[i] as ToolStripMenuItem).Checked = false;
-            }
+        {           
             //check only the one selected
             //except for "About" menu item
             if(e.ClickedItem.Name == "aboutToolStripMenuItem")
             {
-                (e.ClickedItem as ToolStripMenuItem).Checked = false;
+                (e.ClickedItem as ToolStripMenuItem).CheckState = CheckState.Unchecked;
+
+                for (int i = 0; i < toolStripMenuItem1.DropDownItems.Count; i++)
+                {
+                    //if is checked, just maintain
+                    if ((toolStripMenuItem1.DropDownItems[i] as ToolStripMenuItem).Checked)
+                    {
+                        continue;
+                    }
+                }
             }
             else
             {
+                //then clear the checked status
+                //and maintain the originally checked items
+                for (int i = 0; i < toolStripMenuItem1.DropDownItems.Count; i++)
+                {
+                    (toolStripMenuItem1.DropDownItems[i] as ToolStripMenuItem).Checked = false;
+                }
                 (e.ClickedItem as ToolStripMenuItem).Checked = true;
             }
         }
