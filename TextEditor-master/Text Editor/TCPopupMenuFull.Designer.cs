@@ -49,7 +49,24 @@ namespace Text_Editor
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.styleTokenStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeStyleStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.using1stStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.using1stStyleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.using1stStyleToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.using1stStyleToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.using1stStyleToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearAllStylesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
+            this.styleTokenStrip.SuspendLayout();
+            this.removeStyleStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -75,19 +92,22 @@ namespace Text_Editor
             this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button10, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.button16, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.button15, 0, 7);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(342, 228);
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(342, 259);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // button14
@@ -101,18 +121,18 @@ namespace Text_Editor
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button14.ImageKey = "selectAllToolStripMenuItem.Image.png";
             this.button14.ImageList = this.imageList1;
             this.button14.Location = new System.Drawing.Point(180, 192);
             this.button14.Margin = new System.Windows.Forms.Padding(0);
             this.button14.Name = "button14";
             this.button14.Padding = new System.Windows.Forms.Padding(4);
-            this.button14.Size = new System.Drawing.Size(162, 36);
+            this.button14.Size = new System.Drawing.Size(162, 32);
             this.button14.TabIndex = 13;
-            this.button14.Text = "Select All    Ctrl + A";
+            this.button14.Text = "Style token";
             this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.button14.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button14_MouseDown);
+            this.button14.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button14_MouseUp);
             // 
             // imageList1
             // 
@@ -170,18 +190,18 @@ namespace Text_Editor
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.ImageKey = "exitToolStripMenuItem.Image.png";
             this.button13.ImageList = this.imageList1;
             this.button13.Location = new System.Drawing.Point(0, 192);
             this.button13.Margin = new System.Windows.Forms.Padding(0);
             this.button13.Name = "button13";
             this.button13.Padding = new System.Windows.Forms.Padding(4);
-            this.button13.Size = new System.Drawing.Size(163, 36);
+            this.button13.Size = new System.Drawing.Size(163, 32);
             this.button13.TabIndex = 12;
-            this.button13.Text = "Alt + F4            Exit";
+            this.button13.Text = "Remove style";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.button13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button13_MouseDown);
+            this.button13.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button13_MouseUp);
             // 
             // button12
             // 
@@ -472,12 +492,151 @@ namespace Text_Editor
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // button15
+            // 
+            this.button15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.button15.BackColor = System.Drawing.SystemColors.Window;
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button15.ImageKey = "exitToolStripMenuItem.Image.png";
+            this.button15.ImageList = this.imageList1;
+            this.button15.Location = new System.Drawing.Point(0, 224);
+            this.button15.Margin = new System.Windows.Forms.Padding(0);
+            this.button15.Name = "button15";
+            this.button15.Padding = new System.Windows.Forms.Padding(4);
+            this.button15.Size = new System.Drawing.Size(163, 35);
+            this.button15.TabIndex = 14;
+            this.button15.Text = "Alt + F4            Exit";
+            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button16
+            // 
+            this.button16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button16.BackColor = System.Drawing.SystemColors.Window;
+            this.button16.FlatAppearance.BorderSize = 0;
+            this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button16.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button16.ImageKey = "selectAllToolStripMenuItem.Image.png";
+            this.button16.ImageList = this.imageList1;
+            this.button16.Location = new System.Drawing.Point(180, 224);
+            this.button16.Margin = new System.Windows.Forms.Padding(0);
+            this.button16.Name = "button16";
+            this.button16.Padding = new System.Windows.Forms.Padding(4);
+            this.button16.Size = new System.Drawing.Size(162, 35);
+            this.button16.TabIndex = 15;
+            this.button16.Text = "Select All    Ctrl + A";
+            this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // styleTokenStrip
+            // 
+            this.styleTokenStrip.DropShadowEnabled = false;
+            this.styleTokenStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.using1stStyleToolStripMenuItem,
+            this.using1stStyleToolStripMenuItem1,
+            this.using1stStyleToolStripMenuItem2,
+            this.using1stStyleToolStripMenuItem3,
+            this.using1stStyleToolStripMenuItem4});
+            this.styleTokenStrip.Name = "styleTokenStrip";
+            this.styleTokenStrip.Size = new System.Drawing.Size(156, 114);
+            // 
+            // removeStyleStrip
+            // 
+            this.removeStyleStrip.DropShadowEnabled = false;
+            this.removeStyleStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
+            this.clearAllStylesToolStripMenuItem});
+            this.removeStyleStrip.Name = "removeStyleStrip";
+            this.removeStyleStrip.Size = new System.Drawing.Size(153, 136);
+            // 
+            // using1stStyleToolStripMenuItem
+            // 
+            this.using1stStyleToolStripMenuItem.Name = "using1stStyleToolStripMenuItem";
+            this.using1stStyleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.using1stStyleToolStripMenuItem.Text = "Using 1st Style";
+            // 
+            // using1stStyleToolStripMenuItem1
+            // 
+            this.using1stStyleToolStripMenuItem1.Name = "using1stStyleToolStripMenuItem1";
+            this.using1stStyleToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.using1stStyleToolStripMenuItem1.Text = "Using 2nd Style";
+            // 
+            // using1stStyleToolStripMenuItem2
+            // 
+            this.using1stStyleToolStripMenuItem2.Name = "using1stStyleToolStripMenuItem2";
+            this.using1stStyleToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.using1stStyleToolStripMenuItem2.Text = "Using 3rd Style";
+            // 
+            // using1stStyleToolStripMenuItem3
+            // 
+            this.using1stStyleToolStripMenuItem3.Name = "using1stStyleToolStripMenuItem3";
+            this.using1stStyleToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.using1stStyleToolStripMenuItem3.Text = "Using 4th Style";
+            // 
+            // using1stStyleToolStripMenuItem4
+            // 
+            this.using1stStyleToolStripMenuItem4.Name = "using1stStyleToolStripMenuItem4";
+            this.using1stStyleToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.using1stStyleToolStripMenuItem4.Text = "Using 5th Style";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Clear 1st Style";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "Clear 2nd Style";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Text = "Clear 3rd Style";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem4.Text = "Clear 4th Style";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem5.Text = "Clear 5th Style";
+            // 
+            // clearAllStylesToolStripMenuItem
+            // 
+            this.clearAllStylesToolStripMenuItem.Name = "clearAllStylesToolStripMenuItem";
+            this.clearAllStylesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearAllStylesToolStripMenuItem.Text = "Clear all Styles";
+            // 
             // TCPopupMenuFull
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuPopup;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(342, 228);
+            this.ClientSize = new System.Drawing.Size(342, 259);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
@@ -489,7 +648,10 @@ namespace Text_Editor
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Activated += new System.EventHandler(this.PopupMenuFull_Activated);
             this.Deactivate += new System.EventHandler(this.PopupMenuFull_Deactivate);
+            this.Load += new System.EventHandler(this.TCPopupMenuFull_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.styleTokenStrip.ResumeLayout(false);
+            this.removeStyleStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,5 +675,20 @@ namespace Text_Editor
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.ContextMenuStrip styleTokenStrip;
+        private System.Windows.Forms.ContextMenuStrip removeStyleStrip;
+        private System.Windows.Forms.ToolStripMenuItem using1stStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem using1stStyleToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem using1stStyleToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem using1stStyleToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem using1stStyleToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem clearAllStylesToolStripMenuItem;
     }
 }

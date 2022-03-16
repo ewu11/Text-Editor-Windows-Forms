@@ -14,6 +14,7 @@ namespace Text_Editor
     {
         //global variable(s)
         MainFormEditor parentFormObj;
+        int removeStyleStripPos; //only used for button 13; need to be calculated early to fix positioning issues
 
         //not used; no parent info
         public TCPopupMenuFull()
@@ -36,20 +37,24 @@ namespace Text_Editor
                     {
                         button.Width -= 50;
                     }*/
-                    button1.Width -= 10;
-                    button2.Width -= 10;
-                    button3.Width -= 10;
-                    button4.Width -= 10;
-                    button5.Width -= 10;
-                    button6.Width -= 10;
-                    button7.Width -= 10;
-                    button8.Width -= 10;
-                    button9.Width -= 10;
-                    button10.Width -= 10;
-                    button11.Width -= 10;
-                    button12.Width -= 10;
-                    button13.Width -= 10;
-                    button14.Width -= 10;
+                    //CHANGING THIS VALUE WILL AFFECT THE VERTICAL WIDTH SEPARATING THE COLUMNS
+                    //ON THE FULL TWO COLUMN CONTEXT MENU "WITHOUT TEXT"!
+                    button1.Width -= 8;
+                    button2.Width -= 8;
+                    button3.Width -= 8;
+                    button4.Width -= 8;
+                    button5.Width -= 8;
+                    button6.Width -= 8;
+                    button7.Width -= 8;
+                    button8.Width -= 8;
+                    button9.Width -= 8;
+                    button10.Width -= 8;
+                    button11.Width -= 8;
+                    button12.Width -= 8;
+                    button13.Width -= 8;
+                    button14.Width -= 8;
+                    button15.Width -= 8;
+                    button16.Width -= 8;
                     break;
                 case 1:
                     //do nothing
@@ -61,20 +66,25 @@ namespace Text_Editor
             }
         }
 
-        //-----popup menu button functions-----
         private void PopupMenuFull_Deactivate(object sender, EventArgs e)
         {
+            if ((styleTokenStrip.Visible) || (removeStyleStrip.Visible))
+            {
+                styleTokenStrip.Close();
+                removeStyleStrip.Close();
+            }
+
             parentFormObj.showForm(this, 0);
 
-            parentFormObj.toolStripStatusLabelSetterGetter.Text = "...";
+            parentFormObj.toolStripStatusLabelSetterGetter.Text = "...";            
         }
 
+        //-----popup menu button functions-----
         private void button1_Click(object sender, EventArgs e)
         {
             parentFormObj.newMenuItem_Click(sender, e);
             parentFormObj.showForm(this, 0);
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             parentFormObj.OpenMenuItem_Click(sender, e);
@@ -96,12 +106,6 @@ namespace Text_Editor
         private void button9_Click(object sender, EventArgs e)
         {
             parentFormObj.printPreviewStripButton_Click(sender, e);
-            parentFormObj.showForm(this, 0);
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            parentFormObj.exitToolStripMenuItem_Click(sender, e);
             parentFormObj.showForm(this, 0);
         }
 
@@ -135,28 +139,75 @@ namespace Text_Editor
             parentFormObj.showForm(this, 0);
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-            parentFormObj.deleteToolStripMenuItem_Click(sender, e);
-            parentFormObj.showForm(this, 0);
-        }
-
-        private void button14_Click(object sender, EventArgs e)
-        {
-            parentFormObj.selectAllToolStripMenuItem1_Click(sender, e);
-            parentFormObj.showForm(this, 0);
-        }
-
         private void button11_Click(object sender, EventArgs e)
         {
             parentFormObj.clearAllToolStripMenuItem_Click(sender, e);
             parentFormObj.showForm(this, 0);
         }
 
+        private void button12_Click(object sender, EventArgs e)
+        {
+            parentFormObj.deleteToolStripMenuItem_Click(sender, e);
+            parentFormObj.showForm(this, 0);
+        }
+
+        //--involves dropdown--
+        private void button13_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                //this.TopMost = true;
+                removeStyleStrip.Show(button13, new Point(removeStyleStripPos, 0)); //cant use "visible" property; cant manage its location
+            }
+        }
+
+        private void button13_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                removeStyleStrip.Close();
+            }
+        }
+
+        private void button14_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                //this.TopMost = true;
+                styleTokenStrip.Show(button14, new Point(this.button14.Width, 0)); //cant use "visible" property; cant manage its location
+            }
+        }
+
+        private void button14_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                styleTokenStrip.Close();
+            }
+        }
+        //--involves dropdown--
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            parentFormObj.exitToolStripMenuItem_Click(sender, e);
+            parentFormObj.showForm(this, 0);
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            parentFormObj.selectAllToolStripMenuItem1_Click(sender, e);
+            parentFormObj.showForm(this, 0);
+        }
+        //-----popup menu button functions-----
+
         private void PopupMenuFull_Activated(object sender, EventArgs e)
         {
             parentFormObj.richTextBoxSetterGetter.HideSelection = false;
         }
-        //-----popup menu button functions-----
+
+        private void TCPopupMenuFull_Load(object sender, EventArgs e)
+        {
+            removeStyleStripPos = -(this.removeStyleStrip.Width);
+        }
     }
 }

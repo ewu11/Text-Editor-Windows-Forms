@@ -742,14 +742,18 @@ namespace Text_Editor
         {
             try
             {
+                //I CHANGED THE LOGIC HERE
+                //ELSE, THE DIALOG WILL OPEN TWICE  
+                DialogResult fontDialogResult = fontDialog1.ShowDialog(this);
+
                 System.Drawing.Font oldFont = this.Font;    // gets current font
 
-                if (fontDialog1.ShowDialog(this) == DialogResult.OK)
+                if (fontDialogResult == DialogResult.OK)
                 {
                     fontDialog1_Apply(richTextBox1, new System.EventArgs());
                 }
                 // set back to the recent font
-                else if (fontDialog1.ShowDialog(this) == DialogResult.Cancel)
+                else if (fontDialogResult == DialogResult.Cancel)
                 {
                     // set current font back to the old font
                     this.Font = oldFont;
