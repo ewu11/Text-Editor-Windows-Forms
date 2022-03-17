@@ -223,6 +223,16 @@ namespace Text_Editor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap firstStyle {
+            get {
+                object obj = ResourceManager.GetObject("firstStyle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap increaseStripButton_Image {
             get {
                 object obj = ResourceManager.GetObject("increaseStripButton_Image", resourceCulture);

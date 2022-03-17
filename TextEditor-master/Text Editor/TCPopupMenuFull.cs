@@ -12,9 +12,18 @@ namespace Text_Editor
 {
     public partial class TCPopupMenuFull : Form
     {
-        //global variable(s)
+        //-----global variable(s)-----
         MainFormEditor parentFormObj;
         int removeStyleStripPos; //only used for button 13; need to be calculated early to fix positioning issues
+        //rectangle colours
+        Bitmap[] squareIcon = new Bitmap[5]; //create 5 array items named "squareIcon" with type "Bitmap"
+        //need to create array so that can be easily accessed
+        SolidBrush[] squareBrushes = new SolidBrush[5] { new SolidBrush(Color.Blue), 
+                                                         new SolidBrush(Color.Red), 
+                                                         new SolidBrush(Color.Yellow), 
+                                                         new SolidBrush(Color.Green), 
+                                                         new SolidBrush(Color.Purple) };
+        //-----global variable(s)-----
 
         //not used; no parent info
         public TCPopupMenuFull()
@@ -208,6 +217,32 @@ namespace Text_Editor
         private void TCPopupMenuFull_Load(object sender, EventArgs e)
         {
             removeStyleStripPos = -(this.removeStyleStrip.Width);
+
+            //add square bitmaps for the styles strip
+            const int totalSquares = 5;
+
+            //assign new bitmap object to squares object
+            for (int i = 0; i < totalSquares; i++)
+            {
+                //instantiate squareIcons object
+                squareIcon[i] = new Bitmap(5, 5);
+            }
+
+            //assign colours to the squareIcons objects
+            for (int i = 0; i < totalSquares; i++)
+            {
+                using (Graphics colourize = Graphics.FromImage(squareIcon[i]))
+                {
+                    colourize.FillRectangle(squareBrushes[i], 1, 1, 5, 5);
+                }
+            }
+
+            //set images to the style strip
+            for (int i = 0; i < totalSquares; i++)
+            {
+                styleTokenStrip.Items[i].Image = squareIcon[i];
+                removeStyleStrip.Items[i].Image = squareIcon[i];
+            }
         }
     }
 }
