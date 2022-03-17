@@ -134,8 +134,8 @@
             this.richTextBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragDrop);
             this.richTextBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.richTextBox1_DragEnter);
             this.richTextBox1.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
+            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyUp);
-            this.richTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseDown);
             this.richTextBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.richTextBox1_MouseUp);
             // 
             // richContextStrip
@@ -797,14 +797,14 @@
             // withIconsToolStripMenuItem
             // 
             this.withIconsToolStripMenuItem.Name = "withIconsToolStripMenuItem";
-            this.withIconsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.withIconsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.withIconsToolStripMenuItem.Text = "With &Icons";
             this.withIconsToolStripMenuItem.Click += new System.EventHandler(this.withIconsToolStripMenuItem_Click);
             // 
             // withoutIconsToolStripMenuItem
             // 
             this.withoutIconsToolStripMenuItem.Name = "withoutIconsToolStripMenuItem";
-            this.withoutIconsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.withoutIconsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.withoutIconsToolStripMenuItem.Text = "&Without Icons";
             this.withoutIconsToolStripMenuItem.Click += new System.EventHandler(this.withoutIconsToolStripMenuItem_Click);
             // 

@@ -49,20 +49,20 @@ namespace Text_Editor
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.styleTokenStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeStyleStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.using1stStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.using1stStyleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.using1stStyleToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.using1stStyleToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.using1stStyleToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.using2ndStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.using3rdStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.using4thStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.using5thStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeStyleStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.clear1stToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clear2ndToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clear3rdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clear4thToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clear5thToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAllStylesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.styleTokenStrip.SuspendLayout();
@@ -492,30 +492,6 @@ namespace Text_Editor
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // button15
-            // 
-            this.button15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.button15.BackColor = System.Drawing.SystemColors.Window;
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.ImageKey = "exitToolStripMenuItem.Image.png";
-            this.button15.ImageList = this.imageList1;
-            this.button15.Location = new System.Drawing.Point(0, 224);
-            this.button15.Margin = new System.Windows.Forms.Padding(0);
-            this.button15.Name = "button15";
-            this.button15.Padding = new System.Windows.Forms.Padding(4);
-            this.button15.Size = new System.Drawing.Size(163, 35);
-            this.button15.TabIndex = 14;
-            this.button15.Text = "Alt + F4            Exit";
-            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
             // button16
             // 
             this.button16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -540,90 +516,115 @@ namespace Text_Editor
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
+            // button15
+            // 
+            this.button15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.button15.BackColor = System.Drawing.SystemColors.Window;
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button15.ImageKey = "exitToolStripMenuItem.Image.png";
+            this.button15.ImageList = this.imageList1;
+            this.button15.Location = new System.Drawing.Point(0, 224);
+            this.button15.Margin = new System.Windows.Forms.Padding(0);
+            this.button15.Name = "button15";
+            this.button15.Padding = new System.Windows.Forms.Padding(4);
+            this.button15.Size = new System.Drawing.Size(163, 35);
+            this.button15.TabIndex = 14;
+            this.button15.Text = "Alt + F4            Exit";
+            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // styleTokenStrip
             // 
             this.styleTokenStrip.DropShadowEnabled = false;
             this.styleTokenStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.using1stStyleToolStripMenuItem,
-            this.using1stStyleToolStripMenuItem1,
-            this.using1stStyleToolStripMenuItem2,
-            this.using1stStyleToolStripMenuItem3,
-            this.using1stStyleToolStripMenuItem4});
+            this.using2ndStyleToolStripMenuItem,
+            this.using3rdStyleToolStripMenuItem,
+            this.using4thStyleToolStripMenuItem,
+            this.using5thStyleToolStripMenuItem});
             this.styleTokenStrip.Name = "styleTokenStrip";
-            this.styleTokenStrip.Size = new System.Drawing.Size(156, 114);
+            this.styleTokenStrip.Size = new System.Drawing.Size(181, 136);
+            this.styleTokenStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.styleTokenStrip_ItemClicked);
+            // 
+            // using1stStyleToolStripMenuItem
+            // 
+            this.using1stStyleToolStripMenuItem.Name = "using1stStyleToolStripMenuItem";
+            this.using1stStyleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.using1stStyleToolStripMenuItem.Text = "Using 1st Style";
+            // 
+            // using2ndStyleToolStripMenuItem
+            // 
+            this.using2ndStyleToolStripMenuItem.Name = "using2ndStyleToolStripMenuItem";
+            this.using2ndStyleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.using2ndStyleToolStripMenuItem.Text = "Using 2nd Style";
+            // 
+            // using3rdStyleToolStripMenuItem
+            // 
+            this.using3rdStyleToolStripMenuItem.Name = "using3rdStyleToolStripMenuItem";
+            this.using3rdStyleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.using3rdStyleToolStripMenuItem.Text = "Using 3rd Style";
+            // 
+            // using4thStyleToolStripMenuItem
+            // 
+            this.using4thStyleToolStripMenuItem.Name = "using4thStyleToolStripMenuItem";
+            this.using4thStyleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.using4thStyleToolStripMenuItem.Text = "Using 4th Style";
+            // 
+            // using5thStyleToolStripMenuItem
+            // 
+            this.using5thStyleToolStripMenuItem.Name = "using5thStyleToolStripMenuItem";
+            this.using5thStyleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.using5thStyleToolStripMenuItem.Text = "Using 5th Style";
             // 
             // removeStyleStrip
             // 
             this.removeStyleStrip.DropShadowEnabled = false;
             this.removeStyleStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
+            this.clear1stToolStripMenuItem,
+            this.clear2ndToolStripMenuItem,
+            this.clear3rdToolStripMenuItem,
+            this.clear4thToolStripMenuItem,
+            this.clear5thToolStripMenuItem,
             this.clearAllStylesToolStripMenuItem});
             this.removeStyleStrip.Name = "removeStyleStrip";
             this.removeStyleStrip.Size = new System.Drawing.Size(153, 136);
             // 
-            // using1stStyleToolStripMenuItem
+            // clear1stToolStripMenuItem
             // 
-            this.using1stStyleToolStripMenuItem.Name = "using1stStyleToolStripMenuItem";
-            this.using1stStyleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.using1stStyleToolStripMenuItem.Text = "Using 1st Style";
+            this.clear1stToolStripMenuItem.Name = "clear1stToolStripMenuItem";
+            this.clear1stToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear1stToolStripMenuItem.Text = "Clear 1st Style";
             // 
-            // using1stStyleToolStripMenuItem1
+            // clear2ndToolStripMenuItem
             // 
-            this.using1stStyleToolStripMenuItem1.Name = "using1stStyleToolStripMenuItem1";
-            this.using1stStyleToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.using1stStyleToolStripMenuItem1.Text = "Using 2nd Style";
+            this.clear2ndToolStripMenuItem.Name = "clear2ndToolStripMenuItem";
+            this.clear2ndToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear2ndToolStripMenuItem.Text = "Clear 2nd Style";
             // 
-            // using1stStyleToolStripMenuItem2
+            // clear3rdToolStripMenuItem
             // 
-            this.using1stStyleToolStripMenuItem2.Name = "using1stStyleToolStripMenuItem2";
-            this.using1stStyleToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.using1stStyleToolStripMenuItem2.Text = "Using 3rd Style";
+            this.clear3rdToolStripMenuItem.Name = "clear3rdToolStripMenuItem";
+            this.clear3rdToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear3rdToolStripMenuItem.Text = "Clear 3rd Style";
             // 
-            // using1stStyleToolStripMenuItem3
+            // clear4thToolStripMenuItem
             // 
-            this.using1stStyleToolStripMenuItem3.Name = "using1stStyleToolStripMenuItem3";
-            this.using1stStyleToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
-            this.using1stStyleToolStripMenuItem3.Text = "Using 4th Style";
+            this.clear4thToolStripMenuItem.Name = "clear4thToolStripMenuItem";
+            this.clear4thToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear4thToolStripMenuItem.Text = "Clear 4th Style";
             // 
-            // using1stStyleToolStripMenuItem4
+            // clear5thToolStripMenuItem
             // 
-            this.using1stStyleToolStripMenuItem4.Name = "using1stStyleToolStripMenuItem4";
-            this.using1stStyleToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
-            this.using1stStyleToolStripMenuItem4.Text = "Using 5th Style";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem1.Text = "Clear 1st Style";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem2.Text = "Clear 2nd Style";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem3.Text = "Clear 3rd Style";
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem4.Text = "Clear 4th Style";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem5.Text = "Clear 5th Style";
+            this.clear5thToolStripMenuItem.Name = "clear5thToolStripMenuItem";
+            this.clear5thToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear5thToolStripMenuItem.Text = "Clear 5th Style";
             // 
             // clearAllStylesToolStripMenuItem
             // 
@@ -680,15 +681,15 @@ namespace Text_Editor
         private System.Windows.Forms.ContextMenuStrip styleTokenStrip;
         private System.Windows.Forms.ContextMenuStrip removeStyleStrip;
         private System.Windows.Forms.ToolStripMenuItem using1stStyleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem using1stStyleToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem using1stStyleToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem using1stStyleToolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem using1stStyleToolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem using2ndStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem using3rdStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem using4thStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem using5thStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clear1stToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clear2ndToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clear3rdToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clear4thToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clear5thToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearAllStylesToolStripMenuItem;
     }
 }

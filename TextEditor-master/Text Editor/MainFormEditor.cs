@@ -972,17 +972,6 @@ namespace Text_Editor
             }
         }
 
-        //****************************************************************************************************************************
-        // richTextBox1_MouseDown - Gets the line and column numbers of the cursor position in the RTB when the mouse clicks an area *
-        //****************************************************************************************************************************
-        private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            int pos = richTextBox1.SelectionStart;    // get starting point
-            int line = richTextBox1.GetLineFromCharIndex(pos);    // get line number
-            int column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-            lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-        }
-
         //----setter getter methods-----
         public RichTextBox richTextBoxSetterGetter
         {
@@ -1137,6 +1126,12 @@ namespace Text_Editor
                     fullTCCMMenuItem.Checked = true;
                 }
             }
+        }
+
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //to revert "selectionbackcolor"
+            this.richTextBox1.SelectionBackColor = default;
         }
 
         //to be used by other context menu forms, since they can access parent form

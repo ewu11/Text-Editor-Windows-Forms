@@ -244,5 +244,56 @@ namespace Text_Editor
                 removeStyleStrip.Items[i].Image = squareIcon[i];
             }
         }
+
+        private void styleTokenStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            //---get selected text lines---
+            // Create a string array and store the contents of the Lines property.
+            string[] tempArray = this.parentFormObj.richTextBoxSetterGetter.Lines;
+
+            // Loop through the array and send the contents of the array to debug window.
+            //for (int counter = 0; counter < tempArray.Length; counter++)
+            //{
+            //    System.Diagnostics.Debug.WriteLine(tempArray[counter]);
+            //}
+            //---get lines---
+
+            SolidBrush textBgCol;
+
+            if (e.ClickedItem.Name == "using1stStyleToolStripMenuItem")
+            {
+                textBgCol = squareBrushes[0];
+            }
+            else if (e.ClickedItem.Name == "using2ndStyleToolStripMenuItem")
+            {
+                textBgCol = squareBrushes[1];
+            }
+            else if (e.ClickedItem.Name == "using3rdStyleToolStripMenuItem")
+            {
+                textBgCol = squareBrushes[2];
+            }
+            else if (e.ClickedItem.Name == "using4thStyleToolStripMenuItem")
+            {
+                textBgCol = squareBrushes[3];
+            }
+            else if (e.ClickedItem.Name == "using5thStyleToolStripMenuItem")
+            {
+                textBgCol = squareBrushes[4];
+            }
+            else
+            {
+                textBgCol = null;
+                MessageBox.Show(this.parentFormObj, "Style token menu item error!", "Alert!", MessageBoxButtons.OK);
+            }
+
+            //finally, set the colour changes
+            this.parentFormObj.richTextBoxSetterGetter.Select(this.parentFormObj.richTextBoxSetterGetter.SelectionStart, this.parentFormObj.richTextBoxSetterGetter.SelectionLength);
+
+            //cant explicitly change "solidbrush" to "color"; so use this way
+            this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = Color.FromArgb(textBgCol.Color.A, textBgCol.Color.R, textBgCol.Color.G, textBgCol.Color.B);
+
+            //after changing the color, set the future colors to default
+            //this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = default;
+        }
     }
 }
