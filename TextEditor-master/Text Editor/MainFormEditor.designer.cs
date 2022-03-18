@@ -896,7 +896,7 @@
             // lineColumnStatusLabel
             // 
             this.lineColumnStatusLabel.Name = "lineColumnStatusLabel";
-            this.lineColumnStatusLabel.Size = new System.Drawing.Size(821, 17);
+            this.lineColumnStatusLabel.Size = new System.Drawing.Size(790, 17);
             this.lineColumnStatusLabel.Spring = true;
             this.lineColumnStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 

@@ -550,37 +550,37 @@ namespace Text_Editor
             this.using4thStyleToolStripMenuItem,
             this.using5thStyleToolStripMenuItem});
             this.styleTokenStrip.Name = "styleTokenStrip";
-            this.styleTokenStrip.Size = new System.Drawing.Size(181, 136);
+            this.styleTokenStrip.Size = new System.Drawing.Size(156, 114);
             this.styleTokenStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.styleTokenStrip_ItemClicked);
             // 
             // using1stStyleToolStripMenuItem
             // 
             this.using1stStyleToolStripMenuItem.Name = "using1stStyleToolStripMenuItem";
-            this.using1stStyleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.using1stStyleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.using1stStyleToolStripMenuItem.Text = "Using 1st Style";
             // 
             // using2ndStyleToolStripMenuItem
             // 
             this.using2ndStyleToolStripMenuItem.Name = "using2ndStyleToolStripMenuItem";
-            this.using2ndStyleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.using2ndStyleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.using2ndStyleToolStripMenuItem.Text = "Using 2nd Style";
             // 
             // using3rdStyleToolStripMenuItem
             // 
             this.using3rdStyleToolStripMenuItem.Name = "using3rdStyleToolStripMenuItem";
-            this.using3rdStyleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.using3rdStyleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.using3rdStyleToolStripMenuItem.Text = "Using 3rd Style";
             // 
             // using4thStyleToolStripMenuItem
             // 
             this.using4thStyleToolStripMenuItem.Name = "using4thStyleToolStripMenuItem";
-            this.using4thStyleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.using4thStyleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.using4thStyleToolStripMenuItem.Text = "Using 4th Style";
             // 
             // using5thStyleToolStripMenuItem
             // 
             this.using5thStyleToolStripMenuItem.Name = "using5thStyleToolStripMenuItem";
-            this.using5thStyleToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.using5thStyleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.using5thStyleToolStripMenuItem.Text = "Using 5th Style";
             // 
             // removeStyleStrip
@@ -599,37 +599,37 @@ namespace Text_Editor
             // clear1stToolStripMenuItem
             // 
             this.clear1stToolStripMenuItem.Name = "clear1stToolStripMenuItem";
-            this.clear1stToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear1stToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clear1stToolStripMenuItem.Text = "Clear 1st Style";
             // 
             // clear2ndToolStripMenuItem
             // 
             this.clear2ndToolStripMenuItem.Name = "clear2ndToolStripMenuItem";
-            this.clear2ndToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear2ndToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clear2ndToolStripMenuItem.Text = "Clear 2nd Style";
             // 
             // clear3rdToolStripMenuItem
             // 
             this.clear3rdToolStripMenuItem.Name = "clear3rdToolStripMenuItem";
-            this.clear3rdToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear3rdToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clear3rdToolStripMenuItem.Text = "Clear 3rd Style";
             // 
             // clear4thToolStripMenuItem
             // 
             this.clear4thToolStripMenuItem.Name = "clear4thToolStripMenuItem";
-            this.clear4thToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear4thToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clear4thToolStripMenuItem.Text = "Clear 4th Style";
             // 
             // clear5thToolStripMenuItem
             // 
             this.clear5thToolStripMenuItem.Name = "clear5thToolStripMenuItem";
-            this.clear5thToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear5thToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clear5thToolStripMenuItem.Text = "Clear 5th Style";
             // 
             // clearAllStylesToolStripMenuItem
             // 
             this.clearAllStylesToolStripMenuItem.Name = "clearAllStylesToolStripMenuItem";
-            this.clearAllStylesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearAllStylesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clearAllStylesToolStripMenuItem.Text = "Clear all Styles";
             // 
             // TCPopupMenuFull

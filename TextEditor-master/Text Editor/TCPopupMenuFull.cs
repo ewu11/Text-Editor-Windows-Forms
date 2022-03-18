@@ -14,7 +14,7 @@ namespace Text_Editor
     {
         //-----global variable(s)-----
         MainFormEditor parentFormObj;
-        int removeStyleStripPos; //only used for button 13; need to be calculated early to fix positioning issues
+        int removeStyleStripXPos; //only used for button 13; need to be calculated early to fix positioning issues
         //rectangle colours
         Bitmap[] squareIcon = new Bitmap[5]; //create 5 array items named "squareIcon" with type "Bitmap"
         //need to create array so that can be easily accessed
@@ -166,7 +166,7 @@ namespace Text_Editor
             if (e.Button == MouseButtons.Left)
             {
                 //this.TopMost = true;
-                removeStyleStrip.Show(button13, new Point(removeStyleStripPos, 0)); //cant use "visible" property; cant manage its location
+                removeStyleStrip.Show(button13, new Point(removeStyleStripXPos, 0)); //cant use "visible" property; cant manage its location
             }
         }
 
@@ -183,7 +183,7 @@ namespace Text_Editor
             if (e.Button == MouseButtons.Left)
             {
                 //this.TopMost = true;
-                styleTokenStrip.Show(button14, new Point(this.button14.Width, 0)); //cant use "visible" property; cant manage its location
+                styleTokenStrip.Show(button14, new Point(this.button14.DisplayRectangle.Right, 0)); //cant use "visible" property; cant manage its location
             }
         }
 
@@ -216,7 +216,9 @@ namespace Text_Editor
 
         private void TCPopupMenuFull_Load(object sender, EventArgs e)
         {
-            removeStyleStripPos = -(this.removeStyleStrip.Width);
+            removeStyleStripXPos = -(this.removeStyleStrip.Width);
+            //removeStyleStripPos = removeStyleStrip.Right - this.button13.Left;
+            //removeStyleStripXPos = this.button13.DisplayRectangle.Width - this.removeStyleStrip.Left;
 
             //add square bitmaps for the styles strip
             const int totalSquares = 5;
@@ -249,7 +251,7 @@ namespace Text_Editor
         {
             //---get selected text lines---
             // Create a string array and store the contents of the Lines property.
-            string[] tempArray = this.parentFormObj.richTextBoxSetterGetter.Lines;
+            //string[] tempArray = this.parentFormObj.richTextBoxSetterGetter.Lines;
 
             // Loop through the array and send the contents of the array to debug window.
             //for (int counter = 0; counter < tempArray.Length; counter++)
@@ -258,7 +260,7 @@ namespace Text_Editor
             //}
             //---get lines---
 
-            SolidBrush textBgCol;
+            SolidBrush textBgCol; //to store color brushes
 
             if (e.ClickedItem.Name == "using1stStyleToolStripMenuItem")
             {
@@ -292,8 +294,9 @@ namespace Text_Editor
             //cant explicitly change "solidbrush" to "color"; so use this way
             this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = Color.FromArgb(textBgCol.Color.A, textBgCol.Color.R, textBgCol.Color.G, textBgCol.Color.B);
 
-            //after changing the color, set the future colors to default
-            //this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = default;
+            //after choosing the items, close the style strip and the context menu
+            this.styleTokenStrip.Visible = false;
+            this.parentFormObj.showForm(this, 0);
         }
     }
 }

@@ -1131,7 +1131,11 @@ namespace Text_Editor
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             //to revert "selectionbackcolor"
-            this.richTextBox1.SelectionBackColor = default;
+            //this.richTextBox1.BackColor = Color.Empty;
+            if(richTextBox1.SelectionBackColor != richTextBox1.BackColor)
+            {
+                richTextBox1.SelectionBackColor = richTextBox1.BackColor;
+            }
         }
 
         //to be used by other context menu forms, since they can access parent form
