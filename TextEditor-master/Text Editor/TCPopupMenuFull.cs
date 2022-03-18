@@ -14,7 +14,7 @@ namespace Text_Editor
     {
         //-----global variable(s)-----
         MainFormEditor parentFormObj;
-        int removeStyleStripXPos; //only used for button 13; need to be calculated early to fix positioning issues
+        //int removeStyleStripXPos; //only used for button 13; need to be calculated early to fix positioning issues
         //rectangle colours
         Bitmap[] squareIcon = new Bitmap[5]; //create 5 array items named "squareIcon" with type "Bitmap"
         //need to create array so that can be easily accessed
@@ -166,7 +166,10 @@ namespace Text_Editor
             if (e.Button == MouseButtons.Left)
             {
                 //this.TopMost = true;
-                removeStyleStrip.Show(button13, new Point(removeStyleStripXPos, 0)); //cant use "visible" property; cant manage its location
+                //removeStyleStrip.Show(button13, new Point(removeStyleStripXPos, 0)); //cant use "visible" property; cant manage its location
+
+                var screenPos = button13.PointToScreen(Point.Empty);
+                removeStyleStrip.Show(new Point(screenPos.X - removeStyleStrip.Width, screenPos.Y));
             }
         }
 
@@ -216,7 +219,7 @@ namespace Text_Editor
 
         private void TCPopupMenuFull_Load(object sender, EventArgs e)
         {
-            removeStyleStripXPos = -(this.removeStyleStrip.Width);
+            //removeStyleStripXPos = -(this.removeStyleStrip.Width);
             //removeStyleStripPos = removeStyleStrip.Right - this.button13.Left;
             //removeStyleStripXPos = this.button13.DisplayRectangle.Width - this.removeStyleStrip.Left;
 
