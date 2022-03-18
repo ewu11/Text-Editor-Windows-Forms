@@ -18,11 +18,22 @@ namespace Text_Editor
         //rectangle colours
         Bitmap[] squareIcon = new Bitmap[5]; //create 5 array items named "squareIcon" with type "Bitmap"
         //need to create array so that can be easily accessed
-        SolidBrush[] squareBrushes = new SolidBrush[5] { new SolidBrush(Color.Blue), 
-                                                         new SolidBrush(Color.Red), 
-                                                         new SolidBrush(Color.Yellow), 
-                                                         new SolidBrush(Color.Green), 
-                                                         new SolidBrush(Color.Purple) };
+        static int alphaVal = 250;
+        //--more solid colour--
+        SolidBrush[] squareBrushes = new SolidBrush[5] { new SolidBrush(Color.FromArgb(alphaVal, 0, 255, 255)), 
+                                                         new SolidBrush(Color.FromArgb(alphaVal, 255, 128, 0)), 
+                                                         new SolidBrush(Color.FromArgb(alphaVal, 255, 255, 0)), 
+                                                         new SolidBrush(Color.FromArgb(alphaVal, 128, 0, 255)), 
+                                                         new SolidBrush(Color.FromArgb(alphaVal, 0, 128, 0)) };
+        //--more solid colour--
+
+        //--readable colour--
+        Color[] squareColors = new Color[5] { Color.FromArgb(alphaVal, 155, 255, 255),
+                                              Color.FromArgb(alphaVal, 255, 205, 155),
+                                              Color.FromArgb(alphaVal, 255, 255, 155),
+                                              Color.FromArgb(alphaVal, 205, 155, 255),
+                                              Color.FromArgb(alphaVal, 155, 205, 155) };
+        //--readable colour--
         //-----global variable(s)-----
 
         //not used; no parent info
@@ -238,7 +249,7 @@ namespace Text_Editor
             {
                 using (Graphics colourize = Graphics.FromImage(squareIcon[i]))
                 {
-                    colourize.FillRectangle(squareBrushes[i], 1, 1, 5, 5);
+                    colourize.FillRectangle(squareBrushes[i], 1, 1, 4, 4);
                 }
             }
 
@@ -263,42 +274,120 @@ namespace Text_Editor
             //}
             //---get lines---
 
-            SolidBrush textBgCol; //to store color brushes
+            //SolidBrush textBgCol; //to store color brushes
+            Color textBgCol2;
 
             if (e.ClickedItem.Name == "using1stStyleToolStripMenuItem")
             {
-                textBgCol = squareBrushes[0];
+                //textBgCol = squareBrushes[0];
+                textBgCol2 = squareColors[0];
             }
             else if (e.ClickedItem.Name == "using2ndStyleToolStripMenuItem")
             {
-                textBgCol = squareBrushes[1];
+                //textBgCol = squareBrushes[1];
+                textBgCol2 = squareColors[1];
             }
             else if (e.ClickedItem.Name == "using3rdStyleToolStripMenuItem")
             {
-                textBgCol = squareBrushes[2];
+                //textBgCol = squareBrushes[2];
+                textBgCol2 = squareColors[2];
             }
             else if (e.ClickedItem.Name == "using4thStyleToolStripMenuItem")
             {
-                textBgCol = squareBrushes[3];
+                //textBgCol = squareBrushes[3];
+                textBgCol2 = squareColors[3];
             }
             else if (e.ClickedItem.Name == "using5thStyleToolStripMenuItem")
             {
-                textBgCol = squareBrushes[4];
+                //textBgCol = squareBrushes[4];
+                textBgCol2 = squareColors[4];
             }
             else
             {
-                textBgCol = null;
+                //textBgCol = null;
+                textBgCol2 = Color.Empty;
                 MessageBox.Show(this.parentFormObj, "Style token menu item error!", "Alert!", MessageBoxButtons.OK);
             }
 
             //finally, set the colour changes
-            this.parentFormObj.richTextBoxSetterGetter.Select(this.parentFormObj.richTextBoxSetterGetter.SelectionStart, this.parentFormObj.richTextBoxSetterGetter.SelectionLength);
+            //"-1" to prevent changing background color of white spaces
+            int startSelectIndex = this.parentFormObj.richTextBoxSetterGetter.SelectionStart;
+            int endSelectIndex;
+            if(this.parentFormObj.richTextBoxSetterGetter.SelectedText.EndsWith(" "))
+            {
+                endSelectIndex = (this.parentFormObj.richTextBoxSetterGetter.SelectionLength - 1);
+            }
+            else
+            {
+                endSelectIndex = this.parentFormObj.richTextBoxSetterGetter.SelectionLength;
+            }
+            this.parentFormObj.richTextBoxSetterGetter.Select(startSelectIndex, endSelectIndex);
 
             //cant explicitly change "solidbrush" to "color"; so use this way
-            this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = Color.FromArgb(textBgCol.Color.A, textBgCol.Color.R, textBgCol.Color.G, textBgCol.Color.B);
+            //this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = Color.FromArgb(alphaVal, textBgCol.Color.R, textBgCol.Color.G, textBgCol.Color.B);
+            this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = textBgCol2;
 
             //after choosing the items, close the style strip and the context menu
             this.styleTokenStrip.Visible = false;
+            this.parentFormObj.showForm(this, 0);
+        }
+
+        private void removeStyleStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            int startIndex = 0; //start the search from beginning of the richTextBox1
+            int endIndex = this.parentFormObj.richTextBoxSetterGetter.TextLength;
+            this.parentFormObj.richTextBoxSetterGetter.Select(startIndex, endIndex);
+
+            if (e.ClickedItem.Name == "clear1stToolStripMenuItem")
+            {
+                if(this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[0])
+                {
+                    this.parentFormObj.richTextBoxSetterGetter.BackColor = SystemColors.Window;
+                }
+                else
+                {
+                    MessageBox.Show(this.parentFormObj, "xda ponn!", "hmm", MessageBoxButtons.OK);
+                }
+            }
+            else if (e.ClickedItem.Name == "clear2ndToolStripMenuItem")
+            {
+                if (this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[1])
+                {
+                    this.parentFormObj.richTextBoxSetterGetter.BackColor = SystemColors.Window;
+                }
+            }
+            else if (e.ClickedItem.Name == "clear3rdToolStripMenuItem")
+            {
+                if (this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[2])
+                {
+                    this.parentFormObj.richTextBoxSetterGetter.BackColor = SystemColors.Window;
+                }
+            }
+            else if (e.ClickedItem.Name == "clear4thToolStripMenuItem")
+            {
+                if (this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[3])
+                {
+                    this.parentFormObj.richTextBoxSetterGetter.BackColor = SystemColors.Window;
+                }
+            }
+            else if (e.ClickedItem.Name == "clear5thToolStripMenuItem")
+            {
+                if (this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[4])
+                {
+                    this.parentFormObj.richTextBoxSetterGetter.BackColor = SystemColors.Window;
+                }
+            }
+            else if (e.ClickedItem.Name == "clearAllStylesToolStripMenuItem")
+            {
+                this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = SystemColors.Window;
+            }
+            else
+            {
+                MessageBox.Show(this.parentFormObj, "Remove style menu item error!", "Alert!", MessageBoxButtons.OK);
+            }
+
+            //after choosing the items, close the style strip and the context menu
+            this.removeStyleStrip.Visible = false;
             this.parentFormObj.showForm(this, 0);
         }
     }
