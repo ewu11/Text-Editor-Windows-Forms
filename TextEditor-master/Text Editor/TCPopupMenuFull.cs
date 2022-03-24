@@ -14,12 +14,10 @@ namespace Text_Editor
     {
         //-----global variable(s)-----
         MainFormEditor parentFormObj;
-        //int removeStyleStripXPos; //only used for button 13; need to be calculated early to fix positioning issues
-        //rectangle colours
         Bitmap[] squareIcon = new Bitmap[5]; //create 5 array items named "squareIcon" with type "Bitmap"
-        //need to create array so that can be easily accessed
-        //static int alphaVal = 250;
+        //done in an array so that can be easily accessed and called
         //--more solid colour--
+        //used for the menu item graphics
         SolidBrush[] squareBrushes = new SolidBrush[5] { new SolidBrush(Color.FromArgb(0, 255, 255)),
                                                          new SolidBrush(Color.FromArgb(255, 128, 0)),
                                                          new SolidBrush(Color.FromArgb(255, 255, 0)),
@@ -28,12 +26,7 @@ namespace Text_Editor
         //--more solid colour--
 
         //--readable colour--
-        /*Color[] squareColors = new Color[5] { Color.FromArgb(alphaVal, 155, 255, 255),
-                                              Color.FromArgb(alphaVal, 255, 205, 155),
-                                              Color.FromArgb(alphaVal, 241, 241, 155),
-                                              Color.FromArgb(alphaVal, 205, 155, 255),
-                                              Color.FromArgb(alphaVal, 155, 205, 155) };*/
-
+        //used for the text background color; more readable
         Color[] squareColors = new Color[5] { Color.FromArgb(155, 255, 255),
                                               Color.FromArgb(255, 205, 155),
                                               Color.FromArgb(241, 241, 155),
@@ -182,9 +175,6 @@ namespace Text_Editor
         {
             if (e.Button == MouseButtons.Left)
             {
-                //this.TopMost = true;
-                //removeStyleStrip.Show(button13, new Point(removeStyleStripXPos, 0)); //cant use "visible" property; cant manage its location
-
                 var screenPos = button13.PointToScreen(Point.Empty);
                 removeStyleStrip.Show(new Point(screenPos.X - removeStyleStrip.Width, screenPos.Y));
             }
@@ -236,10 +226,6 @@ namespace Text_Editor
 
         private void TCPopupMenuFull_Load(object sender, EventArgs e)
         {
-            //removeStyleStripXPos = -(this.removeStyleStrip.Width);
-            //removeStyleStripPos = removeStyleStrip.Right - this.button13.Left;
-            //removeStyleStripXPos = this.button13.DisplayRectangle.Width - this.removeStyleStrip.Left;
-
             //add square bitmaps for the styles strip
             const int totalSquares = 5;
 
@@ -269,18 +255,6 @@ namespace Text_Editor
 
         private void styleTokenStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            //---get selected text lines---
-            // Create a string array and store the contents of the Lines property.
-            //string[] tempArray = this.parentFormObj.richTextBoxSetterGetter.Lines;
-
-            // Loop through the array and send the contents of the array to debug window.
-            //for (int counter = 0; counter < tempArray.Length; counter++)
-            //{
-            //    System.Diagnostics.Debug.WriteLine(tempArray[counter]);
-            //}
-            //---get lines---
-
-            //SolidBrush textBgCol; //to store color brushes
             Color textBgCol2;
 
             if (e.ClickedItem.Name == "using1stStyleToolStripMenuItem")
@@ -315,24 +289,8 @@ namespace Text_Editor
                 MessageBox.Show(this.parentFormObj, "Style token menu item error!", "Alert!", MessageBoxButtons.OK);
             }
 
-            //finally, set the colour changes
-            //"-1" to prevent changing background color of white spaces
-            /*int startSelectIndex = this.parentFormObj.richTextBoxSetterGetter.SelectionStart;
-            int endSelectIndex;
-            if(this.parentFormObj.richTextBoxSetterGetter.SelectedText.EndsWith(" "))
-            {
-                endSelectIndex = (this.parentFormObj.richTextBoxSetterGetter.SelectionLength - 1);
-            }
-            else
-            {
-                endSelectIndex = this.parentFormObj.richTextBoxSetterGetter.SelectionLength;
-            }
-            this.parentFormObj.richTextBoxSetterGetter.Select(startSelectIndex, endSelectIndex);*/
-
             isTextSelected(parentFormObj.richTextBoxSetterGetter);
 
-            //cant explicitly change "solidbrush" to "color"; so use this way
-            //this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = Color.FromArgb(alphaVal, textBgCol.Color.R, textBgCol.Color.G, textBgCol.Color.B);
             this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = textBgCol2;
 
             //after choosing the items, close the style strip and the context menu
@@ -344,87 +302,6 @@ namespace Text_Editor
 
         private void removeStyleStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            //-----OLD CODE-----
-            /*int startIndex = 0; //start the search from beginning of the richTextBox1
-            int endIndex = this.parentFormObj.richTextBoxSetterGetter.TextLength;
-            //int endIndex = this.parentFormObj.richTextBoxSetterGetter.SelectionLength;
-            this.parentFormObj.richTextBoxSetterGetter.Select(startIndex, endIndex);
-
-            //my idea is to use loop to loop every single text in the richtextbox
-            for(int i=startIndex; i<endIndex; i++)
-            {
-                *//*if(this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[0])
-                {
-                    //MessageBox.Show(this.parentFormObj, "good!", ":D", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    //MessageBox.Show(this.parentFormObj, "error laaa!", "eyh3x?!", MessageBoxButtons.OK);
-                    //this.parentFormObj.toolStripStatusLabelSetterGetter.Text = "Hmm: " + this.parentFormObj.richTextBoxSetterGetter.BackColor.ToString();
-                    
-                }*//*
-                Console.WriteLine("Hmm: " + this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor.ToString());
-            }
-
-            *//*if (e.ClickedItem.Name == "clear1stToolStripMenuItem")
-            {
-                if(this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[0])
-                {
-                    this.parentFormObj.richTextBoxSetterGetter.BackColor = SystemColors.Window;
-                }
-                else
-                {
-                    MessageBox.Show(this.parentFormObj, "xda ponn!", "hmm", MessageBoxButtons.OK);
-                }
-            }
-            else if (e.ClickedItem.Name == "clear2ndToolStripMenuItem")
-            {
-                if (this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[1])
-                {
-                    this.parentFormObj.richTextBoxSetterGetter.BackColor = SystemColors.Window;
-                }
-            }
-            else if (e.ClickedItem.Name == "clear3rdToolStripMenuItem")
-            {
-                if (this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[2])
-                {
-                    this.parentFormObj.richTextBoxSetterGetter.BackColor = SystemColors.Window;
-                }
-            }
-            else if (e.ClickedItem.Name == "clear4thToolStripMenuItem")
-            {
-                if (this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[3])
-                {
-                    this.parentFormObj.richTextBoxSetterGetter.BackColor = SystemColors.Window;
-                }
-            }
-            else if (e.ClickedItem.Name == "clear5thToolStripMenuItem")
-            {
-                if (this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[4])
-                {
-                    this.parentFormObj.richTextBoxSetterGetter.BackColor = SystemColors.Window;
-                }
-            }
-            else if (e.ClickedItem.Name == "clearAllStylesToolStripMenuItem")
-            {
-                this.parentFormObj.richTextBoxSetterGetter.SelectionBackColor = SystemColors.Window;
-            }
-            else
-            {
-                MessageBox.Show(this.parentFormObj, "Remove style menu item error!", "Alert!", MessageBoxButtons.OK);
-            }*//*
-
-            //after choosing the items, close the style strip and the context menu
-            this.removeStyleStrip.Visible = false;
-            this.parentFormObj.showForm(this, 0);*/
-            //-----OLD CODE-----
-
-            //-----NEWER CODE-----
-            //manage text selection first
-            //--if user select text--
-            //parentFormObj.richTextBoxSetterGetter.se
-            //--if user select text--
-
             //--if user dont select text--
             //go through text one by one, skipping white lines
             int startIndex = 0;
@@ -433,17 +310,11 @@ namespace Text_Editor
             parentFormObj.richTextBoxSetterGetter.SelectionLength = 1; //always 1 'cuz we want to assess each text one by one
             //--if user dont select text--
 
-            //manage text selection
-            //isTextSelected(parentFormObj.richTextBoxSetterGetter);
-            //int endIndex = parentFormObj.richTextBoxSetterGetter.TextLength;
-
             //second, get which menu item was clicked
             if (e.ClickedItem.Name == "clear1stToolStripMenuItem")
             {
                 while (parentFormObj.richTextBoxSetterGetter.SelectionStart < endIndex)
                 {
-                    //parentFormObj.richTextBoxSetterGetter.Select(parentFormObj.richTextBoxSetterGetter.SelectionStart, parentFormObj.richTextBoxSetterGetter.SelectionLength); //select the text first before processing
-
                     //--manage bg color of selected text in RTB--
                     if (parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[0])
                     {
@@ -451,33 +322,20 @@ namespace Text_Editor
                     }
                     //--manage bg color of selected text in RTB--
 
-                    //testing purposes
-                    //MessageBox.Show(this, "Color: " + parentFormObj.richTextBoxSetterGetter.SelectionBackColor, "Color info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     //so that able to go to next text
                     parentFormObj.richTextBoxSetterGetter.SelectionStart += 1;
                 }
-
-                /*if (parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[0])
-                {
-                    parentFormObj.richTextBoxSetterGetter.SelectionBackColor = SystemColors.Window;
-                }*/
             }
             else if(e.ClickedItem.Name == "clear2ndToolStripMenuItem")
             {
                 while (parentFormObj.richTextBoxSetterGetter.SelectionStart < endIndex)
                 {
-                    //parentFormObj.richTextBoxSetterGetter.Select(parentFormObj.richTextBoxSetterGetter.SelectionStart, parentFormObj.richTextBoxSetterGetter.SelectionLength); //select the text first before processing
-
                     //--manage bg color of selected text in RTB--
                     if (parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[1])
                     {
                         parentFormObj.richTextBoxSetterGetter.SelectionBackColor = SystemColors.Window;
                     }
                     //--manage bg color of selected text in RTB--
-
-                    //testing purposes
-                    //MessageBox.Show(this, "Color: " + parentFormObj.richTextBoxSetterGetter.SelectionBackColor, "Color info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //so that able to go to next text
                     parentFormObj.richTextBoxSetterGetter.SelectionStart += 1;
@@ -487,17 +345,12 @@ namespace Text_Editor
             {
                 while (parentFormObj.richTextBoxSetterGetter.SelectionStart < endIndex)
                 {
-                    //parentFormObj.richTextBoxSetterGetter.Select(parentFormObj.richTextBoxSetterGetter.SelectionStart, parentFormObj.richTextBoxSetterGetter.SelectionLength); //select the text first before processing
-
                     //--manage bg color of selected text in RTB--
                     if (parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[2])
                     {
                         parentFormObj.richTextBoxSetterGetter.SelectionBackColor = SystemColors.Window;
                     }
                     //--manage bg color of selected text in RTB--
-
-                    //testing purposes
-                    //MessageBox.Show(this, "Color: " + parentFormObj.richTextBoxSetterGetter.SelectionBackColor, "Color info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //so that able to go to next text
                     parentFormObj.richTextBoxSetterGetter.SelectionStart += 1;
@@ -507,17 +360,12 @@ namespace Text_Editor
             {
                 while (parentFormObj.richTextBoxSetterGetter.SelectionStart < endIndex)
                 {
-                    //parentFormObj.richTextBoxSetterGetter.Select(parentFormObj.richTextBoxSetterGetter.SelectionStart, parentFormObj.richTextBoxSetterGetter.SelectionLength); //select the text first before processing
-
                     //--manage bg color of selected text in RTB--
                     if (parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[3])
                     {
                         parentFormObj.richTextBoxSetterGetter.SelectionBackColor = SystemColors.Window;
                     }
                     //--manage bg color of selected text in RTB--
-
-                    //testing purposes
-                    //MessageBox.Show(this, "Color: " + parentFormObj.richTextBoxSetterGetter.SelectionBackColor, "Color info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //so that able to go to next text
                     parentFormObj.richTextBoxSetterGetter.SelectionStart += 1;
@@ -527,17 +375,12 @@ namespace Text_Editor
             {
                 while (parentFormObj.richTextBoxSetterGetter.SelectionStart < endIndex)
                 {
-                    //parentFormObj.richTextBoxSetterGetter.Select(parentFormObj.richTextBoxSetterGetter.SelectionStart, parentFormObj.richTextBoxSetterGetter.SelectionLength); //select the text first before processing
-
                     //--manage bg color of selected text in RTB--
                     if (parentFormObj.richTextBoxSetterGetter.SelectionBackColor == squareColors[4])
                     {
                         parentFormObj.richTextBoxSetterGetter.SelectionBackColor = SystemColors.Window;
                     }
                     //--manage bg color of selected text in RTB--
-
-                    //testing purposes
-                    //MessageBox.Show(this, "Color: " + parentFormObj.richTextBoxSetterGetter.SelectionBackColor, "Color info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //so that able to go to next text
                     parentFormObj.richTextBoxSetterGetter.SelectionStart += 1;
@@ -547,7 +390,6 @@ namespace Text_Editor
             {
                 while (parentFormObj.richTextBoxSetterGetter.SelectionStart < endIndex)
                 {
-                    //parentFormObj.richTextBoxSetterGetter.Select(parentFormObj.richTextBoxSetterGetter.SelectionStart, parentFormObj.richTextBoxSetterGetter.SelectionLength); //select the text first before processing
 
                     //--manage bg color of selected text in RTB--
                     parentFormObj.richTextBoxSetterGetter.SelectionBackColor = SystemColors.Window;
@@ -564,7 +406,6 @@ namespace Text_Editor
             {
                 MessageBox.Show(this, "Remove style selection error!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //-----NEWER CODE-----
 
             //finally...
             parentFormObj.richTextBoxSetterGetter.DeselectAll(); //unselect text in RTB
@@ -575,6 +416,7 @@ namespace Text_Editor
         }
 
         //flagger; checks whether user has text selected or not
+        //THIS IS ONLY USED IF: EACH TEXT ARE NOT NEEDED TO BE GONE THROUGH ONE BY ONE
         private bool isTextSelected(RichTextBox localRTB)
         {
             int startIndex;
@@ -607,6 +449,7 @@ namespace Text_Editor
                     }
                 }
 
+                //--manage selected text in the RTB--
                 localRTB.Select(startIndex, endIndex);
                 //--manage selected text in the RTB--
 
