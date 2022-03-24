@@ -684,10 +684,10 @@ namespace Text_Editor
                 {
                     matrixPopupMenuFullObj.zoomFactorContextStripSetterGetter.Items[i].Image = bmp;
                 }
-                else
+                /*else
                 {
-                    Console.WriteLine("Error!");
-                }
+                    Console.WriteLine("Error1!");
+                }*/
             }
 
             //from zoomFactorContextStrip -> ToolStripDropDown
@@ -699,10 +699,10 @@ namespace Text_Editor
                 {
                     zoomDropDownButton.DropDownItems[i].Image = bmp;
                 }
-                else
+                /*else
                 {
-                    Console.WriteLine("Error!");
-                }
+                    Console.WriteLine("Error2!");
+                }*/
             }
             //----to update zoom factor selection in both ToolStripDropDown & zoomFactorContextStrip----
         }
@@ -1135,6 +1135,46 @@ namespace Text_Editor
             if(richTextBox1.SelectionBackColor != richTextBox1.BackColor)
             {
                 richTextBox1.SelectionBackColor = richTextBox1.BackColor;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int startIndex = 0; //start the search from beginning of the richTextBox1
+            int endIndex = this.richTextBox1.TextLength;
+            this.richTextBox1.Select(startIndex, endIndex);
+
+            if(endIndex != 0)
+            {
+                for(int i=startIndex; i< endIndex; i++)
+                {
+                    if (this.richTextBox1.Text[i].ToString().Contains(" ")) //skips white spaces
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        while ((this.richTextBox1.BackColor != Color.Empty))
+                        {
+                            if (this.richTextBox1.SelectionBackColor.R == 155 && this.richTextBox1.SelectionBackColor.G == 255 && this.richTextBox1.SelectionBackColor.B == 255)
+                            {
+                                this.richTextBox1.HideSelection = true; //to prevent text highlighted
+                                MessageBox.Show(this, "Texts with RGB(155, 255, 255) found!", "", MessageBoxButtons.OK);
+                                break;
+                            }
+                            else
+                            {
+                                this.richTextBox1.HideSelection = true;
+                                MessageBox.Show(this, "Error!", "", MessageBoxButtons.OK);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(this, "richTextBox1 is empty!", "Alert!", MessageBoxButtons.OK);
             }
         }
 
