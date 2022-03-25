@@ -29,7 +29,7 @@ namespace Text_Editor
 
             string projectName = "Text Editor - Windows Forms";
 
-            string version = "6.1.2.0";
+            string version = "6.1.5.0";
 
             string oriCopyright = "©️ 2019 hjohnson12";
 
