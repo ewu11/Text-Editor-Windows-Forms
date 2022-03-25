@@ -49,28 +49,6 @@ namespace Text_Editor
 
         private void frmEditor_Load(object sender, EventArgs e)
         {
-            //for popup menu uses
-            popMenuObj = new TCPopupMenuSimple(this);
-            //popMenuObjFull = new TCPopupMenuFull(this);
-            matrixPopupMenuObj = new MatrixPopupMenu(this);
-            matrixPopupMenuFullObj = new MatrixPopupMenuFull(this);
-            vertPopupMenuObj = new VertPopupMenu(this);
-            horiPopupMenuObj = new HoriPopupMenu(this);
-
-            contextMenuOption = 1; //sets the choice of context menu to default on the menu strip
-
-            //make default context menu selection checked
-            defaultCMMenuItem.Checked = true;
-
-            // draw bmp in image property of selected item, while its active
-            //--used by ToolStripDropDown & zoomFactorContextStrip--
-            bmp = new Bitmap(5, 5);
-            using (Graphics gfx = Graphics.FromImage(bmp))
-            {
-                gfx.FillEllipse(Brushes.Black, 1, 1, 3, 3);
-            }
-            //--used by ToolStripDropDown & zoomFactorContextStrip--
-
             richTextBox1.AllowDrop = true;     // to allow drag and drop to the RichTextBox
             richTextBox1.AcceptsTab = true;    // allow tab
             richTextBox1.WordWrap = false;    // disable word wrap on start
@@ -94,7 +72,8 @@ namespace Text_Editor
             wordWrapToolStripMenuItem.Image = null;
             MinimizeBox = true;
             MaximizeBox = false;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            //this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            //this.ShowInTaskbar = true;
 
             // fill zoomDropDownButton item list
             zoomDropDownButton.DropDown.Items.Add("20%");
@@ -169,10 +148,34 @@ namespace Text_Editor
             int column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);
             lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
 
+            //-----FOR THE USE OF MY PROJECT-----
+            //for popup menu uses
+            popMenuObj = new TCPopupMenuSimple(this);
+            //popMenuObjFull = new TCPopupMenuFull(this);
+            matrixPopupMenuObj = new MatrixPopupMenu(this);
+            matrixPopupMenuFullObj = new MatrixPopupMenuFull(this);
+            vertPopupMenuObj = new VertPopupMenu(this);
+            horiPopupMenuObj = new HoriPopupMenu(this);
+
+            contextMenuOption = 1; //sets the choice of context menu to default on the menu strip
+
+            //make default context menu selection checked
+            defaultCMMenuItem.Checked = true;
+
+            // draw bmp in image property of selected item, while its active
+            //--used by ToolStripDropDown & zoomFactorContextStrip--
+            bmp = new Bitmap(5, 5);
+            using (Graphics gfx = Graphics.FromImage(bmp))
+            {
+                gfx.FillEllipse(Brushes.Black, 1, 1, 3, 3);
+            }
+            //--used by ToolStripDropDown & zoomFactorContextStrip--
+
             //---make ToolStripDropDown & zoomFactorContextStrip selection in default---
             zoomDropDownButton.DropDownItems[3].Image = bmp;
             matrixPopupMenuFullObj.zoomFactorContextStripSetterGetter.Items[3].Image = bmp;
             //---make ToolStripDropDown & zoomFactorContextStrip selection in default---
+            //-----FOR THE USE OF MY PROJECT-----
         }
 
         //******************************************************************************************************************************
@@ -1140,46 +1143,6 @@ namespace Text_Editor
             if(richTextBox1.SelectionBackColor != richTextBox1.BackColor)
             {
                 richTextBox1.SelectionBackColor = richTextBox1.BackColor;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int startIndex = 0; //start the search from beginning of the richTextBox1
-            int endIndex = this.richTextBox1.TextLength;
-            this.richTextBox1.Select(startIndex, endIndex);
-
-            if(endIndex != 0)
-            {
-                for(int i=startIndex; i< endIndex; i++)
-                {
-                    if (this.richTextBox1.Text[i].ToString().Contains(" ")) //skips white spaces
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        while ((this.richTextBox1.BackColor != Color.Empty))
-                        {
-                            if (this.richTextBox1.SelectionBackColor.R == 155 && this.richTextBox1.SelectionBackColor.G == 255 && this.richTextBox1.SelectionBackColor.B == 255)
-                            {
-                                this.richTextBox1.HideSelection = true; //to prevent text highlighted
-                                MessageBox.Show(this, "Texts with RGB(155, 255, 255) found!", "", MessageBoxButtons.OK);
-                                break;
-                            }
-                            else
-                            {
-                                this.richTextBox1.HideSelection = true;
-                                MessageBox.Show(this, "Error!", "", MessageBoxButtons.OK);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show(this, "richTextBox1 is empty!", "Alert!", MessageBoxButtons.OK);
             }
         }
 
