@@ -14,8 +14,6 @@ namespace Text_Editor
     {
         //global variable(s)
         string newLine = Environment.NewLine; //equivalent -> "\n"
-        //LinkLabel projectLink;
-
         public AboutProjectForm()
         {
             InitializeComponent();
@@ -23,12 +21,6 @@ namespace Text_Editor
 
         private void AboutProjectForm_Load(object sender, EventArgs e)
         {
-            /*projectLink = new LinkLabel();
-            projectLink.Text = "https://github.com/hjohnson12/TextEditor";
-            projectLink.LinkArea = new LinkArea(0, projectLink.Text.Length);
-            //projectLink.Links.Add(24, 9, "https://github.com/hjohnson12/TextEditor");
-            projectLink.LinkClicked += new LinkLabelLinkClickedEventHandler(LinkedLabelClicked);*/
-
             //----SET LABEL'S VALUES HERE ONLY----
             string description = "An open source Text Editor program, done by hjohnson12, sam-wheat, yoshiask, and RobbyRobbyRobby. " + newLine + newLine +
                                  "It is then used for a Final Year Project(FYP) coded by Eliasaph Wan Uyo(1181101266). " + newLine + newLine +
