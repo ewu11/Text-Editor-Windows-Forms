@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Text_Editor
 {
-    partial class aboutCustomContextMenu : Form
+    partial class AboutCustomContextMenu : Form
     {
-        public aboutCustomContextMenu()
+        public AboutCustomContextMenu()
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);

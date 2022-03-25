@@ -79,11 +79,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aboutCustomContextMenu.cs">
+    <Compile Include="AboutCustomContextMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aboutCustomContextMenu.Designer.cs">
-      <DependentUpon>aboutCustomContextMenu.cs</DependentUpon>
+    <Compile Include="AboutCustomContextMenu.Designer.cs">
+      <DependentUpon>AboutCustomContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AboutProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutProjectForm.Designer.cs">
+      <DependentUpon>AboutProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HoriPopupMenu.cs">
       <SubType>Form</SubType>
@@ -129,8 +135,11 @@
     <Compile Include="VertPopupMenu.Designer.cs">
       <DependentUpon>VertPopupMenu.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="aboutCustomContextMenu.resx">
-      <DependentUpon>aboutCustomContextMenu.cs</DependentUpon>
+    <EmbeddedResource Include="AboutCustomContextMenu.resx">
+      <DependentUpon>AboutCustomContextMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutProjectForm.resx">
+      <DependentUpon>AboutProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HoriPopupMenu.resx">
       <DependentUpon>HoriPopupMenu.cs</DependentUpon>

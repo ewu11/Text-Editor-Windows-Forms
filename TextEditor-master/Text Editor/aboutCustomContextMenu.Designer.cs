@@ -1,7 +1,7 @@
 ﻿
 namespace Text_Editor
 {
-    partial class aboutCustomContextMenu
+    partial class AboutCustomContextMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -149,7 +149,7 @@ namespace Text_Editor
             this.okButton.TabIndex = 24;
             this.okButton.Text = "&OK";
             // 
-            // aboutCustomContextMenu
+            // AboutCustomContextMenu
             // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -159,7 +159,7 @@ namespace Text_Editor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "aboutCustomContextMenu";
+            this.Name = "AboutCustomContextMenu";
             this.Padding = new System.Windows.Forms.Padding(9);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

@@ -52,6 +52,7 @@ namespace Text_Editor
                 case 0: //remove iconss
                     this.imageList1.Images.Clear();
                     this.Width -= 60;
+                    this.Height -= 12; //bigger than this causes text crop
                     /*foreach(var button in this.Controls.OfType<Button>())
                     {
                         button.Width -= 50;

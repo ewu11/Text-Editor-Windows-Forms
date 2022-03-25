@@ -580,7 +580,7 @@ namespace Text_Editor
             this.toolStripMenuItem7.Size = new System.Drawing.Size(96, 22);
             this.toolStripMenuItem7.Text = "500%";
             // 
-            // MatrixPopupMenu
+            // MatrixPopupMenuFull
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuPopup;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -594,9 +594,10 @@ namespace Text_Editor
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "MatrixPopupMenu";
+            this.Name = "MatrixPopupMenuFull";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.TopMost = true;
             this.Deactivate += new System.EventHandler(this.MatrixPopupMenu_Deactivate);
             this.Load += new System.EventHandler(this.MatrixPopupMenu_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

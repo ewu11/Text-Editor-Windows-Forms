@@ -594,43 +594,43 @@ namespace Text_Editor
             this.clear5thToolStripMenuItem,
             this.clearAllStylesToolStripMenuItem});
             this.removeStyleStrip.Name = "removeStyleStrip";
-            this.removeStyleStrip.Size = new System.Drawing.Size(181, 158);
+            this.removeStyleStrip.Size = new System.Drawing.Size(153, 136);
             this.removeStyleStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.removeStyleStrip_ItemClicked);
             // 
             // clear1stToolStripMenuItem
             // 
             this.clear1stToolStripMenuItem.Name = "clear1stToolStripMenuItem";
-            this.clear1stToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear1stToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clear1stToolStripMenuItem.Text = "Clear 1st Style";
             // 
             // clear2ndToolStripMenuItem
             // 
             this.clear2ndToolStripMenuItem.Name = "clear2ndToolStripMenuItem";
-            this.clear2ndToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear2ndToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clear2ndToolStripMenuItem.Text = "Clear 2nd Style";
             // 
             // clear3rdToolStripMenuItem
             // 
             this.clear3rdToolStripMenuItem.Name = "clear3rdToolStripMenuItem";
-            this.clear3rdToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear3rdToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clear3rdToolStripMenuItem.Text = "Clear 3rd Style";
             // 
             // clear4thToolStripMenuItem
             // 
             this.clear4thToolStripMenuItem.Name = "clear4thToolStripMenuItem";
-            this.clear4thToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear4thToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clear4thToolStripMenuItem.Text = "Clear 4th Style";
             // 
             // clear5thToolStripMenuItem
             // 
             this.clear5thToolStripMenuItem.Name = "clear5thToolStripMenuItem";
-            this.clear5thToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clear5thToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clear5thToolStripMenuItem.Text = "Clear 5th Style";
             // 
             // clearAllStylesToolStripMenuItem
             // 
             this.clearAllStylesToolStripMenuItem.Name = "clearAllStylesToolStripMenuItem";
-            this.clearAllStylesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearAllStylesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clearAllStylesToolStripMenuItem.Text = "Clear all Styles";
             // 
             // TCPopupMenuFull
@@ -648,6 +648,7 @@ namespace Text_Editor
             this.Name = "TCPopupMenuFull";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.TopMost = true;
             this.Activated += new System.EventHandler(this.PopupMenuFull_Activated);
             this.Deactivate += new System.EventHandler(this.PopupMenuFull_Deactivate);
             this.Load += new System.EventHandler(this.TCPopupMenuFull_Load);

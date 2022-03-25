@@ -257,6 +257,7 @@ namespace Text_Editor
             this.Name = "MatrixPopupMenu";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.TopMost = true;
             this.Activated += new System.EventHandler(this.MatrixPopupMenu_Activated);
             this.Deactivate += new System.EventHandler(this.MatrixPopupMenu_Deactivate);
             this.tableLayoutPanel1.ResumeLayout(false);

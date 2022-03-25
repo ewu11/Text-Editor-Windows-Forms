@@ -884,6 +884,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 591);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(852, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -896,7 +897,7 @@
             // lineColumnStatusLabel
             // 
             this.lineColumnStatusLabel.Name = "lineColumnStatusLabel";
-            this.lineColumnStatusLabel.Size = new System.Drawing.Size(821, 17);
+            this.lineColumnStatusLabel.Size = new System.Drawing.Size(790, 17);
             this.lineColumnStatusLabel.Spring = true;
             this.lineColumnStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -912,11 +913,13 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.richTextBox1);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainFormEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Rich Text Editor";
+            this.Text = "Text Editor - Windows Forms";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmEditor_Load);
             this.richContextStrip.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);

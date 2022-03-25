@@ -1098,9 +1098,14 @@ namespace Text_Editor
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            aboutCustomContextMenu aboutDialog = new aboutCustomContextMenu();
+            
+            //AboutCustomContextMenu aboutDialog = new AboutCustomContextMenu();
 
-            aboutDialog.ShowDialog(this);
+            //aboutDialog.ShowDialog(this);
+
+            AboutProjectForm aboutProjDialog = new AboutProjectForm();
+
+            aboutProjDialog.ShowDialog(this);
         }
 
         private void fullTCCMMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
