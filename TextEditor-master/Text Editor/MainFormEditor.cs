@@ -92,7 +92,7 @@ namespace Text_Editor
             rightAlignStripButton.Checked = false;
             bulletListStripButton.Checked = false;
             wordWrapToolStripMenuItem.Image = null;
-            MinimizeBox = false;
+            MinimizeBox = true;
             MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
