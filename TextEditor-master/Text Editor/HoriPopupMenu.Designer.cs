@@ -414,6 +414,7 @@ namespace Text_Editor
             this.Name = "HoriPopupMenu";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.TopMost = true;
             this.Activated += new System.EventHandler(this.HoriPopupMenu_Activated);
             this.Deactivate += new System.EventHandler(this.HoriPopupMenu_Deactivate);
             this.flowLayoutPanel1.ResumeLayout(false);

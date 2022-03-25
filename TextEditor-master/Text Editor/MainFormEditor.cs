@@ -684,10 +684,10 @@ namespace Text_Editor
                 {
                     matrixPopupMenuFullObj.zoomFactorContextStripSetterGetter.Items[i].Image = bmp;
                 }
-                else
+                /*else
                 {
-                    Console.WriteLine("Error!");
-                }
+                    Console.WriteLine("Error1!");
+                }*/
             }
 
             //from zoomFactorContextStrip -> ToolStripDropDown
@@ -699,10 +699,10 @@ namespace Text_Editor
                 {
                     zoomDropDownButton.DropDownItems[i].Image = bmp;
                 }
-                else
+                /*else
                 {
-                    Console.WriteLine("Error!");
-                }
+                    Console.WriteLine("Error2!");
+                }*/
             }
             //----to update zoom factor selection in both ToolStripDropDown & zoomFactorContextStrip----
         }
@@ -742,14 +742,18 @@ namespace Text_Editor
         {
             try
             {
+                //I CHANGED THE LOGIC HERE
+                //ELSE, THE DIALOG WILL OPEN TWICE  
+                DialogResult fontDialogResult = fontDialog1.ShowDialog(this);
+
                 System.Drawing.Font oldFont = this.Font;    // gets current font
 
-                if (fontDialog1.ShowDialog(this) == DialogResult.OK)
+                if (fontDialogResult == DialogResult.OK)
                 {
                     fontDialog1_Apply(richTextBox1, new System.EventArgs());
                 }
                 // set back to the recent font
-                else if (fontDialog1.ShowDialog(this) == DialogResult.Cancel)
+                else if (fontDialogResult == DialogResult.Cancel)
                 {
                     // set current font back to the old font
                     this.Font = oldFont;
@@ -968,17 +972,6 @@ namespace Text_Editor
             }
         }
 
-        //****************************************************************************************************************************
-        // richTextBox1_MouseDown - Gets the line and column numbers of the cursor position in the RTB when the mouse clicks an area *
-        //****************************************************************************************************************************
-        private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            int pos = richTextBox1.SelectionStart;    // get starting point
-            int line = richTextBox1.GetLineFromCharIndex(pos);    // get line number
-            int column = richTextBox1.SelectionStart - richTextBox1.GetFirstCharIndexFromLine(line);    // get column number
-            lineColumnStatusLabel.Text = "Line " + (line + 1) + ", Column " + (column + 1);
-        }
-
         //----setter getter methods-----
         public RichTextBox richTextBoxSetterGetter
         {
@@ -1105,9 +1098,14 @@ namespace Text_Editor
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            aboutCustomContextMenu aboutDialog = new aboutCustomContextMenu();
+            
+            //AboutCustomContextMenu aboutDialog = new AboutCustomContextMenu();
 
-            aboutDialog.ShowDialog(this);
+            //aboutDialog.ShowDialog(this);
+
+            AboutProjectForm aboutProjDialog = new AboutProjectForm();
+
+            aboutProjDialog.ShowDialog(this);
         }
 
         private void fullTCCMMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -1132,6 +1130,56 @@ namespace Text_Editor
                 {
                     fullTCCMMenuItem.Checked = true;
                 }
+            }
+        }
+
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //to revert "selectionbackcolor"
+            //this.richTextBox1.BackColor = Color.Empty;
+            if(richTextBox1.SelectionBackColor != richTextBox1.BackColor)
+            {
+                richTextBox1.SelectionBackColor = richTextBox1.BackColor;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int startIndex = 0; //start the search from beginning of the richTextBox1
+            int endIndex = this.richTextBox1.TextLength;
+            this.richTextBox1.Select(startIndex, endIndex);
+
+            if(endIndex != 0)
+            {
+                for(int i=startIndex; i< endIndex; i++)
+                {
+                    if (this.richTextBox1.Text[i].ToString().Contains(" ")) //skips white spaces
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        while ((this.richTextBox1.BackColor != Color.Empty))
+                        {
+                            if (this.richTextBox1.SelectionBackColor.R == 155 && this.richTextBox1.SelectionBackColor.G == 255 && this.richTextBox1.SelectionBackColor.B == 255)
+                            {
+                                this.richTextBox1.HideSelection = true; //to prevent text highlighted
+                                MessageBox.Show(this, "Texts with RGB(155, 255, 255) found!", "", MessageBoxButtons.OK);
+                                break;
+                            }
+                            else
+                            {
+                                this.richTextBox1.HideSelection = true;
+                                MessageBox.Show(this, "Error!", "", MessageBoxButtons.OK);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(this, "richTextBox1 is empty!", "Alert!", MessageBoxButtons.OK);
             }
         }
 

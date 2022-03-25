@@ -32,14 +32,14 @@ namespace Text_Editor
 
         private void MatrixPopupMenu_Deactivate(object sender, EventArgs e)
         {
-            parentFormObj.showForm(this, 0);
-
-            parentFormObj.toolStripStatusLabelSetterGetter.Text = "...";
-
-            if(zoomFactorContextStrip.Visible == true)
+            if (zoomFactorContextStrip.Visible == true)
             {
                 zoomFactorContextStrip.Visible = false;
             }
+
+            parentFormObj.showForm(this, 0);
+
+            parentFormObj.toolStripStatusLabelSetterGetter.Text = "...";
         }
 
         private void MatrixPopupMenu_Load(object sender, EventArgs e)
@@ -159,7 +159,10 @@ namespace Text_Editor
 
         private void button15_MouseDown(object sender, MouseEventArgs e)
         {
-            zoomFactorContextStrip.Close();
+            if(e.Button == MouseButtons.Left)
+            {
+                zoomFactorContextStrip.Close();
+            }
         }
         //---button15 is dropdown; special case---
 

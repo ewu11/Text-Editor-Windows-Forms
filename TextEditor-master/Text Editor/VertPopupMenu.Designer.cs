@@ -402,6 +402,7 @@ namespace Text_Editor
             this.Name = "VertPopupMenu";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.TopMost = true;
             this.Activated += new System.EventHandler(this.VertPopupMenu_Activated);
             this.Deactivate += new System.EventHandler(this.VertPopupMenu_Deactivate);
             this.flowLayoutPanel1.ResumeLayout(false);

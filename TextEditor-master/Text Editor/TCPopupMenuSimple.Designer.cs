@@ -228,7 +228,7 @@ namespace Text_Editor
             this.tableLayoutPanel1.Size = new System.Drawing.Size(357, 98);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
-            // PopupMenu
+            // TCPopupMenuSimple
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuPopup;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -241,9 +241,10 @@ namespace Text_Editor
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "PopupMenu";
+            this.Name = "TCPopupMenuSimple";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.TopMost = true;
             this.Activated += new System.EventHandler(this.PopupMenu_Activated);
             this.Deactivate += new System.EventHandler(this.PopupMenu_Deactivate);
             this.tableLayoutPanel1.ResumeLayout(false);
