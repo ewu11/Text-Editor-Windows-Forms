@@ -99,7 +99,7 @@ namespace Text_Editor
             this.linkToProjLabel.Padding = new System.Windows.Forms.Padding(1);
             this.linkToProjLabel.Size = new System.Drawing.Size(125, 40);
             this.linkToProjLabel.TabIndex = 15;
-            this.linkToProjLabel.Text = "Link to Project";
+            this.linkToProjLabel.Text = "Link to Original Project";
             this.linkToProjLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // descriptionLabel
