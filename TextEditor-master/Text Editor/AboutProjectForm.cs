@@ -14,6 +14,7 @@ namespace Text_Editor
     {
         //global variable(s)
         string newLine = Environment.NewLine; //equivalent -> "\n"
+
         public AboutProjectForm()
         {
             InitializeComponent();
@@ -22,14 +23,13 @@ namespace Text_Editor
         private void AboutProjectForm_Load(object sender, EventArgs e)
         {
             //----SET LABEL'S VALUES HERE ONLY----
-            string description = "An open source Text Editor program, done by hjohnson12, sam-wheat, yoshiask, and RobbyRobbyRobby. " + newLine + newLine +
-                                 "It is then used for a Final Year Project(FYP) coded by Eliasaph Wan Uyo(1181101266). " + newLine + newLine +
-                                 "To test the different context menu layouts, simply choose the context menus from the 'Choose Context Menu..' panel in the Text Editor program." +
-                                 " Next, simply right click in the text box area to open the selected context menu.";
+            string description = "An open source Text Editor program, done by hjohnson12, sam-wheat, yoshiask, and RobbyRobbyRobby." + newLine +
+                                 "This version is a Final Year Project coded by Eliasaph Wan Uyo(1181101266) in order to test user reactions to different styles of context menus." + newLine + newLine +
+                                 "To test the different context menu layouts, simply choose the context menus from the 'Choose Context Menu..' panel in the Text Editor program. Next, simply right click in the text box area to open the selected context menu.";
 
             string projectName = "Text Editor - Windows Forms";
 
-            string version = "6.1.5.0";
+            string version = "6.1.6.0";
 
             string oriCopyright = "©️ 2019 hjohnson12";
 
