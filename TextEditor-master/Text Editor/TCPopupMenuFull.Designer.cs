@@ -121,6 +121,7 @@ namespace Text_Editor
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button14.ImageKey = "right-arrow.png";
             this.button14.ImageList = this.imageList1;
             this.button14.Location = new System.Drawing.Point(180, 192);
             this.button14.Margin = new System.Windows.Forms.Padding(0);
@@ -178,6 +179,8 @@ namespace Text_Editor
             this.imageList1.Images.SetKeyName(37, "undoStripButton.Image.png");
             this.imageList1.Images.SetKeyName(38, "undoToolStripMenuItem.Image.png");
             this.imageList1.Images.SetKeyName(39, "zoomDropDownButton.Image.png");
+            this.imageList1.Images.SetKeyName(40, "left-arrow.png");
+            this.imageList1.Images.SetKeyName(41, "right-arrow.png");
             // 
             // button13
             // 
@@ -190,6 +193,7 @@ namespace Text_Editor
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button13.ImageKey = "left-arrow.png";
             this.button13.ImageList = this.imageList1;
             this.button13.Location = new System.Drawing.Point(0, 192);
             this.button13.Margin = new System.Windows.Forms.Padding(0);
@@ -455,7 +459,7 @@ namespace Text_Editor
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.ImageKey = "newMenuItem.Image.png";
+            this.button1.ImageKey = "newMenuItem.Image1.png";
             this.button1.ImageList = this.imageList1;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
