@@ -50,8 +50,34 @@ namespace Text_Editor
             switch(iconFlag)
             {
                 case 0: //remove iconss
-                    this.imageList1.Images.Clear();
-                    this.Width -= 60;
+                    /*this.imageList1.Images.Clear();
+
+                    //only add images for button13 & button14
+                    this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+                    this.button13.ImageKey = "left-arrow.png";
+                    this.button13.ImageList = this.imageList1;
+
+                    this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+                    this.button14.ImageKey = "right-arrow.png";
+                    this.button14.ImageList = this.imageList1;*/
+
+                    //remove all image key except for button13 and button14
+                    this.imageList1.Images.RemoveByKey("newMenuItem.Image1.png");
+                    this.imageList1.Images.RemoveByKey("undoStripButton.Image.png");
+                    this.imageList1.Images.RemoveByKey("openFileStripButton.Image.png");
+                    this.imageList1.Images.RemoveByKey("redoStripButton.Image.png");
+                    this.imageList1.Images.RemoveByKey("saveToolStripMenuItem.Image.png");
+                    this.imageList1.Images.RemoveByKey("cutToolStripMenuItem.Image.png");
+                    this.imageList1.Images.RemoveByKey("printStripMenuItem.Image.png");
+                    this.imageList1.Images.RemoveByKey("copyToolStripMenuItem.Image.png");
+                    this.imageList1.Images.RemoveByKey("printPreviewStripButton.Image.png");
+                    this.imageList1.Images.RemoveByKey("pasteToolStripMenuItem.Image.png");
+                    this.imageList1.Images.RemoveByKey("clearAllToolStripMenuItem.Image.png");
+                    this.imageList1.Images.RemoveByKey("deleteStripMenuItem.Image.png");
+                    this.imageList1.Images.RemoveByKey("exitToolStripMenuItem.Image.png");
+                    this.imageList1.Images.RemoveByKey("selectAllToolStripMenuItem.Image.png");
+
+                    this.Width -= 40;
                     this.Height -= 12; //bigger than this causes text crop
                     /*foreach(var button in this.Controls.OfType<Button>())
                     {
@@ -252,6 +278,24 @@ namespace Text_Editor
                 styleTokenStrip.Items[i].Image = squareIcon[i];
                 removeStyleStrip.Items[i].Image = squareIcon[i];
             }
+
+            //--add arrow images--
+            //button13.Image = null;
+
+            //button14.Image = null;
+            //--add arrow images--
+
+            /*//this.imageList1.Images.Clear();
+            this.imageList1.Images.();
+
+            //only add images for button13 & button14
+            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button13.ImageKey = "left-arrow.png";
+            this.button13.ImageList = this.imageList1;
+
+            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button14.ImageKey = "right-arrow.png";
+            this.button14.ImageList = this.imageList1;*/
         }
 
         private void styleTokenStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
