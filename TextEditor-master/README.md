@@ -1,106 +1,51 @@
 # Text Editor - Windows Forms
+This simple text editor is an open-source program which I have used for my Final Year Project(FYP) about improving context menus. The link to this application can be found in this website: https://github.com/hjohnson12/TextEditor. It was used as my sample program to host different context menu designs. All credits are given to the authors for enabling me to complete my FYP successfully.
 
-This application is a text editor written in C# and Windows Forms as part of my college class final project in Fall 2016. Other projects
-for the final project included:
+***
 
-* Simple login program using a SQL local database with Visual Studio. 
-***Link to source***: https://github.com/hjohnson12/LoginPanel
-* Simple implementation of a file watcher program that watches a source directory for changes and copies the changes to the destination directory. 
-***Link to source***:  https://github.com/hjohnson12/FileSync
-* Basic application that connects to a ftp server and does simple operations such as read contents in a directory, upload a file, and delete a file.
-***Link to source***: https://github.com/hjohnson12/FtpConnect  
+## Program previews:
+### * Text editor application:
+![txtEdtrPreview](https://user-images.githubusercontent.com/70519090/167807417-a33fedf5-cf68-4cb3-96b8-fb0bdbbcec93.png)
 
-***NOTE: This version is not currently being worked on, waiting on XAML Islands release for further update***
- * This project was re-made into a Windows 10 Universal Windows Platform application a couple years ago when testing with UWP for the first time. It is now being re-made to use the newer framework and controls when free time is available: https://github.com/hjohnson12/NotepadEditorUWP 
+### * Different Context Menu designs:
+#### 1. Default context menu:
+![defaultCM](https://user-images.githubusercontent.com/70519090/167808233-e11f9be3-bd42-432c-a64a-c240cc1e36cb.png)
+#### 2. Simple two-column context menu:
+![smplTCCM](https://user-images.githubusercontent.com/70519090/167808773-7f30c038-d87d-44b2-9b0d-cf0b1f8ac7d2.png)
+#### 3. Full two-column context menu(with icons):
+![fullTCCMWOI](https://user-images.githubusercontent.com/70519090/167808816-4d89a69a-9574-4199-b6e0-c90d02a24b96.png)
+#### 4. Full two-column context menu(without icons):
+![fullTCCMWI](https://user-images.githubusercontent.com/70519090/167808867-7b7ed0a3-a120-44ef-9b8c-535b2e85d504.png)
+#### 5. Simple matrix context menu:
+![smplMtxCM](https://user-images.githubusercontent.com/70519090/167808895-6545dfbe-acdf-4377-b1d6-051014bc72b9.png)
+#### 6. Full matrix context menu:
+![fullMtxCM](https://user-images.githubusercontent.com/70519090/167808948-591186fb-ecfb-44dc-83bf-7a5cca9f945f.png)
+#### 7. Vertical context menu:
+![vertCM](https://user-images.githubusercontent.com/70519090/167809007-fbd2e883-44d3-4d35-a4ce-c3d7a1494461.png)
+#### 8. Horizontal context menu:
+![horiCM](https://user-images.githubusercontent.com/70519090/167809044-dc0a2401-a6a9-4f46-9158-478f5dcd0c31.png)
 
-### Screenshots of WinForms Version
+***
 
-##### Standard design for text editor:
-
-![Image of Program](README_Images/AppEx1.png)
-
-##### Able to open files and display them into the editor:
-
-* Line/Column numbers also show according to where your cursor is selected
-
-![Image of Program](README_Images/AppEx2.png)
-
-##### Able to see an example of the color before you choose it:
-
-![Image of Program](README_Images/AppEx3.png)
-
-
-* Uses a KnownColor object for the selected color. Once backcolor is set, it converts the color to RGB values and
-determines if its considered a lighter or darker color. It then changes the text color accordingly:
-  * The following is the C# snippet:
-  ```csharp
-  // fill colors in color drop down list
-            foreach (System.Reflection.PropertyInfo prop in typeof(Color).GetProperties())
-            {
-                if (prop.PropertyType.FullName == "System.Drawing.Color")
-                {
-                    colorList.Add(prop.Name);     
-                }
-            }
-           
-            // fill the drop down items list
-            foreach(string color in colorList)
-            {
-                colorStripDropDownButton.DropDownItems.Add(color);
-            }
-
-            // fill BackColor for each color in the DropDownItems list
-            for (int i = 0; i < colorStripDropDownButton.DropDownItems.Count; i++)
-            {
-                // Create KnownColor object
-                KnownColor selectedColor;
-                selectedColor = (KnownColor)System.Enum.Parse(typeof(KnownColor), colorList[i]);    // parse to a KnownColor
-                colorStripDropDownButton.DropDownItems[i].BackColor = Color.FromKnownColor(selectedColor);    // set the BackColor to its appropriate list item
-
-                // Set the text color depending on if the barkground is darker or lighter
-                // create Color object
-                Color col = Color.FromName(colorList[i]);
-
-                // 255,255,255 = White and 0,0,0 = Black
-                // Max sum of RGB values is 765 -> (255 + 255 + 255)
-                // Middle sum of RGB values is 382 -> (765/2)
-                // Color is considered darker if its <= 382
-                // Color is considered lighter if its > 382
-                sumRGB = ConvertToRGB(col);    // get the color objects sum of the RGB value
-                if (sumRGB <= MIDDLE)    // Darker Background
-                {
-                    colorStripDropDownButton.DropDownItems[i].ForeColor = Color.White;    // set to White text
-                }
-                else if (sumRGB > MIDDLE)    // Lighter Background
-                {
-                    colorStripDropDownButton.DropDownItems[i].ForeColor = Color.Black;    // set to Black text
-                }
-            }
-  ```
-
-
-##### Icons on each menu item in the menu bar:
-
-![Image of Program](README_Images/AppEx4.png)
-
-### Prerequisites
-
-Requires *Visual Studio 2017 or higher* to run. 
-
-## Built With
-
+## Built with
 * C# Windows Forms
 
-## Contributing
+## Prerequisites
+* Requires *Visual Studio 2017 or higher* to run.
+* Make sure to have **.NET desktop development** and **Desktop development with C++** installed in Visual Studio. This can be done from the tab: **Tools** -> **Get tools and features...**.
 
-[Coming Soon]
+## Compiling and Running the codes
+1. Download this program from [here](https://github.com/ewu11/TextEditor_ContextMenu).
+2. Extract the project folder(_TextEditor-master_) from the zip file.
+3. Redirect into **TextEditor-master** -> **Text Editor.sln** -> Build and Run the code from Visual Studio.
 
-## Authors
-
+## Original Authors
 * **Hunter** - *Initial work* - [hjohnson012](https://github.com/hjohnson012)
+* See also the list of [contributors](https://github.com/hjohnson12/KanbanBoardUWP/graphs/contributors) who participated in this project.
 
-See also the list of [contributors](https://github.com/hjohnson12/KanbanBoardUWP/graphs/contributors) who participated in this project.
+## FYP Program Authors and Contributors
+* Eliasaph Wan Uyo(https://github.com/ewu11).
+* Along with my great supervisors, Chai Ian(ianchai@mmu.edu.my) and Aik-Siong Koh(askoh@askoh.com).
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
